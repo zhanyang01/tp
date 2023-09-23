@@ -35,6 +35,11 @@ public class RemarkCommand extends Command {
     private final Index index;
     private final Remark remark;
 
+    /**
+     * Represents a constructor for RemarkCommand.
+     * @param index
+     * @param remark
+     */
     public RemarkCommand(Index index, Remark remark) {
         requireAllNonNull(index, remark);
         this.index = index;
@@ -80,8 +85,8 @@ public class RemarkCommand extends Command {
             return false;
         }
 
-    RemarkCommand e = (RemarkCommand) other;
-    return index.equals(e.index)
-            && remark.equals(e.remark);
+        RemarkCommand e = (RemarkCommand) other;
+        return index.equals(e.index)
+                && remark.equals(e.remark);
     }
 }
