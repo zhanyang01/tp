@@ -28,7 +28,6 @@ public class RemarkCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_REMARK + "Likes to swim.";
 
-    public static final String MESSAGE_ARGUMENTS = "Index: %1$d, Remark: %2$s";
     public static final String MESSAGE_ADD_REMARK_SUCCESS = "Added remark to Person: %1$s";
     public static final String MESSAGE_DELETE_REMARK_SUCCESS = "Deleted remark from Person: %1$s";
 
@@ -37,6 +36,7 @@ public class RemarkCommand extends Command {
 
     /**
      * Represents a constructor for RemarkCommand.
+     * 
      * @param index
      * @param remark
      */
@@ -56,22 +56,18 @@ public class RemarkCommand extends Command {
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), personToEdit.getTags(), remark);
+                personToEdit.getAddress(), remark, personToEdit.getTags());
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(generateSuccessMessage(editedPerson));
     }
 
     /**
-     * Generates a command execution success message based on whether the remark is added or deleted.
+     * Generates a command execution success message based on whether the remark is
+     * added or deleted.
      */
     private String generateSuccessMessage(Person personToEdit) {
-        String message = "";
-        if (remark.value.isEmpty()) {
-            message = MESSAGE_DELETE_REMARK_SUCCESS;
-        } else {
-            message = MESSAGE_ADD_REMARK_SUCCESS;
-        }
+        String message = !remark.value.isEmpty() ? MESSAGE_ADD_REMARK_SUCCESS : MESSAGE_DELETE_REMARK_SUCCESS;
         return String.format(message, personToEdit);
     }
 
