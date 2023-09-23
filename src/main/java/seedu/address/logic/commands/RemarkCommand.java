@@ -36,7 +36,6 @@ public class RemarkCommand extends Command {
 
     /**
      * Represents a constructor for RemarkCommand.
-     * 
      * @param index
      * @param remark
      */
