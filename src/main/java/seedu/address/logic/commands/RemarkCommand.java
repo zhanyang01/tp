@@ -36,8 +36,8 @@ public class RemarkCommand extends Command {
 
     /**
      * Represents a constructor for RemarkCommand.
-     * @param index
-     * @param remark
+     * @param index of the person in the filtered person list to edit
+     * @param remark of the person to be edited
      */
     public RemarkCommand(Index index, Remark remark) {
         requireAllNonNull(index, remark);
