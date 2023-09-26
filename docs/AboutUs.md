@@ -24,7 +24,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Chang Ji-xuan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/johnnythesnake12.png" width="200px">
 
 [[github](http://github.com/johnnythesnake12)] [[portfolio](team/johndoe.md)]
 
