@@ -21,40 +21,33 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Project Advisor
 
-### Jane Doe
 
-<img src="images/johndoe.png" width="200px">
+### Teng Xin Zhuan
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+<img src="images/tengxinzhuan.png" width="200px">
+
+[[github](http://github.com/aarontxz)]
+[[portfolio](team/tengxinzhuan.md)]
 
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
 
-<img src="images/johndoe.png" width="200px">
+### Chang Ji-xuan
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+<img src="images/johnnythesnake12.png" width="200px">
+
+[[github](http://github.com/johnnythesnake12)] [[portfolio](team/johndoe.md)]
 
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+
+### Luah Jun Yang
 
 <img src="images/johndoe.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
-
-### James Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/LuahJunYang)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
