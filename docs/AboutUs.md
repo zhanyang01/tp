@@ -24,7 +24,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Teng Xin Zhuan
 
-<img src="images/tengxinzhuan.png" width="200px">
+<img src="images/aarontxz.png" width="200px">
 
 [[github](http://github.com/aarontxz)]
 [[portfolio](team/tengxinzhuan.md)]
