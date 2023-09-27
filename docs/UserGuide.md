@@ -17,7 +17,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `insurahub.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
 
@@ -37,6 +37,8 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
    * `clear` : Deletes all contacts.
 
    * `exit` : Exits the app.
+  
+   * `highlight 1/phonenumber` : Highlight/Bold to show that that is the main form of contact that the client in the first index prefers. 
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -130,6 +132,22 @@ Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
+
+### Highlighting contact of a client: `highlight`
+
+Highlight the specific contact details of the particular client from the application.
+
+Format 1: `highlight <INDEX>/<preferred contact method>`
+Format 2:  `highlight <client identifier>/<preferred contact method>`
+
+* <INDEX> must be a positive integer less than or equals to the number of clients currently shown on AB3
+* <client identifier> must be one of the unique identifier of the clients in the entire client list
+* <preferred contact method> currently either Phone number or Email
+* Name: Contact name of the person that is saved in the app.
+* Preferred contact method(expandable as project progresses):
+    * Phone number
+    * Email
+
 
 ### Deleting a person : `delete`
 
