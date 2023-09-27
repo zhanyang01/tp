@@ -28,7 +28,7 @@ If not explicitly mentioned, for all use cases, the actor will be a Financial Ad
 ```
 Use Case 1 : Adding more tags to clients records
 Precondition: User already open up the application
-Guarentee: User will have new tags added
+Guarantee: User will have new tags added if command is typed correctly
 MSS:
   1. User keys in `addTag` and the corresponding tags for the particular client identifier or index
   2. Systems displays the tags that have been added to the particular client
@@ -39,10 +39,34 @@ Use case ends
   1a1. System displays an error message indicating that the process of adding tags have failed
   Use case ends
 
-1b. User keys in index that is invalid
+1b. User keys in invalid index
   1b1. System displays an error message indicating that the process of adding tags have failed
 ```
 
+```
+Use Case 2: Quick access of contact detail of clients
+Precondition: User opens up the application
+Guarantee: User preferred contact details will be highlighted if command is typed correctly
+MSS:
+  1. User keys in `highlight` followed by index or client identifier and the client preferred form of contact
+  2. System updates with the preferred form of contact highlighted
+Use case ends
+
+** Extensions **
+1a. User keys in invalid client identifier
+  1a1. System displays an error message indicating that the process of selecting preferred form of contact have failed
+  Use case ends
+
+1b. User keys in invalid index
+  1b1. System displays an error message indicating that the process of selecting preferred form of contact have failed
+  Use case ends
+
+1c. User keys in multiple forms of contacts
+  1c1. System displays an error message to tell the user to select only one form of preferred contact and that the
+process of selecting preferred form of contact have failed
+  Use case ends
+```
+  
 --------------------------------------------------------------------------------------------------------------------
 ## **Non-functioning requirements**
 
