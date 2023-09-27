@@ -137,7 +137,7 @@ Examples:
 
 Highlight the specific contact details of the particular client from the application.
 
-Format 1: `highlight <INDEX>/<preferred contact method>`
+Format 1: `highlight <INDEX>/<preferred contact method>`  
 Format 2:  `highlight <client identifier>/<preferred contact method>`
 
 * **INDEX** must be a positive integer less than or equals to the number of clients currently shown on AB3
