@@ -140,9 +140,9 @@ Highlight the specific contact details of the particular client from the applica
 Format 1: `highlight <INDEX>/<preferred contact method>`
 Format 2:  `highlight <client identifier>/<preferred contact method>`
 
-* <INDEX> must be a positive integer less than or equals to the number of clients currently shown on AB3
-* <client identifier> must be one of the unique identifier of the clients in the entire client list
-* <preferred contact method> currently either Phone number or Email
+* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on AB3
+* **client identifier** must be one of the unique identifier of the clients in the entire client list
+* **preferred contact method** either Phone number or Email currently
 * Name: Contact name of the person that is saved in the app.
 * Preferred contact method(expandable as project progresses):
     * Phone number
