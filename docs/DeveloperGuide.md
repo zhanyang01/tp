@@ -28,7 +28,6 @@ If not explicitly mentioned, for all use cases, the actor will be a Financial Ad
 ```
 Use Case 1 : Adding more tags to clients records
 Precondition: User already open up the application
-Guarantee: User will have new tags added if command is typed correctly
 MSS:
   1. User keys in `addTag` and the corresponding tags for the particular client identifier or index
   2. Systems displays the tags that have been added to the particular client
@@ -41,12 +40,12 @@ Use case ends
 
 1b. User keys in invalid index
   1b1. System displays an error message indicating that the process of adding tags have failed
+  Use case ends
 ```
 
 ```
 Use Case 2: Quick access of contact detail of clients
 Precondition: User opens up the application
-Guarantee: User preferred contact details will be highlighted if command is typed correctly
 MSS:
   1. User keys in `highlight` followed by index or client identifier and the client preferred form of contact
   2. System updates with the preferred form of contact highlighted
@@ -66,7 +65,56 @@ Use case ends
 process of selecting preferred form of contact have failed
   Use case ends
 ```
-  
+
+```
+Use Case 3: Adding new clients information
+Precondition: User opens up the application
+MSS:
+  1. User keys in `addNewClient` followed by client details
+  2. System updates with new client at the bottom of the list
+Use case ends
+
+** Extensions **
+1a. User keys in wrong input format
+  1a1. System displays an error message indicating the supposed format to be changed
+  Use case ends
+
+1b. User keys in wrong format for details
+  1b1. System displays an error message indicating that a particular detail is in the wrong format
+  Use case ends
+```
+
+```
+Use Case 4: Filtering client information using tags
+Precondition: User opens up the application
+MSS:
+  1. User keys in `filter` followed by tags
+  2. System updates with a list of clients that fulfills the tags to be filtered
+Use case ends
+
+** Extensions **
+1a. User keys in invalid tags
+  1a1. System displays an error message to remind user to check their tags that is keyed in
+  Use case ends
+```
+
+```
+Use Case 5: Storing client documents neatly in a folder
+Precondition: User opens up the application
+MSS:
+  1. User keys in `file` followed by index or client identifier
+  2. System opens up the folder of the particular client with the relevant files inside the folder
+Use case ends
+
+** Extensions **
+1a. User keys in invalid client identifier
+  1a1. System displays an error message indicating that the process of adding tags have failed
+  Use case ends
+
+1b. User keys in invalid index
+  1b1. System displays an error message indicating that the process of adding tags have failed
+  Use case ends
+```
 --------------------------------------------------------------------------------------------------------------------
 ## **Non-functioning requirements**
 
