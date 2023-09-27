@@ -22,7 +22,25 @@
 --------------------------------------------------------------------------------------------------------------------
 ## **Use Cases**
 ```
-If not explicitly mentioned, for all use cases, the actor will be Financial Advisor as the User and InsuraHub as the System.
+If not explicitly mentioned, for all use cases, the actor will be a Financial Advisor as the User and InsuraHub as the System.
+```
+
+```
+Use Case 1 : Adding more tags to clients records
+Precondition: User already open up the application
+Guarentee: User will have new tags added
+MSS:
+  1. User keys in `addTag` and the corresponding tags for the particular client identifier or index
+  2. Systems displays the tags that have been added to the particular client
+Use case ends
+
+** Extensions: **
+1a. User keys in invalid client identifier
+  1a1. System displays an error message indicating that the process of adding tags have failed
+  Use case ends
+
+1b. User keys in index that is invalid
+  1b1. System displays an error message indicating that the process of adding tags have failed
 ```
 
 --------------------------------------------------------------------------------------------------------------------
