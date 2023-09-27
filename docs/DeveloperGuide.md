@@ -22,7 +22,7 @@
 --------------------------------------------------------------------------------------------------------------------
 ## **Use Cases**
 ```
-If not explicitly mentioned, for all use cases, the actor will be a Financial Advisor as the User and InsuraHub as the System.
+If not explicitly mentioned, the actor will be a Financial Advisor as the User and InsuraHub as the System.
 ```
 
 ```
