@@ -21,7 +21,9 @@
 
 --------------------------------------------------------------------------------------------------------------------
 ## **Use Cases**
-If
+```
+If not explicitly mentioned, for all use cases, the actor will be Financial Advisor as the User and InsuraHub as the System.
+```
 
 --------------------------------------------------------------------------------------------------------------------
 ## **Non-functioning requirements**
