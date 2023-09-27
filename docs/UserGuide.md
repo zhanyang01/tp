@@ -133,22 +133,6 @@ Examples:
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-### Highlighting contact of a client: `highlight`
-
-Highlight the specific contact details of the particular client from the application.
-
-Format 1: `highlight <INDEX>/<preferred contact method>`  
-
-Format 2:  `highlight <client identifier>/<preferred contact method>`
-
-* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on AB3
-* **client identifier** must be one of the unique identifier of the clients in the entire client list
-* **preferred contact method** either Phone number or Email currently
-* Name: Contact name of the person that is saved in the app.
-* Preferred contact method(expandable as project progresses):
-    * Phone number
-    * Email
-
 
 ### Deleting a person : `delete`
 
@@ -190,9 +174,27 @@ AddressBook data are saved automatically as a JSON file `[JAR file location]/dat
 If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
 </box>
 
-### Archiving data files `[coming in v2.0]`
+## In Progress
 
-_Details coming soon ..._
+### Highlighting contact of a client: `highlight`  
+
+Highlight the specific contact details of the particular client from the application.
+
+Format 1: `highlight <INDEX>/<preferred contact method>`  
+
+Format 2:  `highlight <client identifier>/<preferred contact method>`
+
+* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on AB3
+* **client identifier** must be one of the unique identifier of the clients in the entire client list
+* **preferred contact method** either Phone number or Email currently
+* Name: Contact name of the person that is saved in the app.
+* Preferred contact method(expandable as project progresses):
+    * Phone number
+    * Email
+ 
+Examples:
+* `highlight 1/phone number` will highlight the phone number of the first person in the current list shown
+* `highlight John Doe/phone number` will highlight John Doe phone number
 
 --------------------------------------------------------------------------------------------------------------------
 
