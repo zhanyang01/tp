@@ -13,23 +13,23 @@
 # Table of contents
 1. Setting up, getting started
 2. Design    
-   i. Architecture   
-   ii. UI Component  
-   iii. Logic Component   
-   iv. Modal Component  
-   v. Storage Component   
-   vi. Common Classes
+   1. Architecture   
+   2. UI Component  
+   3. Logic Component   
+   4. Modal Component  
+   5. Storage Component   
+   6. Common Classes
 4. Implementations
 5. Acknowledgement
 6. Appendix Requirements    
-  i. Product Scope    
-  ii. User Stories    
-  iii. Use Cases    
-    a. Adding more tags to clients records    
-    b. Quick access of contact detail of clients    
-    c. Adding new clients information    
-    d. Filtering client information using tags    
-    e. Storing client documents neatly in a folder    
+   1. Product Scope    
+   2. User Stories
+   3. Use Cases    
+    1. Adding more tags to clients records    
+    2. Quick access of contact detail of clients    
+    3. Adding new clients information    
+    4. Filtering client information using tags    
+    5. Storing client documents neatly in a folder    
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
