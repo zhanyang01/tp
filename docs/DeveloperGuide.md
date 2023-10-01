@@ -10,8 +10,8 @@
 <page-nav-print />
 
 --------------------------------------------------------------------------------------------------------------------
-# Table of contents
-1. Setting up, getting started
+# **Table of contents**
+1. [Setting up, getting started](#setting-up-getting-started)
 2. Design    
    1. Architecture   
    2. UI Component  
