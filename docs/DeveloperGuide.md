@@ -293,6 +293,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ```
 If not explicitly mentioned, the actor will be a Financial Advisor as the User and InsuraHub as the System.
 ```
+```
 Use Case 1 : Adding more tags to clients records
 Precondition: User already open up the application
 MSS:
