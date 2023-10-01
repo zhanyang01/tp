@@ -4,12 +4,10 @@
   pageNav: 3
 ---
 
-# AB-3 Developer Guide
+# Insurahub Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
-
---------------------------------------------------------------------------------------------------------------------
 
 ## **Acknowledgements**
 
