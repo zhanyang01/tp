@@ -13,15 +13,20 @@
 # Table of contents
 1. Setting up, getting started
 2. Design
-   i. Architecture  
-   ii. UI Component  
-   iii. Logic Component  
-   iv. Modal Component  
-   v. Storage Component  
-   vi. Common Classes  
-3. Implementations
-4. Acknowledgement
-5. Appendix Requirements
+   i. Architecture
+   
+   ii. UI Component
+   
+   iii. Logic Component
+   
+   iv. Modal Component
+   
+   v. Storage Component
+   
+   vi. Common Classes
+4. Implementations
+5. Acknowledgement
+6. Appendix Requirements
   i. Product Scope  
   ii. User Stories  
   iii. Use Cases  
