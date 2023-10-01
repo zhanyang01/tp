@@ -6,7 +6,7 @@
 
 # AB-3 User Guide
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps. This app is mainly used by insurance agents who have many clients and tasks such as appointments to keep track of on a daily basis.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -17,7 +17,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `insurahub.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
 
@@ -37,6 +37,8 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
    * `clear` : Deletes all contacts.
 
    * `exit` : Exits the app.
+  
+   * `highlight 1/phonenumber` : Highlight/Bold to show that that is the main form of contact that the client in the first index prefers. 
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -131,6 +133,7 @@ Examples:
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
+
 ### Deleting a person : `delete`
 
 Deletes the specified person from the address book.
@@ -171,9 +174,27 @@ AddressBook data are saved automatically as a JSON file `[JAR file location]/dat
 If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
 </box>
 
-### Archiving data files `[coming in v2.0]`
+## In Progress
 
-_Details coming soon ..._
+### Highlighting contact of a client: `highlight`  
+
+Highlight the specific contact details of the particular client from the application.
+
+Format 1: `highlight <INDEX>/<preferred contact method>`  
+
+Format 2:  `highlight <client identifier>/<preferred contact method>`
+
+* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on AB3
+* **client identifier** must be one of the unique identifier of the clients in the entire client list
+* **preferred contact method** either Phone number or Email currently
+* Name: Contact name of the person that is saved in the app.
+* Preferred contact method(expandable as project progresses):
+    * Phone number
+    * Email
+ 
+Examples:
+* `highlight 1/phone number` will highlight the phone number of the first person in the current list shown
+* `highlight John Doe/phone number` will highlight John Doe phone number
 
 --------------------------------------------------------------------------------------------------------------------
 
