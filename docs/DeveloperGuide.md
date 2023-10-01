@@ -13,7 +13,6 @@
 # Table of contents
 1. Setting up, getting started
 2. Design
- 
    i. Architecture   
    ii. UI Component  
    iii. Logic Component   
