@@ -13,16 +13,11 @@
 # Table of contents
 1. Setting up, getting started
 2. Design
-   i. Architecture
-   
-   ii. UI Component
-   
-   iii. Logic Component
-   
-   iv. Modal Component
-   
-   v. Storage Component
-   
+   i. Architecture   
+   ii. UI Component  
+   iii. Logic Component 
+   iv. Modal Component  
+   v. Storage Component   
    vi. Common Classes
 4. Implementations
 5. Acknowledgement
