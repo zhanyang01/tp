@@ -11,123 +11,6 @@
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Target Audience**
-
---------------------------------------------------------------------------------------------------------------------
-## **Value Proposition**
-
---------------------------------------------------------------------------------------------------------------------
-## **User Stories**
-
---------------------------------------------------------------------------------------------------------------------
-## **Use Cases**
-```
-If not explicitly mentioned, the actor will be a Financial Advisor as the User and InsuraHub as the System.
-```
-
-```
-Use Case 1 : Adding more tags to clients records
-Precondition: User already open up the application
-MSS:
-  1. User keys in `addTag` and the corresponding tags for the particular client identifier or index
-  2. Systems displays the tags that have been added to the particular client
-Use case ends
-
-** Extensions: **
-1a. User keys in invalid client identifier
-  1a1. System displays an error message indicating that the process of adding tags have failed
-  Use case ends
-
-1b. User keys in invalid index
-  1b1. System displays an error message indicating that the process of adding tags have failed
-  Use case ends
-```
-
-```
-Use Case 2: Quick access of contact detail of clients
-Precondition: User opens up the application
-MSS:
-  1. User keys in `highlight` followed by index or client identifier and the client preferred form of contact
-  2. System updates with the preferred form of contact highlighted
-Use case ends
-
-** Extensions **
-1a. User keys in invalid client identifier
-  1a1. System displays an error message indicating that the process of selecting preferred form of contact have failed
-  Use case ends
-
-1b. User keys in invalid index
-  1b1. System displays an error message indicating that the process of selecting preferred form of contact have failed
-  Use case ends
-
-1c. User keys in multiple forms of contacts
-  1c1. System displays an error message to tell the user to select only one form of preferred contact and that the
-process of selecting preferred form of contact have failed
-  Use case ends
-```
-
-```
-Use Case 3: Adding new clients information
-Precondition: User opens up the application
-MSS:
-  1. User keys in `addNewClient` followed by client details
-  2. System updates with new client at the bottom of the list
-Use case ends
-
-** Extensions **
-1a. User keys in wrong input format
-  1a1. System displays an error message indicating the supposed format to be changed
-  Use case ends
-
-1b. User keys in wrong format for details
-  1b1. System displays an error message indicating that a particular detail is in the wrong format
-  Use case ends
-```
-
-```
-Use Case 4: Filtering client information using tags
-Precondition: User opens up the application
-MSS:
-  1. User keys in `filter` followed by tags
-  2. System updates with a list of clients that fulfills the tags to be filtered
-Use case ends
-
-** Extensions **
-1a. User keys in invalid tags
-  1a1. System displays an error message to remind user to check their tags that is keyed in
-  Use case ends
-```
-
-```
-Use Case 5: Storing client documents neatly in a folder
-Precondition: User opens up the application
-MSS:
-  1. User keys in `file` followed by index or client identifier
-  2. System opens up the folder of the particular client with the relevant files inside the folder
-Use case ends
-
-** Extensions **
-1a. User keys in invalid client identifier
-  1a1. System displays an error message indicating that the process of adding tags have failed
-  Use case ends
-
-1b. User keys in invalid index
-  1b1. System displays an error message indicating that the process of adding tags have failed
-  Use case ends
-```
---------------------------------------------------------------------------------------------------------------------
-## **Non-functioning requirements**
-
---------------------------------------------------------------------------------------------------------------------
-## **Glossary**
-
---------------------------------------------------------------------------------------------------------------------
-## **Acknowledgements**
-
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
-
---------------------------------------------------------------------------------------------------------------------
-
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
@@ -373,7 +256,9 @@ _{Explain here how the data archiving feature will be implemented}_
 * [DevOps guide](DevOps.md)
 
 --------------------------------------------------------------------------------------------------------------------
+## **Acknowledgements**
 
+_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
 ## **Appendix: Requirements**
 
 ### Product scope
@@ -405,8 +290,98 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 *{More to be added}*
 
 ### Use cases
+```
+If not explicitly mentioned, the actor will be a Financial Advisor as the User and InsuraHub as the System.
+```
+Use Case 1 : Adding more tags to clients records
+Precondition: User already open up the application
+MSS:
+  1. User keys in `addTag` and the corresponding tags for the particular client identifier or index
+  2. Systems displays the tags that have been added to the particular client
+Use case ends
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+** Extensions: **
+1a. User keys in invalid client identifier
+  1a1. System displays an error message indicating that the process of adding tags have failed
+  Use case ends
+
+1b. User keys in invalid index
+  1b1. System displays an error message indicating that the process of adding tags have failed
+  Use case ends
+```
+
+```
+Use Case 2: Quick access of contact detail of clients
+Precondition: User opens up the application
+MSS:
+  1. User keys in `highlight` followed by index or client identifier and the client preferred form of contact
+  2. System updates with the preferred form of contact highlighted
+Use case ends
+
+** Extensions **
+1a. User keys in invalid client identifier
+  1a1. System displays an error message indicating that the process of selecting preferred form of contact have failed
+  Use case ends
+
+1b. User keys in invalid index
+  1b1. System displays an error message indicating that the process of selecting preferred form of contact have failed
+  Use case ends
+
+1c. User keys in multiple forms of contacts
+  1c1. System displays an error message to tell the user to select only one form of preferred contact and that the
+process of selecting preferred form of contact have failed
+  Use case ends
+```
+
+```
+Use Case 3: Adding new clients information
+Precondition: User opens up the application
+MSS:
+  1. User keys in `addNewClient` followed by client details
+  2. System updates with new client at the bottom of the list
+Use case ends
+
+** Extensions **
+1a. User keys in wrong input format
+  1a1. System displays an error message indicating the supposed format to be changed
+  Use case ends
+
+1b. User keys in wrong format for details
+  1b1. System displays an error message indicating that a particular detail is in the wrong format
+  Use case ends
+```
+
+```
+Use Case 4: Filtering client information using tags
+Precondition: User opens up the application
+MSS:
+  1. User keys in `filter` followed by tags
+  2. System updates with a list of clients that fulfills the tags to be filtered
+Use case ends
+
+** Extensions **
+1a. User keys in invalid tags
+  1a1. System displays an error message to remind user to check their tags that is keyed in
+  Use case ends
+```
+
+```
+Use Case 5: Storing client documents neatly in a folder
+Precondition: User opens up the application
+MSS:
+  1. User keys in `file` followed by index or client identifier
+  2. System opens up the folder of the particular client with the relevant files inside the folder
+Use case ends
+
+** Extensions **
+1a. User keys in invalid client identifier
+  1a1. System displays an error message indicating that the process of adding tags have failed
+  Use case ends
+
+1b. User keys in invalid index
+  1b1. System displays an error message indicating that the process of adding tags have failed
+  Use case ends
+```
 
 **Use case: Delete a person**
 
