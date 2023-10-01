@@ -25,11 +25,11 @@
    1. Product Scope    
    2. User Stories
    3. Use Cases    
-    1. Adding more tags to clients records    
-    2. Quick access of contact detail of clients    
-    3. Adding new clients information    
-    4. Filtering client information using tags    
-    5. Storing client documents neatly in a folder    
+      1. Adding more tags to clients records    
+      2. Quick access of contact detail of clients    
+      3. Adding new clients information    
+      4. Filtering client information using tags    
+      5. Storing client documents neatly in a folder    
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
