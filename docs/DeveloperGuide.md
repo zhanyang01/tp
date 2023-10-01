@@ -15,7 +15,7 @@
 2. Design
    i. Architecture   
    ii. UI Component  
-   iii. Logic Component 
+   iii. Logic Component   
    iv. Modal Component  
    v. Storage Component   
    vi. Common Classes
