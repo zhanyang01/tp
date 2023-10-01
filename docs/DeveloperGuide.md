@@ -21,16 +21,15 @@
    vi. Common Classes
 4. Implementations
 5. Acknowledgement
-6. Appendix Requirements
-  i. Product Scope  
-  ii. User Stories  
-  iii. Use Cases  
-    a. Adding more tags to clients records  
-    b. Quick access of contact detail of clients  
-    c. Adding new clients information  
-    d. Filtering client information using tags  
-    e. Storing client documents neatly in a folder  
-
+6. Appendix Requirements    
+  i. Product Scope    
+  ii. User Stories    
+  iii. Use Cases    
+    a. Adding more tags to clients records    
+    b. Quick access of contact detail of clients    
+    c. Adding new clients information    
+    d. Filtering client information using tags    
+    e. Storing client documents neatly in a folder    
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
