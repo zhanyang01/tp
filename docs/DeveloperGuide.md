@@ -12,19 +12,19 @@
 --------------------------------------------------------------------------------------------------------------------
 # **Table of contents**
 1. [Setting up, getting started](#setting-up-getting-started)
-2. [Design](#design)    
-   1. [Architecture](#architecture)   
-   2. [UI Component](#ui-component)  
-   3. [Logic Component](#logic-component)   
-   4. [Modal Component](#modal-component)  
-   5. [Storage Component](#storage-component)   
+2. [Design](#design)
+   1. [Architecture](#architecture)
+   2. [UI Component](#ui-component) 
+   3. [Logic Component](#logic-component)
+   4. [Modal Component](#modal-component)
+   5. [Storage Component](#storage-component)
    6. [Common Classes](#common-classes)
 4. [Implementations](#implementations)
 5. [Acknowledgement](#acknowledgement)
-6. [Appendix Requirements](#appendix-requirements)    
-   1. [Product Scope](#product-scope)    
+6. [Appendix Requirements](#appendix-requirements) 
+   1. [Product Scope](#product-scope)
    2. [User Stories](#user-stories)
-   3. [Use Cases](#use-cases)    
+   3. [Use Cases](#use-cases)
       1. Adding more tags to clients records  
       2. Quick access of contact detail of clients    
       3. Adding new clients information    
