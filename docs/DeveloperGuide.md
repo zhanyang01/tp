@@ -10,6 +10,26 @@
 <page-nav-print />
 
 --------------------------------------------------------------------------------------------------------------------
+# Table of contents
+1. Setting up, getting started
+2. Design
+   i. Architecture
+   ii. UI Component
+   iii. Logic Component
+   iv. Modal Component
+   v. Storage Component
+   vi. Common Classes
+3. Implementations
+4. Acknowledgement
+5. Appendix Requirements
+  i. Product Scope
+  ii. User Stories
+  iii. Use Cases
+    a. Adding more tags to clients records
+    b. Quick access of contact detail of clients
+    c. Adding new clients information
+    d. Filtering client information using tags
+    e. Storing client documents neatly in a folder
 
 ## **Setting up, getting started**
 
@@ -258,7 +278,7 @@ _{Explain here how the data archiving feature will be implemented}_
 --------------------------------------------------------------------------------------------------------------------
 ## **Acknowledgements**
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
+This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
 ## **Appendix: Requirements**
 
 ### Product scope
