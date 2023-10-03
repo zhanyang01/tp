@@ -284,27 +284,49 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* has a need to manage a significant number of client's contacts
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
+* has a need to be able to easily find different clients contacts
+* remembers some of their client's only by their firstname,lastname,nickname or initials
+* needs to handle a large amount of documents that are stored for different clients
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
-
+**Value proposition**: manage client's contacts faster than a typical mouse/GUI driven app while providing ways to efficiently find/store specific client and their documents
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
+| Priority | As a …​                                    | I want to …​                                                       | So that I can…​                                                          |
+|----------|--------------------------------------------|--------------------------------------------------------------------|--------------------------------------------------------------------------|
+| `* * *`  | new user                                   | see usage instructions                                             | refer to instructions when I forget how to use the App                   |
+| `* * *`  | user                                       | add a new person                                                   |                                                                          |
+| `* * *`  | user                                       | delete a person                                                    | remove entries that I no longer need                                     |
+| `* * *`  | user                                       | find a person by name                                              | locate details of persons without having to go through the entire list   |
+| `* *`    | user                                       | hide private contact details                                       | minimize chance of someone else seeing them by accident                  |
+| `*`      | user with many persons in the address book | sort persons by name                                               | locate a person easily                                                   |
+| `* * *`  | insurance agent                            | Add more tags to my clients                                        | easily find them later                                                   |
+| `* * *`  | insurance agent with multiple documents    | Store documents along with client contact information              | in an orderly manner                                                     |
+| `* * *`  | insurance agent                            | Highlight the preferred contact details of my clients              | quickly contact them for any matters                                     |
+| `* * *`  | insurance agent using the CLI              | Input and update client information through text commands          | provide personalized and efficient service without a graphical interface |
+| `* * *`  | insurance agent                            | Filter interested clients                                          | focus my time on providing value to their lives                          |
+| `* *`    | insurance agent                            | Organize my clients’ records based on tags                         | filter for specific groups of clients                                    |
+| `* *`    | insurance agent                            | Cluster my clients into areas they want to meet                    | set up meetings that minimize my travel time                             |
+| `* *`    | busy insurance agent                       | Load client data quickly                                           | use the app even with high traffic and not waste time waiting            |
+| `* *`    | insurance agent                            | Sort client priorities                                             | attend to their needs first                                              |
+| `* *`    | insurance agent prioritizing data security | Create secure log-in passwords and authentication                  | protect client data integrity                                            |
+| `* *`    | non-technical insurance agent              | Access comprehensive help documentation or a built-in help command | understand available commands, their syntax, and purpose in CLI          |
+| `* *`    | forgetful insurance agent                  | Have important todos in the homepage                               | not forget to do them, such as client meetings and applying for claims   |
+| `* *`    | life insurance agent                       | Easily filter clients with policy updates                          | inform them more timely on the updates                                   |
+| `* *`    | insurance agent                            | Track progress of insurance claims through text-based commands     | provide timely updates and ensure a smooth claims process via CLI        |
+| `* *`    | insurance agent                            | Receive alerts for expiring insurance policies                     | prioritize meeting clients with expiring policies                        |
+| `*`      | insurance agent with traditional clients   | Export a client’s policy summary to a spreadsheet                  | print it out for clients                                                 |
+| `*`      | artistic insurance agent                   | Customize the UI                                                   | feel better using a more unique UI                                       |
+| `*`      | insurance agent                            | Create new insurance policies for my clients                       | accommodate changes or updates requested by clients                      |
+| `*`      | insurance agent working with others        | Send and receive client details with other users                   | take over/hand over clients from other agents                            |
+| `*`      | data-driven insurance agent                | Access a variety of reports and analytics                          | make informed decisions to improve my business                           |
 
 *{More to be added}*
 
