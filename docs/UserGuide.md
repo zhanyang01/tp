@@ -196,6 +196,21 @@ Examples:
 * `highlight 1/phone number` will highlight the phone number of the first person in the current list shown
 * `highlight John Doe/phone number` will highlight John Doe phone number
 
+### Storing documents of a client: `file`
+
+Creates/opens up a folder specific to a client for storing of their documents
+
+Format 1: `file <INDEX>`
+
+Format 2:  `file <client identifier>`
+
+* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on AB3
+* **client identifier** must be one of the unique identifier of the clients in the entire client list
+
+Examples:
+* `file 1` will open up a folder that is named after the first client currently on the list
+* `file John Doe` will open up the folder that is used to store John Doe's documents
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
