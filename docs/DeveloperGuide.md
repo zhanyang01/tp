@@ -290,7 +290,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 * has a need to be able to easily find different clients contacts
-* remembers some of their client's only by their nickname/initials
+* remembers some of their client's only by their firstname,lastname,nickname or initials
 * needs to handle a large amount of documents that are stored for different clients
 
 **Value proposition**: manage client's contacts faster than a typical mouse/GUI driven app while providing ways to efficiently find/store specific client and their documents
