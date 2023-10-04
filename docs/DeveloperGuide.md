@@ -25,7 +25,7 @@
    1. [Product Scope](#product-scope)
    2. [User Stories](#user-stories)
    3. [Use Cases](#use-cases)
-      1. [Use Case 1: Adding more tags to clients records](#use-case-1:-adding-more-tags-to-clients-records)  
+      1. [Use Case 1: Adding more tags to clients records](#use-case-1---adding-more-tags-to-clients-records)  
       2. Quick access of contact detail of clients    
       3. Adding new clients information    
       4. Filtering client information using tags    
@@ -351,7 +351,7 @@ Return to [Table Of Contents](#table-of-contents)
 If not explicitly mentioned, the actor will be a Financial Advisor as the User and InsuraHub as the System.
 ```
 ```
-Use Case 1: Adding more tags to clients records
+Use Case 1 - Adding more tags to clients records
 Precondition: User already open up the application
 MSS:
   1. User keys in `addTag` and the corresponding tags for the particular client identifier or index
@@ -369,7 +369,7 @@ Use case ends
 ```
 
 ```
-Use Case 2: Quick access of contact detail of clients
+Use Case 2 - Quick access of contact detail of clients
 Precondition: User opens up the application
 MSS:
   1. User keys in `highlight` followed by index or client identifier and the client preferred form of contact
@@ -392,7 +392,7 @@ process of selecting preferred form of contact have failed
 ```
 
 ```
-Use Case 3: Adding new clients information
+Use Case 3 - Adding new clients information
 Precondition: User opens up the application
 MSS:
   1. User keys in `addNewClient` followed by client details
@@ -410,7 +410,7 @@ Use case ends
 ```
 
 ```
-Use Case 4: Filtering client information using tags
+Use Case 4 - Filtering client information using tags
 Precondition: User opens up the application
 MSS:
   1. User keys in `filter` followed by tags
@@ -424,7 +424,7 @@ Use case ends
 ```
 
 ```
-Use Case 5: Storing client documents neatly in a folder
+Use Case 5 - Storing client documents neatly in a folder
 Precondition: User opens up the application
 MSS:
   1. User keys in `file` followed by index or client identifier
@@ -440,7 +440,7 @@ Use case ends
   1b1. System displays an error message indicating that the process of adding tags have failed
   Use case ends
 ```
-
+```
 **Use case: Delete a person**
 
 **MSS**
@@ -463,6 +463,7 @@ Use case ends
     * 3a1. AddressBook shows an error message.
 
       Use case resumes at step 2.
+```
 
 *{More to be added}*
 
