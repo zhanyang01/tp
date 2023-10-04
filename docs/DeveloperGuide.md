@@ -25,7 +25,7 @@
    1. [Product Scope](#product-scope)
    2. [User Stories](#user-stories)
    3. [Use Cases](#use-cases)
-      1. [Use Case 1 - Adding more tags to clients records](#use-case-1---adding-more-tags-to-clients-records)  
+      1. [Adding more tags to clients records](#use-case-1-adding-more-tags-to-clients-records)  
       2. Quick access of contact detail of clients    
       3. Adding new clients information    
       4. Filtering client information using tags    
@@ -350,10 +350,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 Return to [Table Of Contents](#table-of-contents)
 
 ### Use cases
-```
+
 If not explicitly mentioned, the actor will be a Financial Advisor as the User and InsuraHub as the System.
-```
-```
+
 Use Case 1 - Adding more tags to clients records
 Precondition: User already open up the application
 MSS:
@@ -369,9 +368,8 @@ Use case ends
 1b. User keys in invalid index
   1b1. System displays an error message indicating that the process of adding tags have failed
   Use case ends
-```
 
-```
+
 Use Case 2 - Quick access of contact detail of clients
 Precondition: User opens up the application
 MSS:
@@ -392,9 +390,8 @@ Use case ends
   1c1. System displays an error message to tell the user to select only one form of preferred contact and that the
 process of selecting preferred form of contact have failed
   Use case ends
-```
 
-```
+
 Use Case 3 - Adding new clients information
 Precondition: User opens up the application
 MSS:
@@ -410,9 +407,8 @@ Use case ends
 1b. User keys in wrong format for details
   1b1. System displays an error message indicating that a particular detail is in the wrong format
   Use case ends
-```
 
-```
+
 Use Case 4 - Filtering client information using tags
 Precondition: User opens up the application
 MSS:
@@ -424,9 +420,8 @@ Use case ends
 1a. User keys in invalid tags
   1a1. System displays an error message to remind user to check their tags that is keyed in
   Use case ends
-```
 
-```
+
 Use Case 5 - Storing client documents neatly in a folder
 Precondition: User opens up the application
 MSS:
@@ -442,8 +437,7 @@ Use case ends
 1b. User keys in invalid index
   1b1. System displays an error message indicating that the process of adding tags have failed
   Use case ends
-```
-```
+
 **Use case: Delete a person**
 
 **MSS**
@@ -466,7 +460,6 @@ Use case ends
     * 3a1. AddressBook shows an error message.
 
       Use case resumes at step 2.
-```
 
 *{More to be added}*
 
