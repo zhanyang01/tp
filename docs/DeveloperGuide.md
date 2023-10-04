@@ -16,7 +16,7 @@
    1. [Architecture](#architecture)
    2. [UI Component](#ui-component) 
    3. [Logic Component](#logic-component)
-   4. [Modal Component](#modal-component)
+   4. [Model Component](#model-component)
    5. [Storage Component](#storage-component)
    6. [Common Classes](#common-classes)
 4. [Implementation](#implementation)
