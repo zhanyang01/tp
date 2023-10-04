@@ -353,8 +353,8 @@ Return to [Table Of Contents](#table-of-contents)
 
 If not explicitly mentioned, the actor will be a Financial Advisor as the User and InsuraHub as the System.
 
-Use Case 1 - Adding more tags to clients records
-Precondition: User already open up the application
+Use Case 1 - Adding more tags to clients records  
+Precondition: User already open up the application  
 MSS:
   1. User keys in `addTag` and the corresponding tags for the particular client identifier or index
   2. Systems displays the tags that have been added to the particular client
@@ -370,8 +370,8 @@ Use case ends
   Use case ends
 
 
-Use Case 2 - Quick access of contact detail of clients
-Precondition: User opens up the application
+Use Case 2 - Quick access of contact detail of clients  
+Precondition: User opens up the application  
 MSS:
   1. User keys in `highlight` followed by index or client identifier and the client preferred form of contact
   2. System updates with the preferred form of contact highlighted
@@ -392,8 +392,8 @@ process of selecting preferred form of contact have failed
   Use case ends
 
 
-Use Case 3 - Adding new clients information
-Precondition: User opens up the application
+Use Case 3 - Adding new clients information  
+Precondition: User opens up the application  
 MSS:
   1. User keys in `addNewClient` followed by client details
   2. System updates with new client at the bottom of the list
@@ -409,8 +409,8 @@ Use case ends
   Use case ends
 
 
-Use Case 4 - Filtering client information using tags
-Precondition: User opens up the application
+Use Case 4 - Filtering client information using tags  
+Precondition: User opens up the application  
 MSS:
   1. User keys in `filter` followed by tags
   2. System updates with a list of clients that fulfills the tags to be filtered
@@ -422,8 +422,8 @@ Use case ends
   Use case ends
 
 
-Use Case 5 - Storing client documents neatly in a folder
-Precondition: User opens up the application
+Use Case 5 - Storing client documents neatly in a folder  
+Precondition: User opens up the application  
 MSS:
   1. User keys in `file` followed by index or client identifier
   2. System opens up the folder of the particular client with the relevant files inside the folder
