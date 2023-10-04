@@ -34,6 +34,8 @@
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
+Return to [table of contents](#table-of-contents)
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Design**
