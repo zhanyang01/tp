@@ -99,6 +99,8 @@ The `UI` component,
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### Logic component
 
 **API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
@@ -285,6 +287,7 @@ _{Explain here how the data archiving feature will be implemented}_
 * [DevOps guide](DevOps.md)
 
 Return to [Table Of Contents](#table-of-contents)
+
 --------------------------------------------------------------------------------------------------------------------
 ## **Acknowledgements**
 
