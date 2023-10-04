@@ -462,6 +462,9 @@ Use case ends
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Tag**: A tag object assigned to a contact that is a categorical description of the contact
+* **Client Priorities**: Priority of the client that the insurance agent has to attend to, where each priority is its own tag
+* **Usage Instructions**: A quickstart guide with a short list of basic commands for users' reference within the App.
 
 --------------------------------------------------------------------------------------------------------------------
 
