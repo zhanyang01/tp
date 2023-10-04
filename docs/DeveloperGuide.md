@@ -25,7 +25,7 @@
    1. [Product Scope](#product-scope)
    2. [User Stories](#user-stories)
    3. [Use Cases](#use-cases)
-      1. [Adding more tags to clients records](#adding-more-tags-to-clients-records)  
+      1. [Use Case 1: Adding more tags to clients records](#use-case-1:-adding-more-tags-to-clients-records)  
       2. Quick access of contact detail of clients    
       3. Adding new clients information    
       4. Filtering client information using tags    
@@ -34,7 +34,7 @@
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
-Return to [table of contents](#table-of-contents)
+Return to [Table Of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -79,6 +79,8 @@ For example, the `Logic` component defines its API in the `Logic.java` interface
 <puml src="diagrams/ComponentManagers.puml" width="300" />
 
 The sections below give more details of each component.
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### UI component
 
@@ -129,6 +131,8 @@ How the parsing works:
 * When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### Model component
 **API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
@@ -150,6 +154,7 @@ The `Model` component,
 
 </box>
 
+Return to [Table Of Contents](#table-of-contents)
 
 ### Storage component
 
@@ -162,9 +167,13 @@ The `Storage` component,
 * inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### Common classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
+
+Return to [Table Of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -265,7 +274,6 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
@@ -276,10 +284,14 @@ _{Explain here how the data archiving feature will be implemented}_
 * [Configuration guide](Configuration.md)
 * [DevOps guide](DevOps.md)
 
+Return to [Table Of Contents](#table-of-contents)
 --------------------------------------------------------------------------------------------------------------------
 ## **Acknowledgements**
 
 This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
+
+Return to [Table Of Contents](#table-of-contents)
+
 ## **Appendix: Requirements**
 
 ### Product scope
@@ -332,12 +344,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### Use cases
 ```
 If not explicitly mentioned, the actor will be a Financial Advisor as the User and InsuraHub as the System.
 ```
 ```
-Use Case 1 : Adding more tags to clients records
+Use Case 1: Adding more tags to clients records
 Precondition: User already open up the application
 MSS:
   1. User keys in `addTag` and the corresponding tags for the particular client identifier or index
@@ -452,6 +466,8 @@ Use case ends
 
 *{More to be added}*
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
@@ -467,6 +483,8 @@ Use case ends
 * **Tag**: A tag object assigned to a contact that is a categorical description of the contact
 * **Client Priorities**: Priority of the client that the insurance agent has to attend to, where each priority is its own tag
 * **Usage Instructions**: A quickstart guide with a short list of basic commands for users' reference within the App.
+  
+Return to [Table Of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -522,3 +540,6 @@ testers are expected to do more *exploratory* testing.
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
+
+Return to [Table Of Contents](#table-of-contents)
+
