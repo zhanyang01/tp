@@ -25,7 +25,7 @@
    1. [Product Scope](#product-scope)
    2. [User Stories](#user-stories)
    3. [Use Cases](#use-cases)
-      1. [Use Case 1: Adding more tags to clients records](#use-case-1---adding-more-tags-to-clients-records)  
+      1. [Use Case 1 - Adding more tags to clients records](#use-case-1---adding-more-tags-to-clients-records)  
       2. Quick access of contact detail of clients    
       3. Adding new clients information    
       4. Filtering client information using tags    
