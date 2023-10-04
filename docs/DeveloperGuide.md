@@ -37,7 +37,7 @@
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
----
+Return to [Table Of Contents](#table-of-contents)
 
 ## **Design**
 
@@ -82,6 +82,8 @@ For example, the `Logic` component defines its API in the `Logic.java` interface
 
 The sections below give more details of each component.
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### UI component
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
@@ -98,6 +100,8 @@ The `UI` component,
 - listens for changes to `Model` data so that the UI can be updated with the modified data.
 - keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 - depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Logic component
 
@@ -132,6 +136,8 @@ How the parsing works:
 - When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
 - All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### Model component
 
 **API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
@@ -153,6 +159,8 @@ The `Model` component,
 
 </box>
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### Storage component
 
 **API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
@@ -165,11 +173,14 @@ The `Storage` component,
 - inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 - depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### Common classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
 
----
+=======
+Return to [Table Of Contents](#table-of-contents)
 
 ## **Implementation**
 
@@ -268,7 +279,7 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
----
+## =======
 
 ## **Documentation, logging, testing, configuration, dev-ops**
 
@@ -280,9 +291,15 @@ _{Explain here how the data archiving feature will be implemented}_
 
 ---
 
+Return to [Table Of Contents](#table-of-contents)
+
+---
+
 ## **Acknowledgements**
 
 This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
+
+Return to [Table Of Contents](#table-of-contents)
 
 ## **Appendix: Requirements**
 
@@ -336,12 +353,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 _{More to be added}_
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### Use cases
 
 If not explicitly mentioned, the actor will be a Financial Advisor as the User and InsuraHub as the System.
 
-Use Case 1 : Adding more tags to clients records  
-Precondition: User already open up the application
+Use Case 1 - Adding more tags to clients records  
+Precondition: User already open up the application  
 MSS:
 
 1. User keys in `addTag` and the corresponding tags for the particular client identifier or index
@@ -359,6 +378,11 @@ Use case ends
 
 Use Case 2: Quick access of contact detail of clients  
 Precondition: User opens up the application
+1b1. System displays an error message indicating that the process of adding tags have failed
+Use case ends
+
+Use Case 2 - Quick access of contact detail of clients  
+Precondition: User opens up the application  
 MSS:
 
 1. User keys in `highlight` followed by index or client identifier and the client preferred form of contact
@@ -379,6 +403,14 @@ Use case ends
 process of selecting preferred form of contact have failed
 Use case ends
 
+Use Case 3 - Adding new clients information  
+Precondition: User opens up the application  
+MSS:
+
+1. User keys in `addNewClient` followed by client details
+2. System updates with new client at the bottom of the list
+   Use case ends
+
 Use Case 3: Adding new clients information  
 Precondition: User opens up the application
 MSS:
@@ -392,9 +424,17 @@ MSS:
 1a1. System displays an error message indicating the supposed format to be changed
 Use case ends
 
-1b. User keys in wrong format for details
+1b. User keys in wrong format for detail
 1b1. System displays an error message indicating that a particular detail is in the wrong format
 Use case ends
+
+Use Case 4 - Filtering client information using tags  
+Precondition: User opens up the application  
+MSS:
+
+1. User keys in `filter` followed by tags
+2. System updates with a list of clients that fulfills the tags to be filtered
+   Use case ends
 
 Use Case 4: Filtering client information using tags  
 Precondition: User opens up the application
@@ -407,7 +447,16 @@ MSS:
 **Extensions**  
 1a. User keys in invalid tags
 1a1. System displays an error message to remind user to check their tags that is keyed in
+1a1. System displays an error message to remind user to check their tags that is keyed in
 Use case ends
+
+Use Case 5 - Storing client documents neatly in a folder  
+Precondition: User opens up the application  
+MSS:
+
+1. User keys in `file` followed by index or client identifier
+2. System opens up the folder of the particular client with the relevant files inside the folder
+   Use case ends
 
 Use Case 5: Storing client documents neatly in a folder  
 Precondition: User opens up the application
@@ -453,6 +502,8 @@ Use case ends
 
 _{More to be added}_
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
@@ -468,6 +519,8 @@ _{More to be added}_
 - **Tag**: A tag object assigned to a contact that is a categorical description of the contact
 - **Client Priorities**: Priority of the client that the insurance agent has to attend to, where each priority is its own tag
 - **Usage Instructions**: A quickstart guide with a short list of basic commands for users' reference within the App.
+
+Return to [Table Of Contents](#table-of-contents)
 
 ---
 
@@ -523,3 +576,5 @@ testers are expected to do more _exploratory_ testing.
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
+
+Return to [Table Of Contents](#table-of-contents)
