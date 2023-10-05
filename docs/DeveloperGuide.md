@@ -493,9 +493,12 @@ Return to [Table Of Contents](#table-of-contents)
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+1.  The application should be compatible with mainstream operating systems such as Windows, Linux, Unix, and macOS, as long as they have Java 11 or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4. The application should ensure the integrity and consistency of data stored in the address book. Data should not be lost or corrupted during normal usage or unexpected errors.
+5. Any commands should be executed within 1s.
+6. The address book should be able to store 2000 clients' information. 
 
 _{More to be added}_
 
