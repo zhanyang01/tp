@@ -175,6 +175,38 @@ If your changes to the data file makes its format invalid, AddressBook will disc
 
 ## In Progress
 
+### Adding tags to a client object: `addTag`
+
+Adds any number of new tags to a client object without deleting the pre-exisiting tags.
+
+Format 1: `addTag <tag1>/<tag2> /<INDEX>`
+
+Format 2:  `addTag <tag1>/<tag2> /<client identifier>`
+
+* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on AB3
+* **client identifier** must be one of the unique identifier of the clients in the entire client list
+* **tag**: must be a valid tag in the pre-defined list implemented in the app
+
+Examples:
+* `addTag friend 1` will add the tag 'friend' to the first client on the current list.
+* `addTag friend/North JohnDoe` will add the tags 'friend', 'North' to the client identified by John Doe.
+
+### Deleting tags from a client object: `deleteTag`
+
+Removes any number of pre-existing tags from a client object.
+
+Format 1: `deleteTag <tag1>/<tag2> /<INDEX>`
+
+Format 2:  `deleteTag <tag1>/<tag2> /<client identifier>`
+
+* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on AB3
+* **client identifier** must be one of the unique identifier of the clients in the entire client list
+* * **tag**: must be a valid tag in the pre-defined list implemented in the app
+
+Examples:
+* `deleteTag friend 1` will remove the tag 'friend' from the first client on the current list.
+* `deleteTag friend/North JohnDoe` will remove the tags 'friend', 'North' from the client identified by John Doe.
+
 ### Highlighting contact of a client: `highlight`  
 
 Highlight the specific contact details of the particular client from the application.
@@ -194,6 +226,17 @@ Format 2:  `highlight <client identifier>/<preferred contact method>`
 Examples:
 * `highlight 1/phone number` will highlight the phone number of the first person in the current list shown
 * `highlight John Doe/phone number` will highlight John Doe phone number
+
+### Filtering for clients based on tags: `filter`
+
+Filters and displays all clients that correspond to a specific combination/query of tags
+
+Format 1: `filter <tag1>/<tag2>/ … /<tagn>` 
+
+* **tag**: must be a valid tag in the pre-defined list implemented in the app
+
+Examples:
+* `filter friend/south/60+` will filter for all clients with the tags 'friend', 'south', '60+'
 
 ### Storing documents of a client: `file`
 
