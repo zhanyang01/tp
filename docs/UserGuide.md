@@ -75,20 +75,19 @@ Shows a message explaning how to access the help page.
 Format: `help`
 
 
-### Adding a person: `add`
+### Adding a new client: `addNewClient`
 
-Adds a person to the address book.
+Adds a new client to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `addNewClient/FIRSTNAME/LASTNAME/PRIMARYPHONENUMBER/ADDRESS/EMAIL`
 
 <box type="tip" seamless>
 
-**Tip:** A person can have any number of tags (including 0)
-</box>
+
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `addNewClient/Johnny/Snake/91234567/Blk 69 Geylang Street 12, #12-69/johnnythesnake12@gmail.com`
+* `addNewClient/Betsy/Crowe/92222222/Newgate Prison/betsycrowe@example.com`
 
 ### Listing all persons : `list`
 
