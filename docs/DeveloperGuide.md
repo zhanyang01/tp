@@ -27,14 +27,11 @@
    1. [Product Scope](#product-scope)
    2. [User Stories](#user-stories)
    3. [Use Cases](#use-cases)
-      1. Adding more tags to clients records
+      1. [Adding more tags to clients records](#use-case-1---adding-more-tags-to-clients-records)
       2. Quick access of contact detail of clients
       3. Adding new clients information
       4. Filtering client information using tags
       5. Storing client documents neatly in a folder
-   4. [Non-Functional Requirements](#non-functional-requirements)
-   5. [Glossary](#glossary)
-6. [Appendix](#appendix-instructions-for-manual-testing)
 
 ## **Setting up, getting started**
 
@@ -184,6 +181,7 @@ Return to [Table Of Contents](#table-of-contents)
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
 
+=======
 Return to [Table Of Contents](#table-of-contents)
 
 ---
@@ -363,106 +361,93 @@ Return to [Table Of Contents](#table-of-contents)
 
 If not explicitly mentioned, the actor will be a Financial Advisor as the User and InsuraHub as the System.
 
-Use Case 1 - Adding more tags to clients records
+Use Case 1 - Adding more tags to clients records  
+Precondition: User already open up the application  
+MSS:
 
-Precondition: User already open up the application
-
-**MSS**
-
-1. User input command to adds in the corresponding tags for the particular client identifier or index
-2. Systems displays the tags that have been added to the particular client  
+1. User keys in `addTag` and the corresponding tags for the particular client identifier or index
+2. Systems displays the tags that have been added to the particular client
    Use case ends
 
-**Extensions:**
+** Extensions: **
+1a. User keys in invalid client identifier
+1a1. System displays an error message indicating that the process of adding tags have failed
+Use case ends
 
-- 1a. User inputs invalid client identifier  
-  1a1. System displays an error message indicating that the process of adding tags have failed  
-  Use case ends
+1b. User keys in invalid index
+1b1. System displays an error message indicating that the process of adding tags have failed
+Use case ends
 
-- 1b. User inputs in invalid index  
-  1b1. System displays an error message indicating that the process of adding tags have failed  
-  Use case ends
+Use Case 2 - Quick access of contact detail of clients  
+Precondition: User opens up the application  
+MSS:
 
-Use Case 2 - Quick access of contact detail of clients
-
-Precondition: User opens up the application
-
-**MSS**
-
-1. User input command to highlight the client preferred form of contact
-2. System updates with the preferred form of contact highlighted  
+1. User keys in `highlight` followed by index or client identifier and the client preferred form of contact
+2. System updates with the preferred form of contact highlighted
    Use case ends
 
-**Extensions**
+** Extensions **
+1a. User keys in invalid client identifier
+1a1. System displays an error message indicating that the process of selecting preferred form of contact have failed
+Use case ends
 
-- 1a. User inputs invalid client identifier  
-  1a1. System displays an error message indicating that the process of selecting preferred form of contact have failed  
-  Use case ends
+1b. User keys in invalid index
+1b1. System displays an error message indicating that the process of selecting preferred form of contact have failed
+Use case ends
 
-- 1b. User inputs invalid index  
-  1b1. System displays an error message indicating that the process of selecting preferred form of contact have failed  
-  Use case ends
+1c. User keys in multiple forms of contacts
+1c1. System displays an error message to tell the user to select only one form of preferred contact and that the
+process of selecting preferred form of contact have failed
+Use case ends
 
-- 1c. User inputs multiple forms of contacts  
-  1c1. System displays an error message to tell the user to select only one form of preferred contact and that the
-  process of selecting preferred form of contact have failed  
-  Use case ends
+Use Case 3 - Adding new clients information  
+Precondition: User opens up the application  
+MSS:
 
-Use Case 3 - Adding new clients information
-
-Precondition: User opens up the application
-
-**MSS**
-
-1. User keys in new client with its details
-2. System updates with new client at the bottom of the list  
+1. User keys in `addNewClient` followed by client details
+2. System updates with new client at the bottom of the list
    Use case ends
 
-**Extensions**
+** Extensions **
+1a. User keys in wrong input format
+1a1. System displays an error message indicating the supposed format to be changed
+Use case ends
 
-- 1a. User keys in wrong input format  
-  1a1. System displays an error message indicating the supposed format to be changed  
-  Use case ends
+1b. User keys in wrong format for details
+1b1. System displays an error message indicating that a particular detail is in the wrong format
+Use case ends
 
-- 1b. User keys in wrong format for details  
-  1b1. System displays an error message indicating that a particular detail is in the wrong format  
-  Use case ends
+Use Case 4 - Filtering client information using tags  
+Precondition: User opens up the application  
+MSS:
 
-Use Case 4 - Filtering client information using tags
-
-Precondition: User opens up the application
-
-**MSS**
-
-1. User inputs in command filter by tags
-2. System updates with a list of clients that fulfills the tags to be filtered  
+1. User keys in `filter` followed by tags
+2. System updates with a list of clients that fulfills the tags to be filtered
    Use case ends
 
-**Extensions**
+** Extensions **
+1a. User keys in invalid tags
+1a1. System displays an error message to remind user to check their tags that is keyed in
+Use case ends
 
-- 1a. User keys in invalid tags  
-  1a1. System displays an error message to remind user to check their tags that is keyed in  
-  Use case ends
+Use Case 5 - Storing client documents neatly in a folder  
+Precondition: User opens up the application  
+MSS:
 
-Use Case 5 - Storing client documents neatly in a folder
-
-Precondition: User opens up the application
-
-**MSS**
-
-1. User inputs command to store client information and documents
-2. System opens up the folder of the particular client with the relevant files inside the folder  
+1. User keys in `file` followed by index or client identifier
+2. System opens up the folder of the particular client with the relevant files inside the folder
    Use case ends
 
-**Extensions**
+** Extensions **
+1a. User keys in invalid client identifier
+1a1. System displays an error message indicating that the process of adding tags have failed
+Use case ends
 
-- 1a. User keys in invalid client identifier  
-  1a1. System displays an error message indicating that the process of adding tags have failed  
-  Use case ends
+1b. User keys in invalid index
+1b1. System displays an error message indicating that the process of adding tags have failed
+Use case ends
 
-- 1b. User keys in invalid index  
-  1b1. System displays an error message indicating that the process of adding tags have failed  
-  Use case ends
+### Example Use Case
 
 **Use case: Delete a person**
 
@@ -496,13 +481,13 @@ Return to [Table Of Contents](#table-of-contents)
 1.  The application should be compatible with mainstream operating systems such as Windows, Linux, Unix, and macOS, as long as they have Java 11 or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-4. The application should ensure the integrity and consistency of data stored in the address book. Data should not be lost or corrupted during normal usage or unexpected errors.
-5. Any commands should be executed within 1s.
-6. The address book should be able to store 2000 clients' information. 
+4.  The application should ensure the integrity and consistency of data stored in the address book. Data should not be lost or corrupted during normal usage or unexpected errors.
+5.  Any commands should be executed within 1s.
+6.  The address book should be able to store 2000 clients' information.
 
 _{More to be added}_
 
-Return to [Table Of Contents](#table-of-contents)
+_{More to be added}_
 
 ### Glossary
 
