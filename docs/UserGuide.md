@@ -6,7 +6,7 @@
 
 # Insurahub User Guide
 
-Insurahub is a **desktop app for managing clients, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps. This app is mainly used by insurance agents who have many clients and tasks such as appointments to keep track of on a daily basis.
+Insurahub is a **desktop app for managing clients, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Insurahub can get your contact management tasks done faster than traditional GUI apps. This app is mainly used by insurance agents who have many clients and tasks such as appointments to keep track of on a daily basis.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -17,11 +17,11 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `insurahub.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `insurahub.jar` from [here](https://github.com//AY2324S1-CS2103-W14-1/tp).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+1. Copy the file to the folder you want to use as the _home folder_ for your App.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar insurahub.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
@@ -30,7 +30,7 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
 
    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the application.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -183,7 +183,7 @@ Format 1: `addTag <tag1>/<tag2> /<INDEX>`
 
 Format 2:  `addTag <tag1>/<tag2> /<client identifier>`
 
-* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on AB3
+* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
 * **client identifier** must be one of the unique identifier of the clients in the entire client list
 * **tag**: must be a valid tag in the pre-defined list implemented in the app
 
@@ -199,7 +199,7 @@ Format 1: `deleteTag <tag1>/<tag2> /<INDEX>`
 
 Format 2:  `deleteTag <tag1>/<tag2> /<client identifier>`
 
-* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on AB3
+* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
 * **client identifier** must be one of the unique identifier of the clients in the entire client list
 * * **tag**: must be a valid tag in the pre-defined list implemented in the app
 
@@ -215,7 +215,7 @@ Format 1: `highlight <INDEX>/<preferred contact method>`
 
 Format 2:  `highlight <client identifier>/<preferred contact method>`
 
-* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on AB3
+* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
 * **client identifier** must be one of the unique identifier of the clients in the entire client list
 * **preferred contact method** either Phone number or Email currently
 * Name: Contact name of the person that is saved in the app.
@@ -246,7 +246,7 @@ Format 1: `file <INDEX>`
 
 Format 2:  `file <client identifier>`
 
-* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on AB3
+* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
 * **client identifier** must be one of the unique identifier of the clients in the entire client list
 
 Examples:
