@@ -21,13 +21,13 @@
    4. [Model Component](#model-component)
    5. [Storage Component](#storage-component)
    6. [Common Classes](#common-classes)
-3. [Implementations](#implementations)
-4. [Acknowledgement](#acknowledgement)
+3. [Implementation](#implementation)
+4. [Acknowledgements](#acknowledgements)
 5. [Appendix Requirements](#appendix-requirements)
    1. [Product Scope](#product-scope)
    2. [User Stories](#user-stories)
    3. [Use Cases](#use-cases)
-      1. [Adding more tags to clients records](#adding-more-tags-to-clients-records)
+      1. [Adding more tags to clients records](#use-case-1---adding-more-tags-to-clients-records)
       2. Quick access of contact detail of clients
       3. Adding new clients information
       4. Filtering client information using tags
@@ -38,6 +38,8 @@
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 Return to [Table Of Contents](#table-of-contents)
+
+---
 
 ## **Design**
 
@@ -182,6 +184,8 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 =======
 Return to [Table Of Contents](#table-of-contents)
 
+---
+
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
@@ -279,7 +283,7 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
-## =======
+---
 
 ## **Documentation, logging, testing, configuration, dev-ops**
 
@@ -288,8 +292,6 @@ _{Explain here how the data archiving feature will be implemented}_
 - [Logging guide](Logging.md)
 - [Configuration guide](Configuration.md)
 - [DevOps guide](DevOps.md)
-
----
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -367,17 +369,12 @@ MSS:
 2. Systems displays the tags that have been added to the particular client
    Use case ends
 
-**Extensions:**  
+** Extensions: **
 1a. User keys in invalid client identifier
 1a1. System displays an error message indicating that the process of adding tags have failed
 Use case ends
 
 1b. User keys in invalid index
-1b1. System displays an error message indicating that the process of adding tags have failed
-Use case ends
-
-Use Case 2: Quick access of contact detail of clients  
-Precondition: User opens up the application
 1b1. System displays an error message indicating that the process of adding tags have failed
 Use case ends
 
@@ -389,7 +386,7 @@ MSS:
 2. System updates with the preferred form of contact highlighted
    Use case ends
 
-**Extensions**  
+** Extensions **
 1a. User keys in invalid client identifier
 1a1. System displays an error message indicating that the process of selecting preferred form of contact have failed
 Use case ends
@@ -411,20 +408,12 @@ MSS:
 2. System updates with new client at the bottom of the list
    Use case ends
 
-Use Case 3: Adding new clients information  
-Precondition: User opens up the application
-MSS:
-
-1. User keys in `addNewClient` followed by client details
-2. System updates with new client at the bottom of the list
-   Use case ends
-
-**Extensions**  
+** Extensions **
 1a. User keys in wrong input format
 1a1. System displays an error message indicating the supposed format to be changed
 Use case ends
 
-1b. User keys in wrong format for detail
+1b. User keys in wrong format for details
 1b1. System displays an error message indicating that a particular detail is in the wrong format
 Use case ends
 
@@ -436,17 +425,8 @@ MSS:
 2. System updates with a list of clients that fulfills the tags to be filtered
    Use case ends
 
-Use Case 4: Filtering client information using tags  
-Precondition: User opens up the application
-MSS:
-
-1. User keys in `filter` followed by tags
-2. System updates with a list of clients that fulfills the tags to be filtered
-   Use case ends
-
-**Extensions**  
+** Extensions **
 1a. User keys in invalid tags
-1a1. System displays an error message to remind user to check their tags that is keyed in
 1a1. System displays an error message to remind user to check their tags that is keyed in
 Use case ends
 
@@ -458,15 +438,7 @@ MSS:
 2. System opens up the folder of the particular client with the relevant files inside the folder
    Use case ends
 
-Use Case 5: Storing client documents neatly in a folder  
-Precondition: User opens up the application
-MSS:
-
-1. User keys in `file` followed by index or client identifier
-2. System opens up the folder of the particular client with the relevant files inside the folder
-   Use case ends
-
-**Extensions**  
+** Extensions **
 1a. User keys in invalid client identifier
 1a1. System displays an error message indicating that the process of adding tags have failed
 Use case ends
@@ -506,9 +478,14 @@ Return to [Table Of Contents](#table-of-contents)
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+1.  The application should be compatible with mainstream operating systems such as Windows, Linux, Unix, and macOS, as long as they have Java 11 or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4.  The application should ensure the integrity and consistency of data stored in the address book. Data should not be lost or corrupted during normal usage or unexpected errors.
+5.  Any commands should be executed within 1s.
+6.  The address book should be able to store 2000 clients' information.
+
+_{More to be added}_
 
 _{More to be added}_
 
