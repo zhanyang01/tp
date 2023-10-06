@@ -48,8 +48,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/LuahJunYang.png" width="200px">
 
-[[github](http://github.com/LuahJunYang)]
-[[portfolio](team/LuahJunYang.md)]
+[[github](http://github.com/luahjunyang)]
+[[portfolio](team/luahjunyang.md)]
 
 * Role: Developer
 * Responsibilities: UI
