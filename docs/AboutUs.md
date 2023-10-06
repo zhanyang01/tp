@@ -27,7 +27,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/aarontxz.png" width="200px">
 
 [[github](http://github.com/aarontxz)]
-[[portfolio](team/tengxinzhuan.md)]
+[[github](https://github.com/aarontxz)]
+[[portfolio](team/aarontxz.md)]
 
 * Role: Team Lead
 * Responsibilities: UI
