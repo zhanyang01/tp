@@ -36,7 +36,6 @@ public class FileCommandTest {
                 Messages.format(personToFile));
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        
         assertCommandSuccess(fileCommand, model, expectedMessage, expectedModel);
     }
 
