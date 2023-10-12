@@ -50,11 +50,7 @@ public class FileCommand extends Command {
         String name = personToFile.getName().toString();
         int id = personToFile.hashCode();
         String folderName = name + " | " + id;
-        try {
-            createFolder(folderName);
-        } catch (Exception e) {
-            System.out.println("error creating folder");
-        }
+        createFolder(folderName);
         return new CommandResult(String.format(OPEN_FILE_PERSON_SUCCESS, Messages.format(personToFile)));
     }
 
@@ -75,7 +71,7 @@ public class FileCommand extends Command {
             }
             File file = storageFolder.toFile();
             Desktop.getDesktop().browse(file.toURI());
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("an error occurred while creating folder");
         }
     }
