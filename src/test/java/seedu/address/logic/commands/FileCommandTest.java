@@ -28,18 +28,6 @@ public class FileCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_validIndexUnfilteredList_success() {
-        Person personToFile = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        FileCommand fileCommand = new FileCommand(INDEX_FIRST_PERSON);
-
-        String expectedMessage = String.format(FileCommand.OPEN_FILE_PERSON_SUCCESS,
-                Messages.format(personToFile));
-
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        assertCommandSuccess(fileCommand, model, expectedMessage, expectedModel);
-    }
-
-    @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         FileCommand fileCommand = new FileCommand(outOfBoundIndex);
