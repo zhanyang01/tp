@@ -69,8 +69,6 @@ public class FileCommand extends Command {
             if (!Files.exists(storageFolder)) {
                 Files.createDirectory(storageFolder);
             }
-            File file = storageFolder.toFile();
-
         } catch (IOException e) {
             System.out.println("an error occurred while creating folder");
         }
