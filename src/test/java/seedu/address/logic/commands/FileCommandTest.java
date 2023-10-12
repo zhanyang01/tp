@@ -12,6 +12,7 @@ import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -28,6 +29,11 @@ public class FileCommandTest {
     @Test
     public void execute_validIndexUnfilteredList_success() {
         FileCommand fileCommand = new FileCommand(INDEX_FIRST_PERSON);
+        try {
+            CommandResult result = fileCommand.execute(model);
+        } catch (CommandException ce) {
+            throw new AssertionError("Execution of command should not fail.", ce);
+        }
         assertEquals(fileCommand.toString(), fileCommand.toString());
     }
 
