@@ -2,7 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.awt.*;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -55,6 +55,11 @@ public class FileCommand extends Command {
         return new CommandResult(String.format(OPEN_FILE_PERSON_SUCCESS, Messages.format(personToFile)));
     }
 
+    /**
+     * Creates a folder with the name ClientFiles if it does not exist,
+     * creates a folder within that folder named {@code folderName} if it does not exist, 
+     * then opens the folder.
+     */
     public void createFolder(String folderName) {
         try {
             Path folder = Paths.get("./ClientFiles/");
