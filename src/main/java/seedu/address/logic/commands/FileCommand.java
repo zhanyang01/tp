@@ -50,8 +50,11 @@ public class FileCommand extends Command {
         String name = personToFile.getName().toString();
         int id = personToFile.hashCode();
         String folderName = name + " | " + id;
-        createFolder(folderName);
-
+        try {
+            createFolder(folderName);
+        } catch (Exception e) {
+            System.out.println("error creating folder");
+        }
         return new CommandResult(String.format(OPEN_FILE_PERSON_SUCCESS, Messages.format(personToFile)));
     }
 
