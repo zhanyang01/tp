@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import java.awt.HeadlessException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -18,6 +19,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 
+
 /**
  * Contains integration tests (interaction with the Model) and unit tests for
  * {@code FileCommand}.
@@ -33,6 +35,8 @@ public class FileCommandTest {
             CommandResult result = fileCommand.execute(model);
         } catch (CommandException ce) {
             throw new AssertionError("Execution of command should not fail.", ce);
+        } catch (HeadlessException he) {
+            throw new AssertionError("Execution of command should not fail.", he);
         }
         assertEquals(fileCommand.toString(), fileCommand.toString());
     }
