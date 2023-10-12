@@ -57,7 +57,7 @@ public class FileCommand extends Command {
 
     /**
      * Creates a folder with the name ClientFiles if it does not exist,
-     * creates a folder within that folder named {@code folderName} if it does not exist, 
+     * creates a folder within that folder named {@code folderName} if it does not exist,
      * then opens the folder.
      */
     public void createFolder(String folderName) {
