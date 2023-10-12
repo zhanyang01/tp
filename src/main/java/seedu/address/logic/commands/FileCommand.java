@@ -2,6 +2,8 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -68,6 +70,8 @@ public class FileCommand extends Command {
             if (!Files.exists(storageFolder)) {
                 Files.createDirectory(storageFolder);
             }
+            File file = storageFolder.toFile();
+            Desktop.getDesktop().open(file);
         } catch (IOException e) {
             System.out.println("an error occurred while creating folder");
         }
