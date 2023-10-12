@@ -48,8 +48,8 @@ public class FileCommand extends Command {
 
         Person personToFile = lastShownList.get(targetIndex.getZeroBased());
         String name = personToFile.getName().toString();
-        int ID = personToFile.hashCode();
-        String folderName = name + " | " + ID;
+        int id = personToFile.hashCode();
+        String folderName = name + " | " + id;
         createFolder(folderName);
 
         return new CommandResult(String.format(OPEN_FILE_PERSON_SUCCESS, Messages.format(personToFile)));
