@@ -71,7 +71,7 @@ public class FileCommand extends Command {
                 Files.createDirectory(storageFolder);
             }
             File file = storageFolder.toFile();
-            Desktop.getDesktop().open(file);
+            Desktop.getDesktop().browse(file.toURI());
         } catch (IOException e) {
             System.out.println("an error occurred while creating folder");
         }
