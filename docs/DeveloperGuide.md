@@ -4,24 +4,42 @@
   pageNav: 3
 ---
 
-# AB-3 Developer Guide
+# Insurahub Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
 
---------------------------------------------------------------------------------------------------------------------
+---
 
-## **Acknowledgements**
+# **Table of contents**
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
-
---------------------------------------------------------------------------------------------------------------------
+1. [Setting up, getting started](#setting-up-getting-started)
+2. [Design](#design)
+   1. [Architecture](#architecture)
+   2. [UI Component](#ui-component)
+   3. [Logic Component](#logic-component)
+   4. [Model Component](#model-component)
+   5. [Storage Component](#storage-component)
+   6. [Common Classes](#common-classes)
+3. [Implementation](#implementation)
+4. [Acknowledgements](#acknowledgements)
+5. [Appendix Requirements](#appendix-requirements)
+   1. [Product Scope](#product-scope)
+   2. [User Stories](#user-stories)
+   3. [Use Cases](#use-cases)
+      1. [Adding more tags to clients records](#use-case-1---adding-more-tags-to-clients-records)
+      2. Quick access of contact detail of clients
+      3. Adding new clients information
+      4. Filtering client information using tags
+      5. Storing client documents neatly in a folder
 
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
---------------------------------------------------------------------------------------------------------------------
+Return to [Table Of Contents](#table-of-contents)
+
+---
 
 ## **Design**
 
@@ -29,41 +47,44 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="280" />
 
-The ***Architecture Diagram*** given above explains the high-level design of the App.
+The **_Architecture Diagram_** given above explains the high-level design of the App.
 
 Given below is a quick overview of main components and how they interact with each other.
 
 **Main components of the architecture**
 
 **`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
-* At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
-* At shut down, it shuts down the other components and invokes cleanup methods where necessary.
+
+- At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
+- At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
 The bulk of the app's work is done by the following four components:
 
-* [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
-* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+- [**`UI`**](#ui-component): The UI of the App.
+- [**`Logic`**](#logic-component): The command executor.
+- [**`Model`**](#model-component): Holds the data of the App in memory.
+- [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The _Sequence Diagram_ below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
 
 <puml src="diagrams/ArchitectureSequenceDiagram.puml" width="574" />
 
 Each of the four main components (also shown in the diagram above),
 
-* defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+- defines its _API_ in an `interface` with the same name as the Component.
+- implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
 <puml src="diagrams/ComponentManagers.puml" width="300" />
 
 The sections below give more details of each component.
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### UI component
 
@@ -77,10 +98,12 @@ The `UI` component uses the JavaFx UI framework. The layout of these UI parts ar
 
 The `UI` component,
 
-* executes user commands using the `Logic` component.
-* listens for changes to `Model` data so that the UI can be updated with the modified data.
-* keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+- executes user commands using the `Logic` component.
+- listens for changes to `Model` data so that the UI can be updated with the modified data.
+- keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
+- depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Logic component
 
@@ -111,21 +134,24 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 <puml src="diagrams/ParserClasses.puml" width="600"/>
 
 How the parsing works:
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
-* All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
+
+- When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
+- All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Model component
+
 **API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
-
 The `Model` component,
 
-* stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
-* stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-* stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
-* does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
+- stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
+- stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+- stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
+- does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
 <box type="info" seamless>
 
@@ -135,6 +161,7 @@ The `Model` component,
 
 </box>
 
+Return to [Table Of Contents](#table-of-contents)
 
 ### Storage component
 
@@ -143,15 +170,21 @@ The `Model` component,
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
 The `Storage` component,
-* can save both address book data and user preference data in JSON format, and read them back into corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
-* depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
+
+- can save both address book data and user preference data in JSON format, and read them back into corresponding objects.
+- inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+- depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Common classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
 
---------------------------------------------------------------------------------------------------------------------
+=======
+Return to [Table Of Contents](#table-of-contents)
+
+---
 
 ## **Implementation**
 
@@ -163,9 +196,9 @@ This section describes some noteworthy details on how certain features are imple
 
 The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
 
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
+- `VersionedAddressBook#commit()` — Saves the current address book state in its history.
+- `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
+- `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
 
 These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
 
@@ -192,7 +225,6 @@ Step 3. The user executes `add n/David …​` to add a new person. The `add` co
 Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
 
 <puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
-
 
 <box type="info" seamless>
 
@@ -235,14 +267,15 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 **Aspect: How undo & redo executes:**
 
-* **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
+- **Alternative 1 (current choice):** Saves the entire address book.
 
-* **Alternative 2:** Individual command knows how to undo/redo by
+  - Pros: Easy to implement.
+  - Cons: May have performance issues in terms of memory usage.
+
+- **Alternative 2:** Individual command knows how to undo/redo by
   itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
+  - Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+  - Cons: We must ensure that the implementation of each individual command are correct.
 
 _{more aspects and alternatives to be added}_
 
@@ -250,18 +283,25 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
-
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Documentation, logging, testing, configuration, dev-ops**
 
-* [Documentation guide](Documentation.md)
-* [Testing guide](Testing.md)
-* [Logging guide](Logging.md)
-* [Configuration guide](Configuration.md)
-* [DevOps guide](DevOps.md)
+- [Documentation guide](Documentation.md)
+- [Testing guide](Testing.md)
+- [Logging guide](Logging.md)
+- [Configuration guide](Configuration.md)
+- [DevOps guide](DevOps.md)
 
---------------------------------------------------------------------------------------------------------------------
+Return to [Table Of Contents](#table-of-contents)
+
+---
+
+## **Acknowledgements**
+
+This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
+
+Return to [Table Of Contents](#table-of-contents)
 
 ## **Appendix: Requirements**
 
@@ -269,33 +309,145 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+- has a need to manage a significant number of client's contacts
+- prefer desktop apps over other types
+- can type fast
+- prefers typing to mouse interactions
+- is reasonably comfortable using CLI apps
+- has a need to be able to easily find different clients contacts
+- remembers some of their client's only by their firstname,lastname,nickname or initials
+- needs to handle a large amount of documents that are stored for different clients
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
-
+**Value proposition**: manage client's contacts faster than a typical mouse/GUI driven app while providing ways to efficiently find/store specific client and their documents
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
+| Priority | As a …​                                    | I want to …​                                                       | So that I can…​                                                          |
+| -------- | ------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `* * *`  | new user                                   | see usage instructions                                             | refer to instructions when I forget how to use the App                   |
+| `* * *`  | user                                       | add a new person                                                   |                                                                          |
+| `* * *`  | user                                       | delete a person                                                    | remove entries that I no longer need                                     |
+| `* * *`  | user                                       | find a person by name                                              | locate details of persons without having to go through the entire list   |
+| `* *`    | user                                       | hide private contact details                                       | minimize chance of someone else seeing them by accident                  |
+| `*`      | user with many persons in the address book | sort persons by name                                               | locate a person easily                                                   |
+| `* * *`  | insurance agent                            | Add more tags to my clients                                        | easily find them later                                                   |
+| `* * *`  | insurance agent with multiple documents    | Store documents along with client contact information              | in an orderly manner                                                     |
+| `* * *`  | insurance agent                            | Highlight the preferred contact details of my clients              | quickly contact them for any matters                                     |
+| `* * *`  | insurance agent using the CLI              | Input and update client information through text commands          | provide personalized and efficient service without a graphical interface |
+| `* * *`  | insurance agent                            | Filter interested clients                                          | focus my time on providing value to their lives                          |
+| `* *`    | insurance agent                            | Organize my clients’ records based on tags                         | filter for specific groups of clients                                    |
+| `* *`    | insurance agent                            | Cluster my clients into areas they want to meet                    | set up meetings that minimize my travel time                             |
+| `* *`    | busy insurance agent                       | Load client data quickly                                           | use the app even with high traffic and not waste time waiting            |
+| `* *`    | insurance agent                            | Sort client priorities                                             | attend to their needs first                                              |
+| `* *`    | insurance agent prioritizing data security | Create secure log-in passwords and authentication                  | protect client data integrity                                            |
+| `* *`    | non-technical insurance agent              | Access comprehensive help documentation or a built-in help command | understand available commands, their syntax, and purpose in CLI          |
+| `* *`    | forgetful insurance agent                  | Have important todos in the homepage                               | not forget to do them, such as client meetings and applying for claims   |
+| `* *`    | life insurance agent                       | Easily filter clients with policy updates                          | inform them more timely on the updates                                   |
+| `* *`    | insurance agent                            | Track progress of insurance claims through text-based commands     | provide timely updates and ensure a smooth claims process via CLI        |
+| `* *`    | insurance agent                            | Receive alerts for expiring insurance policies                     | prioritize meeting clients with expiring policies                        |
+| `*`      | insurance agent with traditional clients   | Export a client’s policy summary to a spreadsheet                  | print it out for clients                                                 |
+| `*`      | artistic insurance agent                   | Customize the UI                                                   | feel better using a more unique UI                                       |
+| `*`      | insurance agent                            | Create new insurance policies for my clients                       | accommodate changes or updates requested by clients                      |
+| `*`      | insurance agent working with others        | Send and receive client details with other users                   | take over/hand over clients from other agents                            |
+| `*`      | data-driven insurance agent                | Access a variety of reports and analytics                          | make informed decisions to improve my business                           |
 
-*{More to be added}*
+_{More to be added}_
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+If not explicitly mentioned, the actor will be a Financial Advisor as the User and InsuraHub as the System.
+
+Use Case 1 - Adding more tags to clients records  
+Precondition: User already open up the application  
+MSS:
+
+1. User keys in `addTag` and the corresponding tags for the particular client identifier or index
+2. Systems displays the tags that have been added to the particular client
+   Use case ends
+
+** Extensions: **
+1a. User keys in invalid client identifier
+1a1. System displays an error message indicating that the process of adding tags have failed
+Use case ends
+
+1b. User keys in invalid index
+1b1. System displays an error message indicating that the process of adding tags have failed
+Use case ends
+
+Use Case 2 - Quick access of contact detail of clients  
+Precondition: User opens up the application  
+MSS:
+
+1. User keys in `highlight` followed by index or client identifier and the client preferred form of contact
+2. System updates with the preferred form of contact highlighted
+   Use case ends
+
+** Extensions **
+1a. User keys in invalid client identifier
+1a1. System displays an error message indicating that the process of selecting preferred form of contact have failed
+Use case ends
+
+1b. User keys in invalid index
+1b1. System displays an error message indicating that the process of selecting preferred form of contact have failed
+Use case ends
+
+1c. User keys in multiple forms of contacts
+1c1. System displays an error message to tell the user to select only one form of preferred contact and that the
+process of selecting preferred form of contact have failed
+Use case ends
+
+Use Case 3 - Adding new clients information  
+Precondition: User opens up the application  
+MSS:
+
+1. User keys in `addNewClient` followed by client details
+2. System updates with new client at the bottom of the list
+   Use case ends
+
+** Extensions **
+1a. User keys in wrong input format
+1a1. System displays an error message indicating the supposed format to be changed
+Use case ends
+
+1b. User keys in wrong format for details
+1b1. System displays an error message indicating that a particular detail is in the wrong format
+Use case ends
+
+Use Case 4 - Filtering client information using tags  
+Precondition: User opens up the application  
+MSS:
+
+1. User keys in `filter` followed by tags
+2. System updates with a list of clients that fulfills the tags to be filtered
+   Use case ends
+
+** Extensions **
+1a. User keys in invalid tags
+1a1. System displays an error message to remind user to check their tags that is keyed in
+Use case ends
+
+Use Case 5 - Storing client documents neatly in a folder  
+Precondition: User opens up the application  
+MSS:
+
+1. User keys in `file` followed by index or client identifier
+2. System opens up the folder of the particular client with the relevant files inside the folder
+   Use case ends
+
+** Extensions **
+1a. User keys in invalid client identifier
+1a1. System displays an error message indicating that the process of adding tags have failed
+Use case ends
+
+1b. User keys in invalid index
+1b1. System displays an error message indicating that the process of adding tags have failed
+Use case ends
+
+### Example Use Case
 
 **Use case: Delete a person**
 
@@ -310,35 +462,44 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. The list is empty.
+- 2a. The list is empty.
 
   Use case ends.
 
-* 3a. The given index is invalid.
+- 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+  - 3a1. AddressBook shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
-*{More to be added}*
+_{More to be added}_
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Non-Functional Requirements
 
 1.  The application should be compatible with mainstream operating systems such as Windows, Linux, Unix, and macOS, as long as they have Java 11 or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-4. The application should ensure the integrity and consistency of data stored in the address book. Data should not be lost or corrupted during normal usage or unexpected errors.
-5. Any commands should be executed within 1s.
-6. The address book should be able to store 2000 clients' information. 
+4.  The application should ensure the integrity and consistency of data stored in the address book. Data should not be lost or corrupted during normal usage or unexpected errors.
+5.  Any commands should be executed within 1s.
+6.  The address book should be able to store 2000 clients' information.
 
-*{More to be added}*
+_{More to be added}_
+
+_{More to be added}_
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+- **Mainstream OS**: Windows, Linux, Unix, OS-X
+- **Private contact detail**: A contact detail that is not meant to be shared with others
+- **Tag**: A tag object assigned to a contact that is a categorical description of the contact
+- **Client Priorities**: Priority of the client that the insurance agent has to attend to, where each priority is its own tag
+- **Usage Instructions**: A quickstart guide with a short list of basic commands for users' reference within the App.
 
---------------------------------------------------------------------------------------------------------------------
+Return to [Table Of Contents](#table-of-contents)
+
+---
 
 ## **Appendix: Instructions for manual testing**
 
@@ -347,7 +508,7 @@ Given below are instructions to test the app manually.
 <box type="info" seamless>
 
 **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
+testers are expected to do more _exploratory_ testing.
 
 </box>
 
@@ -364,7 +525,7 @@ testers are expected to do more *exploratory* testing.
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
    1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+      Expected: The most recent window size and location is retained.
 
 1. _{ more test cases …​ }_
 
@@ -392,3 +553,5 @@ testers are expected to do more *exploratory* testing.
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
+
+Return to [Table Of Contents](#table-of-contents)

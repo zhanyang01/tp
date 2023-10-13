@@ -4,9 +4,9 @@
   pageNav: 3
 ---
 
-# AB-3 User Guide
+# Insurahub User Guide
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+Insurahub is a **desktop app for managing clients, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Insurahub can get your contact management tasks done faster than traditional GUI apps. This app is mainly used by insurance agents who have many clients and tasks such as appointments to keep track of on a daily basis.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -17,11 +17,11 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `insurahub.jar` from [here](https://github.com//AY2324S1-CS2103-W14-1/tp).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+1. Copy the file to the folder you want to use as the _home folder_ for your App.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
+1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar insurahub.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
@@ -30,13 +30,15 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the application.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
    * `clear` : Deletes all contacts.
 
    * `exit` : Exits the app.
+  
+   * `highlight 1/phonenumber` : Highlight/Bold to show that that is the main form of contact that the client in the first index prefers. 
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -130,6 +132,7 @@ Examples:
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
+
 ### Deleting a person : `delete`
 
 Deletes the specified person from the address book.
@@ -170,9 +173,85 @@ AddressBook data are saved automatically as a JSON file `[JAR file location]/dat
 If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
 </box>
 
-### Archiving data files `[coming in v2.0]`
+## In Progress
 
-_Details coming soon ..._
+### Adding tags to a client object: `addTag`
+
+Adds any number of new tags to a client object without deleting the pre-exisiting tags.
+
+Format 1: `addTag <tag1>/<tag2> /<INDEX>`
+
+Format 2:  `addTag <tag1>/<tag2> /<client identifier>`
+
+* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
+* **client identifier** must be one of the unique identifier of the clients in the entire client list
+* **tag**: must be a valid tag in the pre-defined list implemented in the app
+
+Examples:
+* `addTag friend 1` will add the tag 'friend' to the first client on the current list.
+* `addTag friend/North JohnDoe` will add the tags 'friend', 'North' to the client identified by John Doe.
+
+### Deleting tags from a client object: `deleteTag`
+
+Removes any number of pre-existing tags from a client object.
+
+Format 1: `deleteTag <tag1>/<tag2> /<INDEX>`
+
+Format 2:  `deleteTag <tag1>/<tag2> /<client identifier>`
+
+* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
+* **client identifier** must be one of the unique identifier of the clients in the entire client list
+* * **tag**: must be a valid tag in the pre-defined list implemented in the app
+
+Examples:
+* `deleteTag friend 1` will remove the tag 'friend' from the first client on the current list.
+* `deleteTag friend/North JohnDoe` will remove the tags 'friend', 'North' from the client identified by John Doe.
+
+### Highlighting contact of a client: `highlight`  
+
+Highlight the specific contact details of the particular client from the application.
+
+Format 1: `highlight <INDEX>/<preferred contact method>`  
+
+Format 2:  `highlight <client identifier>/<preferred contact method>`
+
+* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
+* **client identifier** must be one of the unique identifier of the clients in the entire client list
+* **preferred contact method** either Phone number or Email currently
+* Name: Contact name of the person that is saved in the app.
+* Preferred contact method(expandable as project progresses):
+    * Phone number
+    * Email
+ 
+Examples:
+* `highlight 1/phone number` will highlight the phone number of the first person in the current list shown
+* `highlight John Doe/phone number` will highlight John Doe phone number
+
+### Filtering for clients based on tags: `filter`
+
+Filters and displays all clients that correspond to a specific combination/query of tags
+
+Format 1: `filter <tag1>/<tag2>/ … /<tagn>` 
+
+* **tag**: must be a valid tag in the pre-defined list implemented in the app
+
+Examples:
+* `filter friend/south/60+` will filter for all clients with the tags 'friend', 'south', '60+'
+
+### Storing documents of a client: `file`
+
+Creates/opens up a folder specific to a client for storing of their documents
+
+Format 1: `file <INDEX>`
+
+Format 2:  `file <client identifier>`
+
+* **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
+* **client identifier** must be one of the unique identifier of the clients in the entire client list
+
+Examples:
+* `file 1` will open up a folder that is named after the first client currently on the list
+* `file John Doe` will open up the folder that is used to store John Doe's documents
 
 --------------------------------------------------------------------------------------------------------------------
 
