@@ -16,6 +16,10 @@ public class FilterCommand extends Command {
             + "Example: " + COMMAND_WORD + " friend";
 
     private final List<Tag> tags;
+
+    public FilterCommand(List<Tag> tags) {
+        this.tags = tags;
+    }
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
