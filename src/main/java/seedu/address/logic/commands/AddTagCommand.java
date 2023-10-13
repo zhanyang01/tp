@@ -4,7 +4,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
-public class AddTagCommand extends Command {
+public abstract class AddTagCommand extends Command {
 
     public static final String COMMAND_WORD  = "addTag";
 
