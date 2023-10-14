@@ -61,6 +61,12 @@ public class Person {
         return Collections.unmodifiableSet(tags);
     }
 
+    public void addTags(Set<Tag> tags) {
+        if (tags != null) {
+            this.tags.addAll(tags);
+        }
+    }
+
     /**
      * Returns true if both persons have the same name.
      * This defines a weaker notion of equality between two persons.
@@ -112,6 +118,7 @@ public class Person {
                 .add("address", address)
                 .add("tags", tags)
                 .toString();
+
     }
 
 }
