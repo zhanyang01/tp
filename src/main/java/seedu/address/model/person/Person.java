@@ -61,6 +61,10 @@ public class Person {
         return Collections.unmodifiableSet(tags);
     }
 
+    /**
+     * Adds tags to current tags of a person
+     */
+
     public void addTags(Set<Tag> tags) {
         if (tags != null) {
             this.tags.addAll(tags);

@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collection;
@@ -13,11 +12,14 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddTagCommand;
 import seedu.address.logic.commands.AddTagCommand.AddTagDescriptor;
-
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
 
-public class AddTagCommandParser implements Parser<AddTagCommand>{
+/**
+ * Parses input arguments and creates a new AddTagCommand object
+ */
+
+public class AddTagCommandParser implements Parser<AddTagCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the AddTagCommand
      * and returns an AddTagCommand object for execution.
@@ -38,7 +40,7 @@ public class AddTagCommandParser implements Parser<AddTagCommand>{
         }
 
 
-        AddTagDescriptor addTagDescriptor= new AddTagDescriptor();
+        AddTagDescriptor addTagDescriptor = new AddTagDescriptor();
 
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(addTagDescriptor::setTags);
 

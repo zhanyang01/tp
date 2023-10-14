@@ -70,6 +70,10 @@ public class AddTagCommand extends Command {
 
     }
 
+    /**
+     * Creates and returns a {@code Person} with the details of {@code personToEdit}
+     * edited with {@code addTagDescriptor}.
+     */
     private static Person createPersonWithAddedTag(Person personToEdit, AddTagDescriptor addTagDescriptor) {
         assert personToEdit != null;
 
@@ -179,11 +183,6 @@ public class AddTagCommand extends Command {
         public void setTags(Set<Tag> tags) {
             this.tags = (tags != null) ? new HashSet<>(tags) : null;
         }
-
-        /**
-         * Adds {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
-         */
 
         /**
          * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
