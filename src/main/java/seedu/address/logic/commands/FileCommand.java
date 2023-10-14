@@ -48,7 +48,7 @@ public class FileCommand extends Command {
         Person personToFile = lastShownList.get(targetIndex.getZeroBased());
         String name = personToFile.getName().toString();
         int id = personToFile.hashCode();
-        String folderName = name + " | " + id;
+        String folderName = name + " " + id;
         createFolder(folderName);
         return new CommandResult(String.format(OPEN_FILE_PERSON_SUCCESS, Messages.format(personToFile)));
     }
@@ -69,9 +69,9 @@ public class FileCommand extends Command {
                 Files.createDirectory(storageFolder);
             }
             File file = storageFolder.toFile();
-            Desktop.getDesktop().browse(file.toURI());
+            Desktop.getDesktop().open(file);
         } catch (Exception e) {
-            System.out.println("an error occurred while creating folder");
+            System.out.println("an error occurred while creating folder: " + e);
         }
     }
 
