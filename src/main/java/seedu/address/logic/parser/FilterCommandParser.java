@@ -20,10 +20,10 @@ public class FilterCommandParser implements Parser<FilterCommand> {
         try {
             List<Tag> tags = ParserUtil.parseTags(args);
             return new FilterCommand(tags);
-        } catch (Exception e) {
-            throw new (ParseException pe) {
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE)
-            }
+        } catch (ParseException pe) {
+            throw new ParseException(
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE), pe
+            );
         }
         return null;
     }
