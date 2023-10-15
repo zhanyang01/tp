@@ -62,6 +62,34 @@ public class Person {
     }
 
     /**
+     * Adds tags to current tags of a person
+     */
+
+    public void addTags(Set<Tag> tags) {
+        if (tags != null) {
+            this.tags.addAll(tags);
+        }
+    }
+
+    /**
+     * Delete tags from current tags of a person
+     */
+
+    public void deleteTags(Set<Tag> originalTags) {
+        Set<Tag> newTags = new HashSet<>();
+        for (Tag tag : originalTags) {
+            if (!this.tags.contains(tag)) {
+                newTags.add(tag);
+            }
+        }
+        this.tags.clear();
+        this.tags.addAll(newTags);
+
+    }
+
+
+
+    /**
      * Returns true if both persons have the same name.
      * This defines a weaker notion of equality between two persons.
      */
