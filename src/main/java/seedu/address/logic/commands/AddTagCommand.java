@@ -22,6 +22,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.person.PreferredContact;
 
 public class AddTagCommand extends Command {
 
@@ -41,7 +42,7 @@ public class AddTagCommand extends Command {
     private final AddTagDescriptor addTagDescriptor;
 
     /**
-     * @param index of the person in the filtered person list to edit
+     * @param index            of the person in the filtered person list to edit
      * @param addTagDescriptor details to edit the person with
      */
 
@@ -51,6 +52,7 @@ public class AddTagCommand extends Command {
         this.index = index;
         this.addTagDescriptor = new AddTagDescriptor(addTagDescriptor);
     }
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -67,7 +69,6 @@ public class AddTagCommand extends Command {
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_ADD_TAG_SUCCESS, Messages.format(personWithAddedTag)));
 
-
     }
 
     /**
@@ -82,8 +83,10 @@ public class AddTagCommand extends Command {
         Email updatedEmail = addTagDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = addTagDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = addTagDescriptor.getTags().orElse(personToEdit.getTags());
+        PreferredContact updatePreferredContact = addTagDescriptor.getPreferredContact()
+                .orElse(personToEdit.getPreferredContact());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatePreferredContact);
     }
 
     public static <T> boolean hasDuplicates(Set<T> set) {
@@ -120,7 +123,8 @@ public class AddTagCommand extends Command {
     }
 
     /**
-     * Stores the details to add the tag with. Added tag will be added to current list of tag.
+     * Stores the details to add the tag with. Added tag will be added to current
+     * list of tag.
      */
 
     public static class AddTagDescriptor {
@@ -129,8 +133,10 @@ public class AddTagCommand extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
+        private PreferredContact preferredContact;
 
-        public AddTagDescriptor() {}
+        public AddTagDescriptor() {
+        }
 
         /**
          * Copy constructor.s
@@ -142,6 +148,7 @@ public class AddTagCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
+            setPreferredContact(toCopy.preferredContact);
         }
 
         public void setName(Name name) {
@@ -185,7 +192,26 @@ public class AddTagCommand extends Command {
         }
 
         /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
+         * Sets {@code preferredContact} to this object's {@code preferredContact}.
+         * 
+         * @param preferredContact
+         */
+        public void setPreferredContact(PreferredContact preferredContact) {
+            this.preferredContact = preferredContact;
+        }
+
+        /**
+         * Returns an optional preferred contact method of a person
+         * 
+         * @return
+         */
+        public Optional<PreferredContact> getPreferredContact() {
+            return Optional.ofNullable(preferredContact);
+        }
+
+        /**
+         * Returns an unmodifiable tag set, which throws
+         * {@code UnsupportedOperationException}
          * if modification is attempted.
          * Returns {@code Optional#empty()} if {@code tags} is null.
          */
@@ -224,4 +250,3 @@ public class AddTagCommand extends Command {
         }
     }
 }
-

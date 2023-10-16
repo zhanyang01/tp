@@ -20,6 +20,7 @@ import seedu.address.logic.commands.FileCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.PreferredContactCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -49,49 +50,53 @@ public class AddressBookParser {
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
 
-        // Note to developers: Change the log level in config.json to enable lower level (i.e., FINE, FINER and lower)
+        // Note to developers: Change the log level in config.json to enable lower level
+        // (i.e., FINE, FINER and lower)
         // log messages such as the one below.
         // Lower level log messages are used sparingly to minimize noise in the code.
         logger.fine("Command word: " + commandWord + "; Arguments: " + arguments);
 
         switch (commandWord) {
 
-        case AddCommand.COMMAND_WORD:
-            return new AddCommandParser().parse(arguments);
+            case AddCommand.COMMAND_WORD:
+                return new AddCommandParser().parse(arguments);
 
-        case AddTagCommand.COMMAND_WORD:
-            return new AddTagCommandParser().parse(arguments);
+            case AddTagCommand.COMMAND_WORD:
+                return new AddTagCommandParser().parse(arguments);
 
-        case EditCommand.COMMAND_WORD:
-            return new EditCommandParser().parse(arguments);
+            case EditCommand.COMMAND_WORD:
+                return new EditCommandParser().parse(arguments);
 
-        case DeleteCommand.COMMAND_WORD:
-            return new DeleteCommandParser().parse(arguments);
+            case DeleteCommand.COMMAND_WORD:
+                return new DeleteCommandParser().parse(arguments);
 
-        case DeleteTagCommand.COMMAND_WORD:
-            return new DeleteTagCommandParser().parse(arguments);
+            case DeleteTagCommand.COMMAND_WORD:
+                return new DeleteTagCommandParser().parse(arguments);
 
-        case ClearCommand.COMMAND_WORD:
-            return new ClearCommand();
+            case ClearCommand.COMMAND_WORD:
+                return new ClearCommand();
 
-        case FindCommand.COMMAND_WORD:
-            return new FindCommandParser().parse(arguments);
+            case FindCommand.COMMAND_WORD:
+                return new FindCommandParser().parse(arguments);
 
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+            case ListCommand.COMMAND_WORD:
+                return new ListCommand();
 
-        case ExitCommand.COMMAND_WORD:
-            return new ExitCommand();
+            case ExitCommand.COMMAND_WORD:
+                return new ExitCommand();
 
-        case HelpCommand.COMMAND_WORD:
-            return new HelpCommand();
+            case HelpCommand.COMMAND_WORD:
+                return new HelpCommand();
 
-        case FileCommand.COMMAND_WORD:
-            return new FileCommandParser().parse(arguments);
+            case FileCommand.COMMAND_WORD:
+                return new FileCommandParser().parse(arguments);
 
-        default:
-            logger.finer("This user input caused a ParseException: " + userInput);
-            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+            case PreferredContactCommand.COMMAND_WORD:
+                return new PreferredContactCommandParser().parse(arguments);
+
+            default:
+                logger.finer("This user input caused a ParseException: " + userInput);
+                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
 

@@ -22,7 +22,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
-
+import seedu.address.model.person.PreferredContact;
 
 public class DeleteTagCommand extends Command {
 
@@ -45,7 +45,7 @@ public class DeleteTagCommand extends Command {
     private final DeleteTagDescriptor deleteTagDescriptor;
 
     /**
-     * @param index of the person in the filtered person list to edit
+     * @param index               of the person in the filtered person list to edit
      * @param deleteTagDescriptor details the tags to delete from the person
      */
     public DeleteTagCommand(Index index, DeleteTagDescriptor deleteTagDescriptor) {
@@ -90,8 +90,10 @@ public class DeleteTagCommand extends Command {
         Email updatedEmail = deleteTagDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = deleteTagDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = deleteTagDescriptor.getTags().orElse(personToEdit.getTags());
+        PreferredContact updatePreferredContact = deleteTagDescriptor.getPreferredContact()
+                .orElse(personToEdit.getPreferredContact());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatePreferredContact);
     }
 
     public boolean equals(Object other) {
@@ -117,7 +119,8 @@ public class DeleteTagCommand extends Command {
     }
 
     /**
-     * Stores the details to delete the tag with. Deleted tag will be deleted from current list of tag.
+     * Stores the details to delete the tag with. Deleted tag will be deleted from
+     * current list of tag.
      */
 
     public static class DeleteTagDescriptor {
@@ -126,8 +129,10 @@ public class DeleteTagCommand extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
+        private PreferredContact preferredContact;
 
-        public DeleteTagDescriptor() {}
+        public DeleteTagDescriptor() {
+        }
 
         public DeleteTagDescriptor(DeleteTagDescriptor toCopy) {
             setName(toCopy.name);
@@ -135,6 +140,7 @@ public class DeleteTagCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
+            setPreferredContact(toCopy.preferredContact);
         }
 
         public void setName(Name name) {
@@ -178,7 +184,8 @@ public class DeleteTagCommand extends Command {
         }
 
         /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
+         * Returns an unmodifiable tag set, which throws
+         * {@code UnsupportedOperationException}
          * if modification is attempted.
          * Returns {@code Optional#empty()} if {@code tags} is null.
          */
@@ -186,6 +193,19 @@ public class DeleteTagCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+        /**
+         * Sets {@code preferredContact} to this object's {@code preferredContact}.
+         */
+        public void setPreferredContact(PreferredContact preferredContact) {
+            this.preferredContact = preferredContact;
+        }
+
+        /**
+         * Returns an optional preferred contact method of a person
+         */
+        public Optional<PreferredContact> getPreferredContact() {
+            return Optional.ofNullable(preferredContact);
+        }
 
         @Override
         public boolean equals(Object other) {
