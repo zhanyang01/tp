@@ -31,12 +31,18 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
    * `list` : Lists all contacts.
 
    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the application.
+     
+   * `addTag 1 t/classmate` : Adds a "classmate" tag to the first user in the address book.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
+  
+   * `deleteTag 1 t/classmate` : Deletes the "classmate" tag from the first user in the address book if the "classmate" tag currently exists
 
    * `clear` : Deletes all contacts.
 
    * `exit` : Exits the app.
+     
+   * `file 1`: Creates a folder for the first person in the address book with the person's information
   
    * `highlight 1/phonenumber` : Highlight/Bold to show that that is the main form of contact that the client in the first index prefers. 
 
