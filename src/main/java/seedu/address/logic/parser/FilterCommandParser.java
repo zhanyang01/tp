@@ -4,7 +4,9 @@ import seedu.address.logic.commands.FilterCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
@@ -16,9 +18,9 @@ public class FilterCommandParser implements Parser<FilterCommand> {
      * @throws ParseException if {@code userInput} does not conform the expected format
      */
     @Override
-    public FilterCommand parse(String args) throws ParseException {
+    public FilterCommand parse(Collection<String> args) throws ParseException {
         try {
-            List<Tag> tags = ParserUtil.parseTags(args);
+            Set<Tag> tags = ParserUtil.parseTags(args);
             return new FilterCommand(tags);
         } catch (ParseException pe) {
             throw new ParseException(

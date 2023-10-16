@@ -6,6 +6,7 @@ import seedu.address.model.Model;
 import seedu.address.model.tag.Tag;
 
 import java.util.List;
+import java.util.Set;
 
 public class FilterCommand extends Command {
 
@@ -15,9 +16,11 @@ public class FilterCommand extends Command {
             + "Parameters: TAG (must be a valid tag from the predefined list) \n"
             + "Example: " + COMMAND_WORD + " friend";
 
-    private final List<Tag> tags;
+    public static final String MESSAGE_SUCCESS = "Filtered for tags %s successfully";
 
-    public FilterCommand(List<Tag> tags) {
+    private final Set<Tag> tags;
+
+    public FilterCommand(Set<Tag> tags) {
         this.tags = tags;
     }
     @Override

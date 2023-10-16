@@ -6,6 +6,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.FileCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+import java.util.Collection;
+
 
 /**
  * Parses input arguments and creates a new FileCommand object
@@ -17,7 +19,7 @@ public class FileCommandParser implements Parser<FileCommand> {
      * and returns a FileCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public FileCommand parse(String args) throws ParseException {
+    public FileCommand parse(Collection<String> args) throws ParseException {
         try {
             Index index = ParserUtil.parseIndex(args);
             return new FileCommand(index);
