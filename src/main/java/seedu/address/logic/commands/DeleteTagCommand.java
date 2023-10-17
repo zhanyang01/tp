@@ -21,9 +21,12 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.person.PreferredContact;
+import seedu.address.model.tag.Tag;
 
+/**
+ * Deletes a tag from an existing person in the address book.
+ */
 public class DeleteTagCommand extends Command {
 
     public static final String COMMAND_WORD = "deleteTag";
@@ -39,7 +42,8 @@ public class DeleteTagCommand extends Command {
 
     public static final String MESSAGE_NOT_EDITED = "One tag must be provided.";
 
-    public static final String MESSAGE_INVALID_TAGS_PROVIDED = "Tags provided do not exist. Please provide an existing tag.";
+    public static final String MESSAGE_INVALID_TAGS_PROVIDED =
+            "Tags provided do not exist. Please provide an existing tag.";
 
     private final Index index;
     private final DeleteTagDescriptor deleteTagDescriptor;
@@ -81,7 +85,6 @@ public class DeleteTagCommand extends Command {
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
      * edited with {@code deleteTagDescriptor}.
      */
-
     private static Person createPersonWithDeletedTag(Person personToEdit, DeleteTagDescriptor deleteTagDescriptor) {
         assert personToEdit != null;
 
@@ -96,6 +99,11 @@ public class DeleteTagCommand extends Command {
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatePreferredContact);
     }
 
+    /**
+     * Compares this with another object.
+     * @param other object to compare
+     * @return true if the other object is a DeleteTagCommand with the same index and descriptor
+     */
     public boolean equals(Object other) {
         if (other == this) {
             return true;
@@ -122,7 +130,6 @@ public class DeleteTagCommand extends Command {
      * Stores the details to delete the tag with. Deleted tag will be deleted from
      * current list of tag.
      */
-
     public static class DeleteTagDescriptor {
         private Name name;
         private Phone phone;
@@ -131,9 +138,17 @@ public class DeleteTagCommand extends Command {
         private Set<Tag> tags;
         private PreferredContact preferredContact;
 
+        /**
+         * Creates an empty {@code DeleteTagDescriptor}.
+         */
         public DeleteTagDescriptor() {
         }
 
+        /**
+         * Copy constructor.s
+         * A defensive copy of {@code tags} is used internally.
+         * @param toCopy DeleteTagDescriptor to copy
+         */
         public DeleteTagDescriptor(DeleteTagDescriptor toCopy) {
             setName(toCopy.name);
             setPhone(toCopy.phone);

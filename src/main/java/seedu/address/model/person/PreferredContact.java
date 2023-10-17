@@ -10,12 +10,13 @@ public class PreferredContact {
 
     public final String value;
 
-    public static final String MESSAGE_CONSTRAINTS = "Preferred contact can take either phone or email, else it will be blank";
+    public final static String MESSAGE_CONSTRAINTS =
+            "Preferred contact can take either phone or email, else it will be blank";
 
     /**
      * Constructs a {@code Preferred Contact}.
      *
-     * @param preferred contact.
+     * @param preferredContact of client
      */
     public PreferredContact(String preferredContact) {
         requireNonNull(preferredContact);

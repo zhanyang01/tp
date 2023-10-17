@@ -21,9 +21,12 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.person.PreferredContact;
+import seedu.address.model.tag.Tag;
 
+/**
+ * Adds a tag to an existing person in the address book.
+ */
 public class AddTagCommand extends Command {
 
     public static final String COMMAND_WORD = "addTag";
@@ -89,6 +92,12 @@ public class AddTagCommand extends Command {
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatePreferredContact);
     }
 
+    /**
+     * Checks for duplicates in the set
+     * @param set set to be checked
+     * @return true if at least one field is duplicated
+     * @param <T> this describes my type parameter
+     */
     public static <T> boolean hasDuplicates(Set<T> set) {
         Set<T> tempSet = new HashSet<>();
         for (T element : set) {
@@ -100,6 +109,11 @@ public class AddTagCommand extends Command {
         return false;
     }
 
+    /**
+     * Compares this object with another object
+     * @param other object to be compared
+     * @return true if other is equal to this
+     */
     public boolean equals(Object other) {
         if (other == this) {
             return true;
