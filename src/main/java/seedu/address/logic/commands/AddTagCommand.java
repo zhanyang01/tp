@@ -193,7 +193,7 @@ public class AddTagCommand extends Command {
 
         /**
          * Sets {@code preferredContact} to this object's {@code preferredContact}.
-         * 
+         *
          * @param preferredContact
          */
         public void setPreferredContact(PreferredContact preferredContact) {
@@ -202,7 +202,7 @@ public class AddTagCommand extends Command {
 
         /**
          * Returns an optional preferred contact method of a person
-         * 
+         *
          * @return
          */
         public Optional<PreferredContact> getPreferredContact() {
