@@ -11,14 +11,13 @@ import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.DeleteTagCommand;
-import seedu.address.logic.commands.DeleteTagCommand.DeleteTagDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new AddTagCommand object
  */
-public class DeleteTagCommandParser implements Parser<DeleteTagCommand>  {
+public class DeleteTagCommandParser implements Parser<DeleteTagCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteTagCommand
      * and returns an DeleteTagCommand object for execution.

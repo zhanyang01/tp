@@ -21,8 +21,12 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.PreferredContact;
 import seedu.address.model.tag.Tag;
 
+/**
+ * Adds a tag to an existing person in the address book.
+ */
 public class AddTagCommand extends Command {
 
     public static final String COMMAND_WORD = "addTag";
@@ -32,7 +36,7 @@ public class AddTagCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_TAG + "Jurong West";
+            + PREFIX_TAG + "Friends";
     public static final String MESSAGE_ADD_TAG_SUCCESS = "Added tags successfully for person %1$s";
 
     public static final String MESSAGE_NOT_EDITED = "One tag must be provided.";
@@ -41,7 +45,7 @@ public class AddTagCommand extends Command {
     private final AddTagDescriptor addTagDescriptor;
 
     /**
-     * @param index of the person in the filtered person list to edit
+     * @param index            of the person in the filtered person list to edit
      * @param addTagDescriptor details to edit the person with
      */
 
@@ -51,6 +55,7 @@ public class AddTagCommand extends Command {
         this.index = index;
         this.addTagDescriptor = new AddTagDescriptor(addTagDescriptor);
     }
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -67,7 +72,6 @@ public class AddTagCommand extends Command {
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_ADD_TAG_SUCCESS, Messages.format(personWithAddedTag)));
 
-
     }
 
     /**
@@ -82,10 +86,18 @@ public class AddTagCommand extends Command {
         Email updatedEmail = addTagDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = addTagDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = addTagDescriptor.getTags().orElse(personToEdit.getTags());
+        PreferredContact updatePreferredContact = addTagDescriptor.getPreferredContact()
+                .orElse(personToEdit.getPreferredContact());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatePreferredContact);
     }
 
+    /**
+     * Checks for duplicates in the set
+     * @param set set to be checked
+     * @param <T> this describes my type parameter
+     * @return true if at least one field is duplicated
+     */
     public static <T> boolean hasDuplicates(Set<T> set) {
         Set<T> tempSet = new HashSet<>();
         for (T element : set) {
@@ -97,6 +109,11 @@ public class AddTagCommand extends Command {
         return false;
     }
 
+    /**
+     * Compares this object with another object
+     * @param other object to be compared
+     * @return true if other is equal to this
+     */
     public boolean equals(Object other) {
         if (other == this) {
             return true;
@@ -120,7 +137,8 @@ public class AddTagCommand extends Command {
     }
 
     /**
-     * Stores the details to add the tag with. Added tag will be added to current list of tag.
+     * Stores the details to add the tag with. Added tag will be added to current
+     * list of tag.
      */
 
     public static class AddTagDescriptor {
@@ -129,8 +147,10 @@ public class AddTagCommand extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
+        private PreferredContact preferredContact;
 
-        public AddTagDescriptor() {}
+        public AddTagDescriptor() {
+        }
 
         /**
          * Copy constructor.s
@@ -142,6 +162,7 @@ public class AddTagCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
+            setPreferredContact(toCopy.preferredContact);
         }
 
         public void setName(Name name) {
@@ -185,7 +206,26 @@ public class AddTagCommand extends Command {
         }
 
         /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
+         * Sets {@code preferredContact} to this object's {@code preferredContact}.
+         *
+         * @param preferredContact
+         */
+        public void setPreferredContact(PreferredContact preferredContact) {
+            this.preferredContact = preferredContact;
+        }
+
+        /**
+         * Returns an optional preferred contact method of a person
+         *
+         * @return
+         */
+        public Optional<PreferredContact> getPreferredContact() {
+            return Optional.ofNullable(preferredContact);
+        }
+
+        /**
+         * Returns an unmodifiable tag set, which throws
+         * {@code UnsupportedOperationException}
          * if modification is attempted.
          * Returns {@code Optional#empty()} if {@code tags} is null.
          */
@@ -224,4 +264,3 @@ public class AddTagCommand extends Command {
         }
     }
 }
-
