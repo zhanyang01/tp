@@ -42,8 +42,6 @@ public class PersonCard extends UiPart<Region> {
     private Label email;
     @FXML
     private FlowPane tags;
-    @FXML
-    private Label preferredContact;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to
@@ -60,6 +58,13 @@ public class PersonCard extends UiPart<Region> {
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-        // preferredContact.setText(person.getPreferredContact().value);
+        if (person.getPreferredContact().toString().equals("phone")) {
+            phone.setStyle("-fx-text-fill: yellow;");
+        }
+        if (person.getPreferredContact().toString().equals("email")) {
+            phone.setStyle("-fx-text-fill: yellow;");
+        }
+        System.out.println(person.getPreferredContact().value);
+        System.out.println(person.getName().fullName);
     }
 }

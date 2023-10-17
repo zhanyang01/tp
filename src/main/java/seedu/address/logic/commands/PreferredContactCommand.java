@@ -51,7 +51,7 @@ public class PreferredContactCommand extends Command {
                 Person editedPreferredContactPerson = new Person(preferredContactPerson.getName(),
                                 preferredContactPerson.getPhone(), preferredContactPerson.getEmail(),
                                 preferredContactPerson.getAddress(), preferredContactPerson.getTags(),
-                                preferredContactPerson.getPreferredContact());
+                                preferredContact);
 
                 model.setPerson(preferredContactPerson, editedPreferredContactPerson);
                 model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

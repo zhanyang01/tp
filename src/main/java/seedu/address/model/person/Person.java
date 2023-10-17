@@ -21,9 +21,9 @@ public class Person {
     private final Name name;
     private final Phone phone;
     private final Email email;
-    private final PreferredContact preferredContact;
 
     // Data fields
+    private final PreferredContact preferredContact;
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
 
@@ -32,7 +32,7 @@ public class Person {
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
             PreferredContact preferredContact) {
-        requireAllNonNull(name, phone, email, address, tags, preferredContact);
+        requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;

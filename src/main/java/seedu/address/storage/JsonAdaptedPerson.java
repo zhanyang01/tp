@@ -44,10 +44,10 @@ class JsonAdaptedPerson {
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.preferredContact = preferredContact;
         if (tags != null) {
             this.tags.addAll(tags);
         }
-        this.preferredContact = preferredContact;
     }
 
     /**
@@ -58,10 +58,10 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        preferredContact = source.getPreferredContact().value;
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
-        preferredContact = source.getPreferredContact().value;
     }
 
     /**
