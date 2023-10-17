@@ -62,9 +62,7 @@ public class PersonCard extends UiPart<Region> {
             phone.setStyle("-fx-text-fill: yellow;");
         }
         if (person.getPreferredContact().toString().equals("email")) {
-            phone.setStyle("-fx-text-fill: yellow;");
+            email.setStyle("-fx-text-fill: yellow;");
         }
-        System.out.println(person.getPreferredContact().value);
-        System.out.println(person.getName().fullName);
     }
 }

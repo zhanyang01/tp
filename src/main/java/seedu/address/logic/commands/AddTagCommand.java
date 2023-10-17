@@ -33,7 +33,7 @@ public class AddTagCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_TAG + "Jurong West";
+            + PREFIX_TAG + "Friends";
     public static final String MESSAGE_ADD_TAG_SUCCESS = "Added tags successfully for person %1$s";
 
     public static final String MESSAGE_NOT_EDITED = "One tag must be provided.";

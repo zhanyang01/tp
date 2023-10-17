@@ -35,6 +35,16 @@ public class PreferredContactCommandParser implements Parser<PreferredContactCom
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, PreferredContactCommand.MESSAGE_USAGE), pe);
         }
 
+        if (argMultimap.getValue(PREFIX_PREFERRED_CONTACT).isEmpty()) {
+            throw new ParseException(PreferredContactCommand.MESSAGE_PREFERREDCONTACT_NOT_EDITED);
+        }
+
+        if (!argMultimap.getValue(PREFIX_PREFERRED_CONTACT).get().equals("email")
+                && !argMultimap.getValue(PREFIX_PREFERRED_CONTACT).get().equals("phone")
+                && !argMultimap.getValue(PREFIX_PREFERRED_CONTACT).get().equals("")) {
+            throw new ParseException(PreferredContactCommand.MESSAGE_PREFERREDCONTACT_INVALID);
+        }
+
         String preferredContactDescriptor = argMultimap.getValue(PREFIX_PREFERRED_CONTACT).orElse("");
 
         return new PreferredContactCommand(index, new PreferredContact(preferredContactDescriptor));

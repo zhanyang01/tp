@@ -1,6 +1,7 @@
 package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Person's preferred contact method in the address book.
@@ -9,6 +10,8 @@ public class PreferredContact {
 
     public final String value;
 
+    public static final String MESSAGE_CONSTRAINTS = "Preferred contact can take either phone or email, else it will be blank";
+
     /**
      * Constructs a {@code Preferred Contact}.
      *
@@ -16,7 +19,17 @@ public class PreferredContact {
      */
     public PreferredContact(String preferredContact) {
         requireNonNull(preferredContact);
+        checkArgument(isValidPreferredContact(preferredContact), MESSAGE_CONSTRAINTS);
         value = preferredContact;
+    }
+
+    /**
+     * Returns true if a given string is a valid preferred contact.
+     */
+    public static boolean isValidPreferredContact(String test) {
+        boolean result = test.equals("phone") || test.equals("email") || test.equals("");
+        System.out.println(result);
+        return result;
     }
 
     @Override
