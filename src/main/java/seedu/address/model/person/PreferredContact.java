@@ -28,7 +28,6 @@ public class PreferredContact {
      */
     public static boolean isValidPreferredContact(String test) {
         boolean result = test.equals("phone") || test.equals("email") || test.equals("");
-        System.out.println(result);
         return result;
     }
 

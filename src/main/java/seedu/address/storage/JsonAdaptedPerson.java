@@ -58,10 +58,10 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
-        preferredContact = source.getPreferredContact().value;
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        preferredContact = source.getPreferredContact().value;
     }
 
     /**
@@ -116,6 +116,9 @@ class JsonAdaptedPerson {
                     PreferredContact.class.getSimpleName()));
         }
 
+        if (!PreferredContact.isValidPreferredContact(preferredContact)) {
+            throw new IllegalValueException(PreferredContact.MESSAGE_CONSTRAINTS);
+        }
         final PreferredContact modelPreferredContact = new PreferredContact(preferredContact);
 
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPreferredContact);
