@@ -361,7 +361,7 @@ Return to [Table Of Contents](#table-of-contents)
 
 If not explicitly mentioned, the actor will be a Financial Advisor as the User and InsuraHub as the System.
 
-Use Case 1 - Adding more tags to clients records  
+Use Case 1 - Adding more tags to clients records
 Precondition: User already open up the application  
 MSS:
 

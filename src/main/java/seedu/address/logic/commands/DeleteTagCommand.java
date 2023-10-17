@@ -25,35 +25,38 @@ import seedu.address.model.person.PreferredContact;
 import seedu.address.model.tag.Tag;
 
 /**
- * Adds a tag to an existing person in the address book.
+ * Deletes a tag from an existing person in the address book.
  */
-public class AddTagCommand extends Command {
+public class DeleteTagCommand extends Command {
 
-    public static final String COMMAND_WORD = "addTag";
+    public static final String COMMAND_WORD = "deleteTag";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds to the tag of the person identified "
-            + "by the index number used in the displayed person list. "
-            + "Parameters: INDEX (must be a positive integer) "
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Deletes the tags of the person identified by the index number used in the displayed person list.\n"
+            + "Parameters: INDEX(must be a positive integer)"
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_TAG + "Friends";
-    public static final String MESSAGE_ADD_TAG_SUCCESS = "Added tags successfully for person %1$s";
+            + PREFIX_TAG + "friend";
+
+    public static final String MESSAGE_DELETE_TAG_SUCCESS = "Deleted tags successfully for person %1$s";
 
     public static final String MESSAGE_NOT_EDITED = "One tag must be provided.";
 
+    public static final String MESSAGE_INVALID_TAGS_PROVIDED =
+            "Tags provided do not exist. Please provide an existing tag.";
+
     private final Index index;
-    private final AddTagDescriptor addTagDescriptor;
+    private final DeleteTagDescriptor deleteTagDescriptor;
 
     /**
-     * @param index            of the person in the filtered person list to edit
-     * @param addTagDescriptor details to edit the person with
+     * @param index               of the person in the filtered person list to edit
+     * @param deleteTagDescriptor details the tags to delete from the person
      */
-
-    public AddTagCommand(Index index, AddTagDescriptor addTagDescriptor) {
+    public DeleteTagCommand(Index index, DeleteTagDescriptor deleteTagDescriptor) {
         requireNonNull(index);
-        requireNonNull(addTagDescriptor);
+        requireNonNull(deleteTagDescriptor);
         this.index = index;
-        this.addTagDescriptor = new AddTagDescriptor(addTagDescriptor);
+        this.deleteTagDescriptor = new DeleteTagDescriptor(deleteTagDescriptor);
     }
 
     @Override
@@ -65,54 +68,41 @@ public class AddTagCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        Person personWithAddedTag = createPersonWithAddedTag(personToEdit, addTagDescriptor);
-        personWithAddedTag.addTags(personToEdit.getTags());
+        Person personWithDeletedTag = createPersonWithDeletedTag(personToEdit, deleteTagDescriptor);
+        personWithDeletedTag.deleteTags(personToEdit.getTags());
 
-        model.setPerson(personToEdit, personWithAddedTag);
+        if (personWithDeletedTag.getTags().size() == personToEdit.getTags().size()) {
+            throw new CommandException(MESSAGE_INVALID_TAGS_PROVIDED);
+        }
+
+        model.setPerson(personToEdit, personWithDeletedTag);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_ADD_TAG_SUCCESS, Messages.format(personWithAddedTag)));
+        return new CommandResult(String.format(MESSAGE_DELETE_TAG_SUCCESS, Messages.format(personWithDeletedTag)));
 
     }
 
     /**
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
-     * edited with {@code addTagDescriptor}.
+     * edited with {@code deleteTagDescriptor}.
      */
-    private static Person createPersonWithAddedTag(Person personToEdit, AddTagDescriptor addTagDescriptor) {
+    private static Person createPersonWithDeletedTag(Person personToEdit, DeleteTagDescriptor deleteTagDescriptor) {
         assert personToEdit != null;
 
-        Name updatedName = addTagDescriptor.getName().orElse(personToEdit.getName());
-        Phone updatedPhone = addTagDescriptor.getPhone().orElse(personToEdit.getPhone());
-        Email updatedEmail = addTagDescriptor.getEmail().orElse(personToEdit.getEmail());
-        Address updatedAddress = addTagDescriptor.getAddress().orElse(personToEdit.getAddress());
-        Set<Tag> updatedTags = addTagDescriptor.getTags().orElse(personToEdit.getTags());
-        PreferredContact updatePreferredContact = addTagDescriptor.getPreferredContact()
+        Name updatedName = deleteTagDescriptor.getName().orElse(personToEdit.getName());
+        Phone updatedPhone = deleteTagDescriptor.getPhone().orElse(personToEdit.getPhone());
+        Email updatedEmail = deleteTagDescriptor.getEmail().orElse(personToEdit.getEmail());
+        Address updatedAddress = deleteTagDescriptor.getAddress().orElse(personToEdit.getAddress());
+        Set<Tag> updatedTags = deleteTagDescriptor.getTags().orElse(personToEdit.getTags());
+        PreferredContact updatePreferredContact = deleteTagDescriptor.getPreferredContact()
                 .orElse(personToEdit.getPreferredContact());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatePreferredContact);
     }
 
     /**
-     * Checks for duplicates in the set
-     * @param set set to be checked
-     * @param <T> this describes my type parameter
-     * @return true if at least one field is duplicated
-     */
-    public static <T> boolean hasDuplicates(Set<T> set) {
-        Set<T> tempSet = new HashSet<>();
-        for (T element : set) {
-            if (tempSet.contains(element)) {
-                return true;
-            }
-            tempSet.add(element);
-        }
-        return false;
-    }
-
-    /**
-     * Compares this object with another object
-     * @param other object to be compared
-     * @return true if other is equal to this
+     * Compares this with another object.
+     * @param other object to compare
+     * @return true if the other object is a DeleteTagCommand with the same index and descriptor
      */
     public boolean equals(Object other) {
         if (other == this) {
@@ -120,13 +110,13 @@ public class AddTagCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof AddTagCommand)) {
+        if (!(other instanceof DeleteTagCommand)) {
             return false;
         }
 
-        AddTagCommand otherAddTagCommand = (AddTagCommand) other;
-        return index.equals(otherAddTagCommand.index)
-                && addTagDescriptor.equals(otherAddTagCommand.addTagDescriptor);
+        DeleteTagCommand otherDeleteTagCommand = (DeleteTagCommand) other;
+        return index.equals(otherDeleteTagCommand.index)
+                && deleteTagDescriptor.equals(otherDeleteTagCommand.deleteTagDescriptor);
     }
 
     @Override
@@ -137,11 +127,10 @@ public class AddTagCommand extends Command {
     }
 
     /**
-     * Stores the details to add the tag with. Added tag will be added to current
-     * list of tag.
+     * Stores the details to delete the tag with. Deleted tag will be deleted from
+     * current list of tag.
      */
-
-    public static class AddTagDescriptor {
+    public static class DeleteTagDescriptor {
         private Name name;
         private Phone phone;
         private Email email;
@@ -149,14 +138,18 @@ public class AddTagCommand extends Command {
         private Set<Tag> tags;
         private PreferredContact preferredContact;
 
-        public AddTagDescriptor() {
+        /**
+         * Creates an empty {@code DeleteTagDescriptor}.
+         */
+        public DeleteTagDescriptor() {
         }
 
         /**
          * Copy constructor.s
          * A defensive copy of {@code tags} is used internally.
+         * @param toCopy DeleteTagDescriptor to copy
          */
-        public AddTagDescriptor(AddTagDescriptor toCopy) {
+        public DeleteTagDescriptor(DeleteTagDescriptor toCopy) {
             setName(toCopy.name);
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
@@ -206,24 +199,6 @@ public class AddTagCommand extends Command {
         }
 
         /**
-         * Sets {@code preferredContact} to this object's {@code preferredContact}.
-         *
-         * @param preferredContact
-         */
-        public void setPreferredContact(PreferredContact preferredContact) {
-            this.preferredContact = preferredContact;
-        }
-
-        /**
-         * Returns an optional preferred contact method of a person
-         *
-         * @return
-         */
-        public Optional<PreferredContact> getPreferredContact() {
-            return Optional.ofNullable(preferredContact);
-        }
-
-        /**
          * Returns an unmodifiable tag set, which throws
          * {@code UnsupportedOperationException}
          * if modification is attempted.
@@ -233,6 +208,20 @@ public class AddTagCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+        /**
+         * Sets {@code preferredContact} to this object's {@code preferredContact}.
+         */
+        public void setPreferredContact(PreferredContact preferredContact) {
+            this.preferredContact = preferredContact;
+        }
+
+        /**
+         * Returns an optional preferred contact method of a person
+         */
+        public Optional<PreferredContact> getPreferredContact() {
+            return Optional.ofNullable(preferredContact);
+        }
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -240,16 +229,16 @@ public class AddTagCommand extends Command {
             }
 
             // instanceof handles nulls
-            if (!(other instanceof AddTagCommand.AddTagDescriptor)) {
+            if (!(other instanceof DeleteTagDescriptor)) {
                 return false;
             }
 
-            AddTagCommand.AddTagDescriptor otherAddTagDescriptor = (AddTagCommand.AddTagDescriptor) other;
-            return Objects.equals(name, otherAddTagDescriptor.name)
-                    && Objects.equals(phone, otherAddTagDescriptor.phone)
-                    && Objects.equals(email, otherAddTagDescriptor.email)
-                    && Objects.equals(address, otherAddTagDescriptor.address)
-                    && Objects.equals(tags, otherAddTagDescriptor.tags);
+            DeleteTagDescriptor otherDeleteTagDescriptor = (DeleteTagDescriptor) other;
+            return Objects.equals(name, otherDeleteTagDescriptor.name)
+                    && Objects.equals(phone, otherDeleteTagDescriptor.phone)
+                    && Objects.equals(email, otherDeleteTagDescriptor.email)
+                    && Objects.equals(address, otherDeleteTagDescriptor.address)
+                    && Objects.equals(tags, otherDeleteTagDescriptor.tags);
         }
 
         @Override

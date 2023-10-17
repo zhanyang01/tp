@@ -10,23 +10,20 @@ import java.util.Optional;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.AddTagCommand;
-import seedu.address.logic.commands.AddTagCommand.AddTagDescriptor;
+import seedu.address.logic.commands.DeleteTagCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new AddTagCommand object
  */
-
-public class AddTagCommandParser implements Parser<AddTagCommand> {
+public class DeleteTagCommandParser implements Parser<DeleteTagCommand> {
     /**
-     * Parses the given {@code String} of arguments in the context of the AddTagCommand
-     * and returns an AddTagCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the DeleteTagCommand
+     * and returns an DeleteTagCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-
-    public AddTagCommand parse(String args) throws ParseException {
+    public DeleteTagCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_TAG);
@@ -36,16 +33,16 @@ public class AddTagCommandParser implements Parser<AddTagCommand> {
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddTagCommand.MESSAGE_USAGE), pe);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteTagCommand.MESSAGE_USAGE), pe);
         }
 
 
-        AddTagDescriptor addTagDescriptor = new AddTagDescriptor();
+        DeleteTagCommand.DeleteTagDescriptor deleteTagDescriptor = new DeleteTagCommand.DeleteTagDescriptor();
 
-        parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(addTagDescriptor::setTags);
+        parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(deleteTagDescriptor::setTags);
 
 
-        return new AddTagCommand(index, addTagDescriptor);
+        return new DeleteTagCommand(index, deleteTagDescriptor);
     }
 
     /**
@@ -57,11 +54,12 @@ public class AddTagCommandParser implements Parser<AddTagCommand> {
         assert tags != null;
 
         if (tags.isEmpty()) {
-            throw new ParseException(AddTagCommand.MESSAGE_NOT_EDITED);
+            throw new ParseException(DeleteTagCommand.MESSAGE_NOT_EDITED);
         }
         Collection<String> tagSet = tags.size() == 1 && tags.contains("") ? Collections.emptySet() : tags;
         return Optional.of(ParserUtil.parseTags(tagSet));
     }
+
 
 
 
