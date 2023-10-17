@@ -95,8 +95,8 @@ public class AddTagCommand extends Command {
     /**
      * Checks for duplicates in the set
      * @param set set to be checked
-     * @return true if at least one field is duplicated
      * @param <T> this describes my type parameter
+     * @return true if at least one field is duplicated
      */
     public static <T> boolean hasDuplicates(Set<T> set) {
         Set<T> tempSet = new HashSet<>();

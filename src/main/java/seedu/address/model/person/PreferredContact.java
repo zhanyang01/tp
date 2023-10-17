@@ -10,7 +10,7 @@ public class PreferredContact {
 
     public final String value;
 
-    public final static String MESSAGE_CONSTRAINTS =
+    public static final String MESSAGE_CONSTRAINTS =
             "Preferred contact can take either phone or email, else it will be blank";
 
     /**
