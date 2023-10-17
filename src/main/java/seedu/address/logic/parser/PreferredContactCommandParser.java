@@ -39,6 +39,8 @@ public class PreferredContactCommandParser implements Parser<PreferredContactCom
             throw new ParseException(PreferredContactCommand.MESSAGE_PREFERREDCONTACT_NOT_EDITED);
         }
 
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PREFERRED_CONTACT);
+
         if (!argMultimap.getValue(PREFIX_PREFERRED_CONTACT).get().equals("email")
                 && !argMultimap.getValue(PREFIX_PREFERRED_CONTACT).get().equals("phone")
                 && !argMultimap.getValue(PREFIX_PREFERRED_CONTACT).get().equals("")) {
