@@ -8,10 +8,10 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class PreferredContact {
 
-    public final String value;
-
     public static final String MESSAGE_CONSTRAINTS =
             "Preferred contact can take either phone or email, else it will be blank";
+
+    public final String value;
 
     /**
      * Constructs a {@code Preferred Contact}.
