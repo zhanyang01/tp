@@ -2,7 +2,7 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PREFERRED_CONTACT;
+import static seedu.address.logic.parser.CliSyntax.*;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -38,6 +38,8 @@ public class PreferredContactCommandParser implements Parser<PreferredContactCom
         if (argMultimap.getValue(PREFIX_PREFERRED_CONTACT).isEmpty()) {
             throw new ParseException(PreferredContactCommand.MESSAGE_PREFERREDCONTACT_NOT_EDITED);
         }
+
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PREFERRED_CONTACT);
 
         if (!argMultimap.getValue(PREFIX_PREFERRED_CONTACT).get().equals("email")
                 && !argMultimap.getValue(PREFIX_PREFERRED_CONTACT).get().equals("phone")
