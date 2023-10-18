@@ -8,7 +8,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.FilterContainsKeywordsPredicate;
 
-
+/**
+ * Filters the list of persons to show only persons with the target tag.
+ */
 public class FilterCommand extends Command {
 
     public static final String COMMAND_WORD = "filter";
@@ -27,7 +29,10 @@ public class FilterCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         model.updateFilteredPersonList(predicate);
-        return new CommandResult(String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
+        return new CommandResult(
+                String.format(
+                        Messages.MESSAGE_PERSONS_LISTED_OVERVIEW,
+                        model.getFilteredPersonList().size()));
     }
 
     @Override

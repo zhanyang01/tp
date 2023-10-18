@@ -6,9 +6,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.FileCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-import java.util.Collection;
-
-
 /**
  * Parses input arguments and creates a new FileCommand object
  */

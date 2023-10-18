@@ -32,7 +32,9 @@ public class Tag {
         return test.matches(VALIDATION_REGEX);
     }
 
-    public String getTagName() {return this.tagName;}
+    public String getTagName() {
+        return this.tagName;
+    }
 
     @Override
     public boolean equals(Object other) {
