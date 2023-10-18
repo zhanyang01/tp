@@ -7,10 +7,7 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.FilterContainsKeywordsPredicate;
-import seedu.address.model.tag.Tag;
 
-import java.util.List;
-import java.util.Set;
 
 public class FilterCommand extends Command {
 
