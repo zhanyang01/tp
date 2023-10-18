@@ -24,7 +24,6 @@ public class Phone {
     public Phone(String phone) {
         requireNonNull(phone);
         checkArgument(isValidPhone(phone), MESSAGE_CONSTRAINTS);
-        System.out.println(phone);
         value = phone;
     }
 
