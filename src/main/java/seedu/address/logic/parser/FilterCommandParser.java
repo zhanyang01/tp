@@ -28,6 +28,7 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
         }
+
         String[] tagKeywords = trimmedArgs.split(String.valueOf(PREFIX_TAG));
         return new FilterCommand(new FilterContainsKeywordsPredicate(Arrays.asList(tagKeywords)));
     }
