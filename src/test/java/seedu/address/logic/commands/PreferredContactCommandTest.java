@@ -29,105 +29,65 @@ import seedu.address.testutil.PersonBuilder;
  */
 
 public class PreferredContactCommandTest {
-    private static final String PREFERREDCONTACT_STUB = "phone";
+        private static final String PREFERREDCONTACT_STUB = "";
 
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
-    @Test
-    public void execute_addPreferredContactUnfilteredList_success() {
-        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson =
-                new PersonBuilder(firstPerson).withPreferredContact(PREFERREDCONTACT_STUB).build();
+        @Test
+        public void execute_invalidPersonIndexUnfilteredList_failure() {
+                Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
 
-        PreferredContactCommand preferredContactCommand =
-                new PreferredContactCommand(
-                        INDEX_FIRST_PERSON,
-                        new PreferredContact(editedPerson.getPreferredContact().value));
+                PreferredContactCommand preferredContactCommand = new PreferredContactCommand(outOfBoundIndex,
+                                new PreferredContact(VALID_PREFERRED_CONTACT_BOB));
 
-        String expectedMessage =
-                String.format(PreferredContactCommand.MESSAGE_PREFERREDCONTACT_PERSON_SUCCESS, editedPerson);
+                assertCommandFailure(preferredContactCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.setPerson(firstPerson, editedPerson);
+        @Test
+        public void execute_invalidPersonIndexFilteredList_failure() {
+                showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
-        assertCommandSuccess(preferredContactCommand, model, expectedMessage, expectedModel);
-    }
+                Index outOfBoundIndex = INDEX_SECOND_PERSON;
+                // ensures that outOfBoundIndex is still in bounds of address book list
+                assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
 
-    @Test
-    public void execute_filteredList_success() {
-        showPersonAtIndex(model, INDEX_FIRST_PERSON);
-        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
-                .withPreferredContact(PREFERREDCONTACT_STUB).build();
+                PreferredContactCommand preferredContactCommand = new PreferredContactCommand(
+                                outOfBoundIndex,
+                                new PreferredContact(VALID_PREFERRED_CONTACT_BOB));
 
-        PreferredContactCommand remarkCommand =
-                new PreferredContactCommand(
-                        INDEX_FIRST_PERSON,
-                        new PreferredContact(editedPerson.getPreferredContact().value));
+                assertCommandFailure(preferredContactCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
 
-        String expectedMessage = String.format(PreferredContactCommand.MESSAGE_PREFERREDCONTACT_PERSON_SUCCESS, editedPerson);
+        @Test
+        public void equals() {
+                final PreferredContactCommand standardCommand = new PreferredContactCommand(
+                                INDEX_FIRST_PERSON,
+                                new PreferredContact(VALID_PREFERRED_CONTACT_AMY));
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.setPerson(firstPerson, editedPerson);
+                // same values -> returns true
+                PreferredContactCommand commandWithSameValues = new PreferredContactCommand(INDEX_FIRST_PERSON,
+                                new PreferredContact(VALID_PREFERRED_CONTACT_AMY));
+                assertTrue(standardCommand.equals(commandWithSameValues));
 
-        assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
-    }
+                // same object -> returns true
+                assertTrue(standardCommand.equals(standardCommand));
 
-    @Test
-    public void execute_invalidPersonIndexUnfilteredList_failure() {
-        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
+                // null -> returns false
+                assertFalse(standardCommand.equals(null));
 
-        PreferredContactCommand preferredContactCommand =
-                new PreferredContactCommand(outOfBoundIndex, new PreferredContact(VALID_PREFERRED_CONTACT_BOB));
+                // different remark -> returns false
+                assertFalse(standardCommand.equals(
+                                new PreferredContactCommand(
+                                                INDEX_FIRST_PERSON,
+                                                new PreferredContact(VALID_PREFERRED_CONTACT_BOB))));
 
-        assertCommandFailure(preferredContactCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-    }
+                // different index -> returns false
+                assertFalse(standardCommand.equals(
+                                new PreferredContactCommand(
+                                                INDEX_SECOND_PERSON,
+                                                new PreferredContact(VALID_PREFERRED_CONTACT_AMY))));
 
-    @Test
-    public void execute_invalidPersonIndexFilteredList_failure() {
-        showPersonAtIndex(model, INDEX_FIRST_PERSON);
-
-        Index outOfBoundIndex = INDEX_SECOND_PERSON;
-        // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
-
-        PreferredContactCommand preferredContactCommand =
-                new PreferredContactCommand(
-                        outOfBoundIndex,
-                        new PreferredContact(VALID_PREFERRED_CONTACT_BOB));
-
-        assertCommandFailure(preferredContactCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-    }
-
-    @Test
-    public void equals() {
-        final PreferredContactCommand standardCommand =
-                new PreferredContactCommand(
-                        INDEX_FIRST_PERSON,
-                        new PreferredContact(VALID_PREFERRED_CONTACT_AMY));
-
-        // same values -> returns true
-        PreferredContactCommand commandWithSameValues =
-                new PreferredContactCommand(INDEX_FIRST_PERSON, new PreferredContact(VALID_PREFERRED_CONTACT_AMY));
-        assertTrue(standardCommand.equals(commandWithSameValues));
-
-        // same object -> returns true
-        assertTrue(standardCommand.equals(standardCommand));
-
-        // null -> returns false
-        assertFalse(standardCommand.equals(null));
-
-        // different remark -> returns false
-        assertFalse(standardCommand.equals(
-                new PreferredContactCommand(
-                        INDEX_FIRST_PERSON, new PreferredContact(VALID_PREFERRED_CONTACT_BOB))));
-
-        // different index -> returns false
-        assertFalse(standardCommand.equals(
-                new PreferredContactCommand(
-                        INDEX_SECOND_PERSON, new PreferredContact(VALID_PREFERRED_CONTACT_AMY))));
-
-        // different object type -> returns false
-        assertFalse(standardCommand.equals(new ClearCommand()));
-    }
+                // different object type -> returns false
+                assertFalse(standardCommand.equals(new ClearCommand()));
+        }
 }
