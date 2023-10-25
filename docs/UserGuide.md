@@ -40,6 +40,7 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
    - `clear` : Deletes all contacts.
 
    - `exit` : Exits the app.
+
    - `file 1`: Creates a folder for the first person in the address book with the person's information
 
    - `preferredContact 1 pc/phone` : Highlight to show that that is the main form of contact that the client in the first index prefers.
@@ -157,6 +158,24 @@ Clears all entries from the address book.
 
 Format: `clear`
 
+### Adding a client preferred contact: `preferredContact`
+
+Highlight the specific contact details of the particular client from the application.
+
+Format 1: `preferredContact <INDEX> pc/PREFERREDCONTACT`
+
+- **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
+- **preferred contact method** either Phone number or Email currently
+- Name: Contact name of the person that is saved in the app.
+- Preferred contact method:
+    - Phone number
+    - Email
+
+Examples:
+
+- `preferredContact 1 pc/phone number` will highlight the phone number of the first person in the current list shown
+
+
 ### Exiting the program : `exit`
 
 Exits the program.
@@ -213,27 +232,6 @@ Examples:
 - `deleteTag friend 1` will remove the tag 'friend' from the first client on the current list.
 - `deleteTag friend/North JohnDoe` will remove the tags 'friend', 'North' from the client identified by John Doe.
 
-### Highlighting contact of a client: `highlight`
-
-Highlight the specific contact details of the particular client from the application.
-
-Format 1: `highlight <INDEX>/<preferred contact method>`
-
-Format 2: `highlight <client identifier>/<preferred contact method>`
-
-- **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
-- **client identifier** must be one of the unique identifier of the clients in the entire client list
-- **preferred contact method** either Phone number or Email currently
-- Name: Contact name of the person that is saved in the app.
-- Preferred contact method(expandable as project progresses):
-  - Phone number
-  - Email
-
-Examples:
-
-- `highlight 1/phone number` will highlight the phone number of the first person in the current list shown
-- `highlight John Doe/phone number` will highlight John Doe phone number
-
 ### Filtering for clients based on tags: `filter`
 
 Filters and displays all clients that correspond to a specific combination/query of tags
@@ -262,6 +260,16 @@ Examples:
 - `file 1` will open up a folder that is named after the first client currently on the list
 - `file John Doe` will open up the folder that is used to store John Doe's documents
 
+
+### Grouping client preferred meeting locations: `groupLocation`
+
+Groups clients based on their preferred meeting locations
+
+Format: `groupLocation` west/north/south/east/central
+
+Examples:
+
+- `groupLocation west` will group all clients that prefer to meet in the west region and returns a list of clients that prefer to meet in the west region
 ---
 
 ## FAQ
@@ -280,7 +288,7 @@ Examples:
 ## Command summary
 
 | Action     | Format, Examples                                                                                                                                                      |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ---------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
 | **Clear**  | `clear`                                                                                                                                                               |
 | **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   |
@@ -288,3 +296,4 @@ Examples:
 | **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            |
 | **List**   | `list`                                                                                                                                                                |
 | **Help**   | `help`                                                                                                                                                                |
+| **Preferred Contact**   | `preferredContact INDEX pc/PREFERREDCONTACT` eg: preferredContact 1 pc/phone                                                                                          |
