@@ -27,11 +27,15 @@
    1. [Product Scope](#product-scope)
    2. [User Stories](#user-stories)
    3. [Use Cases](#use-cases)
-      1. [Adding more tags to clients records](#use-case-1---adding-more-tags-to-clients-records)
+      1. Adding more tags to client records
       2. Quick access of contact detail of clients
       3. Adding new clients information
       4. Filtering client information using tags
       5. Storing client documents neatly in a folder
+      6. Grouping clients based on nearest MRT
+   4. [Non-Functional Requirements](#non-functional-requirements)
+   5. [Glossary](#glossary)
+6. [Appendix-Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
 
 ## **Setting up, getting started**
 
@@ -53,7 +57,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/AY2324S1-CS2103-W14-1/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2324S1-CS2103-W14-1/tp/blob/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
 
 - At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 - At shut down, it shuts down the other components and invokes cleanup methods where necessary.
@@ -88,13 +92,13 @@ Return to [Table Of Contents](#table-of-contents)
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2324S1-CS2103-W14-1/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2324S1-CS2103-W14-1/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2324S1-CS2103-W14-1/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -107,7 +111,7 @@ Return to [Table Of Contents](#table-of-contents)
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2324S1-CS2103-W14-1/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -142,7 +146,7 @@ Return to [Table Of Contents](#table-of-contents)
 
 ### Model component
 
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2324S1-CS2103-W14-1/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
@@ -165,7 +169,7 @@ Return to [Table Of Contents](#table-of-contents)
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2324S1-CS2103-W14-1/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
@@ -189,6 +193,37 @@ Return to [Table Of Contents](#table-of-contents)
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
+
+### PreferredContact feature
+
+#### Current Implementation
+
+Insurahub allow users to add/edit the preferred contact method of the client
+using their index relative to the current list shown in Insurahub
+
+There is only 2 preferred contact methods
+
+1. phone number
+2. email
+
+Sequence for adding the preferred contact details of the client
+
+1. The user launches the application and wants to add a preferred contact method for a client, `Alex Yeoh`, who is already stored in the application.
+2. The user tries to add a preferred contact method using `preferredContact 1`.
+3. Insurahub displays a error message stating `"At least one field must be provided"`.
+4. The user then tries to add a preferred contact method using `preferredContact 1 pc/phone`.
+5. `PreferredContactCommandParser` and `AddressBookParser` will check if the command format provided is valid before `PreferredContactCommand#execute()` is called.
+6. Insurahub will check if the user exists in the `UniquePersonList`.
+7. If the user exist, the preferred contact method of the client will be updated.
+8. The result of the execution of the command will then be used to create a `CommandResult` object.
+9. This object will then be passed to `Logic`.
+10. The execution will then be over as the preferred contact method will be highlighted and the adding preferred contact command successful message will then be displayed.
+
+Activity diagram for adding preferred contact
+<puml src="diagrams/PreferredContactActivityDiagram.puml" width="450" />
+
+Sequence diagram for adding preferred contact
+<puml src="diagrams/PreferredContactSequenceDiagram.puml" width="450" />
 
 ### \[Proposed\] Undo/redo feature
 
@@ -359,93 +394,100 @@ Return to [Table Of Contents](#table-of-contents)
 
 ### Use cases
 
-If not explicitly mentioned, the actor will be a Financial Advisor as the User and InsuraHub as the System.
+If not explicitly mentioned, the actor will be a Financial Advisor and InsuraHub as the System.
 
-Use Case 1 - Adding more tags to clients records
-Precondition: User already open up the application  
+Use Case 1 - Adding more tags to client records.  
+Precondition: User knows the client index relative to the list and the client is added into the list of clients
+
 MSS:
 
-1. User keys in `addTag` and the corresponding tags for the particular client identifier or index
+1. User keys in all tags that is tied to the particular client
 2. Systems displays the tags that have been added to the particular client
    Use case ends
 
-** Extensions: **
-1a. User keys in invalid client identifier
-1a1. System displays an error message indicating that the process of adding tags have failed
+**Extensions:**
+
+1a. User did not add a tag  
+1a1. System displays an error message indicating that user have to key in at least one tag  
 Use case ends
 
-1b. User keys in invalid index
-1b1. System displays an error message indicating that the process of adding tags have failed
-Use case ends
+Use Case 2 - Deleting tags from client records.  
+Precondition: User knows the client index relative to the list and the client is added into the list of clients, clients must also have the tag/tags listed in one of their tags.
 
-Use Case 2 - Quick access of contact detail of clients  
-Precondition: User opens up the application  
 MSS:
 
-1. User keys in `highlight` followed by index or client identifier and the client preferred form of contact
-2. System updates with the preferred form of contact highlighted
+1. User keys in tags that he/she want to be removed from the client tags
+2. Systems returns a new client without the tags that the user wants removed.  
    Use case ends
 
-** Extensions **
-1a. User keys in invalid client identifier
-1a1. System displays an error message indicating that the process of selecting preferred form of contact have failed
+**Extensions:**
+
+1a. User keys in a tag that is not in the tags that the client originally have.  
+1a1. System returns an error message stating that the tag is not present and that he/she needs to give a tag that is in the client list of tags.  
+Use case ends.
+
+1b. User did not provide any tag to be removed  
+1b1. System returns an error message stating that one tag must be provided.  
 Use case ends
 
-1b. User keys in invalid index
-1b1. System displays an error message indicating that the process of selecting preferred form of contact have failed
-Use case ends
+Use Case 3 - Adding client preferred form of contact  
+Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
-1c. User keys in multiple forms of contacts
-1c1. System displays an error message to tell the user to select only one form of preferred contact and that the
-process of selecting preferred form of contact have failed
-Use case ends
-
-Use Case 3 - Adding new clients information  
-Precondition: User opens up the application  
 MSS:
 
-1. User keys in `addNewClient` followed by client details
-2. System updates with new client at the bottom of the list
+1. User adds in the clients preferred form of contact.
+2. System updates with the preferred form of contact.
    Use case ends
 
-** Extensions **
-1a. User keys in wrong input format
-1a1. System displays an error message indicating the supposed format to be changed
+**Extensions**
+
+1a. User adds in multiple forms of contacts  
+1a1. System displays an error message to tell the user to select only one form of preferred contact and that the
+process of selecting preferred form of contact have failed  
 Use case ends
 
-1b. User keys in wrong format for details
-1b1. System displays an error message indicating that a particular detail is in the wrong format
+1b. User adds in a invalid preferred form of contact.  
+1b1. System displays an error message indicating that user can only put in a preferred form of contact with a valid form of contact.  
 Use case ends
+
+1c. User did not add in any preferred form of contact  
+1c1. System displays an error message indicating that the user have to put in at least one form of contact.  
+User case ends
 
 Use Case 4 - Filtering client information using tags  
-Precondition: User opens up the application  
 MSS:
 
-1. User keys in `filter` followed by tags
-2. System updates with a list of clients that fulfills the tags to be filtered
+1. User filters using tags.
+2. System updates with a list of clients that fulfills the tags to be filtered.  
    Use case ends
 
-** Extensions **
-1a. User keys in invalid tags
-1a1. System displays an error message to remind user to check their tags that is keyed in
-Use case ends
-
 Use Case 5 - Storing client documents neatly in a folder  
-Precondition: User opens up the application  
+Precondition: User knows the client index relative to the list and the client is added into the list of clients
+
 MSS:
 
-1. User keys in `file` followed by index or client identifier
+1. User keys in `file` followed by index
 2. System opens up the folder of the particular client with the relevant files inside the folder
    Use case ends
 
-** Extensions **
-1a. User keys in invalid client identifier
-1a1. System displays an error message indicating that the process of adding tags have failed
+**Extensions**
+
+1a. User keys in invalid index  
+1a1. System displays an error message indicating that the process of creating a file for the user is stopped.  
 Use case ends
 
-1b. User keys in invalid index
-1b1. System displays an error message indicating that the process of adding tags have failed
-Use case ends
+Use Case 6 - Grouping clients based on the nearest MRT station from their residence to a region
+
+MSS:
+
+1. User provides a region to be filtered
+2. System returns a list of clients who live in a particular region.  
+   Use case ends.
+
+**Extensions:**
+
+1a. User keys in an invalid region  
+1a1. System returns an error message stating to put in a valid region to be filtered.
 
 ### Example Use Case
 
@@ -488,6 +530,8 @@ Return to [Table Of Contents](#table-of-contents)
 _{More to be added}_
 
 _{More to be added}_
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Glossary
 
