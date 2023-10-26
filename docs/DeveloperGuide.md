@@ -219,7 +219,11 @@ Sequence for adding the preferred contact details of the client
 9. This object will then be passed to `Logic`.
 10. The execution will then be over as the preferred contact method will be highlighted and the adding preferred contact command successful message will then be displayed.
 
+Activity diagram for adding preferred contact
 <puml src="diagrams/PreferredContactActivityDiagram.puml" width="450" />
+
+Sequence diagram for adding preferred contact
+<puml src="diagrams/PreferredContactSequenceDiagram.puml" width="450" />
 
 ### \[Proposed\] Undo/redo feature
 
