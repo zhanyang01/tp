@@ -194,6 +194,31 @@ Return to [Table Of Contents](#table-of-contents)
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### PreferredContact feature
+
+#### Current Implementation
+
+Insurahub allow users to add/edit the preferred contact method of the client
+using their index relative to the current list shown in Insurahub
+
+There is only 2 preferred contact methods
+
+1. phone number
+2. email
+
+Sequence for adding the preferred contact details of the client
+
+1. The user launches the application and wants to add a preferred contact method for a client, `Alex Yeoh`, who is already stored in the application.
+2. The user tries to add a preferred contact method using `preferredContact 1`.
+3. Insurahub displays a error message stating `"At least one field must be provided"`.
+4. The user then tries to add a preferred contact method using `preferredContact 1 pc/phone`.
+5. `PreferredContactCommandParser` and `AddressBookParser` will check if the command format provided is valid before `PreferredContactCommand#execute()` is called.
+6. Insurahub will check if the user exists in the `UniquePersonList`.
+7. If the user exist, the preferred contact method of the client will be updated.
+8. The result of the execution of the command will then be used to create a `CommandResult` object.
+9. This object will then be passed to `Logic`.
+10. The execution will then be over as the preferred contact method will be highlighted and the adding preferred contact command successful message will then be displayed.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
