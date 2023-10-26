@@ -284,10 +284,10 @@ _{more aspects and alternatives to be added}_
 _{Explain here how the data archiving feature will be implemented}_
 ### \[Proposed\] Undo/redo feature
 
-### \[Proposed\] Filtering by Tag feature
+### Filtering by Tag feature
 
-#### Proposed Implementation
-The proposed tag filtering mechanism is facilitated by `FilterCommandParser`, `FilterCommand`, and `FilterTagPredicate`. 
+#### Implementation
+The proposed tag filtering mechanism is facilitated by `FilterCommandParser`, `FilterCommand`, and `FilterTagPredicate`.
 The `FilterContainsKeywordsPredicate` implements the `Predicate<Person>`class which implements the test operation:
 
 - `test(Person)` - Checks through the `Set<Tag>` of the Person passed to the method for the target tag being filtered.
@@ -299,8 +299,21 @@ called with the `FilterContainsKeywordsPredicate` object as its parameter.
 Given below is an example usage scenario and how the tag filtering mechanism behaves at each step.
 
 Step 1.
+The user launches the application. The current `filteredPersonList` is simply a list of all Person objects
+in the `AddressBook`.
 
+Step 2. The user executes `filter t/Friend` command to filter for all Person objects in the address book
+with the tag `Friend'`. The `filter` command calls the `ParseCommand` method of the `AddressBookParser` which
+returns a `FilterCommandParser` object.
 
+Step 3. The `FilterCommandParser` object then calls its `parse` method, returning a `FilterCommand` object
+which is executed by the `LogicManager`, calling the `updateFilteredPersonList` method of the `Model`.
+
+Step 4. The update list of filtered `Person` objects are then displayed on the ui.
+
+The following sequence diagram shows how the filter tag operation works:
+
+<puml src="diagrams/Filter Tag.puml" width="250" />
 
 ---
 
