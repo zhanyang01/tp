@@ -282,6 +282,25 @@ _{more aspects and alternatives to be added}_
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
+### \[Proposed\] Undo/redo feature
+
+### \[Proposed\] Filtering by Tag feature
+
+#### Proposed Implementation
+The proposed tag filtering mechanism is facilitated by `FilterCommandParser`, `FilterCommand`, and `FilterTagPredicate`. 
+The `FilterContainsKeywordsPredicate` implements the `Predicate<Person>`class which implements the test operation:
+
+- `test(Person)` - Checks through the `Set<Tag>` of the Person passed to the method for the target tag being filtered.
+
+The `FilterCommandParser` created by the `AddressBookParser` parses any `filter` command to create
+a `FilterCommand` object which calls its `execute` method and the `updateFilteredPersonsList` method of the Model is
+called with the `FilterContainsKeywordsPredicate` object as its parameter.
+
+Given below is an example usage scenario and how the tag filtering mechanism behaves at each step.
+
+Step 1.
+
+
 
 ---
 
