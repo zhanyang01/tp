@@ -16,7 +16,7 @@ public class PasswordManagerTest {
     }
 
     @Test
-    public void SetAndCheck() throws Exception {
+    public void setAndCheck() throws Exception {
         passwordManager.setPassword("samplePassword");
         assert(passwordManager.check("samplePassword"));
     }
