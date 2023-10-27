@@ -23,7 +23,7 @@ public class ChangePasswordCommand extends Command{
 
     public static final String CHANGE_PASSWORD_SUCCESS = "Password has been change to: ";
 
-    public static final String CHANGE_PASSWORD_FAILURE = "The old password given is wrong: ";
+    public static final String CHANGE_PASSWORD_FAILURE = "The old password entered is wrong: ";
 
     private final String oldPassword;
     private final String newPassword;
