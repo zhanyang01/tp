@@ -225,23 +225,38 @@ Activity diagram for adding preferred contact
 Sequence diagram for adding preferred contact
 <puml src="diagrams/PreferredContactSequenceDiagram.puml" width="450" />
 
-### DeleteTag feature
+### Filtering by Tag feature
 
-#### Current Implementation
+#### Implementation
+The proposed tag filtering mechanism is facilitated by `FilterCommandParser`, `FilterCommand`, and `FilterTagPredicate`.
+The `FilterContainsKeywordsPredicate` implements the `Predicate<Person>`class which implements the test operation:
 
-The DeleteTag feature allows users to delete tags under a certain contact by indexing the contact
+- `test(Person)` - Checks through the `Set<Tag>` of the Person passed to the method for the target tag being filtered.
 
-Given below is an example usage scenario and how the DeleteTag mechanism behaves at each step
+The `FilterCommandParser` created by the `AddressBookParser` parses any `filter` command to create
+a `FilterCommand` object which calls its `execute` method and the `updateFilteredPersonsList` method of the Model is
+called with the `FilterContainsKeywordsPredicate` object as its parameter.
 
-1. The user launches the application and wants to delete a tag for `Alex Yeoh` who is the first person in the address book
-2. The user tries to delete tag with command `DeleteTag 1 t/friends`
-3. Insurahub displays an error message `Tags provided do not exist. Please provide an existing tag.`
-4. Realising that the tag he wants to delete is `friend`, the user tries to type `DeleteTag 1 t/friend` instead
-5. The result of the execution of the command will then be used to create a `CommandResult` object
-6. This will then be passed to `Logic`
-7. Upon confirmation that the tag exist in the first user of the address book, in this case `Alex Yeoh`, the tag is deleted from the UI of `Alex Yeoh` contact
-8. A successful message is returned, in this case `Deleted tags successfully for person Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Tags: `
+Given below is an example usage scenario and how the tag filtering mechanism behaves at each step.
 
+Step 1.
+The user launches the application. The current `filteredPersonList` is simply a list of all Person objects
+in the `AddressBook`.
+
+Step 2. The user executes `filter t/Friend` command to filter for all Person objects in the address book
+with the tag `Friend'`. The `filter` command calls the `ParseCommand` method of the `AddressBookParser` which
+returns a `FilterCommandParser` object.
+
+Step 3. The `FilterCommandParser` object then calls its `parse` method, returning a `FilterCommand` object
+which is executed by the `LogicManager`, calling the `updateFilteredPersonList` method of the `Model`.
+
+Step 4. The update list of filtered `Person` objects are then displayed on the ui.
+
+The following sequence diagram shows how the filter tag operation works:
+
+<puml src="diagrams/Filter Tag.puml" width="250" />
+ 
+---
 
 ### \[Proposed\] Undo/redo feature
 
@@ -335,6 +350,8 @@ _{more aspects and alternatives to be added}_
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
+### \[Proposed\] Undo/redo feature
+
 
 ---
 
