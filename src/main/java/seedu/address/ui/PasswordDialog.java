@@ -1,11 +1,12 @@
 package seedu.address.ui;
 
+import javafx.application.Platform;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import javafx.scene.Node;
-import javafx.application.Platform;
-import seedu.address.storage.PasswordManager;
 import javafx.event.ActionEvent;
+import seedu.address.storage.PasswordManager;
+
 
 /**
  * This class represents a dialog that appears when handling setting or entering of password.
@@ -58,7 +59,7 @@ public class PasswordDialog extends Dialog<String> {
         this.setHeaderText("Please set your password");
         PasswordField passwordField = new PasswordField();
         ButtonType okButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
-        okButtonNode(passwordField,okButtonType);
+        okButtonNode(passwordField, okButtonType);
         okButton.addEventFilter(ActionEvent.ACTION, event -> {
             String enteredPassword = passwordField.getText();
             passwordManager.setPassword(enteredPassword);
@@ -75,7 +76,7 @@ public class PasswordDialog extends Dialog<String> {
         this.setHeaderText("Please enter the password");
         PasswordField passwordField = new PasswordField();
         ButtonType okButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
-        okButtonNode(passwordField,okButtonType);
+        okButtonNode(passwordField, okButtonType);
         incorrectPasswordLabel = new Label("Wrong password, please try again.");
         incorrectPasswordLabel.setStyle("-fx-text-fill: red;");
         incorrectPasswordLabel.setVisible(false);

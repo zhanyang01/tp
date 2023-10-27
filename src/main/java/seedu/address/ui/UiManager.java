@@ -3,7 +3,6 @@ package seedu.address.ui;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -61,7 +60,7 @@ public class UiManager implements Ui {
             }
         }
         password = passwordManager.getPassword();
-        if (!password.isEmpty()){
+        if (!password.isEmpty()) {
             try {
                 // Create and show the password dialog
                 mainWindow = new MainWindow(primaryStage, logic);
@@ -71,7 +70,8 @@ public class UiManager implements Ui {
                 Optional<String> result;
                 result = passwordDialog.showAndWait();
                 if (result.isPresent() && !passwordDialog.isPasswordIncorrect()) {
-                    mainWindow.show();mainWindow.fillInnerParts();
+                    mainWindow.show();
+                    mainWindow.fillInnerParts();
                 } else {
                     passwordDialog.resetPasswordIncorrectState();
                     passwordDialog.showIncorrectPasswordMessage();

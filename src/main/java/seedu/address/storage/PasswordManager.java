@@ -12,11 +12,12 @@ import java.util.Objects;
  */
 public class PasswordManager {
 
-    private String password ;
+    private String password;
     private final String passwordFilePath; // The path to the file where the password is stored
 
     /**
-     * Constructs a PasswordManager and fetch the password from a file called encoded.txt, file will be created if it does not exist.
+     * Constructs a PasswordManager and fetch the password from a file called encoded.txt,
+     * file will be created if it does not exist.
      */
     public PasswordManager() {
         this.passwordFilePath = "./encoded.txt";
@@ -37,7 +38,7 @@ public class PasswordManager {
         }
 
         try (BufferedReader reader = new BufferedReader(new FileReader(passwordFilePath))) {
-            String string =  reader.readLine();
+            String string = reader.readLine();
             return Objects.requireNonNullElse(string, "");
         } catch (IOException e) {
             // Handle file reading error
@@ -52,7 +53,7 @@ public class PasswordManager {
      */
     private void createPasswordFile(File file) {
         try {
-            file.createNewFile();// File created successfully
+            file.createNewFile();
         } catch (IOException e) {
             System.out.println(e.toString());
         }
@@ -83,7 +84,7 @@ public class PasswordManager {
      * @param newPassword The new password to be set.
      */
     public void setPassword(String newPassword) {
-        if (newPassword==null) {
+        if (newPassword == null) {
             newPassword = "";
         }
         password = newPassword;
