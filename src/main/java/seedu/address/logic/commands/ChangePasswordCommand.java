@@ -5,10 +5,13 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.storage.PasswordManager;
 
-import static seedu.address.logic.parser.CliSyntax.*;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OLD_PASSWORD;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_PASSWORD;
 
-public class ChangePasswordCommand extends Command{
+/**
+ * Change the password used to enter InsuraHub
+ */
+public class ChangePasswordCommand extends Command {
 
     public static final String COMMAND_WORD = "changePassword";
 
@@ -29,7 +32,12 @@ public class ChangePasswordCommand extends Command{
     private final String newPassword;
     private static final PasswordManager passwordManager = new PasswordManager();
 
-
+    /**
+     * Change the password used to enter InsuraHub
+     *
+     * @param oldPassword used to enter InsuraHub
+     * @param newPassword used to enter InsuraHub
+     */
     public ChangePasswordCommand(String oldPassword, String newPassword) {
         this.oldPassword = oldPassword;
         this.newPassword = newPassword;
