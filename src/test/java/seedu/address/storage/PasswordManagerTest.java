@@ -7,29 +7,44 @@ import org.junit.jupiter.api.Test;
 public class PasswordManagerTest {
 
     private PasswordManager passwordManager;
-    private String originalpassword;
+    private String originalPassword;
 
     @BeforeEach
     public void setUp() {
         passwordManager = new PasswordManager();
-        originalpassword = passwordManager.getPassword();
+        originalPassword = passwordManager.getPassword();
     }
 
     @Test
-    public void testSetAndRead() throws Exception {
+    public void SetAndCheck() throws Exception {
         passwordManager.setPassword("samplePassword");
         assert(passwordManager.check("samplePassword"));
     }
 
     @Test
-    public void testCreateFolder() throws Exception {
-        passwordManager.setPassword("samplePassword");
-        assert(passwordManager.check("samplePassword"));
+    public void GetAndCheck() throws Exception {
+        String password = passwordManager.getPassword();
+        assert(passwordManager.check(password));
     }
+
+    @Test
+    public void SetNullAndCheck() throws Exception {
+        String nullstring = null;
+        passwordManager.setPassword(nullstring);
+        assert(passwordManager.check(""));
+    }
+
+    @Test
+    public void SetNullAndGet() throws Exception {
+        String nullstring = null;
+        passwordManager.setPassword(nullstring);
+        assert(passwordManager.getPassword().isEmpty());
+    }
+
 
     @AfterEach
     public void setOriginalPasswordBack() {
-        passwordManager.setPassword(originalpassword);
+        passwordManager.setPassword(originalPassword);
     }
 
 }
