@@ -185,7 +185,6 @@ Return to [Table Of Contents](#table-of-contents)
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
 
-=======
 Return to [Table Of Contents](#table-of-contents)
 
 ---
@@ -225,7 +224,6 @@ Activity diagram for adding preferred contact
 Sequence diagram for adding preferred contact
 <puml src="diagrams/PreferredContactSequenceDiagram.puml" width="450" />
 
-<<<<<<<<< Temporary merge branch 1
 ### Filtering by Tag feature
 
 #### Implementation
@@ -258,7 +256,6 @@ The following sequence diagram shows how the filter tag operation works:
 <puml src="diagrams/Filter Tag.puml" width="250" />
 
 
-=========
 ### DeleteTag feature
 
 #### Current Implementation
@@ -276,7 +273,25 @@ Given below is an example usage scenario and how the DeleteTag mechanism behaves
 7. Upon confirmation that the tag exist in the first user of the address book, in this case `Alex Yeoh`, the tag is deleted from the UI of `Alex Yeoh` contact
 8. A successful message is returned, in this case `Deleted tags successfully for person Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Tags: `
 
->>>>>>>>> Temporary merge branch 2
+### file feature
+
+#### Current Implementation
+
+Insurahub allow users to open a folder unique to each client to store their files
+using their index relative to the current list shown in Insurahub
+
+these folders are stored in a main folder called ClientFiles in the main directory of InsuraHub
+
+Sequence for creating/opening the folder for each client
+
+1. The user launches the application and wants to file certain documents for a client, `Alex Yeoh`, who is already stored in the application shown as the first person on InsuraHub.
+2. The user tries to open a folder for the client with command `file 1`
+3. InsuraHub will fetch the 1st client currently shown, if the index 1 is not out of bound in the list.
+4. If the index is valid, the `Name` of the client and the `hashCode` will be concatenated to get a unique folder name for the client.
+5. If the folder with the unique folder name does not exist then the folder will be created and placed in the ClientFiles folder.
+6. The folder in the ClientFiles folder with the unique folder name will be opened.  
+7. The execution will then be over as the user can now drop files for the client into this opened folder, file command successful message will be displayed.
+
 
 ### \[Proposed\] Undo/redo feature
 
