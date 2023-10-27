@@ -1,10 +1,14 @@
 package seedu.address.ui;
 
 import javafx.application.Platform;
-import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.layout.VBox;
 import seedu.address.storage.PasswordManager;
 
 
@@ -17,7 +21,8 @@ public class PasswordDialog extends Dialog<String> {
     private Node okButton;
     private VBox vbox;
     /**
-     * Constructs a PasswordDialog object and either displays the sets or enters a password dialog based on the provided PasswordManager.
+     * Constructs a PasswordDialog object and either displays the sets or enters a password dialog
+     * based on the provided PasswordManager whether there exist a current password.
      *
      * @param passwordManager The PasswordManager used for setting or verifying the password.
      */
