@@ -73,7 +73,7 @@ public class Policy {
 
     @Override
     public String toString() {
-        return  "Policy name: " + name + "\n"
+        return "Policy name: " + name + "\n"
                 + "Policy description: " + description + '\n'
                 + "Value: " + policyValue + '\n'
                 + "Start date: " + startDate + '\n'
