@@ -225,29 +225,7 @@ Activity diagram for adding preferred contact
 Sequence diagram for adding preferred contact
 <puml src="diagrams/PreferredContactSequenceDiagram.puml" width="450" />
 
-
-### DeleteTag feature
-
-#### Current Implementation
-
-The DeleteTag feature allows users to delete tags under a certain contact by indexing the contact
-
-Given below is an example usage scenario and how the DeleteTag mechanism behaves at each step
-
-1. The user launches the application and wants to delete a tag for `Alex Yeoh` who is the first person in the address book
-2. The user tries to delete tag with command `DeleteTag 1 t/friends`
-3. Insurahub displays an error message `Tags provided do not exist. Please provide an existing tag.`
-4. Realising that the tag he wants to delete is `friend`, the user tries to type `DeleteTag 1 t/friend` instead
-5. The result of the execution of the command will then be used to create a `CommandResult` object
-6. This will then be passed to `Logic`
-7. Upon confirmation that the tag exist in the first user of the address book, in this case `Alex Yeoh`, the tag is deleted from the UI of `Alex Yeoh` contact
-8. A successful message is returned, in this case `Deleted tags successfully for person Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Tags: `
-
-The following activity diagram shows how the delete tag operation works:
-
-<puml src="diagrams/DeleteTagActivityDiagram.puml" width="250" />
-
-
+<<<<<<<<< Temporary merge branch 1
 ### Filtering by Tag feature
 
 #### Implementation
@@ -278,8 +256,27 @@ Step 4. The update list of filtered `Person` objects are then displayed on the u
 The following sequence diagram shows how the filter tag operation works:
 
 <puml src="diagrams/Filter Tag.puml" width="250" />
- 
 
+
+=========
+### DeleteTag feature
+
+#### Current Implementation
+
+The DeleteTag feature allows users to delete tags under a certain contact by indexing the contact
+
+Given below is an example usage scenario and how the DeleteTag mechanism behaves at each step
+
+1. The user launches the application and wants to delete a tag for `Alex Yeoh` who is the first person in the address book
+2. The user tries to delete tag with command `DeleteTag 1 t/friends`
+3. Insurahub displays an error message `Tags provided do not exist. Please provide an existing tag.`
+4. Realising that the tag he wants to delete is `friend`, the user tries to type `DeleteTag 1 t/friend` instead
+5. The result of the execution of the command will then be used to create a `CommandResult` object
+6. This will then be passed to `Logic`
+7. Upon confirmation that the tag exist in the first user of the address book, in this case `Alex Yeoh`, the tag is deleted from the UI of `Alex Yeoh` contact
+8. A successful message is returned, in this case `Deleted tags successfully for person Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Tags: `
+
+>>>>>>>>> Temporary merge branch 2
 
 ### \[Proposed\] Undo/redo feature
 
