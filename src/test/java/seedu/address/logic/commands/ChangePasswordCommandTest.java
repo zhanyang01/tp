@@ -2,8 +2,6 @@ package seedu.address.logic.commands;
 
 import org.junit.jupiter.api.Test;
 
-
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import seedu.address.storage.PasswordManager;
 
 public class ChangePasswordCommandTest {
@@ -13,8 +11,8 @@ public class ChangePasswordCommandTest {
         PasswordManager passwordManager = new PasswordManager();
         String password = passwordManager.getPassword();
         String wrongPassword = password + "wrong";
-        ChangePasswordCommand wrongChangePasswordCommand = new ChangePasswordCommand(wrongPassword,password);
-        ChangePasswordCommand rightChangePasswordCommand = new ChangePasswordCommand(password,password);
+        ChangePasswordCommand wrongChangePasswordCommand = new ChangePasswordCommand(wrongPassword, password);
+        ChangePasswordCommand rightChangePasswordCommand = new ChangePasswordCommand(password, password);
         assert(!wrongChangePasswordCommand.equals(rightChangePasswordCommand));
     }
 
@@ -22,8 +20,8 @@ public class ChangePasswordCommandTest {
     public void same_passwordManager() {
         PasswordManager passwordManager = new PasswordManager();
         String password = passwordManager.getPassword();
-        ChangePasswordCommand firstChangePasswordCommand = new ChangePasswordCommand(password,password);
-        ChangePasswordCommand secondChangePasswordCommand = new ChangePasswordCommand(password,password);
+        ChangePasswordCommand firstChangePasswordCommand = new ChangePasswordCommand(password, password);
+        ChangePasswordCommand secondChangePasswordCommand = new ChangePasswordCommand(password, password);
         assert(firstChangePasswordCommand.equals(secondChangePasswordCommand));
     }
 
@@ -31,8 +29,8 @@ public class ChangePasswordCommandTest {
     public void same_passwordManager_toString() {
         PasswordManager passwordManager = new PasswordManager();
         String password = passwordManager.getPassword();
-        ChangePasswordCommand firstChangePasswordCommand = new ChangePasswordCommand(password,password);
-        ChangePasswordCommand secondChangePasswordCommand = new ChangePasswordCommand(password,password);
+        ChangePasswordCommand firstChangePasswordCommand = new ChangePasswordCommand(password, password);
+        ChangePasswordCommand secondChangePasswordCommand = new ChangePasswordCommand(password, password);
         assert(firstChangePasswordCommand.toString().equals(secondChangePasswordCommand.toString()));
     }
 

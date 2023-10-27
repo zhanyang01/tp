@@ -22,20 +22,20 @@ public class PasswordManagerTest {
     }
 
     @Test
-    public void GetAndCheck() throws Exception {
+    public void getAndCheck() throws Exception {
         String password = passwordManager.getPassword();
         assert(passwordManager.check(password));
     }
 
     @Test
-    public void SetNullAndCheck() throws Exception {
+    public void setNullAndCheck() throws Exception {
         String nullstring = null;
         passwordManager.setPassword(nullstring);
         assert(passwordManager.check(""));
     }
 
     @Test
-    public void SetNullAndGet() throws Exception {
+    public void setNullAndGet() throws Exception {
         String nullstring = null;
         passwordManager.setPassword(nullstring);
         assert(passwordManager.getPassword().isEmpty());
