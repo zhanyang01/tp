@@ -1,12 +1,12 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OLD_PASSWORD;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_PASSWORD;
+
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.storage.PasswordManager;
-
-import static seedu.address.logic.parser.CliSyntax.PREFIX_OLD_PASSWORD;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_PASSWORD;
 
 /**
  * Change the password used to enter InsuraHub
@@ -27,10 +27,9 @@ public class ChangePasswordCommand extends Command {
     public static final String CHANGE_PASSWORD_SUCCESS = "Password has been change to: ";
 
     public static final String CHANGE_PASSWORD_FAILURE = "The old password entered is wrong: ";
-
+    private static final PasswordManager passwordManager = new PasswordManager();
     private final String oldPassword;
     private final String newPassword;
-    private static final PasswordManager passwordManager = new PasswordManager();
 
     /**
      * Change the password used to enter InsuraHub
@@ -66,15 +65,15 @@ public class ChangePasswordCommand extends Command {
         }
 
         ChangePasswordCommand otherChangePasswordCommand = (ChangePasswordCommand) other;
-        return oldPassword.equals(otherChangePasswordCommand.oldPassword) &&
-                newPassword.equals(otherChangePasswordCommand.newPassword);
+        return oldPassword.equals(otherChangePasswordCommand.oldPassword)
+                && newPassword.equals(otherChangePasswordCommand.newPassword);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("oldPassword", oldPassword)
-                .add("newPassword",newPassword)
+                .add("newPassword", newPassword)
                 .toString();
     }
 }
