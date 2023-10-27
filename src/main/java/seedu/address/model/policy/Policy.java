@@ -3,8 +3,6 @@ package seedu.address.model.policy;
 import java.time.LocalDate;
 import java.util.Objects;
 
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-
 /**
  * Represents a Policy in the address book.
  */
