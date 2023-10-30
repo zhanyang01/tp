@@ -9,6 +9,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.PreferredContact;
+import seedu.address.model.person.PreferredMeetingRegion;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -22,6 +23,7 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_PREFERRED_CONTACT = "";
+    public static final String DEFAULT_PREFERRED_MEETING_REGION = "central";
 
     private Name name;
     private Phone phone;
@@ -29,6 +31,7 @@ public class PersonBuilder {
     private Address address;
     private Set<Tag> tags;
     private PreferredContact preferredContact;
+    private PreferredMeetingRegion preferredMeetingRegion;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -40,6 +43,7 @@ public class PersonBuilder {
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
         preferredContact = new PreferredContact(DEFAULT_PREFERRED_CONTACT);
+        preferredMeetingRegion = new PreferredMeetingRegion(DEFAULT_PREFERRED_MEETING_REGION);
     }
 
     /**
@@ -52,6 +56,7 @@ public class PersonBuilder {
         address = personToCopy.getAddress();
         tags = new HashSet<>(personToCopy.getTags());
         preferredContact = personToCopy.getPreferredContact();
+        preferredMeetingRegion = personToCopy.getPreferredMeetingRegion();
     }
 
     /**
@@ -103,8 +108,17 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code PreferredMeetingRegion} of the {@code Person} that we are
+     * building.
+     */
+    public PersonBuilder withPreferredMeetingRegion(String preferredMeetingRegion) {
+        this.preferredMeetingRegion = new PreferredMeetingRegion(preferredMeetingRegion);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, address, tags, preferredContact);
+        return new Person(name, phone, email, address, tags, preferredContact, preferredMeetingRegion);
     }
 
 }

@@ -22,6 +22,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.PreferredContact;
+import seedu.address.model.person.PreferredMeetingRegion;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -88,12 +89,16 @@ public class AddTagCommand extends Command {
         Set<Tag> updatedTags = addTagDescriptor.getTags().orElse(personToEdit.getTags());
         PreferredContact updatePreferredContact = addTagDescriptor.getPreferredContact()
                 .orElse(personToEdit.getPreferredContact());
+        PreferredMeetingRegion updatePreferredMeetingRegion = addTagDescriptor.getPreferredMeetingRegion()
+                .orElse(personToEdit.getPreferredMeetingRegion());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatePreferredContact);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatePreferredContact,
+                updatePreferredMeetingRegion);
     }
 
     /**
      * Checks for duplicates in the set
+     * 
      * @param set set to be checked
      * @param <T> this describes my type parameter
      * @return true if at least one field is duplicated
@@ -111,6 +116,7 @@ public class AddTagCommand extends Command {
 
     /**
      * Compares this object with another object
+     * 
      * @param other object to be compared
      * @return true if other is equal to this
      */
@@ -148,6 +154,7 @@ public class AddTagCommand extends Command {
         private Address address;
         private Set<Tag> tags;
         private PreferredContact preferredContact;
+        private PreferredMeetingRegion preferredMeetingRegion;
 
         public AddTagDescriptor() {
         }
@@ -163,6 +170,7 @@ public class AddTagCommand extends Command {
             setAddress(toCopy.address);
             setTags(toCopy.tags);
             setPreferredContact(toCopy.preferredContact);
+            setPreferredMeetingRegion(toCopy.preferredMeetingRegion);
         }
 
         public void setName(Name name) {
@@ -206,6 +214,16 @@ public class AddTagCommand extends Command {
         }
 
         /**
+         * Returns an unmodifiable tag set, which throws
+         * {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code tags} is null.
+         */
+        public Optional<Set<Tag>> getTags() {
+            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        }
+
+        /**
          * Sets {@code preferredContact} to this object's {@code preferredContact}.
          *
          * @param preferredContact
@@ -224,13 +242,22 @@ public class AddTagCommand extends Command {
         }
 
         /**
-         * Returns an unmodifiable tag set, which throws
-         * {@code UnsupportedOperationException}
-         * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code tags} is null.
+         * Sets {@code preferredMeetingRegion} to this object's
+         * {@code preferredMeetingRegion}.
+         *
+         * @param preferredMeetingRegion
          */
-        public Optional<Set<Tag>> getTags() {
-            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        public void setPreferredMeetingRegion(PreferredMeetingRegion preferredMeetingRegion) {
+            this.preferredMeetingRegion = preferredMeetingRegion;
+        }
+
+        /**
+         * Returns an optional preferred meeting region of a person
+         *
+         * @return
+         */
+        public Optional<PreferredMeetingRegion> getPreferredMeetingRegion() {
+            return Optional.ofNullable(preferredMeetingRegion);
         }
 
         @Override
@@ -249,7 +276,9 @@ public class AddTagCommand extends Command {
                     && Objects.equals(phone, otherAddTagDescriptor.phone)
                     && Objects.equals(email, otherAddTagDescriptor.email)
                     && Objects.equals(address, otherAddTagDescriptor.address)
-                    && Objects.equals(tags, otherAddTagDescriptor.tags);
+                    && Objects.equals(tags, otherAddTagDescriptor.tags)
+                    && Objects.equals(preferredContact, otherAddTagDescriptor.preferredContact)
+                    && Objects.equals(preferredMeetingRegion, otherAddTagDescriptor.preferredMeetingRegion);
         }
 
         @Override
@@ -260,6 +289,8 @@ public class AddTagCommand extends Command {
                     .add("email", email)
                     .add("address", address)
                     .add("tags", tags)
+                    .add("preferredContact", preferredContact)
+                    .add("preferredMeetingRegion", preferredMeetingRegion)
                     .toString();
         }
     }

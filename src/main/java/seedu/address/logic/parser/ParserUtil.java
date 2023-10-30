@@ -125,4 +125,20 @@ public class ParserUtil {
         }
         return tagSet;
     }
+
+    /**
+     * Parses a {@code String preferredMeetingRegion} into a
+     * {@code PreferredMeetingRegion}.
+     */
+    public static seedu.address.model.person.PreferredMeetingRegion parsePreferredMeetingRegion(
+            String preferredMeetingRegion) throws ParseException {
+        requireNonNull(preferredMeetingRegion);
+        String trimmedPreferredMeetingRegion = preferredMeetingRegion.trim();
+        if (!seedu.address.model.person.PreferredMeetingRegion.isValidPreferredMeetingRegion(
+                trimmedPreferredMeetingRegion)) {
+            throw new ParseException(
+                    seedu.address.model.person.PreferredMeetingRegion.MESSAGE_CONSTRAINTS);
+        }
+        return new seedu.address.model.person.PreferredMeetingRegion(trimmedPreferredMeetingRegion);
+    }
 }

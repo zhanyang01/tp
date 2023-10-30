@@ -26,12 +26,13 @@ public class Person {
     private final PreferredContact preferredContact;
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+    private final PreferredMeetingRegion preferredMeetingRegion;
 
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-            PreferredContact preferredContact) {
+            PreferredContact preferredContact, PreferredMeetingRegion preferredMeetingRegion) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
@@ -39,6 +40,7 @@ public class Person {
         this.address = address;
         this.tags.addAll(tags);
         this.preferredContact = preferredContact;
+        this.preferredMeetingRegion = preferredMeetingRegion;
     }
 
     public Name getName() {
@@ -71,6 +73,13 @@ public class Person {
      */
     public PreferredContact getPreferredContact() {
         return preferredContact;
+    }
+
+    /**
+     * Returns preferred meeting region of a person
+     */
+    public PreferredMeetingRegion getPreferredMeetingRegion() {
+        return preferredMeetingRegion;
     }
 
     /**
@@ -133,13 +142,14 @@ public class Person {
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
                 && tags.equals(otherPerson.tags)
-                && preferredContact.equals(otherPerson.preferredContact);
+                && preferredContact.equals(otherPerson.preferredContact)
+                && preferredMeetingRegion.equals(otherPerson.preferredMeetingRegion);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, preferredContact);
+        return Objects.hash(name, phone, email, address, tags, preferredContact, preferredMeetingRegion);
     }
 
     @Override
@@ -151,6 +161,7 @@ public class Person {
                 .add("address", address)
                 .add("tags", tags)
                 .add("preferredContact", preferredContact)
+                .add("preferredMeetingRegion", preferredMeetingRegion)
                 .toString();
 
     }
