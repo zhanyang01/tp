@@ -77,7 +77,7 @@ public class AddCommandParserTest {
                         + TAG_DESC_FRIEND
                         + PREFERRED_MEETING_REGION_DESC_BOB,
                 new AddCommand(expectedPersonMultipleTags));
-}
+    }
 
     @Test
     public void parse_repeatedNonTagValue_failure() {
