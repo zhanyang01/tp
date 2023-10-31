@@ -1,7 +1,11 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,6 +18,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.policy.Policy;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser
@@ -125,4 +130,49 @@ public class ParserUtil {
         }
         return tagSet;
     }
+
+    /**
+     * Parses a {@code String policy} into a {@code Policy}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code policy} is invalid.
+     */
+    public static Set<Policy> parsePolicy(String policyName, String description, String policyValue, String startDate, String endDate) throws ParseException {
+        requireNonNull(policyName);
+        requireNonNull(description);
+        requireNonNull(policyValue);
+        requireNonNull(startDate);
+        requireNonNull(endDate);
+        final Set<Policy> policySet = new HashSet<>();
+
+
+        double parsedPolicyValue;
+        LocalDate parsedStartDate;
+        LocalDate parsedEndDate;
+
+        try {
+            parsedPolicyValue = Double.parseDouble(policyValue);
+        } catch (NumberFormatException e) {
+            throw new ParseException(Policy.POLICY_VALUE_MESSAGE_CONSTRAINTS);
+        }
+
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            parsedStartDate = LocalDate.parse(startDate, formatter);
+            parsedEndDate = LocalDate.parse(endDate, formatter);
+        } catch (DateTimeParseException e) {
+            throw new ParseException(Policy.DATE_MESSAGE_CONSTRAINTS);
+        }
+
+        checkArgument(Policy.isValidPolicyName(policyName), Policy.POLICY_NAME_MESSAGE_CONSTRAINTS);
+        checkArgument(Policy.isValidDescription(description), Policy.DESCRIPTION_MESSAGE_CONSTRAINTS);
+        checkArgument(Policy.isValidPolicyValue(policyValue), Policy.POLICY_VALUE_MESSAGE_CONSTRAINTS);
+        checkArgument(Policy.isValidDate(parsedStartDate), Policy.DATE_MESSAGE_CONSTRAINTS);
+        checkArgument(Policy.isValidDate(parsedEndDate), Policy.DATE_MESSAGE_CONSTRAINTS);
+        Policy policy = new Policy(policyName, description, parsedPolicyValue, parsedStartDate, parsedEndDate);
+        policySet.add(policy);
+        return policySet;
+    }
+
+
 }

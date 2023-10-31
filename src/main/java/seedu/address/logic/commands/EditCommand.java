@@ -28,6 +28,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.PreferredContact;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.policy.Policy;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -102,9 +103,10 @@ public class EditCommand extends Command {
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         PreferredContact updatedPreferredContact = personToEdit.getPreferredContact();
+        Set<Policy> Policies = personToEdit.getPolicies();
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags,
-                updatedPreferredContact);
+                updatedPreferredContact, Policies);
     }
 
     @Override
@@ -143,6 +145,7 @@ public class EditCommand extends Command {
         private Address address;
         private Set<Tag> tags;
         private PreferredContact preferredContact;
+        private Set<Policy> policies;
 
         public EditPersonDescriptor() {
         }
@@ -157,6 +160,8 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
+            setPreferredContact(toCopy.preferredContact);
+            setPolicies(toCopy.policies);
         }
 
         /**
@@ -216,6 +221,24 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+        /**
+         * Sets {@code policies} to this object's {@code policies}.
+         * A defensive copy of {@code policies} is used internally.
+         */
+        public void setPolicies(Set<Policy> policies) {
+            this.policies = (policies != null) ? new HashSet<>(policies) : null;
+        }
+
+        /**
+         * Returns an unmodifiable policy set, which throws
+         * {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code policies} is null.
+         */
+        public Optional<Set<Policy>> getPolicies() {
+            return (policies != null) ? Optional.of(Collections.unmodifiableSet(policies)) : Optional.empty();
+        }
+
         public void setPreferredContact(PreferredContact preferredContact) {
             this.preferredContact = preferredContact;
         }
@@ -240,7 +263,8 @@ public class EditCommand extends Command {
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(address, otherEditPersonDescriptor.address)
                     && Objects.equals(tags, otherEditPersonDescriptor.tags)
-                    && Objects.equals(preferredContact, otherEditPersonDescriptor.preferredContact);
+                    && Objects.equals(preferredContact, otherEditPersonDescriptor.preferredContact)
+                    && Objects.equals(policies, otherEditPersonDescriptor.policies);
         }
 
         @Override
@@ -252,6 +276,7 @@ public class EditCommand extends Command {
                     .add("address", address)
                     .add("tags", tags)
                     .add("preferredContact", preferredContact)
+                    .add("policies", policies)
                     .toString();
         }
     }

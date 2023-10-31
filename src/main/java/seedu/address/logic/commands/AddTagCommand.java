@@ -23,6 +23,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.PreferredContact;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.policy.Policy;
 
 /**
  * Adds a tag to an existing person in the address book.
@@ -88,8 +89,9 @@ public class AddTagCommand extends Command {
         Set<Tag> updatedTags = addTagDescriptor.getTags().orElse(personToEdit.getTags());
         PreferredContact updatePreferredContact = addTagDescriptor.getPreferredContact()
                 .orElse(personToEdit.getPreferredContact());
+        Set<Policy> updatedPolicies = addTagDescriptor.getPolicies().orElse(personToEdit.getPolicies());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatePreferredContact);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatePreferredContact, updatedPolicies);
     }
 
     /**
@@ -149,6 +151,8 @@ public class AddTagCommand extends Command {
         private Set<Tag> tags;
         private PreferredContact preferredContact;
 
+        private Set<Policy> policies;
+
         public AddTagDescriptor() {
         }
 
@@ -163,6 +167,7 @@ public class AddTagCommand extends Command {
             setAddress(toCopy.address);
             setTags(toCopy.tags);
             setPreferredContact(toCopy.preferredContact);
+            setPolicies(toCopy.policies);
         }
 
         public void setName(Name name) {
@@ -205,20 +210,12 @@ public class AddTagCommand extends Command {
             this.tags = (tags != null) ? new HashSet<>(tags) : null;
         }
 
-        /**
-         * Sets {@code preferredContact} to this object's {@code preferredContact}.
-         *
-         * @param preferredContact
-         */
+
         public void setPreferredContact(PreferredContact preferredContact) {
             this.preferredContact = preferredContact;
         }
 
-        /**
-         * Returns an optional preferred contact method of a person
-         *
-         * @return
-         */
+
         public Optional<PreferredContact> getPreferredContact() {
             return Optional.ofNullable(preferredContact);
         }
@@ -232,6 +229,25 @@ public class AddTagCommand extends Command {
         public Optional<Set<Tag>> getTags() {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
+
+        /**
+         * Sets {@code policies} to this object's {@code policies}.
+         * A defensive copy of {@code policies} is used internally.
+         */
+        public void setPolicies(Set<Policy> policies) {
+            this.policies = (policies != null) ? new HashSet<>(policies) : null;
+        }
+
+        /**
+         * Returns an unmodifiable policy set, which throws
+         * {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code policies} is null.
+         */
+        public Optional<Set<Policy>> getPolicies() {
+            return (policies != null) ? Optional.of(Collections.unmodifiableSet(policies)) : Optional.empty();
+        }
+
 
         @Override
         public boolean equals(Object other) {
@@ -249,7 +265,8 @@ public class AddTagCommand extends Command {
                     && Objects.equals(phone, otherAddTagDescriptor.phone)
                     && Objects.equals(email, otherAddTagDescriptor.email)
                     && Objects.equals(address, otherAddTagDescriptor.address)
-                    && Objects.equals(tags, otherAddTagDescriptor.tags);
+                    && Objects.equals(tags, otherAddTagDescriptor.tags)
+                    && Objects.equals(policies, otherAddTagDescriptor.policies);
         }
 
         @Override
@@ -260,6 +277,7 @@ public class AddTagCommand extends Command {
                     .add("email", email)
                     .add("address", address)
                     .add("tags", tags)
+                    .add("policies", policies)
                     .toString();
         }
     }
