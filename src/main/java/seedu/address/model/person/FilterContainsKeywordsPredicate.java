@@ -20,37 +20,25 @@ public class FilterContainsKeywordsPredicate implements Predicate<Person> {
 
     @Override
     public boolean test(Person person) {
+        boolean allKeywordsMatched = true;
         for (String keyword : keywords) {
-            System.out.println("Current keyword: " + keyword);
-            boolean keywordFound = false;
+            boolean keywordMatched = false;
+            keyword = keyword.trim();
             for (Tag tag : person.getTags()) {
                 String tagName = tag.getTagName();
-                System.out.println("Current tagName: " + tagName);
                 if (keyword.equalsIgnoreCase(tagName)) {
-                    keywordFound = true;
-                    System.out.println("Match! ");
+                    keywordMatched = true;
                     break;
-                } else {
-                    keywordFound = false;
                 }
             }
-            if (!keywordFound) {
-                return false;
+
+            if (!keywordMatched) {
+                allKeywordsMatched = false;
+                break;
             }
         }
-        return true;
+        return allKeywordsMatched;
     }
-
-    /**for (Tag tag : person.getTags()) {
-            String tagName = tag.getTagName();
-            for (String keyword : keywords) {
-                if (keyword.equalsIgnoreCase(tagName)) {
-                    return true;
-                }
-            }
-        }
-        return false;**/
-
 
 
     @Override
