@@ -1,7 +1,9 @@
 package seedu.address.model.person;
 
 import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
@@ -18,16 +20,26 @@ public class FilterContainsKeywordsPredicate implements Predicate<Person> {
 
     @Override
     public boolean test(Person person) {
-        for (Tag tag : person.getTags()) {
-            String tagName = tag.getTagName(); // Replace with the actual method to get the tag name
-            for (String keyword : keywords) {
+        boolean allKeywordsMatched = true;
+        for (String keyword : keywords) {
+            boolean keywordMatched = false;
+            keyword = keyword.trim();
+            for (Tag tag : person.getTags()) {
+                String tagName = tag.getTagName();
                 if (keyword.equalsIgnoreCase(tagName)) {
-                    return true; // Match found, exit early
+                    keywordMatched = true;
+                    break;
                 }
             }
+
+            if (!keywordMatched) {
+                allKeywordsMatched = false;
+                break;
+            }
         }
-        return false; // No match found after checking all tags and keywords
+        return allKeywordsMatched;
     }
+
 
     @Override
     public boolean equals(Object other) {
