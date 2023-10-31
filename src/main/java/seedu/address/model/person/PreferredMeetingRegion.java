@@ -8,7 +8,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class PreferredMeetingRegion {
 
-    public static final String MESSAGE_CONSTRAINTS = "Preferred meeting region can take either north, south, east, west or central. It cannot be null";
+    public static final String MESSAGE_CONSTRAINTS =
+            "Preferred meeting region can take either north, south, east, west or central. It cannot be null";
 
     public final String value;
 

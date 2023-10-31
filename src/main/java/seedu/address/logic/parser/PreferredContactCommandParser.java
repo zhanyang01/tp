@@ -18,7 +18,7 @@ public class PreferredContactCommandParser implements Parser<PreferredContactCom
     /**
      * Parses the given {@code String} of arguments in the context of the
      * PreferredContactCommand
-     * and returns an EditCommand object for execution.
+     * and returns a PreferredContactCommand object for execution.
      *
      * @throws ParseException if the user input does not conform the expected format
      */

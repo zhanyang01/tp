@@ -35,9 +35,9 @@ public class FilterCommandParser implements Parser<FilterCommand> {
 
         String[] tagKeywords = trimmedArgs.split(String.valueOf(PREFIX_TAG));
         tagKeywords = Arrays.copyOfRange(tagKeywords, 1, tagKeywords.length);
-        /**for (String keyword : tagKeywords) {
+        /*for (String keyword : tagKeywords) {
             System.out.println("keyword: " + keyword);
-        }**/
+        }*/
         return new FilterCommand(new FilterContainsKeywordsPredicate(Arrays.asList(tagKeywords)));
     }
 }

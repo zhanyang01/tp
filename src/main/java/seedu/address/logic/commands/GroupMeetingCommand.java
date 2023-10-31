@@ -7,6 +7,9 @@ import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.person.GroupMeetingContainsKeywordPredicate;
 
+/**
+ * Finds and lists all persons in address book whose name contains the region to be filtered.
+ */
 public class GroupMeetingCommand extends Command {
 
     public static final String COMMAND_WORD = "groupmeeting";

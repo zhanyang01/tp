@@ -43,7 +43,8 @@ public class DeleteTagCommand extends Command {
 
     public static final String MESSAGE_NOT_EDITED = "One tag must be provided.";
 
-    public static final String MESSAGE_INVALID_TAGS_PROVIDED = "Tags provided do not exist. Please provide an existing tag.";
+    public static final String MESSAGE_INVALID_TAGS_PROVIDED =
+            "Tags provided do not exist. Please provide an existing tag.";
 
     private final Index index;
     private final DeleteTagDescriptor deleteTagDescriptor;
