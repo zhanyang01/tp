@@ -16,10 +16,10 @@ import java.util.Objects;
  */
 public class Policy {
 
-    public static final String POLICY_NAME_MESSAGE_CONSTRAINTS = "Policy names should be alphanumeric";
-    public static final String ALPHANUMERIC_VALIDATION_REGEX = "\\p{Alnum}+";
+    public static final String POLICY_NAME_MESSAGE_CONSTRAINTS = "Policy names should be alphanumeric with spaces";
+    public static final String ALPHANUMERIC_VALIDATION_REGEX = "[\\p{Alnum} ]+";
 
-    public static final String DESCRIPTION_MESSAGE_CONSTRAINTS = "Description should be alphanumeric";
+    public static final String DESCRIPTION_MESSAGE_CONSTRAINTS = "Description should be alphanumeric with spaces";
 
     public static final String POLICY_VALUE_VALIDATION_REGEX = "^\\d+(\\.\\d+)?$";
     public static final String POLICY_VALUE_MESSAGE_CONSTRAINTS = "Policy value should be a valid decimal number";
