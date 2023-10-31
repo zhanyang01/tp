@@ -38,7 +38,6 @@ public class PreferredContactCommand extends Command {
 
     /**
      * Represents a constructor of PreferredContactCommand.
-     * 
      * @param index            of the person in the filtered person list to edit
      * @param preferredContact details to edit the person with
      */

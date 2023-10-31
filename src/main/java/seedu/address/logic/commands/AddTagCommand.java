@@ -98,7 +98,6 @@ public class AddTagCommand extends Command {
 
     /**
      * Checks for duplicates in the set
-     * 
      * @param set set to be checked
      * @param <T> this describes my type parameter
      * @return true if at least one field is duplicated
@@ -116,7 +115,6 @@ public class AddTagCommand extends Command {
 
     /**
      * Compares this object with another object
-     * 
      * @param other object to be compared
      * @return true if other is equal to this
      */
