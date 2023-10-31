@@ -8,6 +8,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
+import seedu.address.model.policy.Policy;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -42,6 +43,9 @@ public class PersonCard extends UiPart<Region> {
     private Label email;
     @FXML
     private FlowPane tags;
+    @FXML
+    private FlowPane policies;
+
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to
@@ -64,5 +68,8 @@ public class PersonCard extends UiPart<Region> {
         if (person.getPreferredContact().toString().equals("email")) {
             email.setStyle("-fx-text-fill: yellow;");
         }
+        person.getPolicies().stream()
+                .sorted(Comparator.comparing(policy -> policy.policyName))
+                .forEach(policy -> policies.getChildren().add(new Label(policy.policyName)));
     }
 }

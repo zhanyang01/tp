@@ -22,6 +22,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.PreferredContact;
+import seedu.address.model.policy.Policy;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -95,8 +96,9 @@ public class DeleteTagCommand extends Command {
         Set<Tag> updatedTags = deleteTagDescriptor.getTags().orElse(personToEdit.getTags());
         PreferredContact updatePreferredContact = deleteTagDescriptor.getPreferredContact()
                 .orElse(personToEdit.getPreferredContact());
+        Set<Policy> updatedPolicies = deleteTagDescriptor.getPolicies().orElse(personToEdit.getPolicies());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatePreferredContact);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatePreferredContact,updatedPolicies);
     }
 
     /**
@@ -137,6 +139,7 @@ public class DeleteTagCommand extends Command {
         private Address address;
         private Set<Tag> tags;
         private PreferredContact preferredContact;
+        private Set<Policy> policies;
 
         /**
          * Creates an empty {@code DeleteTagDescriptor}.
@@ -156,6 +159,7 @@ public class DeleteTagCommand extends Command {
             setAddress(toCopy.address);
             setTags(toCopy.tags);
             setPreferredContact(toCopy.preferredContact);
+            setPolicies(toCopy.policies);
         }
 
         public void setName(Name name) {
@@ -222,6 +226,24 @@ public class DeleteTagCommand extends Command {
             return Optional.ofNullable(preferredContact);
         }
 
+        /**
+         * Sets {@code policies} to this object's {@code policies}.
+         * A defensive copy of {@code policies} is used internally.
+         */
+        public void setPolicies(Set<Policy> policies) {
+            this.policies = (policies != null) ? new HashSet<>(policies) : null;
+        }
+
+        /**
+         * Returns an unmodifiable policy set, which throws
+         * {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code policies} is null.
+         */
+        public Optional<Set<Policy>> getPolicies() {
+            return (policies != null) ? Optional.of(Collections.unmodifiableSet(policies)) : Optional.empty();
+        }
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -238,7 +260,8 @@ public class DeleteTagCommand extends Command {
                     && Objects.equals(phone, otherDeleteTagDescriptor.phone)
                     && Objects.equals(email, otherDeleteTagDescriptor.email)
                     && Objects.equals(address, otherDeleteTagDescriptor.address)
-                    && Objects.equals(tags, otherDeleteTagDescriptor.tags);
+                    && Objects.equals(tags, otherDeleteTagDescriptor.tags)
+                    && Objects.equals(policies, otherDeleteTagDescriptor.policies);
         }
 
         @Override
