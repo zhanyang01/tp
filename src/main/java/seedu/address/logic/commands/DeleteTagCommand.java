@@ -106,7 +106,6 @@ public class DeleteTagCommand extends Command {
 
     /**
      * Compares this with another object.
-     * 
      * @param other object to compare
      * @return true if the other object is a DeleteTagCommand with the same index
      *         and descriptor
@@ -156,7 +155,6 @@ public class DeleteTagCommand extends Command {
         /**
          * Copy constructor.s
          * A defensive copy of {@code tags} is used internally.
-         * 
          * @param toCopy DeleteTagDescriptor to copy
          */
         public DeleteTagDescriptor(DeleteTagDescriptor toCopy) {
