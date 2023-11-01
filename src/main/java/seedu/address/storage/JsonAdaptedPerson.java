@@ -137,7 +137,7 @@ class JsonAdaptedPerson {
 
         final PreferredMeetingRegion modelPreferredMeetingRegion = new PreferredMeetingRegion(preferredMeetingRegion);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags,modelPreferredMeetingRegion,
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPreferredMeetingRegion,
                 modelPreferredContact);
     }
 

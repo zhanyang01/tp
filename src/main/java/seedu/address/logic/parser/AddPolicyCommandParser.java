@@ -3,7 +3,11 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_DESCRIPTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_END_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_START_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_VALUE;
 
 import java.util.Optional;
 import java.util.Set;
@@ -14,6 +18,9 @@ import seedu.address.logic.commands.AddPolicyCommand.AddPolicyDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.policy.Policy;
 
+/**
+ * Parses input arguments and creates a new AddPolicyCommand object
+ */
 public class AddPolicyCommandParser implements Parser<AddPolicyCommand> {
 
     @Override
@@ -22,8 +29,7 @@ public class AddPolicyCommandParser implements Parser<AddPolicyCommand> {
         Index index;
 
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize
-                        (args,
+                ArgumentTokenizer.tokenize(args,
                                 PREFIX_POLICY_NAME,
                                 PREFIX_POLICY_DESCRIPTION,
                                 PREFIX_POLICY_VALUE,

@@ -107,7 +107,7 @@ public class AddPolicyCommand extends Command {
         Set<Policy> updatedPolicies = addPolicyDescriptor.getPolicies().orElse(personToEdit.getPolicies());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags,
-                updatedPreferredMeetingRegion,updatedPreferredContact, updatedPolicies);
+                updatedPreferredMeetingRegion, updatedPreferredContact, updatedPolicies);
     }
 
     /**
