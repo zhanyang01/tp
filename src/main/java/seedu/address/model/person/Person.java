@@ -47,6 +47,20 @@ public class Person {
         this.policies.addAll(policies);
     }
 
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
+                  PreferredMeetingRegion preferredMeetingRegion,
+                  PreferredContact preferredContact) {
+        requireAllNonNull(name, phone, email, address, tags);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+        this.preferredContact = preferredContact;
+        this.preferredMeetingRegion = preferredMeetingRegion;
+
+    }
+
     public Name getName() {
         return name;
     }

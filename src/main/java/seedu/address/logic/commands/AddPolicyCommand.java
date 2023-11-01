@@ -20,12 +20,13 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.PreferredContact;
+import seedu.address.model.person.PreferredMeetingRegion;
+import seedu.address.model.person.Address;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.policy.Policy;
 
@@ -99,11 +100,14 @@ public class AddPolicyCommand extends Command {
         Email updatedEmail = addPolicyDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = addPolicyDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = addPolicyDescriptor.getTags().orElse(personToEdit.getTags());
-        PreferredContact updatePreferredContact = addPolicyDescriptor.getPreferredContact()
+        PreferredContact updatedPreferredContact = addPolicyDescriptor.getPreferredContact()
                 .orElse(personToEdit.getPreferredContact());
+        PreferredMeetingRegion updatedPreferredMeetingRegion = addPolicyDescriptor.getPreferredMeetingRegion().
+                orElse(personToEdit.getPreferredMeetingRegion());
         Set<Policy> updatedPolicies = addPolicyDescriptor.getPolicies().orElse(personToEdit.getPolicies());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatePreferredContact, updatedPolicies);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags,
+                updatedPreferredMeetingRegion,updatedPreferredContact, updatedPolicies);
     }
 
     /**
@@ -161,9 +165,11 @@ public class AddPolicyCommand extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
+        private PreferredMeetingRegion preferredMeetingRegion;
         private PreferredContact preferredContact;
 
         private Set<Policy> policies;
+
 
         public AddPolicyDescriptor() {
         }
@@ -178,6 +184,7 @@ public class AddPolicyCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
+            setPreferredMeetingRegion(toCopy.preferredMeetingRegion);
             setPreferredContact(toCopy.preferredContact);
             setPolicies(toCopy.policies);
         }
@@ -225,6 +232,12 @@ public class AddPolicyCommand extends Command {
 
         public void setPreferredContact(PreferredContact preferredContact) {
             this.preferredContact = preferredContact;
+        }
+        public void setPreferredMeetingRegion(PreferredMeetingRegion preferredMeetingRegion) {
+            this.preferredMeetingRegion = preferredMeetingRegion;
+        }
+        public Optional<PreferredMeetingRegion> getPreferredMeetingRegion() {
+            return Optional.ofNullable(preferredMeetingRegion);
         }
 
 
