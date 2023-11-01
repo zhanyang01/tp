@@ -17,6 +17,7 @@ public class GroupMeetingCommandParser implements Parser<GroupMeetingCommand> {
      * Parses the given {@code String} of arguments in the context of the
      * GroupMeetingCommand
      * and returns a GroupMeetingCommand object for execution.
+     * 
      * @throws ParseException if the user input does not conform the expected format
      */
     public GroupMeetingCommand parse(String args) throws ParseException {
@@ -26,8 +27,8 @@ public class GroupMeetingCommandParser implements Parser<GroupMeetingCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, GroupMeetingCommand.MESSAGE_USAGE));
         }
 
-        if (!trimmedArgs.equals("north") || !trimmedArgs.equals("south") || !trimmedArgs.equals("east")
-                || !trimmedArgs.equals("west") || !trimmedArgs.equals("central")) {
+        if (!(trimmedArgs.equals("north") || trimmedArgs.equals("south") || trimmedArgs.equals("east")
+                || trimmedArgs.equals("west") || trimmedArgs.equals("central"))) {
             throw new ParseException(GroupMeetingCommand.MESSAGE_REGION_INVALID);
         }
 
