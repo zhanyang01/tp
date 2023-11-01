@@ -281,7 +281,7 @@ public class DeleteTagCommand extends Command {
                     && Objects.equals(address, otherDeleteTagDescriptor.address)
                     && Objects.equals(tags, otherDeleteTagDescriptor.tags)
                     && Objects.equals(preferredContact, otherDeleteTagDescriptor.preferredContact)
-                    && Objects.equals(preferredMeetingRegion, otherDeleteTagDescriptor.preferredMeetingRegion);
+                    && Objects.equals(preferredMeetingRegion, otherDeleteTagDescriptor.preferredMeetingRegion)
                     && Objects.equals(policies, otherDeleteTagDescriptor.policies);
         }
 
