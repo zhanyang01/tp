@@ -44,6 +44,9 @@ public class PersonCard extends UiPart<Region> {
     private Label preferredMeetingRegion;
     @FXML
     private FlowPane tags;
+    @FXML
+    private FlowPane policies;
+
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to
@@ -67,5 +70,8 @@ public class PersonCard extends UiPart<Region> {
         if (person.getPreferredContact().toString().equals("email")) {
             email.setStyle("-fx-text-fill: yellow;");
         }
+        person.getPolicies().stream()
+                .sorted(Comparator.comparing(policy -> policy.policyName))
+                .forEach(policy -> policies.getChildren().add(new Label(policy.policyName)));
     }
 }

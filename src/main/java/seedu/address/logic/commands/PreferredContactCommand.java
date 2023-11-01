@@ -31,14 +31,14 @@ public class PreferredContactCommand extends Command {
 
     public static final String MESSAGE_PREFERREDCONTACT_PERSON_SUCCESS = "Preferred contact: %1$s";
     public static final String MESSAGE_PREFERREDCONTACT_NOT_EDITED = "At least one field must be provided.";
-    public static final String MESSAGE_PREFERREDCONTACT_INVALID =
-            "Preferred contact must be either email or phone, else it is blank.";
+    public static final String MESSAGE_PREFERREDCONTACT_INVALID = "Preferred contact must be either email or phone, else it is blank.";
 
     private final Index index;
     private final PreferredContact preferredContact;
 
     /**
      * Represents a constructor of PreferredContactCommand.
+     * 
      * @param index            of the person in the filtered person list to edit
      * @param preferredContact details to edit the person with
      */
@@ -61,7 +61,8 @@ public class PreferredContactCommand extends Command {
         Person editedPreferredContactPerson = new Person(preferredContactPerson.getName(),
                 preferredContactPerson.getPhone(), preferredContactPerson.getEmail(),
                 preferredContactPerson.getAddress(), preferredContactPerson.getTags(),
-                preferredContact, preferredContactPerson.getPreferredMeetingRegion());
+                preferredContactPerson.getPreferredMeetingRegion(), preferredContactPerson.getPreferredContact(),
+                preferredContactPerson.getPolicies());
 
         model.setPerson(preferredContactPerson, editedPreferredContactPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
