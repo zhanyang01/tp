@@ -17,7 +17,6 @@ public class GroupMeetingCommandParser implements Parser<GroupMeetingCommand> {
      * Parses the given {@code String} of arguments in the context of the
      * GroupMeetingCommand
      * and returns a GroupMeetingCommand object for execution.
-     * 
      * @throws ParseException if the user input does not conform the expected format
      */
     public GroupMeetingCommand parse(String args) throws ParseException {

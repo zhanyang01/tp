@@ -7,9 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Filter;
 
 import org.junit.jupiter.api.Test;
+
 import seedu.address.testutil.PersonBuilder;
 
 public class FilterContainsKeywordsPredicateTest {
@@ -19,14 +19,17 @@ public class FilterContainsKeywordsPredicateTest {
         List<String> firstPredicateKeywordList = Collections.singletonList("first");
         List<String> secondPredicateKeywordList = Arrays.asList("first", "second");
 
-        FilterContainsKeywordsPredicate firstPredicate = new FilterContainsKeywordsPredicate(firstPredicateKeywordList);
-        FilterContainsKeywordsPredicate secondPredicate = new FilterContainsKeywordsPredicate(secondPredicateKeywordList);
+        FilterContainsKeywordsPredicate firstPredicate =
+                new FilterContainsKeywordsPredicate(firstPredicateKeywordList);
+        FilterContainsKeywordsPredicate secondPredicate =
+                new FilterContainsKeywordsPredicate(secondPredicateKeywordList);
 
         // same object -> returns true
         assertTrue(firstPredicate.equals(firstPredicate));
 
         // same values -> returns true
-        FilterContainsKeywordsPredicate firstPredicateCopy = new FilterContainsKeywordsPredicate(firstPredicateKeywordList);
+        FilterContainsKeywordsPredicate firstPredicateCopy =
+                new FilterContainsKeywordsPredicate(firstPredicateKeywordList);
         assertTrue(firstPredicate.equals(firstPredicateCopy));
 
         // different types -> returns false
@@ -42,7 +45,8 @@ public class FilterContainsKeywordsPredicateTest {
     @Test
     public void test_filterContainsKeywords_returnsTrue() {
         // One keyword
-        FilterContainsKeywordsPredicate predicate = new FilterContainsKeywordsPredicate(Collections.singletonList("friend"));
+        FilterContainsKeywordsPredicate predicate =
+                new FilterContainsKeywordsPredicate(Collections.singletonList("friend"));
         assertTrue(predicate.test(new PersonBuilder().withTags("friend").build()));
 
         // Multiple keywords
@@ -57,7 +61,8 @@ public class FilterContainsKeywordsPredicateTest {
     @Test
     public void test_tagDoesNotContainKeywords_returnsFalse() {
         // Non-matching keyword
-        FilterContainsKeywordsPredicate predicate = new FilterContainsKeywordsPredicate(Arrays.asList("colleague"));
+        FilterContainsKeywordsPredicate predicate =
+                new FilterContainsKeywordsPredicate(Arrays.asList("colleague"));
         assertFalse(predicate.test(new PersonBuilder().withTags("friend").build()));
     }
 
@@ -66,7 +71,8 @@ public class FilterContainsKeywordsPredicateTest {
         List<String> keywords = List.of("keyword1", "keyword2");
         FilterContainsKeywordsPredicate predicate = new FilterContainsKeywordsPredicate(keywords);
 
-        String expected = FilterContainsKeywordsPredicate.class.getCanonicalName() + "{keywords=" + keywords + "}";
+        String expected =
+                FilterContainsKeywordsPredicate.class.getCanonicalName() + "{keywords=" + keywords + "}";
         assertEquals(expected, predicate.toString());
     }
 }

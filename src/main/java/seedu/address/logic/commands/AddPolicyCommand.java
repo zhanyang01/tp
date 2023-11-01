@@ -1,11 +1,11 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_DESCRIPTION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_VALUE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_END_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_START_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_VALUE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
@@ -20,15 +20,15 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.PreferredContact;
 import seedu.address.model.person.PreferredMeetingRegion;
-import seedu.address.model.person.Address;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.policy.Policy;
+import seedu.address.model.tag.Tag;
 
 /**
  * Adds a policy to an existing person in the address book.
@@ -102,12 +102,12 @@ public class AddPolicyCommand extends Command {
         Set<Tag> updatedTags = addPolicyDescriptor.getTags().orElse(personToEdit.getTags());
         PreferredContact updatedPreferredContact = addPolicyDescriptor.getPreferredContact()
                 .orElse(personToEdit.getPreferredContact());
-        PreferredMeetingRegion updatedPreferredMeetingRegion = addPolicyDescriptor.getPreferredMeetingRegion().
-                orElse(personToEdit.getPreferredMeetingRegion());
+        PreferredMeetingRegion updatedPreferredMeetingRegion = addPolicyDescriptor.getPreferredMeetingRegion()
+                .orElse(personToEdit.getPreferredMeetingRegion());
         Set<Policy> updatedPolicies = addPolicyDescriptor.getPolicies().orElse(personToEdit.getPolicies());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags,
-                updatedPreferredMeetingRegion,updatedPreferredContact, updatedPolicies);
+                updatedPreferredMeetingRegion, updatedPreferredContact, updatedPolicies);
     }
 
     /**
@@ -285,7 +285,8 @@ public class AddPolicyCommand extends Command {
                 return false;
             }
 
-            AddPolicyCommand.AddPolicyDescriptor otherAddPolicyDescriptor = (AddPolicyCommand.AddPolicyDescriptor) other;
+            AddPolicyCommand.AddPolicyDescriptor otherAddPolicyDescriptor =
+                    (AddPolicyCommand.AddPolicyDescriptor) other;
             return Objects.equals(name, otherAddPolicyDescriptor.name)
                     && Objects.equals(phone, otherAddPolicyDescriptor.phone)
                     && Objects.equals(email, otherAddPolicyDescriptor.email)

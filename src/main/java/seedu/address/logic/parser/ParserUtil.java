@@ -17,8 +17,8 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.policy.Policy;
+import seedu.address.model.tag.Tag;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser
@@ -147,6 +147,16 @@ public class ParserUtil {
         return new seedu.address.model.person.PreferredMeetingRegion(trimmedPreferredMeetingRegion);
     }
 
+    /**
+     * Parses a {@code String preferredContact} into a {@code PreferredContact}.
+     * @param policyName
+     * @param description
+     * @param policyValue
+     * @param startDate
+     * @param endDate
+     * @return a set of policies
+     * @throws ParseException
+     */
     public static Set<Policy> parsePolicy(String policyName, String description, String policyValue, String startDate,
             String endDate) throws ParseException {
         requireNonNull(policyName);

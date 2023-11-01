@@ -29,8 +29,8 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.PreferredContact;
 import seedu.address.model.person.PreferredMeetingRegion;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.policy.Policy;
+import seedu.address.model.tag.Tag;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -108,9 +108,9 @@ public class EditCommand extends Command {
         PreferredContact updatedPreferredContact = personToEdit.getPreferredContact();
         PreferredMeetingRegion updatedPreferredMeetingRegion = editPersonDescriptor.getPreferredMeetingRegion()
                 .orElse(personToEdit.getPreferredMeetingRegion());
-        Set<Policy> Policies = personToEdit.getPolicies();
+        Set<Policy> policies = personToEdit.getPolicies();
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags,
-                updatedPreferredMeetingRegion, updatedPreferredContact, Policies);
+                updatedPreferredMeetingRegion, updatedPreferredContact, policies);
     }
 
     @Override
@@ -174,7 +174,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags, preferredMeetingRegion);
         }
 
         public void setName(Name name) {
