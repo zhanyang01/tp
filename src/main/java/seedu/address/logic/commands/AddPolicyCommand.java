@@ -1,7 +1,11 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_DESCRIPTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_VALUE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_START_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_END_DATE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
@@ -16,46 +20,54 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.PreferredContact;
 import seedu.address.model.person.PreferredMeetingRegion;
+import seedu.address.model.person.Address;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.policy.Policy;
 
 /**
- * Adds a tag to an existing person in the address book.
+ * Adds a policy to an existing person in the address book.
  */
-public class AddTagCommand extends Command {
+public class AddPolicyCommand extends Command {
+    public static final String COMMAND_WORD = "addPolicy";
 
-    public static final String COMMAND_WORD = "addTag";
-
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds to the tag of the person identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds to the policy of the person identified "
             + "by the index number used in the displayed person list. "
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_POLICY_NAME + "POLICY NAME "
+            + " " + PREFIX_POLICY_DESCRIPTION + "POLICY DESCRIPTION "
+            + " " + PREFIX_POLICY_VALUE + "POLICY VALUE "
+            + " " + PREFIX_POLICY_START_DATE + "POLICY START DATE "
+            + " " + PREFIX_POLICY_END_DATE + "POLICY END DATE" + "] \n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_TAG + "Friends";
-    public static final String MESSAGE_ADD_TAG_SUCCESS = "Added tags successfully for person %1$s";
+            + PREFIX_POLICY_NAME + "Health Insurance "
+            + PREFIX_POLICY_DESCRIPTION + "Cancer Plan "
+            + PREFIX_POLICY_VALUE + "2000.00 "
+            + PREFIX_POLICY_START_DATE + "2023-01-01 "
+            + PREFIX_POLICY_END_DATE + "2024-12-12 ";
 
-    public static final String MESSAGE_NOT_EDITED = "One tag must be provided.";
+    public static final String MESSAGE_ADD_POLICY_SUCCESS = "Added policies successfully for person %1$s";
+
+    public static final String MESSAGE_NOT_EDITED = "One policy must be provided.";
 
     private final Index index;
-    private final AddTagDescriptor addTagDescriptor;
+    private final AddPolicyCommand.AddPolicyDescriptor addPolicyDescriptor;
 
     /**
-     * @param index            of the person in the filtered person list to edit
-     * @param addTagDescriptor details to edit the person with
+     * @param index               of the person in the filtered person list to edit
+     * @param addPolicyDescriptor details to edit the person with
      */
 
-    public AddTagCommand(Index index, AddTagDescriptor addTagDescriptor) {
+    public AddPolicyCommand(Index index, AddPolicyCommand.AddPolicyDescriptor addPolicyDescriptor) {
         requireNonNull(index);
-        requireNonNull(addTagDescriptor);
+        requireNonNull(addPolicyDescriptor);
         this.index = index;
-        this.addTagDescriptor = new AddTagDescriptor(addTagDescriptor);
+        this.addPolicyDescriptor = new AddPolicyCommand.AddPolicyDescriptor(addPolicyDescriptor);
     }
 
     @Override
@@ -67,41 +79,39 @@ public class AddTagCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        Person personWithAddedTag = createPersonWithAddedTag(personToEdit, addTagDescriptor);
-        personWithAddedTag.addTags(personToEdit.getTags());
+        Person personWithAddedPolicy = createPersonWithAddedPolicy(personToEdit, addPolicyDescriptor);
+        personWithAddedPolicy.addPolicies(personToEdit.getPolicies());
 
-        model.setPerson(personToEdit, personWithAddedTag);
+        model.setPerson(personToEdit, personWithAddedPolicy);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_ADD_TAG_SUCCESS, Messages.format(personWithAddedTag)));
+        return new CommandResult(String.format(MESSAGE_ADD_POLICY_SUCCESS, Messages.format(personWithAddedPolicy)));
 
     }
 
     /**
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
-     * edited with {@code addTagDescriptor}.
+     * edited with {@code addPolicyDescriptor}.
      */
-    private static Person createPersonWithAddedTag(Person personToEdit, AddTagDescriptor addTagDescriptor) {
+    private static Person createPersonWithAddedPolicy(Person personToEdit, AddPolicyDescriptor addPolicyDescriptor) {
         assert personToEdit != null;
 
-        Name updatedName = addTagDescriptor.getName().orElse(personToEdit.getName());
-        Phone updatedPhone = addTagDescriptor.getPhone().orElse(personToEdit.getPhone());
-        Email updatedEmail = addTagDescriptor.getEmail().orElse(personToEdit.getEmail());
-        Address updatedAddress = addTagDescriptor.getAddress().orElse(personToEdit.getAddress());
-        Set<Tag> updatedTags = addTagDescriptor.getTags().orElse(personToEdit.getTags());
-        PreferredContact updatePreferredContact = addTagDescriptor.getPreferredContact()
+        Name updatedName = addPolicyDescriptor.getName().orElse(personToEdit.getName());
+        Phone updatedPhone = addPolicyDescriptor.getPhone().orElse(personToEdit.getPhone());
+        Email updatedEmail = addPolicyDescriptor.getEmail().orElse(personToEdit.getEmail());
+        Address updatedAddress = addPolicyDescriptor.getAddress().orElse(personToEdit.getAddress());
+        Set<Tag> updatedTags = addPolicyDescriptor.getTags().orElse(personToEdit.getTags());
+        PreferredContact updatedPreferredContact = addPolicyDescriptor.getPreferredContact()
                 .orElse(personToEdit.getPreferredContact());
-        PreferredMeetingRegion updatePreferredMeetingRegion = addTagDescriptor.getPreferredMeetingRegion()
-                .orElse(personToEdit.getPreferredMeetingRegion());
-        Set<Policy> updatedPolicies = addTagDescriptor.getPolicies().orElse(personToEdit.getPolicies());
+        PreferredMeetingRegion updatedPreferredMeetingRegion = addPolicyDescriptor.getPreferredMeetingRegion().
+                orElse(personToEdit.getPreferredMeetingRegion());
+        Set<Policy> updatedPolicies = addPolicyDescriptor.getPolicies().orElse(personToEdit.getPolicies());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags,
-                updatePreferredMeetingRegion,
-                updatePreferredContact, updatedPolicies);
+                updatedPreferredMeetingRegion,updatedPreferredContact, updatedPolicies);
     }
 
     /**
      * Checks for duplicates in the set
-     * 
      * @param set set to be checked
      * @param <T> this describes my type parameter
      * @return true if at least one field is duplicated
@@ -119,7 +129,6 @@ public class AddTagCommand extends Command {
 
     /**
      * Compares this object with another object
-     * 
      * @param other object to be compared
      * @return true if other is equal to this
      */
@@ -129,13 +138,13 @@ public class AddTagCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof AddTagCommand)) {
+        if (!(other instanceof AddPolicyCommand)) {
             return false;
         }
 
-        AddTagCommand otherAddTagCommand = (AddTagCommand) other;
-        return index.equals(otherAddTagCommand.index)
-                && addTagDescriptor.equals(otherAddTagCommand.addTagDescriptor);
+        AddPolicyCommand otherAddPolicyCommand = (AddPolicyCommand) other;
+        return index.equals(otherAddPolicyCommand.index)
+                && addPolicyDescriptor.equals(otherAddPolicyCommand.addPolicyDescriptor);
     }
 
     @Override
@@ -146,36 +155,37 @@ public class AddTagCommand extends Command {
     }
 
     /**
-     * Stores the details to add the tag with. Added tag will be added to current
-     * list of tag.
+     * Stores the details to add the policy with. Added policy will be added to current
+     * list of policy.
      */
 
-    public static class AddTagDescriptor {
+    public static class AddPolicyDescriptor {
         private Name name;
         private Phone phone;
         private Email email;
         private Address address;
         private Set<Tag> tags;
-        private PreferredContact preferredContact;
         private PreferredMeetingRegion preferredMeetingRegion;
+        private PreferredContact preferredContact;
 
         private Set<Policy> policies;
 
-        public AddTagDescriptor() {
+
+        public AddPolicyDescriptor() {
         }
 
         /**
          * Copy constructor.s
          * A defensive copy of {@code tags} is used internally.
          */
-        public AddTagDescriptor(AddTagDescriptor toCopy) {
+        public AddPolicyDescriptor(AddPolicyDescriptor toCopy) {
             setName(toCopy.name);
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
-            setPreferredContact(toCopy.preferredContact);
             setPreferredMeetingRegion(toCopy.preferredMeetingRegion);
+            setPreferredContact(toCopy.preferredContact);
             setPolicies(toCopy.policies);
         }
 
@@ -219,6 +229,22 @@ public class AddTagCommand extends Command {
             this.tags = (tags != null) ? new HashSet<>(tags) : null;
         }
 
+
+        public void setPreferredContact(PreferredContact preferredContact) {
+            this.preferredContact = preferredContact;
+        }
+        public void setPreferredMeetingRegion(PreferredMeetingRegion preferredMeetingRegion) {
+            this.preferredMeetingRegion = preferredMeetingRegion;
+        }
+        public Optional<PreferredMeetingRegion> getPreferredMeetingRegion() {
+            return Optional.ofNullable(preferredMeetingRegion);
+        }
+
+
+        public Optional<PreferredContact> getPreferredContact() {
+            return Optional.ofNullable(preferredContact);
+        }
+
         /**
          * Returns an unmodifiable tag set, which throws
          * {@code UnsupportedOperationException}
@@ -227,39 +253,6 @@ public class AddTagCommand extends Command {
          */
         public Optional<Set<Tag>> getTags() {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
-        }
-
-        /**
-         * Sets {@code preferredContact} to this object's {@code preferredContact}.
-         *
-         * @param preferredContact
-         */
-
-        public void setPreferredContact(PreferredContact preferredContact) {
-            this.preferredContact = preferredContact;
-        }
-
-        public Optional<PreferredContact> getPreferredContact() {
-            return Optional.ofNullable(preferredContact);
-        }
-
-        /**
-         * Sets {@code preferredMeetingRegion} to this object's
-         * {@code preferredMeetingRegion}.
-         *
-         * @param preferredMeetingRegion
-         */
-        public void setPreferredMeetingRegion(PreferredMeetingRegion preferredMeetingRegion) {
-            this.preferredMeetingRegion = preferredMeetingRegion;
-        }
-
-        /**
-         * Returns an optional preferred meeting region of a person
-         *
-         * @return
-         */
-        public Optional<PreferredMeetingRegion> getPreferredMeetingRegion() {
-            return Optional.ofNullable(preferredMeetingRegion);
         }
 
         /**
@@ -280,6 +273,7 @@ public class AddTagCommand extends Command {
             return (policies != null) ? Optional.of(Collections.unmodifiableSet(policies)) : Optional.empty();
         }
 
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -287,19 +281,17 @@ public class AddTagCommand extends Command {
             }
 
             // instanceof handles nulls
-            if (!(other instanceof AddTagCommand.AddTagDescriptor)) {
+            if (!(other instanceof AddPolicyCommand.AddPolicyDescriptor)) {
                 return false;
             }
 
-            AddTagCommand.AddTagDescriptor otherAddTagDescriptor = (AddTagCommand.AddTagDescriptor) other;
-            return Objects.equals(name, otherAddTagDescriptor.name)
-                    && Objects.equals(phone, otherAddTagDescriptor.phone)
-                    && Objects.equals(email, otherAddTagDescriptor.email)
-                    && Objects.equals(address, otherAddTagDescriptor.address)
-                    && Objects.equals(tags, otherAddTagDescriptor.tags)
-                    && Objects.equals(preferredContact, otherAddTagDescriptor.preferredContact)
-                    && Objects.equals(preferredMeetingRegion, otherAddTagDescriptor.preferredMeetingRegion)
-                    && Objects.equals(policies, otherAddTagDescriptor.policies);
+            AddPolicyCommand.AddPolicyDescriptor otherAddPolicyDescriptor = (AddPolicyCommand.AddPolicyDescriptor) other;
+            return Objects.equals(name, otherAddPolicyDescriptor.name)
+                    && Objects.equals(phone, otherAddPolicyDescriptor.phone)
+                    && Objects.equals(email, otherAddPolicyDescriptor.email)
+                    && Objects.equals(address, otherAddPolicyDescriptor.address)
+                    && Objects.equals(tags, otherAddPolicyDescriptor.tags)
+                    && Objects.equals(policies, otherAddPolicyDescriptor.policies);
         }
 
         @Override
@@ -310,10 +302,9 @@ public class AddTagCommand extends Command {
                     .add("email", email)
                     .add("address", address)
                     .add("tags", tags)
-                    .add("preferredContact", preferredContact)
-                    .add("preferredMeetingRegion", preferredMeetingRegion)
                     .add("policies", policies)
                     .toString();
         }
     }
+
 }

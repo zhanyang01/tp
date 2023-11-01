@@ -9,6 +9,7 @@ import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.policy.Policy;
 
 /**
  * Represents a Person in the address book.
@@ -26,12 +27,15 @@ public class Person {
     private final PreferredContact preferredContact;
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+    private final PreferredMeetingRegion preferredMeetingRegion;
+    private final Set<Policy> policies = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-            PreferredContact preferredContact) {
+            PreferredMeetingRegion preferredMeetingRegion,
+            PreferredContact preferredContact, Set<Policy> policies) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
@@ -39,6 +43,22 @@ public class Person {
         this.address = address;
         this.tags.addAll(tags);
         this.preferredContact = preferredContact;
+        this.preferredMeetingRegion = preferredMeetingRegion;
+        this.policies.addAll(policies);
+    }
+
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
+                  PreferredMeetingRegion preferredMeetingRegion,
+                  PreferredContact preferredContact) {
+        requireAllNonNull(name, phone, email, address, tags);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+        this.preferredContact = preferredContact;
+        this.preferredMeetingRegion = preferredMeetingRegion;
+
     }
 
     public Name getName() {
@@ -74,6 +94,17 @@ public class Person {
     }
 
     /**
+     * Returns preferred meeting region of a person
+     */
+    public PreferredMeetingRegion getPreferredMeetingRegion() {
+        return preferredMeetingRegion;
+    }
+
+    public Set<Policy> getPolicies() {
+        return Collections.unmodifiableSet(policies);
+    }
+
+    /**
      * Adds tags to current tags of a person
      */
 
@@ -96,6 +127,32 @@ public class Person {
         }
         this.tags.clear();
         this.tags.addAll(newTags);
+
+    }
+
+    /**
+     * Adds policy to current policies of a person
+     */
+
+    public void addPolicies(Set<Policy> policies) {
+        if (policies != null) {
+            this.policies.addAll(policies);
+        }
+    }
+
+    /**
+     * Delete tags from current tags of a person
+     */
+
+    public void deletePolicies(Set<Policy> originalPolicies) {
+        Set<Policy> newPolicies = new HashSet<>();
+        for (Policy policy : originalPolicies) {
+            if (!this.policies.contains(policy)) {
+                newPolicies.add(policy);
+            }
+        }
+        this.policies.clear();
+        this.policies.addAll(newPolicies);
 
     }
 
@@ -133,13 +190,15 @@ public class Person {
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
                 && tags.equals(otherPerson.tags)
-                && preferredContact.equals(otherPerson.preferredContact);
+                && preferredContact.equals(otherPerson.preferredContact)
+                && preferredMeetingRegion.equals(otherPerson.preferredMeetingRegion)
+                && policies.equals(otherPerson.policies);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, preferredContact);
+        return Objects.hash(name, phone, email, address, tags, preferredContact, preferredMeetingRegion, policies);
     }
 
     @Override
@@ -151,6 +210,8 @@ public class Person {
                 .add("address", address)
                 .add("tags", tags)
                 .add("preferredContact", preferredContact)
+                .add("preferredMeetingRegion", preferredMeetingRegion)
+                .add("policies", policies)
                 .toString();
 
     }

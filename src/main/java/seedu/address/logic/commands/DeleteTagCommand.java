@@ -22,6 +22,8 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.PreferredContact;
+import seedu.address.model.person.PreferredMeetingRegion;
+import seedu.address.model.policy.Policy;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -42,8 +44,7 @@ public class DeleteTagCommand extends Command {
 
     public static final String MESSAGE_NOT_EDITED = "One tag must be provided.";
 
-    public static final String MESSAGE_INVALID_TAGS_PROVIDED =
-            "Tags provided do not exist. Please provide an existing tag.";
+    public static final String MESSAGE_INVALID_TAGS_PROVIDED = "Tags provided do not exist. Please provide an existing tag.";
 
     private final Index index;
     private final DeleteTagDescriptor deleteTagDescriptor;
@@ -95,14 +96,20 @@ public class DeleteTagCommand extends Command {
         Set<Tag> updatedTags = deleteTagDescriptor.getTags().orElse(personToEdit.getTags());
         PreferredContact updatePreferredContact = deleteTagDescriptor.getPreferredContact()
                 .orElse(personToEdit.getPreferredContact());
-
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatePreferredContact);
+        PreferredMeetingRegion updatePreferredMeetingRegion = deleteTagDescriptor.getPreferredMeetingRegion()
+                .orElse(personToEdit.getPreferredMeetingRegion());
+        Set<Policy> updatedPolicies = deleteTagDescriptor.getPolicies().orElse(personToEdit.getPolicies());
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags,
+                updatePreferredMeetingRegion,
+                updatePreferredContact, updatedPolicies);
     }
 
     /**
      * Compares this with another object.
+     * 
      * @param other object to compare
-     * @return true if the other object is a DeleteTagCommand with the same index and descriptor
+     * @return true if the other object is a DeleteTagCommand with the same index
+     *         and descriptor
      */
     public boolean equals(Object other) {
         if (other == this) {
@@ -137,6 +144,8 @@ public class DeleteTagCommand extends Command {
         private Address address;
         private Set<Tag> tags;
         private PreferredContact preferredContact;
+        private PreferredMeetingRegion preferredMeetingRegion;
+        private Set<Policy> policies;
 
         /**
          * Creates an empty {@code DeleteTagDescriptor}.
@@ -147,6 +156,7 @@ public class DeleteTagCommand extends Command {
         /**
          * Copy constructor.s
          * A defensive copy of {@code tags} is used internally.
+         * 
          * @param toCopy DeleteTagDescriptor to copy
          */
         public DeleteTagDescriptor(DeleteTagDescriptor toCopy) {
@@ -156,6 +166,8 @@ public class DeleteTagCommand extends Command {
             setAddress(toCopy.address);
             setTags(toCopy.tags);
             setPreferredContact(toCopy.preferredContact);
+            setPreferredMeetingRegion(toCopy.preferredMeetingRegion);
+            setPolicies(toCopy.policies);
         }
 
         public void setName(Name name) {
@@ -222,6 +234,35 @@ public class DeleteTagCommand extends Command {
             return Optional.ofNullable(preferredContact);
         }
 
+        /**
+         * Sets {@code preferredMeetingRegion} to this object's
+         * {@code preferredMeetingRegion}.
+         */
+        public void setPreferredMeetingRegion(PreferredMeetingRegion preferredMeetingRegion) {
+            this.preferredMeetingRegion = preferredMeetingRegion;
+        }
+
+        /**
+         * Returns an optional preferred meeting region of a person
+         */
+        public Optional<PreferredMeetingRegion> getPreferredMeetingRegion() {
+            return Optional.ofNullable(preferredMeetingRegion);
+        }
+
+        public void setPolicies(Set<Policy> policies) {
+            this.policies = (policies != null) ? new HashSet<>(policies) : null;
+        }
+
+        /**
+         * Returns an unmodifiable policy set, which throws
+         * {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code policies} is null.
+         */
+        public Optional<Set<Policy>> getPolicies() {
+            return (policies != null) ? Optional.of(Collections.unmodifiableSet(policies)) : Optional.empty();
+        }
+
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -238,7 +279,10 @@ public class DeleteTagCommand extends Command {
                     && Objects.equals(phone, otherDeleteTagDescriptor.phone)
                     && Objects.equals(email, otherDeleteTagDescriptor.email)
                     && Objects.equals(address, otherDeleteTagDescriptor.address)
-                    && Objects.equals(tags, otherDeleteTagDescriptor.tags);
+                    && Objects.equals(tags, otherDeleteTagDescriptor.tags)
+                    && Objects.equals(preferredContact, otherDeleteTagDescriptor.preferredContact)
+                    && Objects.equals(preferredMeetingRegion, otherDeleteTagDescriptor.preferredMeetingRegion)
+                    && Objects.equals(policies, otherDeleteTagDescriptor.policies);
         }
 
         @Override
@@ -249,6 +293,8 @@ public class DeleteTagCommand extends Command {
                     .add("email", email)
                     .add("address", address)
                     .add("tags", tags)
+                    .add("preferredContact", preferredContact)
+                    .add("preferredMeetingRegion", preferredMeetingRegion)
                     .toString();
         }
     }

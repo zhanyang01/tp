@@ -16,7 +16,6 @@ import seedu.address.model.person.FilterContainsKeywordsPredicate;
 public class FilterCommandParser implements Parser<FilterCommand> {
     /**
      * Parses {@code userInput} into a command and returns it.
-     *
      * @param args
      * @throws ParseException if {@code userInput} does not conform the expected format
      */

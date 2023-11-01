@@ -37,7 +37,6 @@ public class FilterContainsKeywordsPredicate implements Predicate<Person> {
         return allKeywordsMatched;
     }
 
-
     @Override
     public boolean equals(Object other) {
         if (other == this) {
