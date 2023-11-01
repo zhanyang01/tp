@@ -3,8 +3,6 @@ package seedu.address.storage;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-import java.time.LocalDate;
-
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.policy.Policy;
 
@@ -27,7 +25,7 @@ class JsonAdaptedPolicy {
      * Converts a given {@code Policy} into this class for Jackson use.
      */
     public JsonAdaptedPolicy(Policy source) {
-        policyString =source.toString();
+        policyString = source.toString();
     }
 
     @JsonValue

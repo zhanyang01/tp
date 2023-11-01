@@ -37,7 +37,7 @@ public class Policy {
     public final LocalDate endDate;
 
     /**
-     * Constructs a {@code Tag}.
+     * Constructs a {@code Policy}.
      *
      * @param policyName A valid tag name.
      */
@@ -58,6 +58,12 @@ public class Policy {
         this.startDate = startDate;
         this.endDate = endDate;
     }
+
+    /**
+     * Constructs a {@code Policy}.
+     *
+     * @param policyString A valid policy toString.
+     */
     public static Policy fromString(String policyString) {
         String[] parts = policyString.split("\n");
         if (parts.length != 5) {
