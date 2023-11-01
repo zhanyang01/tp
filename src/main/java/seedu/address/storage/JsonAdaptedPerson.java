@@ -146,7 +146,13 @@ class JsonAdaptedPerson {
 
         final PreferredMeetingRegion modelPreferredMeetingRegion = new PreferredMeetingRegion(preferredMeetingRegion);
 
-        final Set<Policy> modelPolicies = new HashSet<>();
+        final List<Policy> personPolicies = new ArrayList<>();
+
+        for (JsonAdaptedPolicy policy : policies) {
+            personPolicies.add(policy.toModelType());
+        }
+
+        final Set<Policy> modelPolicies = new HashSet<>(personPolicies);
 
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPreferredMeetingRegion,
                 modelPreferredContact, modelPolicies);
