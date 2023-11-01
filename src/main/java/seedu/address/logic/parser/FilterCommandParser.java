@@ -25,13 +25,15 @@ public class FilterCommandParser implements Parser<FilterCommand> {
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
-        } else if (!trimmedArgs.contains("t/")) {
+        }
+        else if (!trimmedArgs.contains(String.valueOf(PREFIX_TAG))) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
         }
 
         String[] tagKeywords = trimmedArgs.split(String.valueOf(PREFIX_TAG));
         tagKeywords = Arrays.copyOfRange(tagKeywords, 1, tagKeywords.length);
+
         return new FilterCommand(new FilterContainsKeywordsPredicate(Arrays.asList(tagKeywords)));
     }
 }
