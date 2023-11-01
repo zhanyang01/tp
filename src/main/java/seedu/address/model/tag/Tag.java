@@ -33,7 +33,7 @@ public class Tag {
     }
 
     public String getTagName() {
-        return this.tagName;
+        return this.tagName.trim();
     }
 
     @Override
