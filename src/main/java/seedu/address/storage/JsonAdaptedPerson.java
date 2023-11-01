@@ -135,8 +135,10 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(PreferredMeetingRegion.MESSAGE_CONSTRAINTS);
         }
 
+        final PreferredMeetingRegion modelPreferredMeetingRegion = new PreferredMeetingRegion(preferredMeetingRegion);
+
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPreferredContact,
-                new PreferredMeetingRegion(preferredMeetingRegion));
+                modelPreferredMeetingRegion);
     }
 
 }
