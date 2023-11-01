@@ -22,6 +22,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.PreferredContact;
+import seedu.address.model.person.PreferredMeetingRegion;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.policy.Policy;
 
@@ -89,13 +90,18 @@ public class AddTagCommand extends Command {
         Set<Tag> updatedTags = addTagDescriptor.getTags().orElse(personToEdit.getTags());
         PreferredContact updatePreferredContact = addTagDescriptor.getPreferredContact()
                 .orElse(personToEdit.getPreferredContact());
+        PreferredMeetingRegion updatePreferredMeetingRegion = addTagDescriptor.getPreferredMeetingRegion()
+                .orElse(personToEdit.getPreferredMeetingRegion());
         Set<Policy> updatedPolicies = addTagDescriptor.getPolicies().orElse(personToEdit.getPolicies());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatePreferredContact, updatedPolicies);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags,
+                updatePreferredMeetingRegion,
+                updatePreferredContact, updatedPolicies);
     }
 
     /**
      * Checks for duplicates in the set
+     * 
      * @param set set to be checked
      * @param <T> this describes my type parameter
      * @return true if at least one field is duplicated
@@ -113,6 +119,7 @@ public class AddTagCommand extends Command {
 
     /**
      * Compares this object with another object
+     * 
      * @param other object to be compared
      * @return true if other is equal to this
      */
@@ -150,6 +157,7 @@ public class AddTagCommand extends Command {
         private Address address;
         private Set<Tag> tags;
         private PreferredContact preferredContact;
+        private PreferredMeetingRegion preferredMeetingRegion;
 
         private Set<Policy> policies;
 
@@ -167,6 +175,7 @@ public class AddTagCommand extends Command {
             setAddress(toCopy.address);
             setTags(toCopy.tags);
             setPreferredContact(toCopy.preferredContact);
+            setPreferredMeetingRegion(toCopy.preferredMeetingRegion);
             setPolicies(toCopy.policies);
         }
 
@@ -210,16 +219,6 @@ public class AddTagCommand extends Command {
             this.tags = (tags != null) ? new HashSet<>(tags) : null;
         }
 
-
-        public void setPreferredContact(PreferredContact preferredContact) {
-            this.preferredContact = preferredContact;
-        }
-
-
-        public Optional<PreferredContact> getPreferredContact() {
-            return Optional.ofNullable(preferredContact);
-        }
-
         /**
          * Returns an unmodifiable tag set, which throws
          * {@code UnsupportedOperationException}
@@ -228,6 +227,39 @@ public class AddTagCommand extends Command {
          */
         public Optional<Set<Tag>> getTags() {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        }
+
+        /**
+         * Sets {@code preferredContact} to this object's {@code preferredContact}.
+         *
+         * @param preferredContact
+         */
+
+        public void setPreferredContact(PreferredContact preferredContact) {
+            this.preferredContact = preferredContact;
+        }
+
+        public Optional<PreferredContact> getPreferredContact() {
+            return Optional.ofNullable(preferredContact);
+        }
+
+        /**
+         * Sets {@code preferredMeetingRegion} to this object's
+         * {@code preferredMeetingRegion}.
+         *
+         * @param preferredMeetingRegion
+         */
+        public void setPreferredMeetingRegion(PreferredMeetingRegion preferredMeetingRegion) {
+            this.preferredMeetingRegion = preferredMeetingRegion;
+        }
+
+        /**
+         * Returns an optional preferred meeting region of a person
+         *
+         * @return
+         */
+        public Optional<PreferredMeetingRegion> getPreferredMeetingRegion() {
+            return Optional.ofNullable(preferredMeetingRegion);
         }
 
         /**
@@ -248,7 +280,6 @@ public class AddTagCommand extends Command {
             return (policies != null) ? Optional.of(Collections.unmodifiableSet(policies)) : Optional.empty();
         }
 
-
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -266,6 +297,8 @@ public class AddTagCommand extends Command {
                     && Objects.equals(email, otherAddTagDescriptor.email)
                     && Objects.equals(address, otherAddTagDescriptor.address)
                     && Objects.equals(tags, otherAddTagDescriptor.tags)
+                    && Objects.equals(preferredContact, otherAddTagDescriptor.preferredContact)
+                    && Objects.equals(preferredMeetingRegion, otherAddTagDescriptor.preferredMeetingRegion)
                     && Objects.equals(policies, otherAddTagDescriptor.policies);
         }
 
@@ -277,6 +310,8 @@ public class AddTagCommand extends Command {
                     .add("email", email)
                     .add("address", address)
                     .add("tags", tags)
+                    .add("preferredContact", preferredContact)
+                    .add("preferredMeetingRegion", preferredMeetingRegion)
                     .add("policies", policies)
                     .toString();
         }

@@ -16,8 +16,8 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.PreferredContact;
+import seedu.address.model.person.PreferredMeetingRegion;
 import seedu.address.model.tag.Tag;
-
 
 /**
  * Jackson-friendly version of {@link Person}.
@@ -32,6 +32,7 @@ class JsonAdaptedPerson {
     private final String address;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
     private final String preferredContact;
+    private final String preferredMeetingRegion;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -40,12 +41,14 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("tags") List<JsonAdaptedTag> tags,
-            @JsonProperty("preferredContact") String preferredContact) {
+            @JsonProperty("preferredContact") String preferredContact,
+            @JsonProperty("preferredMeetingRegion") String preferredMeetingRegion) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.preferredContact = preferredContact;
+        this.preferredMeetingRegion = preferredMeetingRegion;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -63,6 +66,7 @@ class JsonAdaptedPerson {
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
         preferredContact = source.getPreferredContact().value;
+        preferredMeetingRegion = source.getPreferredMeetingRegion().value;
     }
 
     /**
@@ -122,7 +126,19 @@ class JsonAdaptedPerson {
         }
         final PreferredContact modelPreferredContact = new PreferredContact(preferredContact);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPreferredContact);
+        if (preferredMeetingRegion == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    PreferredMeetingRegion.class.getSimpleName()));
+        }
+
+        if (!PreferredMeetingRegion.isValidPreferredMeetingRegion(preferredMeetingRegion)) {
+            throw new IllegalValueException(PreferredMeetingRegion.MESSAGE_CONSTRAINTS);
+        }
+
+        final PreferredMeetingRegion modelPreferredMeetingRegion = new PreferredMeetingRegion(preferredMeetingRegion);
+
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPreferredContact,
+                modelPreferredMeetingRegion);
     }
 
 }

@@ -27,13 +27,15 @@ public class Person {
     private final PreferredContact preferredContact;
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+    private final PreferredMeetingRegion preferredMeetingRegion;
     private final Set<Policy> policies = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                       PreferredContact preferredContact, Set<Policy> policies) {
+            PreferredMeetingRegion preferredMeetingRegion,
+            PreferredContact preferredContact, Set<Policy> policies) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
@@ -41,17 +43,8 @@ public class Person {
         this.address = address;
         this.tags.addAll(tags);
         this.preferredContact = preferredContact;
+        this.preferredMeetingRegion = preferredMeetingRegion;
         this.policies.addAll(policies);
-    }
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                  PreferredContact preferredContact) {
-        requireAllNonNull(name, phone, email, address, tags);
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.tags.addAll(tags);
-        this.preferredContact = preferredContact;
     }
 
     public Name getName() {
@@ -87,15 +80,15 @@ public class Person {
     }
 
     /**
-     * Returns an immutable policy set, which throws
-     * {@code UnsupportedOperationException}
-     * if modification is attempted.
+     * Returns preferred meeting region of a person
      */
+    public PreferredMeetingRegion getPreferredMeetingRegion() {
+        return preferredMeetingRegion;
+    }
+
     public Set<Policy> getPolicies() {
         return Collections.unmodifiableSet(policies);
     }
-
-
 
     /**
      * Adds tags to current tags of a person
@@ -184,13 +177,14 @@ public class Person {
                 && address.equals(otherPerson.address)
                 && tags.equals(otherPerson.tags)
                 && preferredContact.equals(otherPerson.preferredContact)
+                && preferredMeetingRegion.equals(otherPerson.preferredMeetingRegion)
                 && policies.equals(otherPerson.policies);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, preferredContact, policies);
+        return Objects.hash(name, phone, email, address, tags, preferredContact, preferredMeetingRegion, policies);
     }
 
     @Override
@@ -202,6 +196,7 @@ public class Person {
                 .add("address", address)
                 .add("tags", tags)
                 .add("preferredContact", preferredContact)
+                .add("preferredMeetingRegion", preferredMeetingRegion)
                 .add("policies", policies)
                 .toString();
 

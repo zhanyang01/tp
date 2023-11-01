@@ -132,19 +132,29 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String policy} into a {@code Policy}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code policy} is invalid.
+     * Parses a {@code String preferredMeetingRegion} into a
+     * {@code PreferredMeetingRegion}.
      */
-    public static Set<Policy> parsePolicy(String policyName, String description, String policyValue, String startDate, String endDate) throws ParseException {
+    public static seedu.address.model.person.PreferredMeetingRegion parsePreferredMeetingRegion(
+            String preferredMeetingRegion) throws ParseException {
+        requireNonNull(preferredMeetingRegion);
+        String trimmedPreferredMeetingRegion = preferredMeetingRegion.trim();
+        if (!seedu.address.model.person.PreferredMeetingRegion.isValidPreferredMeetingRegion(
+                trimmedPreferredMeetingRegion)) {
+            throw new ParseException(
+                    seedu.address.model.person.PreferredMeetingRegion.MESSAGE_CONSTRAINTS);
+        }
+        return new seedu.address.model.person.PreferredMeetingRegion(trimmedPreferredMeetingRegion);
+    }
+
+    public static Set<Policy> parsePolicy(String policyName, String description, String policyValue, String startDate,
+            String endDate) throws ParseException {
         requireNonNull(policyName);
         requireNonNull(description);
         requireNonNull(policyValue);
         requireNonNull(startDate);
         requireNonNull(endDate);
         final Set<Policy> policySet = new HashSet<>();
-
 
         double parsedPolicyValue;
         LocalDate parsedStartDate;
@@ -173,6 +183,5 @@ public class ParserUtil {
         policySet.add(policy);
         return policySet;
     }
-
 
 }
