@@ -1,6 +1,5 @@
 package seedu.address.model.policy;
 
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
@@ -9,10 +8,10 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
-
 /**
  * Represents a Policy in the address book.
- *  * Guarantees: immutable; name is valid as declared in {@link #isValidPolicyName(String)}
+ * * Guarantees: immutable; name is valid as declared in
+ * {@link #isValidPolicyName(String)}
  */
 public class Policy {
 
@@ -26,15 +25,12 @@ public class Policy {
 
     public static final String DATE_MESSAGE_CONSTRAINTS = "Date should be in the format 'YYYY-MM-DD'";
 
-
-
-
-
     public final String policyName;
     public final String description;
     public final double policyValue;
     public final LocalDate startDate;
     public final LocalDate endDate;
+    public String policyDescription;
 
     /**
      * Constructs a {@code Tag}.
@@ -58,6 +54,7 @@ public class Policy {
         this.startDate = startDate;
         this.endDate = endDate;
     }
+
     /**
      * Returns true if a given string is a valid policy name.
      */
@@ -94,7 +91,6 @@ public class Policy {
             return false;
         }
     }
-
 
     public String getPolicyName() {
         return policyName;
