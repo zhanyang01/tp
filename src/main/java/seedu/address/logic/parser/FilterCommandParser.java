@@ -16,7 +16,6 @@ import seedu.address.model.person.FilterContainsKeywordsPredicate;
 public class FilterCommandParser implements Parser<FilterCommand> {
     /**
      * Parses {@code userInput} into a command and returns it.
-     *
      * @param args
      * @throws ParseException if {@code userInput} does not conform the expected format
      */
@@ -27,8 +26,14 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
         }
+        else if (!trimmedArgs.contains(String.valueOf(PREFIX_TAG))) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
+        }
 
         String[] tagKeywords = trimmedArgs.split(String.valueOf(PREFIX_TAG));
+        tagKeywords = Arrays.copyOfRange(tagKeywords, 1, tagKeywords.length);
+
         return new FilterCommand(new FilterContainsKeywordsPredicate(Arrays.asList(tagKeywords)));
     }
 }
