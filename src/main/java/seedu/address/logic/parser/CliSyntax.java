@@ -16,4 +16,9 @@ public class CliSyntax {
     public static final Prefix PREFIX_PREFERRED_CONTACT = new Prefix("pc/");
     public static final Prefix PREFIX_OLD_PASSWORD = new Prefix("op/");
     public static final Prefix PREFIX_NEW_PASSWORD = new Prefix("np/");
+    public static final Prefix PREFIX_POLICY_NAME = new Prefix("pn/");
+    public static final Prefix PREFIX_POLICY_DESCRIPTION = new Prefix("pd/");
+    public static final Prefix PREFIX_POLICY_VALUE = new Prefix("pv/");
+    public static final Prefix PREFIX_POLICY_START_DATE = new Prefix("psd/");
+    public static final Prefix PREFIX_POLICY_END_DATE = new Prefix("ped/");
 }
