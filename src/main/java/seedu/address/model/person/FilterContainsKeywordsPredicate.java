@@ -31,7 +31,6 @@ public class FilterContainsKeywordsPredicate implements Predicate<Person> {
                     break;
                 }
             }
-
             if (!keywordMatched) {
                 allKeywordsMatched = false;
                 break;
