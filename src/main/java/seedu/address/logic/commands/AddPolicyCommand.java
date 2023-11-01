@@ -1,11 +1,11 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_DESCRIPTION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_VALUE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_END_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_START_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_VALUE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
@@ -26,8 +26,9 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.PreferredContact;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.person.PreferredMeetingRegion;
 import seedu.address.model.policy.Policy;
+import seedu.address.model.tag.Tag;
 
 /**
  * Adds a policy to an existing person in the address book.
@@ -99,11 +100,14 @@ public class AddPolicyCommand extends Command {
         Email updatedEmail = addPolicyDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = addPolicyDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = addPolicyDescriptor.getTags().orElse(personToEdit.getTags());
-        PreferredContact updatePreferredContact = addPolicyDescriptor.getPreferredContact()
+        PreferredContact updatedPreferredContact = addPolicyDescriptor.getPreferredContact()
                 .orElse(personToEdit.getPreferredContact());
+        PreferredMeetingRegion updatedPreferredMeetingRegion = addPolicyDescriptor.getPreferredMeetingRegion()
+                .orElse(personToEdit.getPreferredMeetingRegion());
         Set<Policy> updatedPolicies = addPolicyDescriptor.getPolicies().orElse(personToEdit.getPolicies());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatePreferredContact, updatedPolicies);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags,
+                updatedPreferredMeetingRegion, updatedPreferredContact, updatedPolicies);
     }
 
     /**
@@ -161,9 +165,11 @@ public class AddPolicyCommand extends Command {
         private Email email;
         private Address address;
         private Set<Tag> tags;
+        private PreferredMeetingRegion preferredMeetingRegion;
         private PreferredContact preferredContact;
 
         private Set<Policy> policies;
+
 
         public AddPolicyDescriptor() {
         }
@@ -178,6 +184,7 @@ public class AddPolicyCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
+            setPreferredMeetingRegion(toCopy.preferredMeetingRegion);
             setPreferredContact(toCopy.preferredContact);
             setPolicies(toCopy.policies);
         }
@@ -226,6 +233,12 @@ public class AddPolicyCommand extends Command {
         public void setPreferredContact(PreferredContact preferredContact) {
             this.preferredContact = preferredContact;
         }
+        public void setPreferredMeetingRegion(PreferredMeetingRegion preferredMeetingRegion) {
+            this.preferredMeetingRegion = preferredMeetingRegion;
+        }
+        public Optional<PreferredMeetingRegion> getPreferredMeetingRegion() {
+            return Optional.ofNullable(preferredMeetingRegion);
+        }
 
 
         public Optional<PreferredContact> getPreferredContact() {
@@ -272,7 +285,8 @@ public class AddPolicyCommand extends Command {
                 return false;
             }
 
-            AddPolicyCommand.AddPolicyDescriptor otherAddPolicyDescriptor = (AddPolicyCommand.AddPolicyDescriptor) other;
+            AddPolicyCommand.AddPolicyDescriptor otherAddPolicyDescriptor =
+                    (AddPolicyCommand.AddPolicyDescriptor) other;
             return Objects.equals(name, otherAddPolicyDescriptor.name)
                     && Objects.equals(phone, otherAddPolicyDescriptor.phone)
                     && Objects.equals(email, otherAddPolicyDescriptor.email)

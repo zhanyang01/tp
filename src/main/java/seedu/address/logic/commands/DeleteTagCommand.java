@@ -44,7 +44,8 @@ public class DeleteTagCommand extends Command {
 
     public static final String MESSAGE_NOT_EDITED = "One tag must be provided.";
 
-    public static final String MESSAGE_INVALID_TAGS_PROVIDED = "Tags provided do not exist. Please provide an existing tag.";
+    public static final String MESSAGE_INVALID_TAGS_PROVIDED =
+            "Tags provided do not exist. Please provide an existing tag.";
 
     private final Index index;
     private final DeleteTagDescriptor deleteTagDescriptor;
@@ -106,7 +107,6 @@ public class DeleteTagCommand extends Command {
 
     /**
      * Compares this with another object.
-     * 
      * @param other object to compare
      * @return true if the other object is a DeleteTagCommand with the same index
      *         and descriptor
@@ -156,7 +156,6 @@ public class DeleteTagCommand extends Command {
         /**
          * Copy constructor.s
          * A defensive copy of {@code tags} is used internally.
-         * 
          * @param toCopy DeleteTagDescriptor to copy
          */
         public DeleteTagDescriptor(DeleteTagDescriptor toCopy) {
@@ -281,7 +280,7 @@ public class DeleteTagCommand extends Command {
                     && Objects.equals(address, otherDeleteTagDescriptor.address)
                     && Objects.equals(tags, otherDeleteTagDescriptor.tags)
                     && Objects.equals(preferredContact, otherDeleteTagDescriptor.preferredContact)
-                    && Objects.equals(preferredMeetingRegion, otherDeleteTagDescriptor.preferredMeetingRegion);
+                    && Objects.equals(preferredMeetingRegion, otherDeleteTagDescriptor.preferredMeetingRegion)
                     && Objects.equals(policies, otherDeleteTagDescriptor.policies);
         }
 

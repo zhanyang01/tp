@@ -67,7 +67,8 @@ public class EditPersonDescriptorTest {
                 + editPersonDescriptor.getAddress().orElse(null) + ", tags="
                 + editPersonDescriptor.getTags().orElse(null) + ", preferredContact="
                 + editPersonDescriptor.getPreferredContact().orElse(null) + ", preferredMeetingRegion="
-                + editPersonDescriptor.getPreferredMeetingRegion().orElse(null) + "}";
+                + editPersonDescriptor.getPreferredMeetingRegion().orElse(null) + ", policies="
+                + editPersonDescriptor.getPolicies().orElse(null) + "}";
         assertEquals(expected, editPersonDescriptor.toString());
     }
 }

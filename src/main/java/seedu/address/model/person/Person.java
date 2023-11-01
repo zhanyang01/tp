@@ -8,8 +8,8 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.policy.Policy;
+import seedu.address.model.tag.Tag;
 
 /**
  * Represents a Person in the address book.
@@ -45,6 +45,30 @@ public class Person {
         this.preferredContact = preferredContact;
         this.preferredMeetingRegion = preferredMeetingRegion;
         this.policies.addAll(policies);
+    }
+
+    /**
+     * Every field must be present and not null.
+     * @param name
+     * @param phone
+     * @param email
+     * @param address
+     * @param tags
+     * @param preferredMeetingRegion
+     * @param preferredContact
+     */
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
+                  PreferredMeetingRegion preferredMeetingRegion,
+                  PreferredContact preferredContact) {
+        requireAllNonNull(name, phone, email, address, tags);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+        this.preferredContact = preferredContact;
+        this.preferredMeetingRegion = preferredMeetingRegion;
+
     }
 
     public Name getName() {
@@ -119,7 +143,6 @@ public class Person {
     /**
      * Adds policy to current policies of a person
      */
-
     public void addPolicies(Set<Policy> policies) {
         if (policies != null) {
             this.policies.addAll(policies);
@@ -129,7 +152,6 @@ public class Person {
     /**
      * Delete tags from current tags of a person
      */
-
     public void deletePolicies(Set<Policy> originalPolicies) {
         Set<Policy> newPolicies = new HashSet<>();
         for (Policy policy : originalPolicies) {

@@ -23,8 +23,8 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.PreferredContact;
 import seedu.address.model.person.PreferredMeetingRegion;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.policy.Policy;
+import seedu.address.model.tag.Tag;
 
 /**
  * Adds a tag to an existing person in the address book.
@@ -101,7 +101,6 @@ public class AddTagCommand extends Command {
 
     /**
      * Checks for duplicates in the set
-     * 
      * @param set set to be checked
      * @param <T> this describes my type parameter
      * @return true if at least one field is duplicated
@@ -119,7 +118,6 @@ public class AddTagCommand extends Command {
 
     /**
      * Compares this object with another object
-     * 
      * @param other object to be compared
      * @return true if other is equal to this
      */

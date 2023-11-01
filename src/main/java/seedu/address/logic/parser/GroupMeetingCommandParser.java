@@ -26,8 +26,8 @@ public class GroupMeetingCommandParser implements Parser<GroupMeetingCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, GroupMeetingCommand.MESSAGE_USAGE));
         }
 
-        if (!trimmedArgs.equals("north") || !trimmedArgs.equals("south") || !trimmedArgs.equals("east")
-                || !trimmedArgs.equals("west") || !trimmedArgs.equals("central")) {
+        if (!(trimmedArgs.equals("north") || trimmedArgs.equals("south") || trimmedArgs.equals("east")
+                || trimmedArgs.equals("west") || trimmedArgs.equals("central"))) {
             throw new ParseException(GroupMeetingCommand.MESSAGE_REGION_INVALID);
         }
 
