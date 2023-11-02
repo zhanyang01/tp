@@ -70,14 +70,12 @@ public class Policy {
             // Handle invalid input string here, e.g., throw an exception or return null
             return null;
         }
-        System.out.println("hihihi");
 
         String policyName = parts[0].replace("Policy name: ", "");
         String description = parts[1].replace("Policy description: ", "");
         double policyValue = Double.parseDouble(parts[2].replace("Value: ", ""));
         LocalDate startDate = LocalDate.parse(parts[3].replace("Start date: ", ""));
         LocalDate endDate = LocalDate.parse(parts[4].replace("End date: ", ""));
-        System.out.println("oierefefefef");
         return new Policy(policyName, description, policyValue, startDate, endDate);
     }
     /**
