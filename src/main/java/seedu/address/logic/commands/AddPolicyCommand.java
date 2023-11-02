@@ -85,7 +85,6 @@ public class AddPolicyCommand extends Command {
         model.setPerson(personToEdit, personWithAddedPolicy);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_ADD_POLICY_SUCCESS, Messages.format(personWithAddedPolicy)));
-
     }
 
     /**
