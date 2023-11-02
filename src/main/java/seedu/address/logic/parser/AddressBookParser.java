@@ -25,6 +25,7 @@ import seedu.address.logic.commands.GroupMeetingCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.PreferredContactCommand;
+import seedu.address.logic.commands.ToggleModeCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -109,10 +110,14 @@ public class AddressBookParser {
         case ChangePasswordCommand.COMMAND_WORD:
             return new ChangePasswordCommandParser().parse(arguments);
 
+        case ToggleModeCommand.COMMAND_WORD:
+            return new ToggleModeCommandParser().parse(arguments);
+
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
+
 
     }
 
