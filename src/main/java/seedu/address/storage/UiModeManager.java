@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * Manages the storage and validation of a UIMode.
  */
-public class UIModeManager {
+public class UiModeManager {
 
     private String UiMode;
     private final String UiModeFilePath; // The path to the file where the UIMode is stored
@@ -25,7 +25,7 @@ public class UIModeManager {
      *
      * @return The stored UIMode or an empty string if no UIMode is set.
      */
-    private String readUIModeFromFile() {
+    private String readUiModeFromFile() {
         File UiModeFile = new File(UiModeFilePath);
 
         if (!UiModeFile.exists()) {

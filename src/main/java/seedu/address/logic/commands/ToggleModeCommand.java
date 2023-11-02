@@ -4,7 +4,7 @@ package seedu.address.logic.commands;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.storage.UIModeManager;
+import seedu.address.storage.UiModeManager;
 
 import static java.util.Objects.requireNonNull;
 
@@ -20,11 +20,11 @@ public class ToggleModeCommand extends Command {
             + "Toggles between LightMode and DarkMode";
 
     public static final String TOGGLE_SUCCESS = "Changed Mode, the next time InsuraHub is opened it will be in ";
-    private UIModeManager uiModeManager;
+    private UiModeManager uiModeManager;
     private String newMode;
 
     public ToggleModeCommand() {
-        this.uiModeManager = new UIModeManager();
+        this.uiModeManager = new UiModeManager();
         if (uiModeManager.getUiMode().equals("lightWindow.fxml")) {
             this.newMode = "DarkMode";
         } else {

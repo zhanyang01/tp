@@ -17,7 +17,7 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.storage.UIModeManager;
+import seedu.address.storage.UiModeManager;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -54,7 +54,7 @@ public class MainWindow extends UiPart<Stage> {
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
     public MainWindow(Stage primaryStage, Logic logic) {
-        super(new UIModeManager().getUiMode(), primaryStage);
+        super(new UiModeManager().getUiMode(), primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
