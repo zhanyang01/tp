@@ -25,7 +25,7 @@ public class ToggleModeCommand extends Command {
 
     public ToggleModeCommand() {
         this.uiModeManager = new UiModeManager();
-        if (uiModeManager.getUiMode().equals("lightWindow.fxml")) {
+        if (uiModeManager.getUiMode().equals("LightWindow.fxml")) {
             this.newMode = "DarkMode";
         } else {
             this.newMode = "LightMode";
@@ -37,7 +37,7 @@ public class ToggleModeCommand extends Command {
         requireNonNull(model);
         String uiMode = uiModeManager.getUiMode();
         if (uiMode.equals("MainWindow.fxml")) {
-            uiModeManager.setUiMode("lightWindow.fxml");
+            uiModeManager.setUiMode("LightWindow.fxml");
         } else {
             uiModeManager.setUiMode("MainWindow.fxml");
         }

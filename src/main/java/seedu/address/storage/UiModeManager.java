@@ -1,6 +1,7 @@
 package seedu.address.storage;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
@@ -28,17 +29,29 @@ public class UiModeManager {
      * @return The stored UIMode or an empty string if no UIMode is set.
      */
     private String readUiModeFromFile() {
-        Path path = Paths.get(UiModeFilePath);
+        try {
+            Path folder = Paths.get("./data/");
+            if (!Files.exists(folder)) {
+                Files.createDirectory(folder);
+            }
+        } catch (Exception e) {
+            return "there was an error creating folder";
+        }
+        Path path = Paths.get("data", "uiMode.txt");
         File UiModeFile = path.toFile();
-
         if (!UiModeFile.exists()) {
             createUiModeFile(UiModeFile);
             return "MainWindow.fxml";
         }
-
         try (BufferedReader reader = new BufferedReader(new FileReader(UiModeFilePath))) {
             String string = reader.readLine();
-            return Objects.requireNonNullElse(string, "MainWindow.fxml");
+            if (string==null) {
+                return "MainWindow.fxml";
+            }
+            if (!string.equals("LightWindow.fxml")&&!string.equals("MainWindow.fxml")) {
+                return "MainWindow.fxml";
+            }
+            return string;
         } catch (IOException e) {
             // Handle file reading error
             return "MainWindow.fxml";
