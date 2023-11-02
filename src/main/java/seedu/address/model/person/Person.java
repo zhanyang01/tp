@@ -149,6 +149,10 @@ public class Person {
         }
     }
 
+    public void removePolicy(Policy policy) {
+        this.policies.remove(policy);
+    }
+
     /**
      * Delete tags from current tags of a person
      */
@@ -223,5 +227,6 @@ public class Person {
                 .toString();
 
     }
+
 
 }
