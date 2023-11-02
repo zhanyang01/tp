@@ -8,16 +8,16 @@ import java.util.Objects;
  */
 public class UIModeManager {
 
-    private String UIMode;
-    private final String UIModeFilePath; // The path to the file where the UIMode is stored
+    private String UiMode;
+    private final String UiModeFilePath; // The path to the file where the UIMode is stored
 
     /**
-     * Constructs a UIModeManager and fetch the UIMode from a file called uiMode.txt,
+     * Constructs a UiModeManager and fetch the UiMode from a file called uiMode.txt,
      * file will be created if it does not exist.
      */
-    public UIModeManager() {
-        this.UIModeFilePath = "./uiMode.txt";
-        this.UIMode = readUIModeFromFile();
+    public UiModeManager() {
+        this.UiModeFilePath = "./uiMode.txt";
+        this.UiMode = readUiModeFromFile();
     }
 
     /**
@@ -26,14 +26,14 @@ public class UIModeManager {
      * @return The stored UIMode or an empty string if no UIMode is set.
      */
     private String readUIModeFromFile() {
-        File UIModeFile = new File(UIModeFilePath);
+        File UiModeFile = new File(UiModeFilePath);
 
-        if (!UIModeFile.exists()) {
-            createUIModeFile(UIModeFile);
+        if (!UiModeFile.exists()) {
+            createUiModeFile(UiModeFile);
             return "MainWindow.fxml";
         }
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(UIModeFilePath))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(UiModeFilePath))) {
             String string = reader.readLine();
             return Objects.requireNonNullElse(string, "MainWindow.fxml");
         } catch (IOException e) {
@@ -43,11 +43,11 @@ public class UIModeManager {
     }
 
     /**
-     * Creates a UIMode file if it doesn't exist.
+     * Creates a UiMode file if it doesn't exist.
      *
      * @param file The file to be created.
      */
-    private void createUIModeFile(File file) {
+    private void createUiModeFile(File file) {
         try {
             file.createNewFile();
         } catch (IOException e) {
@@ -62,7 +62,7 @@ public class UIModeManager {
      * @return true if the input matches the stored UIMode, false otherwise.
      */
     public boolean check(String input) {
-        return input.equals(UIMode);
+        return input.equals(UiMode);
     }
 
     /**
@@ -70,26 +70,26 @@ public class UIModeManager {
      *
      * @return The stored UIMode.
      */
-    public String getUIMode() {
-        return UIMode;
+    public String getUiMode() {
+        return UiMode;
     }
 
     /**
      * Sets a new UIMode, updating it in memory and writing it to the UIMode file.
      *
-     * @param newUIMode The new UIMode to be set.
+     * @param newUiMode The new UIMode to be set.
      */
-    public void setUIMode(String newUIMode) {
-        if (newUIMode == null) {
-            newUIMode = "";
+    public void setUiMode(String newUiMode) {
+        if (newUiMode == null) {
+            newUiMode = "";
         }
-        UIMode = newUIMode;
-        File UIModeFile = new File(UIModeFilePath);
+        UiMode = newUiMode;
+        File UIModeFile = new File(UiModeFilePath);
 
         if (!UIModeFile.exists()) {
-            createUIModeFile(UIModeFile);
+            createUiModeFile(UIModeFile);
         }
-        writeUIModeToFile(newUIMode);
+        writeUiModeToFile(newUiMode);
     }
 
 
@@ -98,8 +98,8 @@ public class UIModeManager {
      *
      * @param newUIMode The UIMode to be written to the file.
      */
-    private void writeUIModeToFile(String newUIMode) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(UIModeFilePath, false))) {
+    private void writeUiModeToFile(String newUIMode) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(UiModeFilePath, false))) {
             writer.write(newUIMode);
         } catch (IOException e) {
             System.out.println("there was an error writing UIMode to file");

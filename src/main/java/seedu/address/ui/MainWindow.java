@@ -54,7 +54,7 @@ public class MainWindow extends UiPart<Stage> {
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
     public MainWindow(Stage primaryStage, Logic logic) {
-        super(new UIModeManager().getUIMode(), primaryStage);
+        super(new UIModeManager().getUiMode(), primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
