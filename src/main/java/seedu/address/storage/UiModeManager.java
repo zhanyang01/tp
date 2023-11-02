@@ -1,6 +1,8 @@
 package seedu.address.storage;
 
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Objects;
 
 /**
@@ -16,7 +18,7 @@ public class UiModeManager {
      * file will be created if it does not exist.
      */
     public UiModeManager() {
-        this.UiModeFilePath = "./uiMode.txt";
+        this.UiModeFilePath = "./data/uiMode.txt";
         this.UiMode = readUiModeFromFile();
     }
 
@@ -26,7 +28,8 @@ public class UiModeManager {
      * @return The stored UIMode or an empty string if no UIMode is set.
      */
     private String readUiModeFromFile() {
-        File UiModeFile = new File(UiModeFilePath);
+        Path path = Paths.get(UiModeFilePath);
+        File UiModeFile = path.toFile();
 
         if (!UiModeFile.exists()) {
             createUiModeFile(UiModeFile);
