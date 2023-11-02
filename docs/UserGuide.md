@@ -81,11 +81,11 @@ Shows a message explaning how to access the help page.
 
 Format: `help`
 
-### Adding a new client: `addNewClient`
+### Adding a new client: `addN`
 
-Adds a new client to the address book.
+Adds a new person to the address book.
 
-Format: `addNewClient/FIRSTNAME/LASTNAME/PRIMARYPHONENUMBER/ADDRESS/EMAIL`
+Format: `add/FIRSTNAME/LASTNAME/PRIMARYPHONENUMBER/ADDRESS/EMAIL`
 
 <box type="tip" seamless>
 
