@@ -63,7 +63,7 @@ public class PreferredContactCommand extends Command {
         Person editedPreferredContactPerson = new Person(preferredContactPerson.getName(),
                 preferredContactPerson.getPhone(), preferredContactPerson.getEmail(),
                 preferredContactPerson.getAddress(), preferredContactPerson.getTags(),
-                preferredContactPerson.getPreferredMeetingRegion(), preferredContactPerson.getPreferredContact(),
+                preferredContactPerson.getPreferredMeetingRegion(), preferredContact,
                 preferredContactPerson.getPolicies());
 
         model.setPerson(preferredContactPerson, editedPreferredContactPerson);

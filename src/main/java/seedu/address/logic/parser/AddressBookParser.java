@@ -20,11 +20,13 @@ import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FileCommand;
 import seedu.address.logic.commands.FilterCommand;
+import seedu.address.logic.commands.FilterPolicyDescriptionCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.GroupMeetingCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.PreferredContactCommand;
+import seedu.address.logic.commands.ToggleModeCommand;
 import seedu.address.logic.commands.RemovePolicyCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -77,6 +79,9 @@ public class AddressBookParser {
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
 
+        case DeleteTagCommand.COMMAND_WORD:
+            return new DeleteTagCommandParser().parse(arguments);
+            
         case RemovePolicyCommand.COMMAND_WORD:
              return new RemovePolicyCommandParser().parse(arguments);
 
@@ -107,17 +112,21 @@ public class AddressBookParser {
         case FilterCommand.COMMAND_WORD:
             return new FilterCommandParser().parse(arguments);
 
+        case FilterPolicyDescriptionCommand.COMMAND_WORD:
+            return new FilterPolicyDescriptionCommandParser().parse(arguments);
+
         case PreferredContactCommand.COMMAND_WORD:
             return new PreferredContactCommandParser().parse(arguments);
 
         case ChangePasswordCommand.COMMAND_WORD:
             return new ChangePasswordCommandParser().parse(arguments);
 
+        case ToggleModeCommand.COMMAND_WORD:
+            return new ToggleModeCommandParser().parse(arguments);
+
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
-
     }
-
 }
