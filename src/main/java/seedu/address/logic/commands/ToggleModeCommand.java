@@ -14,7 +14,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class ToggleModeCommand extends Command {
 
-    public static final String COMMAND_WORD = "ToggleMode";
+    public static final String COMMAND_WORD = "toggleMode";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + "Toggles between LightMode and DarkMode";

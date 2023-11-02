@@ -5,6 +5,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Objects;
 
 /**
@@ -20,7 +23,7 @@ public class PasswordManager {
      * file will be created if it does not exist.
      */
     public PasswordManager() {
-        this.passwordFilePath = "./encoded.txt";
+        this.passwordFilePath = "./data/encoded.txt";
         this.password = readPasswordFromFile();
     }
 
@@ -30,14 +33,15 @@ public class PasswordManager {
      * @return The stored password or an empty string if no password is set.
      */
     private String readPasswordFromFile() {
-        File passwordFile = new File(passwordFilePath);
+        Path path = Paths.get(passwordFilePath);
+        File passwordFile = path.toFile();
 
-        if (!passwordFile.exists()) {
+        if (!Files.exists(path)) {
             createPasswordFile(passwordFile);
             return "";
         }
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(passwordFilePath))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(passwordFile))) {
             String string = reader.readLine();
             return Objects.requireNonNullElse(string, "");
         } catch (IOException e) {
