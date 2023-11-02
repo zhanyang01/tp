@@ -33,7 +33,15 @@ public class PasswordManager {
      * @return The stored password or an empty string if no password is set.
      */
     private String readPasswordFromFile() {
-        Path path = Paths.get(passwordFilePath);
+        try {
+            Path folder = Paths.get("./data/");
+            if (!Files.exists(folder)) {
+                Files.createDirectory(folder);
+            }
+        } catch (Exception e) {
+            return "there was an error creating folder";
+        }
+        Path path = Paths.get("data", "encoded.txt");
         File passwordFile = path.toFile();
 
         if (!Files.exists(path)) {
