@@ -18,7 +18,7 @@ public class FilterPolicyDescriptionCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Sort by clients based on policy description. \n"
             + "Parameters: DESCRIPTION (must be a valid description) \n"
-            + "Example: " + COMMAND_WORD + "Cancer Plan";
+            + "Example: " + COMMAND_WORD + " Cancer Plan";
 
     public static final String MESSAGE_SUCCESS = "Filtered for policy description %s successfully";
 
