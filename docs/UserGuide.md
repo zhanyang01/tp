@@ -36,8 +36,9 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
    - `delete 3` : Deletes the 3rd contact shown in the current list.
 
    - `deleteTag 1 t/classmate` : Deletes the "classmate" tag from the first user in the address book if the "classmate" tag currently exists
-
+     
    - `clear` : Deletes all contacts.
+   - `filter t/friend`: Filters for all clients in the address book that contains the `friend' tag.
 
    - `exit` : Exits the app.
 
@@ -81,11 +82,11 @@ Shows a message explaning how to access the help page.
 
 Format: `help`
 
-### Adding a new client: `addNewClient`
+### Adding a new client: `addN`
 
-Adds a new client to the address book.
+Adds a new person to the address book.
 
-Format: `addNewClient/FIRSTNAME/LASTNAME/PRIMARYPHONENUMBER/ADDRESS/EMAIL`
+Format: `add/FIRSTNAME/LASTNAME/PRIMARYPHONENUMBER/ADDRESS/EMAIL`
 
 <box type="tip" seamless>
 
@@ -126,7 +127,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 - The search is case-insensitive. e.g `hans` will match `Hans`
 - The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-- Only the name is searched.
+- Only the name is searched
 - Only full words will be matched e.g. `Han` will not match `Hans`
 - Persons matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
@@ -157,6 +158,62 @@ Examples:
 Clears all entries from the address book.
 
 Format: `clear`
+
+### Filtering for Persons via tag : `filter`
+
+Filters for all persons in InsuraHub that have the tag being filtered.
+
+Format: `filter t/TAG1 t/TAG2`
+
+- Filters for person objects that contain all the specified tags `TAG1`, `TAG2`.
+- Only person objects that contain all the specified tags will be listed in the Ui.
+
+Examples:
+
+- `filter` followed by `t/FRIEND` will list out all the clients that have the `friend` tag.
+- `filter` followed by `t/FRIEND t/COLLEAGUE` will list out all the clients that have both the `friend` and `colleague`
+tag. Clients that contain only one of either specified tags will not be shown.
+
+### Adding a policy to a client : `addPolicy`
+
+Adds an insurance policy to a client in InsuraHub.
+
+Format: `addPolicy <INDEX> [pn/POLICY NAME  pd/POLICY DESCRIPTION  pv/POLICY VALUE  psd/POLICY START DATE  ped/POLICY END DATE]`
+
+- `INDEX` must be a positive integer less than or equals to the number of clients currently shown on InsuraHub.
+
+Examples:
+
+- `addPolicy 1 pn/Health Insurance pd/Cancer Plan pv/2000.00 psd/2023-01-01 ped/2024-12-12 `
+will add a policy with name Health Insurance and other details such as start date 2023-01-01 to the
+first client currently listed on the InsuraHub Ui.
+
+### Removing a policy from a client : `removePolicy`
+
+Removes an existing insurance policy from a client currently listed on the Ui of InsuraHub.
+
+Format: `removePolicy <INDEX_1> <INDEX_2>`
+
+- `INDEX_1` must be a positive integer less than or equals to the number of clients currently shown on InsuraHub.
+- `INDEX_2` must be a positive integer less than or equals to the number of policies the client specified by `INDEX_1` has.
+
+Examples:
+
+- `removePolicy 1 1` will remove the first policy (right-most) of the first client currently listed in the InsuraHub Ui.
+
+### viewing policy of a client: `viewPolicy`
+
+Creates/opens up a folder specific to a client for storing of their documents
+
+Format 1: `viewPolicy <INDEX> <POLICY INDEX>`
+
+- `INDEX_1` must be a positive integer less than or equals to the number of clients currently shown on InsuraHub.
+- `INDEX_2` must be a positive integer less than or equals to the number of policies the client specified by `INDEX_1` has.
+
+Examples:
+
+- `viewPolicy 1 1` will display the first policy (right-most) that was added to the first person shown on the list.
+
 
 ### Adding a client preferred contact: `preferredContact`
 
@@ -204,10 +261,8 @@ Adds any number of new tags to a client object without deleting the pre-exisitin
 
 Format 1: `addTag <tag1>/<tag2> /<INDEX>`
 
-Format 2: `addTag <tag1>/<tag2> /<client identifier>`
 
 - **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
-- **client identifier** must be one of the unique identifier of the clients in the entire client list
 - **tag**: must be a valid tag in the pre-defined list implemented in the app
 
 Examples:
@@ -220,8 +275,6 @@ Examples:
 Removes any number of pre-existing tags from a client object.
 
 Format 1: `deleteTag <tag1>/<tag2> /<INDEX>`
-
-Format 2: `deleteTag <tag1>/<tag2> /<client identifier>`
 
 - **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
 - **client identifier** must be one of the unique identifier of the clients in the entire client list
@@ -250,16 +303,11 @@ Creates/opens up a folder specific to a client for storing of their documents
 
 Format 1: `file <INDEX>`
 
-Format 2: `file <client identifier>`
-
 - **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
-- **client identifier** must be one of the unique identifier of the clients in the entire client list
 
 Examples:
 
-- `file 1` will open up a folder that is named after the first client currently on the list
-- `file John Doe` will open up the folder that is used to store John Doe's documents
-
+- `file 1` will open up a folder that is named after the first client currently on the list and their hashcode
 
 ### Grouping client preferred meeting locations: `groupLocation`
 
@@ -270,7 +318,32 @@ Format: `groupLocation` west/north/south/east/central
 Examples:
 
 - `groupLocation west` will group all clients that prefer to meet in the west region and returns a list of clients that prefer to meet in the west region
----
+
+### change password: `changePassword`
+
+Changes the required password to enter Insurahub.
+
+Format: `changepassword op/<OLDPASSWORD> np/<NEWPASSWORD>`
+
+Examples:
+
+- `changepassword op/boo123 np/pass456` if the previous password is boo123, then the new password is set as pass456.
+- `changepassword op/bad123 np/pass456` if the previous password is not bad123, then the password is unchanged.
+
+### viewing policy of a client: `toggleMode`
+
+toggles between lightMode and DarkMode, the next time InsuraHub is opened the change will be shown.
+
+Format: `toggleMode`
+
+Examples:
+
+- `toggleMode` will display the mode that Insurahub will be in when it is next opened.
+
+
+Examples:
+
+- `removePolicy 1 1` will remove the first policy (right-most) that was added to the first person shown on the list.
 
 ## FAQ
 
@@ -287,13 +360,16 @@ Examples:
 
 ## Command summary
 
-| Action     | Format, Examples                                                                                                                                                      |
-| ---------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
-| **Clear**  | `clear`                                                                                                                                                               |
-| **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   |
-| **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
-| **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            |
-| **List**   | `list`                                                                                                                                                                |
-| **Help**   | `help`                                                                                                                                                                |
-| **Preferred Contact**   | `preferredContact INDEX pc/PREFERREDCONTACT` eg: preferredContact 1 pc/phone                                                                                          |
+| Action                | Format, Examples                                                                                                                                                                                                             |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**               | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`                                                        |
+| **Clear**             | `clear`                                                                                                                                                                                                                      |
+| **Delete**            | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                          |
+| **Edit**              | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                  |
+| **Find**              | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                   |
+| **Filter**            | `filter t/TAG1 t/TAG2`<br/> e.g., `filter t/friend t/colleague`                                                                                                                                                              |
+| **List**              | `list`                                                                                                                                                                                                                       |
+| **addPolicy**         | `addPolicy <INDEX> [pn/POLICY NAME  pd/POLICY DESCRIPTION  pv/POLICY VALUE  psd/POLICY START DATE  ped/POLICY END DATE]`<br/> e.g. `addPolicy 1 pn/Health Insurance pd/Cancer Plan pv/2000.00 psd/2023-01-01 ped/2024-12-12 ` |
+| **removePolicy**      | `removePolicy <INDEX_1> <INDEX_2`<br/> e.g. `removePolicy 1 1`                                                                                                                                                                |
+| **Help**              | `help`                                                                                                                                                                                                                       |
+| **Preferred Contact** | `preferredContact INDEX pc/PREFERREDCONTACT` eg: preferredContact 1 pc/phone                                                                                                                                                 |

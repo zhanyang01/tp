@@ -17,7 +17,7 @@ public class ToggleModeCommandParser implements Parser<ToggleModeCommand> {
         try {
             return new ToggleModeCommand();
         } catch (Exception e) {
-            System.out.println("ana error occurred while toggling UI mode" + e);
+            System.out.println("an error occurred while toggling UI mode" + e);
         }
         return new ToggleModeCommand();
     }
