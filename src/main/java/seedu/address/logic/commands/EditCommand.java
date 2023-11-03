@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PREFERRED_MEETING_REGION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
@@ -27,6 +28,8 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.PreferredContact;
+import seedu.address.model.person.PreferredMeetingRegion;
+import seedu.address.model.policy.Policy;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -45,6 +48,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_TAG + "TAG] "
+            + "[" + PREFIX_PREFERRED_MEETING_REGION + "PREFERRED MEETING REGION]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -102,9 +106,11 @@ public class EditCommand extends Command {
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         PreferredContact updatedPreferredContact = personToEdit.getPreferredContact();
-
+        PreferredMeetingRegion updatedPreferredMeetingRegion = editPersonDescriptor.getPreferredMeetingRegion()
+                .orElse(personToEdit.getPreferredMeetingRegion());
+        Set<Policy> policies = personToEdit.getPolicies();
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags,
-                updatedPreferredContact);
+                updatedPreferredMeetingRegion, updatedPreferredContact, policies);
     }
 
     @Override
@@ -143,6 +149,8 @@ public class EditCommand extends Command {
         private Address address;
         private Set<Tag> tags;
         private PreferredContact preferredContact;
+        private PreferredMeetingRegion preferredMeetingRegion;
+        private Set<Policy> policies;
 
         public EditPersonDescriptor() {
         }
@@ -157,13 +165,16 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
+            setPreferredMeetingRegion(toCopy.preferredMeetingRegion);
+            setPreferredContact(toCopy.preferredContact);
+            setPolicies(toCopy.policies);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags, preferredMeetingRegion);
         }
 
         public void setName(Name name) {
@@ -216,11 +227,38 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
+        /**
+         * Sets {@code policies} to this object's {@code policies}.
+         * A defensive copy of {@code policies} is used internally.
+         */
+        public void setPolicies(Set<Policy> policies) {
+            this.policies = (policies != null) ? new HashSet<>(policies) : null;
+        }
+
+        /**
+         * Returns an unmodifiable policy set, which throws
+         * {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code policies} is null.
+         */
+        public Optional<Set<Policy>> getPolicies() {
+            return (policies != null) ? Optional.of(Collections.unmodifiableSet(policies)) : Optional.empty();
+        }
+
         public void setPreferredContact(PreferredContact preferredContact) {
             this.preferredContact = preferredContact;
         }
+
         public Optional<PreferredContact> getPreferredContact() {
             return Optional.ofNullable(preferredContact);
+        }
+
+        public void setPreferredMeetingRegion(PreferredMeetingRegion preferredMeetingRegion) {
+            this.preferredMeetingRegion = preferredMeetingRegion;
+        }
+
+        public Optional<PreferredMeetingRegion> getPreferredMeetingRegion() {
+            return Optional.ofNullable(preferredMeetingRegion);
         }
 
         @Override
@@ -240,7 +278,9 @@ public class EditCommand extends Command {
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(address, otherEditPersonDescriptor.address)
                     && Objects.equals(tags, otherEditPersonDescriptor.tags)
-                    && Objects.equals(preferredContact, otherEditPersonDescriptor.preferredContact);
+                    && Objects.equals(preferredContact, otherEditPersonDescriptor.preferredContact)
+                    && Objects.equals(preferredMeetingRegion, otherEditPersonDescriptor.preferredMeetingRegion)
+                    && Objects.equals(policies, otherEditPersonDescriptor.policies);
         }
 
         @Override
@@ -252,6 +292,8 @@ public class EditCommand extends Command {
                     .add("address", address)
                     .add("tags", tags)
                     .add("preferredContact", preferredContact)
+                    .add("preferredMeetingRegion", preferredMeetingRegion)
+                    .add("policies", policies)
                     .toString();
         }
     }

@@ -17,7 +17,7 @@ public class FilterCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Filters for all the persons that have target tag being filtered. \n"
             + "Parameters: TAG (must be a valid tag from the predefined list) \n"
-            + "Example: " + COMMAND_WORD + " friend";
+            + "Example: " + COMMAND_WORD + " t/friend";
 
     public static final String MESSAGE_SUCCESS = "Filtered for tags %s successfully";
 

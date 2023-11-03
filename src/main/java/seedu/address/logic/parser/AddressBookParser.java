@@ -9,7 +9,9 @@ import java.util.regex.Pattern;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddPolicyCommand;
 import seedu.address.logic.commands.AddTagCommand;
+import seedu.address.logic.commands.ChangePasswordCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
@@ -18,10 +20,15 @@ import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FileCommand;
 import seedu.address.logic.commands.FilterCommand;
+import seedu.address.logic.commands.FilterPolicyDescriptionCommand;
 import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.GroupMeetingCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.PreferredContactCommand;
+import seedu.address.logic.commands.RemovePolicyCommand;
+import seedu.address.logic.commands.ToggleModeCommand;
+import seedu.address.logic.commands.ViewPolicyCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -58,8 +65,11 @@ public class AddressBookParser {
         logger.fine("Command word: " + commandWord + "; Arguments: " + arguments);
 
         switch (commandWord) {
-        case AddCommand.COMMAND_WORD:
+        case (AddCommand.COMMAND_WORD):
             return new AddCommandParser().parse(arguments);
+
+        case AddPolicyCommand.COMMAND_WORD:
+            return new AddPolicyCommandParser().parse(arguments);
 
         case AddTagCommand.COMMAND_WORD:
             return new AddTagCommandParser().parse(arguments);
@@ -72,12 +82,18 @@ public class AddressBookParser {
 
         case DeleteTagCommand.COMMAND_WORD:
             return new DeleteTagCommandParser().parse(arguments);
+            
+        case RemovePolicyCommand.COMMAND_WORD:
+             return new RemovePolicyCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
 
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
+
+        case GroupMeetingCommand.COMMAND_WORD:
+            return new GroupMeetingCommandParser().parse(arguments);
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
@@ -94,13 +110,24 @@ public class AddressBookParser {
         case FilterCommand.COMMAND_WORD:
             return new FilterCommandParser().parse(arguments);
 
+        case FilterPolicyDescriptionCommand.COMMAND_WORD:
+            return new FilterPolicyDescriptionCommandParser().parse(arguments);
+
         case PreferredContactCommand.COMMAND_WORD:
             return new PreferredContactCommandParser().parse(arguments);
+
+        case ChangePasswordCommand.COMMAND_WORD:
+            return new ChangePasswordCommandParser().parse(arguments);
+
+        case ToggleModeCommand.COMMAND_WORD:
+            return new ToggleModeCommandParser().parse(arguments);
+
+        case ViewPolicyCommand.COMMAND_WORD:
+            return new ViewPolicyCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
-
 }

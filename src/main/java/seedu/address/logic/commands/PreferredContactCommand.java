@@ -41,7 +41,7 @@ public class PreferredContactCommand extends Command {
 
     /**
      * Represents a constructor of PreferredContactCommand.
-     * @param index of the person in the filtered person list to edit
+     * @param index            of the person in the filtered person list to edit
      * @param preferredContact details to edit the person with
      */
     public PreferredContactCommand(Index index, PreferredContact preferredContact) {
@@ -63,7 +63,8 @@ public class PreferredContactCommand extends Command {
         Person editedPreferredContactPerson = new Person(preferredContactPerson.getName(),
                 preferredContactPerson.getPhone(), preferredContactPerson.getEmail(),
                 preferredContactPerson.getAddress(), preferredContactPerson.getTags(),
-                preferredContact);
+                preferredContactPerson.getPreferredMeetingRegion(), preferredContact,
+                preferredContactPerson.getPolicies());
 
         model.setPerson(preferredContactPerson, editedPreferredContactPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
