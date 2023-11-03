@@ -247,10 +247,8 @@ Adds any number of new tags to a client object without deleting the pre-exisitin
 
 Format 1: `addTag <tag1>/<tag2> /<INDEX>`
 
-Format 2: `addTag <tag1>/<tag2> /<client identifier>`
 
 - **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
-- **client identifier** must be one of the unique identifier of the clients in the entire client list
 - **tag**: must be a valid tag in the pre-defined list implemented in the app
 
 Examples:
@@ -263,8 +261,6 @@ Examples:
 Removes any number of pre-existing tags from a client object.
 
 Format 1: `deleteTag <tag1>/<tag2> /<INDEX>`
-
-Format 2: `deleteTag <tag1>/<tag2> /<client identifier>`
 
 - **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
 - **client identifier** must be one of the unique identifier of the clients in the entire client list
@@ -293,16 +289,11 @@ Creates/opens up a folder specific to a client for storing of their documents
 
 Format 1: `file <INDEX>`
 
-Format 2: `file <client identifier>`
-
 - **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
-- **client identifier** must be one of the unique identifier of the clients in the entire client list
 
 Examples:
 
-- `file 1` will open up a folder that is named after the first client currently on the list
-- `file John Doe` will open up the folder that is used to store John Doe's documents
-
+- `file 1` will open up a folder that is named after the first client currently on the list and their hashcode
 
 ### Grouping client preferred meeting locations: `groupLocation`
 
@@ -313,7 +304,54 @@ Format: `groupLocation` west/north/south/east/central
 Examples:
 
 - `groupLocation west` will group all clients that prefer to meet in the west region and returns a list of clients that prefer to meet in the west region
----
+
+### change password: `changePassword`
+
+Changes the required password to enter Insurahub.
+
+Format: `changepassword op/<OLDPASSWORD> np/<NEWPASSWORD>`
+
+Examples:
+
+- `changepassword op/boo123 np/pass456` if the previous password is boo123, then the new password is set as pass456.
+- `changepassword op/bad123 np/pass456` if the previous password is not bad123, then the password is unchanged.
+
+### viewing policy of a client: `toggleMode`
+
+toggles between lightMode and DarkMode, the next time InsuraHub is opened the change will be shown.
+
+Format: `toggleMode`
+
+Examples:
+
+- `toggleMode` will display the mode that Insurahub will be in when it is next opened.
+
+
+### viewing policy of a client: `removePolicy`
+
+removes a specific policy from a specific client
+
+Format 1: `removePolicy <INDEX> <POLICY INDEX>`
+
+- **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
+- **POLICYINDEX** must be a positive integer less than or equal to the number of policy the client have.
+
+Examples:
+
+- `removePolicy 1 1` will remove the first policy (right-most) that was added to the first person shown on the list.
+
+### viewing policy of a client: `viewPolicy`
+
+Creates/opens up a folder specific to a client for storing of their documents
+
+Format 1: `viewPolicy <INDEX> <POLICY INDEX>`
+
+- **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
+- **POLICYINDEX** must be a positive integer less than or equal to the number of policy the client have.
+
+Examples:
+
+- `view 1 1` will display the first policy (right-most) that was added to the first person shown on the list.
 
 ## FAQ
 
