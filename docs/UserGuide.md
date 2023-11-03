@@ -199,7 +199,21 @@ Format: `removePolicy <INDEX_1> <INDEX_2>`
 
 Examples:
 
-- `removePolicy 1 1` will remove the first policy of the first client currently listed in the InsuraHub Ui.
+- `removePolicy 1 1` will remove the first policy (right-most) of the first client currently listed in the InsuraHub Ui.
+
+### viewing policy of a client: `viewPolicy`
+
+Creates/opens up a folder specific to a client for storing of their documents
+
+Format 1: `viewPolicy <INDEX> <POLICY INDEX>`
+
+- `INDEX_1` must be a positive integer less than or equals to the number of clients currently shown on InsuraHub.
+- `INDEX_2` must be a positive integer less than or equals to the number of policies the client specified by `INDEX_1` has.
+
+Examples:
+
+- `viewPolicy 1 1` will display the first policy (right-most) that was added to the first person shown on the list.
+
 
 ### Adding a client preferred contact: `preferredContact`
 
@@ -327,31 +341,9 @@ Examples:
 - `toggleMode` will display the mode that Insurahub will be in when it is next opened.
 
 
-### viewing policy of a client: `removePolicy`
-
-removes a specific policy from a specific client
-
-Format 1: `removePolicy <INDEX> <POLICY INDEX>`
-
-- **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
-- **POLICYINDEX** must be a positive integer less than or equal to the number of policy the client have.
-
 Examples:
 
 - `removePolicy 1 1` will remove the first policy (right-most) that was added to the first person shown on the list.
-
-### viewing policy of a client: `viewPolicy`
-
-Creates/opens up a folder specific to a client for storing of their documents
-
-Format 1: `viewPolicy <INDEX> <POLICY INDEX>`
-
-- **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
-- **POLICYINDEX** must be a positive integer less than or equal to the number of policy the client have.
-
-Examples:
-
-- `view 1 1` will display the first policy (right-most) that was added to the first person shown on the list.
 
 ## FAQ
 
