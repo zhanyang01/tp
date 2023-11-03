@@ -36,8 +36,9 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
    - `delete 3` : Deletes the 3rd contact shown in the current list.
 
    - `deleteTag 1 t/classmate` : Deletes the "classmate" tag from the first user in the address book if the "classmate" tag currently exists
-
+     
    - `clear` : Deletes all contacts.
+   - `filter t/friend`: Filters for all clients in the address book that contains the `friend' tag.
 
    - `exit` : Exits the app.
 
@@ -126,7 +127,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 - The search is case-insensitive. e.g `hans` will match `Hans`
 - The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-- Only the name is searched.
+- Only the name is searched
 - Only full words will be matched e.g. `Han` will not match `Hans`
 - Persons matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
@@ -157,6 +158,21 @@ Examples:
 Clears all entries from the address book.
 
 Format: `clear`
+
+### Filtering for Persons via tag : `filter`
+
+Filters for all persons in the address book that have the tag being filtered.
+
+Format: `filter t/TAG1 t/TAG2`
+
+- Filters for person objects that contain all the specified tags `TAG1`, `TAG2`.
+- Only person objects that contain all the specified tags will be listed in the Ui.
+
+Examples:
+
+- `filter` followed by `t/FRIEND` will list out all the clients that have the `friend` tag.
+- `filter` followed by `t/FRIEND t/COLLEAGUE` will list out all the clients that have both the `friend` and `colleague`
+tag. Clients that contain only one of either specified tags will not be shown.
 
 ### Adding a client preferred contact: `preferredContact`
 
@@ -287,13 +303,14 @@ Examples:
 
 ## Command summary
 
-| Action     | Format, Examples                                                                                                                                                      |
-| ---------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
-| **Clear**  | `clear`                                                                                                                                                               |
-| **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   |
-| **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
-| **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            |
-| **List**   | `list`                                                                                                                                                                |
-| **Help**   | `help`                                                                                                                                                                |
-| **Preferred Contact**   | `preferredContact INDEX pc/PREFERREDCONTACT` eg: preferredContact 1 pc/phone                                                                                          |
+| Action                | Format, Examples                                                                                                                                                      |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**               | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
+| **Clear**             | `clear`                                                                                                                                                               |
+| **Delete**            | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   |
+| **Edit**              | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
+| **Find**              | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            |
+| **Filter**            | `filter t/TAG1 t/TAG2`<br/> e.g., `filter t/friend t/colleague`                                                                                                       |
+| **List**              | `list`                                                                                                                                                                |
+| **Help**              | `help`                                                                                                                                                                |
+| **Preferred Contact** | `preferredContact INDEX pc/PREFERREDCONTACT` eg: preferredContact 1 pc/phone                                                                                          |
