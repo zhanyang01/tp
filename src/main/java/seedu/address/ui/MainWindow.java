@@ -25,6 +25,8 @@ import seedu.address.storage.UiModeManager;
  */
 public class MainWindow extends UiPart<Stage> {
 
+    private static final String FXML = new UiModeManager().getUiMode();
+
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private Stage primaryStage;
@@ -54,7 +56,7 @@ public class MainWindow extends UiPart<Stage> {
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
     public MainWindow(Stage primaryStage, Logic logic) {
-        super(new UiModeManager().getUiMode(), primaryStage);
+        super(FXML, primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
