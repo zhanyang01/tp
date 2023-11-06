@@ -289,7 +289,7 @@ Sequence for creating/opening the folder for each client
 3. InsuraHub will fetch the 1st client currently shown, if the index 1 is not out of bound in the list.
 4. If the index is valid, the `Name` of the client and the `hashCode` will be concatenated to get a unique folder name for the client.
 5. If the folder with the unique folder name does not exist then the folder will be created and placed in the ClientFiles folder.
-6. The folder in the ClientFiles folder with the unique folder name will be opened.  
+6. The folder in the ClientFiles folder with the unique folder name will be opened.
 7. The execution will then be over as the user can now drop files for the client into this opened folder, file command successful message will be displayed.
 
 
@@ -466,7 +466,7 @@ Return to [Table Of Contents](#table-of-contents)
 
 If not explicitly mentioned, the actor will be a Financial Advisor and InsuraHub as the System.
 
-Use Case 1 - Adding more tags to client records.  
+Use Case 1 - Adding more tags to client records.
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
@@ -477,11 +477,11 @@ MSS:
 
 **Extensions:**
 
-1a. User did not add a tag  
+1a. User did not add a tag
 1a1. System displays an error message indicating that user have to key in at least one tag  
 Use case ends
 
-Use Case 2 - Deleting tags from client records.  
+Use Case 2 - Deleting tags from client records.
 Precondition: User knows the client index relative to the list and the client is added into the list of clients, clients must also have the tag/tags listed in one of their tags.
 
 MSS:
@@ -492,15 +492,15 @@ MSS:
 
 **Extensions:**
 
-1a. User keys in a tag that is not in the tags that the client originally have.  
-1a1. System returns an error message stating that the tag is not present and that he/she needs to give a tag that is in the client list of tags.  
+1a. User keys in a tag that is not in the tags that the client originally have.
+1a1. System returns an error message stating that the tag is not present and that he/she needs to give a tag that is in the client list of tags.
 Use case ends.
 
-1b. User did not provide any tag to be removed  
+1b. User did not provide any tag to be removed
 1b1. System returns an error message stating that one tag must be provided.  
 Use case ends
 
-Use Case 3 - Adding client preferred form of contact  
+Use Case 3 - Adding client preferred form of contact
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
@@ -511,27 +511,27 @@ MSS:
 
 **Extensions**
 
-1a. User adds in multiple forms of contacts  
+1a. User adds in multiple forms of contacts
 1a1. System displays an error message to tell the user to select only one form of preferred contact and that the
 process of selecting preferred form of contact have failed  
 Use case ends
 
-1b. User adds in a invalid preferred form of contact.  
-1b1. System displays an error message indicating that user can only put in a preferred form of contact with a valid form of contact.  
+1b. User adds in a invalid preferred form of contact.
+1b1. System displays an error message indicating that user can only put in a preferred form of contact with a valid form of contact.
 Use case ends
 
-1c. User did not add in any preferred form of contact  
+1c. User did not add in any preferred form of contact
 1c1. System displays an error message indicating that the user have to put in at least one form of contact.  
 User case ends
 
-Use Case 4 - Filtering client information using tags  
+Use Case 4 - Filtering client information using tags
 MSS:
 
 1. User filters using tags.
 2. System updates with a list of clients that fulfills the tags to be filtered.  
    Use case ends
 
-Use Case 5 - Storing client documents neatly in a folder  
+Use Case 5 - Storing client documents neatly in a folder
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
@@ -542,7 +542,7 @@ MSS:
 
 **Extensions**
 
-1a. User keys in invalid index  
+1a. User keys in invalid index
 1a1. System displays an error message indicating that the process of creating a file for the user is stopped.  
 Use case ends
 
@@ -551,12 +551,12 @@ Use Case 6 - Grouping clients based on the nearest MRT station from their reside
 MSS:
 
 1. User provides a region to be filtered
-2. System returns a list of clients who live in a particular region.  
+2. System returns a list of clients who live in a particular region.
    Use case ends.
 
 **Extensions:**
 
-1a. User keys in an invalid region  
+1a. User keys in an invalid region
 1a1. System returns an error message stating to put in a valid region to be filtered.
 
 ### Example Use Case
