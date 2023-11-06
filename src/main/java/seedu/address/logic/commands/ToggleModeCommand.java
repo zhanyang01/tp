@@ -1,16 +1,16 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.storage.UiModeManager;
 
-import static java.util.Objects.requireNonNull;
 
 /**
- * Create/Opens the folder of a person identified using it's displayed index
- * from the address book.
+ * Toggles the UI between light mode and dark mode.
+ *
  */
 public class ToggleModeCommand extends Command {
 
@@ -23,6 +23,9 @@ public class ToggleModeCommand extends Command {
     private UiModeManager uiModeManager;
     private String newMode;
 
+    /**
+     * Creates a ToggleModeCommand to toggle the {@code UiMode}
+     */
     public ToggleModeCommand() {
         this.uiModeManager = new UiModeManager();
         if (uiModeManager.getUiMode().equals("LightWindow.fxml")) {

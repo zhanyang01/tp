@@ -19,7 +19,8 @@ public class RemovePolicyCommand extends Command {
     public static final String COMMAND_WORD = "removePolicy";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Removes the policy identified by the index of the person and the index of the policy in the person's policy set.\n"
+            + ": Removes the policy identified by the index of " +
+            "the person and the index of the policy in the person's policy set.\n"
             + "Parameters: INDEX (must be a positive integer) POLICY_INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1 2";
 
@@ -28,6 +29,10 @@ public class RemovePolicyCommand extends Command {
     private final Index targetIndex;
     private final Index policyIndex;
 
+    /**
+     * Creates a RemovePoliocyCommand to remove the specified {@code Policy}
+     * from the specified {@code Person}
+     */
     public RemovePolicyCommand(Index targetIndex, Index policyIndex) {
         this.targetIndex = targetIndex;
         this.policyIndex = policyIndex;

@@ -25,8 +25,7 @@ public class FilterCommandParser implements Parser<FilterCommand> {
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
-        }
-        else if (!trimmedArgs.contains(String.valueOf(PREFIX_TAG))) {
+        } else if (!trimmedArgs.contains(String.valueOf(PREFIX_TAG))) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
         }
