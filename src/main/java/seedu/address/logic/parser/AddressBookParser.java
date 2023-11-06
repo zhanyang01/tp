@@ -82,12 +82,13 @@ public class AddressBookParser {
 
         case DeleteTagCommand.COMMAND_WORD:
             return new DeleteTagCommandParser().parse(arguments);
-            
+
         case RemovePolicyCommand.COMMAND_WORD:
              return new RemovePolicyCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
+
 
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);

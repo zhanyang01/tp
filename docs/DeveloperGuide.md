@@ -478,7 +478,7 @@ MSS:
 **Extensions:**
 
 1a. User did not add a tag
-1a1. System displays an error message indicating that user have to key in at least one tag  
+1a1. System displays an error message indicating that user have to key in at least one tag
 Use case ends
 
 Use Case 2 - Deleting tags from client records.
@@ -487,7 +487,7 @@ Precondition: User knows the client index relative to the list and the client is
 MSS:
 
 1. User keys in tags that he/she want to be removed from the client tags
-2. Systems returns a new client without the tags that the user wants removed.  
+2. Systems returns a new client without the tags that the user wants removed.
    Use case ends
 
 **Extensions:**
@@ -497,7 +497,7 @@ MSS:
 Use case ends.
 
 1b. User did not provide any tag to be removed
-1b1. System returns an error message stating that one tag must be provided.  
+1b1. System returns an error message stating that one tag must be provided.
 Use case ends
 
 Use Case 3 - Adding client preferred form of contact
@@ -513,7 +513,7 @@ MSS:
 
 1a. User adds in multiple forms of contacts
 1a1. System displays an error message to tell the user to select only one form of preferred contact and that the
-process of selecting preferred form of contact have failed  
+process of selecting preferred form of contact have failed.
 Use case ends
 
 1b. User adds in a invalid preferred form of contact.
@@ -521,14 +521,14 @@ Use case ends
 Use case ends
 
 1c. User did not add in any preferred form of contact
-1c1. System displays an error message indicating that the user have to put in at least one form of contact.  
+1c1. System displays an error message indicating that the user have to put in at least one form of contact.
 User case ends
 
 Use Case 4 - Filtering client information using tags
 MSS:
 
 1. User filters using tags.
-2. System updates with a list of clients that fulfills the tags to be filtered.  
+2. System updates with a list of clients that fulfills the tags to be filtered.
    Use case ends
 
 Use Case 5 - Storing client documents neatly in a folder
@@ -543,7 +543,7 @@ MSS:
 **Extensions**
 
 1a. User keys in invalid index
-1a1. System displays an error message indicating that the process of creating a file for the user is stopped.  
+1a1. System displays an error message indicating that the process of creating a file for the user is stopped.
 Use case ends
 
 Use Case 6 - Grouping clients based on the nearest MRT station from their residence to a region
