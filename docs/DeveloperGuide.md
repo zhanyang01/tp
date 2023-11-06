@@ -227,6 +227,7 @@ Sequence diagram for adding preferred contact
 ### Filtering by Tag feature
 
 #### Implementation
+
 The proposed tag filtering mechanism is facilitated by `FilterCommandParser`, `FilterCommand`, and `FilterTagPredicate`.
 The `FilterContainsKeywordsPredicate` implements the `Predicate<Person>`class which implements the test operation:
 
@@ -254,7 +255,6 @@ Step 4. The update list of filtered `Person` objects are then displayed on the u
 The following sequence diagram shows how the filter tag operation works:
 
 <puml src="diagrams/Filter Tag.puml" width="250" />
-
 
 ### DeleteTag feature
 
@@ -291,7 +291,6 @@ Sequence for creating/opening the folder for each client
 5. If the folder with the unique folder name does not exist then the folder will be created and placed in the ClientFiles folder.
 6. The folder in the ClientFiles folder with the unique folder name will be opened.
 7. The execution will then be over as the user can now drop files for the client into this opened folder, file command successful message will be displayed.
-
 
 ### \[Proposed\] Undo/redo feature
 
@@ -385,8 +384,8 @@ _{more aspects and alternatives to be added}_
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
-### \[Proposed\] Undo/redo feature
 
+### \[Proposed\] Undo/redo feature
 
 ---
 
@@ -466,41 +465,41 @@ Return to [Table Of Contents](#table-of-contents)
 
 If not explicitly mentioned, the actor will be a Financial Advisor and InsuraHub as the System.
 
-Use Case 1 - Adding more tags to client records.
+Use Case 1 - Adding more tags to client records.<br>
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
 
 1. User keys in all tags that is tied to the particular client
-2. Systems displays the tags that have been added to the particular client
+2. Systems displays the tags that have been added to the particular client<br>
    Use case ends
 
 **Extensions:**
 
-1a. User did not add a tag
-1a1. System displays an error message indicating that user have to key in at least one tag
+1a. User did not add a tag<br>
+1a1. System displays an error message indicating that user have to key in at least one tag<br>
 Use case ends
 
-Use Case 2 - Deleting tags from client records.
+Use Case 2 - Deleting tags from client records.<br>
 Precondition: User knows the client index relative to the list and the client is added into the list of clients, clients must also have the tag/tags listed in one of their tags.
 
 MSS:
 
 1. User keys in tags that he/she want to be removed from the client tags
-2. Systems returns a new client without the tags that the user wants removed.
+2. Systems returns a new client without the tags that the user wants removed.<br>
    Use case ends
 
 **Extensions:**
 
-1a. User keys in a tag that is not in the tags that the client originally have.
-1a1. System returns an error message stating that the tag is not present and that he/she needs to give a tag that is in the client list of tags.
+1a. User keys in a tag that is not in the tags that the client originally have.<br>
+1a1. System returns an error message stating that the tag is not present and that he/she needs to give a tag that is in the client list of tags.<br>
 Use case ends.
 
-1b. User did not provide any tag to be removed
-1b1. System returns an error message stating that one tag must be provided.
+1b. User did not provide any tag to be removed<br>
+1b1. System returns an error message stating that one tag must be provided.<br>
 Use case ends
 
-Use Case 3 - Adding client preferred form of contact
+Use Case 3 - Adding client preferred form of contact<br>
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
@@ -511,39 +510,40 @@ MSS:
 
 **Extensions**
 
-1a. User adds in multiple forms of contacts
+1a. User adds in multiple forms of contacts<br>
 1a1. System displays an error message to tell the user to select only one form of preferred contact and that the
-process of selecting preferred form of contact have failed.
+process of selecting preferred form of contact have failed.<br>
 Use case ends
 
-1b. User adds in a invalid preferred form of contact.
-1b1. System displays an error message indicating that user can only put in a preferred form of contact with a valid form of contact.
+1b. User adds in a invalid preferred form of contact.<br>
+1b1. System displays an error message indicating that user can only put in a preferred form of contact with a valid form of contact.<br>
 Use case ends
 
-1c. User did not add in any preferred form of contact
-1c1. System displays an error message indicating that the user have to put in at least one form of contact.
+1c. User did not add in any preferred form of contact<br>
+1c1. System displays an error message indicating that the user have to put in at least one form of contact.<br>
 User case ends
 
 Use Case 4 - Filtering client information using tags
+
 MSS:
 
 1. User filters using tags.
-2. System updates with a list of clients that fulfills the tags to be filtered.
+2. System updates with a list of clients that fulfills the tags to be filtered.<br>
    Use case ends
 
-Use Case 5 - Storing client documents neatly in a folder
+Use Case 5 - Storing client documents neatly in a folder<br>
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
 
-1. User keys in `file` followed by index
-2. System opens up the folder of the particular client with the relevant files inside the folder
+1. User keys in `file` followed by index<br>
+2. System opens up the folder of the particular client with the relevant files inside the folder<br>
    Use case ends
 
 **Extensions**
 
-1a. User keys in invalid index
-1a1. System displays an error message indicating that the process of creating a file for the user is stopped.
+1a. User keys in invalid index<br>
+1a1. System displays an error message indicating that the process of creating a file for the user is stopped.<br>
 Use case ends
 
 Use Case 6 - Grouping clients based on the nearest MRT station from their residence to a region
@@ -551,12 +551,12 @@ Use Case 6 - Grouping clients based on the nearest MRT station from their reside
 MSS:
 
 1. User provides a region to be filtered
-2. System returns a list of clients who live in a particular region.
+2. System returns a list of clients who live in a particular region.<br>
    Use case ends.
 
 **Extensions:**
 
-1a. User keys in an invalid region
+1a. User keys in an invalid region<br>
 1a1. System returns an error message stating to put in a valid region to be filtered.
 
 ### Example Use Case
