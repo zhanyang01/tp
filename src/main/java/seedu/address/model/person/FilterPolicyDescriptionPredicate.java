@@ -38,7 +38,8 @@ public class FilterPolicyDescriptionPredicate implements Predicate<Person> {
             return false;
         }
 
-        FilterPolicyDescriptionPredicate otherFilterPolicyDescriptionPredicate = (FilterPolicyDescriptionPredicate) other;
+        FilterPolicyDescriptionPredicate otherFilterPolicyDescriptionPredicate =
+                (FilterPolicyDescriptionPredicate) other;
         return description.equals(otherFilterPolicyDescriptionPredicate.description);
     }
 

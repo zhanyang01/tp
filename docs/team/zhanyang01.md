@@ -5,7 +5,7 @@
 
 ### Project: Insurahub
 
-Insurahub - Insurahub is a CLI application that targets financial advisors that type fast and prefers CLI over GUI to use the app.  
+Insurahub - Insurahub is a CLI application that targets financial advisors that type fast and prefers CLI over GUI to use the app.
 
 Given below are my contributions to the project.
 

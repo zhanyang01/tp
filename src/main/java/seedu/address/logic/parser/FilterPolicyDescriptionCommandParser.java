@@ -13,7 +13,7 @@ import seedu.address.model.person.FilterPolicyDescriptionPredicate;
 public class FilterPolicyDescriptionCommandParser implements Parser<FilterPolicyDescriptionCommand> {
     /**
      * Parses {@code userInput} into a command and returns it.
-     * 
+     *
      * @param args
      * @throws ParseException if {@code userInput} does not conform the expected
      *                        format
