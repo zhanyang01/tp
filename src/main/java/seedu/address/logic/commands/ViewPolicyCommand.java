@@ -19,8 +19,8 @@ public class ViewPolicyCommand extends Command {
     public static final String COMMAND_WORD = "viewPolicy";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Views the policy identified by the index of the person " +
-            "and the index of the policy in the person's policy set.\n"
+            + ": Views the policy identified by the index of the person "
+            + "and the index of the policy in the person's policy set.\n"
             + "Parameters: INDEX (must be a positive integer) POLICY_INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1 2";
 

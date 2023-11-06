@@ -104,10 +104,10 @@ public class UiModeManager {
             newUiMode = "";
         }
         uiMode = newUiMode;
-        File UIModeFile = new File(uiModeFilePath);
+        File UiModeFile = new File(uiModeFilePath);
 
-        if (!UIModeFile.exists()) {
-            createUiModeFile(UIModeFile);
+        if (!UiModeFile.exists()) {
+            createUiModeFile(UiModeFile);
         }
         writeUiModeToFile(newUiMode);
     }
