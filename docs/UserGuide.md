@@ -34,7 +34,7 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
 
    - `list` : Lists all contacts.
 
-   - `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the application.
+   - `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends pmr/west` : Adds a contact named `John Doe` to the application.
    - `addTag 1 t/classmate` : Adds a "classmate" tag to the first user in the address book.
 
    - `delete 3` : Deletes the 3rd contact shown in the current list.
