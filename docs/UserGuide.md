@@ -298,16 +298,16 @@ Examples:
 
 - `groupmeeting west` will group all clients that prefer to meet in the west region and returns a list of clients that prefer to meet in the west region
 
-### change password: `changePassword`
+### Change password: `changePassword`
 
 Changes the required password to enter Insurahub.
 
-Format: `changepassword op/<OLDPASSWORD> np/<NEWPASSWORD>`
+Format: `changePassword op/<OLDPASSWORD> np/<NEWPASSWORD>`
 
 Examples:
 
-- `changepassword op/boo123 np/pass456` if the previous password is boo123, then the new password is set as pass456.
-- `changepassword op/bad123 np/pass456` if the previous password is not bad123, then the password is unchanged.
+- `changePassword op/boo123 np/pass456` if the previous password is boo123, then the new password is set as pass456.
+- `changePassword op/bad123 np/pass456` if the previous password is not bad123, then the password is unchanged.
 
 ### toggling the Ui appearance: `toggleMode`
 
