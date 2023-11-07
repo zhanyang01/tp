@@ -87,7 +87,7 @@ Format: `help`
 
 ### Adding a new client: `add`
 
-Adds a new person to the Insurahub App..
+Adds a new person to the Insurahub App, the name of the Person must be unique
 
 Format: `add n/NAME p/PHONENUMBER e/EMAIL a/ADDRESS [t/TAG] pmr/PREFERREDMEETINGREGION`
 
