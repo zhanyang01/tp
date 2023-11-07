@@ -204,7 +204,7 @@ Examples:
 
 Creates/opens up a folder specific to a client for storing of their documents
 
-Format 1: `viewPolicy <INDEX> <POLICY INDEX>`
+Format 1: `viewPolicy <INDEX_1> <INDEX_2>`
 
 - `INDEX_1` must be a positive integer less than or equals to the number of clients currently shown on InsuraHub.
 - `INDEX_2` must be a positive integer less than or equals to the number of policies the client specified by `INDEX_1` has.
