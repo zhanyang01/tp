@@ -17,20 +17,24 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `insurahub.jar` from [here](https://github.com//AY2324S1-CS2103-W14-1/tp).
+2. Download the latest `insurahub.jar` from [here](https://github.com//AY2324S1-CS2103-W14-1/tp).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your App.
+3. Copy the file to the folder you want to use as the _home folder_ for your App.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar insurahub.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar insurahub.jar` command to run the application.<br>
+   A GUI similar to the below should appear in a few seconds. Note that if a password had been previously set, then this step would be skipped.
+   ![Ui](images/setPassword.png)
+5. After the password has been set, A GUI similar to the previous one should ask the user to enter the password that they set. 
+
+6. After the password is entered A GUI similar to the below should appear in a few seconds.
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+7. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    - `list` : Lists all contacts.
 
-   - `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the application.
+   - `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends pmr/west` : Adds a contact named `John Doe` to the application.
    - `addTag 1 t/classmate` : Adds a "classmate" tag to the first user in the address book.
 
    - `delete 3` : Deletes the 3rd contact shown in the current list.
@@ -45,7 +49,7 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
 
    - `preferredContact 1 pc/phone` : Highlight to show that that is the main form of contact that the client in the first index prefers.
 
-1. Refer to the [Features](#features) below for details of each command.
+8. Refer to the [Features](#features) below for details of each command.
 
 ---
 
@@ -83,16 +87,26 @@ Format: `help`
 
 ### Adding a new client: `add`
 
-Adds a new person to the Insurahub App..
+Adds a new person to the Insurahub App, the name of the Person must be unique
 
 Format: `add n/NAME p/PHONENUMBER e/EMAIL a/ADDRESS [t/TAG] pmr/PREFERREDMEETINGREGION`
+- `NAME` must be Unique in InsuraHub.
+- `PHONENUMBER` must be 8 numbers long and start with either 6,8 or 9.
+- `EMAIL` Emails should be of the format local-part@domain and adhere to the following constraints:
+  - The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses
+  - The local-part may not start or end with any special characters
+  - This is followed by a '@' and then a domain name. 
+  - have each domain label start and end with alphanumeric characters
+  - have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
+- `ADDRESS` can be any string
+- `PREFERREDMEETINGREGION`  have to be one of these strings west/north/south/east/central.
 
 <box type="tip" seamless>
 
 Examples:
 
 - `add n/JohnnySnake p/91234567 e/johnnythesnake12@gmail.com a/Blk 69 Geylang Street 12, #12-69 pmr/east`
-- `add n/BetsyCrowe p/92222222/ e/betsycrowe@example.com a/Newgate Prison t/friends pmr/north`
+- `add n/BetsyCrowe p/92222222 e/betsycrowe@example.com a/Newgate Prison t/friends pmr/north`
 
 ### Listing all persons : `list`
 
@@ -303,6 +317,9 @@ Examples:
 Changes the required password to enter Insurahub.
 
 Format: `changepassword op/<OLDPASSWORD> np/<NEWPASSWORD>`
+
+- `OLDPASSWORD` must be the password string that was previously set 
+- `NEWPASSWORD` can be any string of length >= 1
 
 Examples:
 
