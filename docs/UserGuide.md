@@ -308,6 +308,9 @@ Changes the required password to enter Insurahub.
 
 Format: `changepassword op/<OLDPASSWORD> np/<NEWPASSWORD>`
 
+- `OLDPASSWORD` must be the password string that was previously set 
+- `NEWPASSWORD` can be any string of length >= 1
+
 Examples:
 
 - `changepassword op/boo123 np/pass456` if the previous password is boo123, then the new password is set as pass456.
