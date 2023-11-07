@@ -19,6 +19,7 @@ public class Messages {
     public static final String MESSAGE_DUPLICATE_FIELDS =
             "Multiple values specified for the following single-valued field(s): ";
     public static final String MESSAGE_INVALID_INPUT = "Only alphanumeric characters are allowed as input";
+    public static final String MESSAGE_MISSING_PREFIXES = "Missing Prefixes, please refer to example below";
 
     /**
      * Returns an error message indicating the duplicate prefixes.
