@@ -17,15 +17,19 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `insurahub.jar` from [here](https://github.com//AY2324S1-CS2103-W14-1/tp).
+2. Download the latest `insurahub.jar` from [here](https://github.com//AY2324S1-CS2103-W14-1/tp).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your App.
+3. Copy the file to the folder you want to use as the _home folder_ for your App.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar insurahub.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar insurahub.jar` command to run the application.<br>
+   A GUI similar to the below should appear in a few seconds. Note that if a password had been previously set, then this step would be skipped.
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+5. After the password has been set, A GUI similar to the below should appear asking the user to enter the password that they set. 
+
+6. After the password is entered A GUI similar to the below should appear in a few seconds. 
+![Ui](images/Ui.png)
+
+7. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    - `list` : Lists all contacts.
@@ -45,7 +49,7 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
 
    - `preferredContact 1 pc/phone` : Highlight to show that that is the main form of contact that the client in the first index prefers.
 
-1. Refer to the [Features](#features) below for details of each command.
+8. Refer to the [Features](#features) below for details of each command.
 
 ---
 
@@ -92,7 +96,7 @@ Format: `add n/NAME p/PHONENUMBER e/EMAIL a/ADDRESS [t/TAG] pmr/PREFERREDMEETING
 Examples:
 
 - `add n/JohnnySnake p/91234567 e/johnnythesnake12@gmail.com a/Blk 69 Geylang Street 12, #12-69 pmr/east`
-- `add n/BetsyCrowe p/92222222/ e/betsycrowe@example.com a/Newgate Prison t/friends pmr/north`
+- `add n/BetsyCrowe p/92222222 e/betsycrowe@example.com a/Newgate Prison t/friends pmr/north`
 
 ### Listing all persons : `list`
 
