@@ -2,7 +2,8 @@ package seedu.address.logic.parser;
 
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.Messages.*;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_ALPHANUMERIC_INPUT;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_NAME;
