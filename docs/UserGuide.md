@@ -228,7 +228,8 @@ Format 1: `preferredContact <INDEX> pc/PREFERREDCONTACT`
 
 Examples:
 
-- `preferredContact 1 pc/phone number` will highlight the phone number of the first person in the current list shown
+- `preferredContact 1 pc/phone` will highlight the phone number of the first person in the current list shown
+- - `preferredContact 1 pc/email` will highlight the email address of the first person in the current list shown
 
 ### Exiting the program : `exit`
 
@@ -254,30 +255,26 @@ If your changes to the data file makes its format invalid, Insurahub will discar
 
 Adds any number of new tags to a client object without deleting the pre-exisiting tags.
 
-Format 1: `addTag <tag1>/<tag2> /<INDEX>`
+Format 1: `addTag <INDEX> t/TAG_1 t/TAG_2`
 
 - **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
-- **tag**: must be a valid tag in the pre-defined list implemented in the app
 
 Examples:
 
-- `addTag friend 1` will add the tag 'friend' to the first client on the current list.
-- `addTag friend/North JohnDoe` will add the tags 'friend', 'North' to the client identified by John Doe.
+- `addTag 1 t/friend` will add the tag 'friend' to the first client on the current list.
 
 ### Deleting tags from a client object: `deleteTag`
 
 Removes any number of pre-existing tags from a client object.
 
-Format 1: `deleteTag <tag1>/<tag2> /<INDEX>`
+Format 1: `deleteTag <INDEX> t/TAG_1 t/TAG_2`
 
 - **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
-- **client identifier** must be one of the unique identifier of the clients in the entire client list
 - - **tag**: must be a valid tag in the pre-defined list implemented in the app
 
 Examples:
 
-- `deleteTag friend 1` will remove the tag 'friend' from the first client on the current list.
-- `deleteTag friend/North JohnDoe` will remove the tags 'friend', 'North' from the client identified by John Doe.
+- `deleteTag 1 t/friend` will remove the tag 'friend' from the first client on the current list.
 
 ### Storing documents of a client: `file`
 
@@ -291,15 +288,15 @@ Examples:
 
 - `file 1` will open up a folder that is named after the first client currently on the list and their hashcode
 
-### Grouping client preferred meeting locations: `groupLocation`
+### Grouping client preferred meeting locations: `groupmeeting`
 
 Groups clients based on their preferred meeting locations
 
-Format: `groupLocation` west/north/south/east/central
+Format: `groupmeeting west/north/south/east/central` 
 
 Examples:
 
-- `groupLocation west` will group all clients that prefer to meet in the west region and returns a list of clients that prefer to meet in the west region
+- `groupmeeting west` will group all clients that prefer to meet in the west region and returns a list of clients that prefer to meet in the west region
 
 ### change password: `changePassword`
 
@@ -312,7 +309,7 @@ Examples:
 - `changepassword op/boo123 np/pass456` if the previous password is boo123, then the new password is set as pass456.
 - `changepassword op/bad123 np/pass456` if the previous password is not bad123, then the password is unchanged.
 
-### viewing policy of a client: `toggleMode`
+### toggling the Ui appearance: `toggleMode`
 
 toggles between lightMode and DarkMode, the next time InsuraHub is opened the change will be shown.
 
