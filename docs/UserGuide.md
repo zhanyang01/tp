@@ -23,11 +23,11 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar insurahub.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note that if a password had been previously set, then this step would be skipped.
+   ![Ui](images/setPassword.png)
+5. After the password has been set, A GUI similar to the previous one should ask the user to enter the password that they set. 
 
-5. After the password has been set, A GUI similar to the below should appear asking the user to enter the password that they set. 
-
-6. After the password is entered A GUI similar to the below should appear in a few seconds. 
-![Ui](images/Ui.png)
+6. After the password is entered A GUI similar to the below should appear in a few seconds.
+   ![Ui](images/Ui.png)
 
 7. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
