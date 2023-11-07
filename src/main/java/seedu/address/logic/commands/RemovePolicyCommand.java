@@ -8,6 +8,7 @@ import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.policy.Policy;
@@ -63,6 +64,7 @@ public class RemovePolicyCommand extends Command {
         personToEdit.removePolicy(policyToDelete);
         model.setPerson(personToEdit, personToEdit);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_DELETE_POLICY_SUCCESS, personToEdit));
+        System.out.println(personToEdit);
+        return new CommandResult(String.format(MESSAGE_DELETE_POLICY_SUCCESS, Messages.format(personToEdit)));
     }
 }
