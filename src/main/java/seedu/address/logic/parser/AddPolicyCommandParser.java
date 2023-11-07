@@ -4,12 +4,16 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_ALPHANUMERIC_INPUT;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.Messages.MESSAGE_MISSING_PREFIXES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_VALUE;
 
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -38,10 +42,21 @@ public class AddPolicyCommandParser implements Parser<AddPolicyCommand> {
                                 PREFIX_POLICY_VALUE,
                                 PREFIX_POLICY_START_DATE,
                                 PREFIX_POLICY_END_DATE);
+
+
+
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddPolicyCommand.MESSAGE_USAGE), pe);
+        }
+        if (argMultimap.getAllValues(PREFIX_POLICY_NAME).size() != 1
+                || argMultimap.getAllValues(PREFIX_POLICY_DESCRIPTION).size() != 1
+                || argMultimap.getAllValues(PREFIX_POLICY_VALUE).size() != 1
+                || argMultimap.getAllValues(PREFIX_POLICY_START_DATE).size() != 1
+                || argMultimap.getAllValues(PREFIX_POLICY_END_DATE).size() != 1) {
+            throw new ParseException(MESSAGE_MISSING_PREFIXES + "\n" + AddPolicyCommand.MESSAGE_USAGE);
+
         }
 
 
@@ -78,8 +93,23 @@ public class AddPolicyCommandParser implements Parser<AddPolicyCommand> {
         assert startDate != null;
         assert endDate != null;
 
+        LocalDate parsedStartDate;
+        LocalDate parsedEndDate;
+
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            parsedStartDate = LocalDate.parse(startDate, formatter);
+            parsedEndDate = LocalDate.parse(endDate, formatter);
+            if (parsedStartDate.isAfter(parsedEndDate)) {
+                throw new ParseException("End date cannot be earlier than the start date");
+            }
+        } catch (DateTimeParseException e) {
+            throw new ParseException(Policy.DATE_MESSAGE_CONSTRAINTS);
+        }
+
         return Optional.of(ParserUtil.parsePolicy(policyName, description, policyValue, startDate, endDate));
     }
+
 
 
 }
