@@ -200,7 +200,7 @@ Examples:
 
 - `removePolicy 1 1` will remove the first policy (right-most) of the first client currently listed in the InsuraHub Ui.
 
-### viewing policy of a client: `viewPolicy`
+### Viewing policy of a client: `viewPolicy`
 
 Creates/opens up a folder specific to a client for storing of their documents
 
