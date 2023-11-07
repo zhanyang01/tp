@@ -2,7 +2,7 @@ package seedu.address.logic.parser;
 
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.Messages.*;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_NAME;
@@ -11,6 +11,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_VALUE;
 
 import java.util.Optional;
 import java.util.Set;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddPolicyCommand;
@@ -41,12 +43,22 @@ public class AddPolicyCommandParser implements Parser<AddPolicyCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddPolicyCommand.MESSAGE_USAGE), pe);
         }
 
+
         final String policyName = argMultimap.getValue(PREFIX_POLICY_NAME).get();
         final String description = argMultimap.getValue(PREFIX_POLICY_DESCRIPTION).get();
         final String policyValue = argMultimap.getValue(PREFIX_POLICY_VALUE).get();
         final String startDate = argMultimap.getValue(PREFIX_POLICY_START_DATE).get();
         final String endDate = argMultimap.getValue(PREFIX_POLICY_END_DATE).get();
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9 ]+$");
+        Matcher policyNameMatcher = pattern.matcher(policyName);
+        Matcher policyDescription = pattern.matcher(description);
+        if (!policyNameMatcher.matches()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_ALPHANUMERIC_INPUT, "policy Name"));
+        }
 
+        if(!policyDescription.matches()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_ALPHANUMERIC_INPUT, "policy Description"));
+        }
         AddPolicyDescriptor addPolicyDescriptor = new AddPolicyDescriptor();
         parsePolicyForEdit(policyName, description, policyValue, startDate, endDate)
                 .ifPresent(addPolicyDescriptor::setPolicies);
