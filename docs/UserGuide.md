@@ -288,15 +288,15 @@ Examples:
 
 - `file 1` will open up a folder that is named after the first client currently on the list and their hashcode
 
-### Grouping client preferred meeting locations: `groupLocation`
+### Grouping client preferred meeting locations: `groupmeeting`
 
 Groups clients based on their preferred meeting locations
 
-Format: `groupLocation` west/north/south/east/central
+Format: `groupmeeting west/north/south/east/central` 
 
 Examples:
 
-- `groupLocation west` will group all clients that prefer to meet in the west region and returns a list of clients that prefer to meet in the west region
+- `groupmeeting west` will group all clients that prefer to meet in the west region and returns a list of clients that prefer to meet in the west region
 
 ### change password: `changePassword`
 
