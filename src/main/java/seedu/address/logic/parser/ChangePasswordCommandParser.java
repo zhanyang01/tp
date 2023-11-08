@@ -1,16 +1,14 @@
 package seedu.address.logic.parser;
 
-
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_ALPHANUMERIC_INPUT;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_PASSWORD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_OLD_PASSWORD;
 
-import java.util.stream.Stream;
-import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
-import seedu.address.logic.Messages;
 import seedu.address.logic.commands.ChangePasswordCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
