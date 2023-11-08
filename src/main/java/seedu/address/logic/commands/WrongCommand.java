@@ -3,13 +3,13 @@ package seedu.address.logic.commands;
 import seedu.address.model.Model;
 
 /**
- * Clears the address book.
+ * displays a message that tells the user the specific command word they keyed in does not take in any arguments..
  */
 public class WrongCommand extends Command {
 
     private final String commandWord;
 
-    public WrongCommand (String commandWord) {
+    public WrongCommand(String commandWord) {
         this.commandWord = commandWord;
     }
     @Override
