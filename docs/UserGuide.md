@@ -92,13 +92,14 @@ Adds a new person to the Insurahub App, the name of the Person must be unique
 Format: `add n/NAME p/PHONENUMBER e/EMAIL a/ADDRESS [t/TAG] pmr/PREFERREDMEETINGREGION`
 - `NAME` must be Unique in InsuraHub.
 - `PHONENUMBER` must be 8 numbers long and start with either 6,8 or 9.
+- `TAG` should be alphanumeric
 - `EMAIL` Emails should be of the format local-part@domain and adhere to the following constraints:
   - The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses
   - The local-part may not start or end with any special characters
   - This is followed by a '@' and then a domain name. 
   - have each domain label start and end with alphanumeric characters
   - have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
-- `ADDRESS` can be any string
+- `ADDRESS` Addresses can take any values, and it should not be blank"
 - `PREFERREDMEETINGREGION`  have to be one of these strings west/north/south/east/central.
 
 <box type="tip" seamless>
