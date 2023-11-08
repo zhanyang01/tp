@@ -32,15 +32,15 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
 7. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   - `list` : Lists all contacts.
+   - `list` : Lists everyone in InsuraHub.
 
-   - `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends pmr/west` : Adds a contact named `John Doe` to the application.
+   - `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends pmr/west` : Adds a Person named `John Doe` to the application.
    - `addTag 1 t/classmate` : Adds a "classmate" tag to the first user in the address book.
 
-   - `delete 3` : Deletes the 3rd contact shown in the current list.
+   - `delete 3` : Deletes the 3rd person shown in the current list.
 
    - `deleteTag 1 t/classmate` : Deletes the "classmate" tag from the first user in the address book if the "classmate" tag currently exists
-   - `clear` : Deletes all contacts.
+   - `clear` : Deletes everyone from InsuraHub.
    - `filter t/friend`: Filters for all clients in the address book that contains the `friend' tag.
 
    - `exit` : Exits the app.
