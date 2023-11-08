@@ -32,15 +32,15 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
 7. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   - `list` : Lists all contacts.
+   - `list` : Lists everyone in InsuraHub.
 
-   - `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends pmr/west` : Adds a contact named `John Doe` to the application.
+   - `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends pmr/west` : Adds a Person named `John Doe` to the application.
    - `addTag 1 t/classmate` : Adds a "classmate" tag to the first user in the address book.
 
-   - `delete 3` : Deletes the 3rd contact shown in the current list.
+   - `delete 3` : Deletes the 3rd person shown in the current list.
 
    - `deleteTag 1 t/classmate` : Deletes the "classmate" tag from the first user in the address book if the "classmate" tag currently exists
-   - `clear` : Deletes all contacts.
+   - `clear` : Deletes everyone from InsuraHub.
    - `filter t/friend`: Filters for all clients in the address book that contains the `friend' tag.
 
    - `exit` : Exits the app.
@@ -92,13 +92,14 @@ Adds a new person to the Insurahub App, the name of the Person must be unique
 Format: `add n/NAME p/PHONENUMBER e/EMAIL a/ADDRESS [t/TAG] pmr/PREFERREDMEETINGREGION`
 - `NAME` must be Unique in InsuraHub.
 - `PHONENUMBER` must be 8 numbers long and start with either 6,8 or 9.
+- `TAG` should be alphanumeric
 - `EMAIL` Emails should be of the format local-part@domain and adhere to the following constraints:
   - The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses
   - The local-part may not start or end with any special characters
   - This is followed by a '@' and then a domain name. 
   - have each domain label start and end with alphanumeric characters
   - have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
-- `ADDRESS` can be any string
+- `ADDRESS` Addresses can take any values, and it should not be blank"
 - `PREFERREDMEETINGREGION`  have to be one of these strings west/north/south/east/central.
 
 <box type="tip" seamless>
