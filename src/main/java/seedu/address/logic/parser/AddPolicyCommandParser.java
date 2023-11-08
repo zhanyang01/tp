@@ -11,13 +11,14 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_VALUE;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Set;
-import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddPolicyCommand;
@@ -72,7 +73,7 @@ public class AddPolicyCommandParser implements Parser<AddPolicyCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_ALPHANUMERIC_INPUT, "policy Name"));
         }
 
-        if(!policyDescription.matches()) {
+        if (!policyDescription.matches()) {
             throw new ParseException(String.format(MESSAGE_INVALID_ALPHANUMERIC_INPUT, "policy Description"));
         }
         AddPolicyDescriptor addPolicyDescriptor = new AddPolicyDescriptor();
