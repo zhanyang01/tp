@@ -20,8 +20,8 @@ public class ToggleModeCommand extends Command {
             + "Toggles between LightMode and DarkMode";
 
     public static final String TOGGLE_SUCCESS = "Changed Mode, the next time InsuraHub is opened it will be in ";
-    private UiModeManager uiModeManager;
-    private String newMode;
+    private final UiModeManager uiModeManager;
+    private final String newMode;
 
     /**
      * Creates a ToggleModeCommand to toggle the {@code UiMode}

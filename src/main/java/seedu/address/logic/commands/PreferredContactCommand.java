@@ -34,7 +34,7 @@ public class PreferredContactCommand extends Command {
     public static final String MESSAGE_PREFERREDCONTACT_NOT_EDITED =
             "At least one field must be provided.";
     public static final String MESSAGE_PREFERREDCONTACT_INVALID =
-            "Preferred contact must be either email or phone, else it is blank.";
+            "Preferred contact must be either email or phone in lowercase.";
 
     private final Index index;
     private final PreferredContact preferredContact;
