@@ -199,6 +199,8 @@ Format: `addPolicy <INDEX> [pn/POLICY NAME  pd/POLICY DESCRIPTION  pv/POLICY VAL
 
 - `INDEX` must be a positive integer less than or equals to the number of clients currently shown on InsuraHub.
 
+- `POLICY VALUE` have a limit of up to 7 digits.
+
 Examples:
 
 - `addPolicy 1 pn/Health Insurance pd/Cancer Plan pv/2000.00 psd/2023-01-01 ped/2024-12-12 `
