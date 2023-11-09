@@ -294,7 +294,7 @@ Examples:
 
 ### Storing documents of a client: `file`
 
-Creates/opens up a folder specific to a client for storing of their documents
+Creates/opens up a folder specific to a client for storing of their documents. When it is first created, it will be empty. We can add client's documents into the file and it will be saved in the file after closing the window.
 
 Format 1: `file <INDEX>`
 
