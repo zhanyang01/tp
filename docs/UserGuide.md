@@ -23,8 +23,10 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar insurahub.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note that if a password had been previously set, then this step would be skipped.
-   ![Ui](images/setPassword.png)
-5. After the password has been set, A GUI similar to the previous one should ask the user to enter the password that they set. 
+
+   ![SetPassword](images/setPassword.png)
+
+5. After the password has been set, A GUI similar to the previous one should ask the user to enter the password that they set.
 
 6. After the password is entered A GUI similar to the below should appear in a few seconds.
    ![Ui](images/Ui.png)
@@ -90,19 +92,18 @@ Format: `help`
 Adds a new person to the Insurahub App, the name of the Person must be unique
 
 Format: `add n/NAME p/PHONENUMBER e/EMAIL a/ADDRESS [t/TAG] pmr/PREFERREDMEETINGREGION`
+
 - `NAME` must be Unique in InsuraHub.
 - `PHONENUMBER` must be 8 numbers long and start with either 6,8 or 9.
 - `TAG` should be alphanumeric
 - `EMAIL` Emails should be of the format local-part@domain and adhere to the following constraints:
   - The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses
   - The local-part may not start or end with any special characters
-  - This is followed by a '@' and then a domain name. 
+  - This is followed by a '@' and then a domain name.
   - have each domain label start and end with alphanumeric characters
   - have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
 - `ADDRESS` Addresses can take any values, and it should not be blank"
-- `PREFERREDMEETINGREGION`  have to be one of these strings west/north/south/east/central.
-
-<box type="tip" seamless>
+- `PREFERREDMEETINGREGION` have to be one of these strings west/north/south/east/central.
 
 Examples:
 
@@ -307,7 +308,7 @@ Examples:
 
 Groups clients based on their preferred meeting locations
 
-Format: `groupmeeting west/north/south/east/central` 
+Format: `groupmeeting west/north/south/east/central`
 
 Examples:
 
@@ -319,7 +320,7 @@ Changes the required password to enter Insurahub.
 
 Format: `changePassword op/<OLDPASSWORD> np/<NEWPASSWORD>`
 
-- `OLDPASSWORD` must be the password string that was previously set 
+- `OLDPASSWORD` must be the password string that was previously set
 - `NEWPASSWORD` can be any string of length >= 1
 
 Examples:
@@ -363,7 +364,7 @@ Examples:
 ## Command summary
 
 | Action                        | Format, Examples                                                                                                                                                                                                              |
-|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`                                                         |
 | **Clear**                     | `clear`                                                                                                                                                                                                                       |
 | **Delete**                    | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                           |
