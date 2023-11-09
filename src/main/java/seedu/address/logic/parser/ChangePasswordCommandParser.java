@@ -1,10 +1,12 @@
 package seedu.address.logic.parser;
 
-
+import static seedu.address.logic.Messages.MESSAGE_INVALID_ALPHANUMERIC_INPUT;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_PASSWORD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_OLD_PASSWORD;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.ChangePasswordCommand;
@@ -30,9 +32,14 @@ public class ChangePasswordCommandParser implements Parser<ChangePasswordCommand
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_OLD_PASSWORD, PREFIX_NEW_PASSWORD);
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9]+$");
         String oldPassword = argMultimap.getValue(PREFIX_OLD_PASSWORD).get();
         String newPassword = argMultimap.getValue(PREFIX_NEW_PASSWORD).get();
+        Matcher matcher = pattern.matcher(newPassword);
 
+        if (!matcher.matches()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_ALPHANUMERIC_INPUT, "new password"));
+        }
         return new ChangePasswordCommand(oldPassword, newPassword);
     }
 
