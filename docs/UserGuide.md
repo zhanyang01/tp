@@ -77,6 +77,8 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 - If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+
+- `INDEX` maximum positive value is 2^31 - 1 which is 2147483647, larger values will not be accepted due to the limitation of integers in java.
   </box>
 
 ### Viewing help : `help`
