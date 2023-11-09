@@ -53,6 +53,8 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
 
 8. Refer to the [Features](#features) below for details of each command.
 
+9. Do remember to only open the application once from one terminal to prevent issues such as updates not being done properly, updates on the first session will not result in the second session to be updated if they are being opened simultaneously.
+
 ---
 
 ## Features
