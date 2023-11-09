@@ -29,7 +29,6 @@ import seedu.address.logic.commands.PreferredContactCommand;
 import seedu.address.logic.commands.RemovePolicyCommand;
 import seedu.address.logic.commands.ToggleModeCommand;
 import seedu.address.logic.commands.ViewPolicyCommand;
-import seedu.address.logic.commands.WrongCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -88,11 +87,7 @@ public class AddressBookParser {
             return new RemovePolicyCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
-            if (arguments.isEmpty()) {
-                return new ClearCommand();
-            } else {
-                return new WrongCommand(commandWord);
-            }
+            return new ClearCommand();
 
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
@@ -101,25 +96,13 @@ public class AddressBookParser {
             return new GroupMeetingCommandParser().parse(arguments);
 
         case ListCommand.COMMAND_WORD:
-            if (arguments.isEmpty()) {
-                return new ListCommand();
-            } else {
-                return new WrongCommand(commandWord);
-            }
+            return new ListCommand();
 
         case ExitCommand.COMMAND_WORD:
-            if (arguments.isEmpty()) {
-                return new ExitCommand();
-            } else {
-                return new WrongCommand(commandWord);
-            }
+            return new ExitCommand();
 
         case HelpCommand.COMMAND_WORD:
-            if (arguments.isEmpty()) {
-                return new HelpCommand();
-            } else {
-                return new WrongCommand(commandWord);
-            }
+            return new HelpCommand();
 
         case FileCommand.COMMAND_WORD:
             return new FileCommandParser().parse(arguments);
@@ -137,11 +120,7 @@ public class AddressBookParser {
             return new ChangePasswordCommandParser().parse(arguments);
 
         case ToggleModeCommand.COMMAND_WORD:
-            if (arguments.isEmpty()) {
-                return new ToggleModeCommand();
-            } else {
-                return new WrongCommand(commandWord);
-            }
+            return new ToggleModeCommand();
 
 
         case ViewPolicyCommand.COMMAND_WORD:
