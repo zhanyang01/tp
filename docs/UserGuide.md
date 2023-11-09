@@ -23,8 +23,10 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar insurahub.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note that if a password had been previously set, then this step would be skipped.
-   ![Ui](images/setPassword.png)
-5. After the password has been set, A GUI similar to the previous one should ask the user to enter the password that they set. 
+
+   ![SetPassword](images/setPassword.png)
+
+5. After the password has been set, A GUI similar to the previous one should ask the user to enter the password that they set.
 
 6. After the password is entered A GUI similar to the below should appear in a few seconds.
    ![Ui](images/Ui.png)
@@ -75,6 +77,8 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 - If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+
+- `INDEX` maximum positive value is 2^31 - 1 which is 2147483647, larger values will not be accepted due to the limitation of integers in java.
   </box>
 
 ### Viewing help : `help`
@@ -90,19 +94,18 @@ Format: `help`
 Adds a new person to the Insurahub App, the name of the Person must be unique
 
 Format: `add n/NAME p/PHONENUMBER e/EMAIL a/ADDRESS [t/TAG] pmr/PREFERREDMEETINGREGION`
+
 - `NAME` must be Unique in InsuraHub.
 - `PHONENUMBER` must be 8 numbers long and start with either 6,8 or 9.
 - `TAG` should be alphanumeric
 - `EMAIL` Emails should be of the format local-part@domain and adhere to the following constraints:
   - The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses
   - The local-part may not start or end with any special characters
-  - This is followed by a '@' and then a domain name. 
+  - This is followed by a '@' and then a domain name.
   - have each domain label start and end with alphanumeric characters
   - have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
 - `ADDRESS` Addresses can take any values, and it should not be blank"
-- `PREFERREDMEETINGREGION`  have to be one of these strings west/north/south/east/central.
-
-<box type="tip" seamless>
+- `PREFERREDMEETINGREGION` have to be one of these strings west/north/south/east/central.
 
 Examples:
 
@@ -119,7 +122,7 @@ Format: `list`
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG] [pmr/PREFERREDMEETINGREGION]`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]... [pmr/PREFERREDMEETINGREGION]`
 
 - Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 - At least one of the optional fields must be provided.
@@ -195,6 +198,8 @@ Adds an insurance policy to a client in InsuraHub.
 Format: `addPolicy <INDEX> [pn/POLICY NAME  pd/POLICY DESCRIPTION  pv/POLICY VALUE  psd/POLICY START DATE  ped/POLICY END DATE]`
 
 - `INDEX` must be a positive integer less than or equals to the number of clients currently shown on InsuraHub.
+
+- `POLICY VALUE` have a limit of up to 7 digits.
 
 Examples:
 
@@ -293,7 +298,7 @@ Examples:
 
 ### Storing documents of a client: `file`
 
-Creates/opens up a folder specific to a client for storing of their documents
+Creates/opens up a folder specific to a client for storing of their documents. When it is first created, it will be empty. We can add client's documents into the file and it will be saved in the file after closing the window.
 
 Format 1: `file <INDEX>`
 
@@ -307,7 +312,7 @@ Examples:
 
 Groups clients based on their preferred meeting locations
 
-Format: `groupmeeting west/north/south/east/central` 
+Format: `groupmeeting west/north/south/east/central`
 
 Examples:
 
@@ -319,7 +324,7 @@ Changes the required password to enter Insurahub.
 
 Format: `changePassword op/<OLDPASSWORD> np/<NEWPASSWORD>`
 
-- `OLDPASSWORD` must be the password string that was previously set 
+- `OLDPASSWORD` must be the password string that was previously set
 - `NEWPASSWORD` can be any string of length >= 1
 
 Examples:
@@ -363,7 +368,7 @@ Examples:
 ## Command summary
 
 | Action                        | Format, Examples                                                                                                                                                                                                              |
-|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`                                                         |
 | **Clear**                     | `clear`                                                                                                                                                                                                                       |
 | **Delete**                    | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                           |
