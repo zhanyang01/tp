@@ -47,6 +47,18 @@ public class AddPolicyCommandParser implements Parser<AddPolicyCommand> {
         } catch (ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddPolicyCommand.MESSAGE_USAGE), pe);
         }
+
+        // Validate start date
+        String startDate = argMultimap.getValue(PREFIX_POLICY_START_DATE).orElseThrow();
+        if (!DateValidator.isValidDate(startDate)) {
+            throw new ParseException("Invalid start date format or value");
+        }
+
+        // Validate end date
+        String endDate = argMultimap.getValue(PREFIX_POLICY_END_DATE).orElseThrow();
+        if (!DateValidator.isValidDate(endDate)) {
+            throw new ParseException("Invalid end date format or value");
+        }
         if (argMultimap.getAllValues(PREFIX_POLICY_NAME).size() != 1
                 || argMultimap.getAllValues(PREFIX_POLICY_DESCRIPTION).size() != 1
                 || argMultimap.getAllValues(PREFIX_POLICY_VALUE).size() != 1
@@ -60,8 +72,6 @@ public class AddPolicyCommandParser implements Parser<AddPolicyCommand> {
         final String policyName = argMultimap.getValue(PREFIX_POLICY_NAME).get();
         final String description = argMultimap.getValue(PREFIX_POLICY_DESCRIPTION).get();
         final String policyValue = argMultimap.getValue(PREFIX_POLICY_VALUE).get();
-        final String startDate = argMultimap.getValue(PREFIX_POLICY_START_DATE).get();
-        final String endDate = argMultimap.getValue(PREFIX_POLICY_END_DATE).get();
         Pattern pattern = Pattern.compile("^[a-zA-Z0-9 ]+$");
         Matcher policyNameMatcher = pattern.matcher(policyName);
         Matcher policyDescription = pattern.matcher(description);
@@ -89,6 +99,14 @@ public class AddPolicyCommandParser implements Parser<AddPolicyCommand> {
         assert policyValue != null;
         assert startDate != null;
         assert endDate != null;
+        if (!DateValidator.isValidDate(startDate)) {
+            throw new ParseException("Invalid start date format or value");
+        }
+
+        // Validate end date
+        if (!DateValidator.isValidDate(endDate)) {
+            throw new ParseException("Invalid end date format or value");
+        }
 
 
         return Optional.of(ParserUtil.parsePolicy(policyName, description, policyValue, startDate, endDate));
