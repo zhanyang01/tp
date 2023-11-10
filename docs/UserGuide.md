@@ -174,7 +174,7 @@ Examples:
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the address book.
+Clears all entries from Insurahub. Do note that so long as `clear` is contained in your commands, details in Insurahub will be deleted
 
 Format: `clear`
 
@@ -334,25 +334,25 @@ Examples:
 - `changePassword op/boo123 np/pass456` if the previous password is boo123, then the new password is set as pass456.
 - `changePassword op/bad123 np/pass456` if the previous password is not bad123, then the password is unchanged.
 
-### toggling the Ui appearance: `toggleMode`
+### Toggling the Ui appearance: `toggleMode`
 
-toggles between lightMode and DarkMode, the next time InsuraHub is opened the change will be shown.
+Toggles between lightMode and DarkMode, the next time InsuraHub is opened the change will be shown.
 
 Format: `toggleMode`
 
 Examples:
 
-- `toggleMode` will display the mode that Insurahub will be in when it is next opened.
+- `toggleMode` will display the mode that Insurahub will be in when it is next opened. If it is lightmode, it will be changed to dark mode and vice versa
 
 ### filter policy using policy description `filterpolicydescription`
 
-Filter policies using policy description
+Filter policies using policy description, it is case sensative, hence if client have `Cancer Plan` typing `CANCER PLAN` will not work.
 
 Format: `filterpolicydescription POLICYDESCRIPTION`
 
 Examples:
 
-- `filterpolicydescription CANCER PLAN` will filter all the users who have cancer plans and show the list of users with them.
+- `filterpolicydescription Cancer Plans` will filter all the clients who have cancer plans and show the list of clients with them.
 
 ## FAQ
 
@@ -363,7 +363,7 @@ Examples:
 
 ## Known issues
 
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again. However, doing any edits on the first screen will not update on the second screen simultaneously
 
 ---
 
@@ -375,6 +375,8 @@ Examples:
 | **Clear**                     | `clear`                                                                                                                                                                                                                       |
 | **Delete**                    | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                           |
 | **Edit**                      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                   |
+| **Exit**                      | `exit`                                                                                                                                                                                                                        |
+| **File**                      | `file INDEX`<br> e.g. `file 1`                                                                                                                                                                                                |
 | **Find**                      | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                    |
 | **Add Tag**                   | `addTag <INDEX> t/TAG1 t/TAG2`<br/> e.g. `addTag 1 t/friend`                                                                                                                                                                  |
 | **DeleteTag**                 | `deleteTag <INDEX> t/TAG1 t/TAG2`<br/> e.g. `deleteTag 1 t/friend`                                                                                                                                                            |
@@ -388,3 +390,4 @@ Examples:
 | **Preferred Contact**         | `preferredContact INDEX pc/PREFERREDCONTACT`<br/> e.g. `preferredContact 1 pc/phone`                                                                                                                                          |
 | **Change Password**           | `changePassword op/OLD PASSWORD np/NEW PASSWORD`<br/>e.g. `changePassword op/123456 np/foo123`                                                                                                                                |
 | **Toggle UI Mode**            | `toggleMode`                                                                                                                                                                                                                  |
+| **Group Meeting**             | `groupmeeting PREFERRED MEETING REGION` <br> e.g. `groupmeeting west`                                                                                                                                                         |
