@@ -18,8 +18,7 @@ public class Messages {
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d person(s) listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
             "Multiple values specified for the following single-valued field(s): ";
-    public static final String MESSAGE_INVALID_ALPHANUMERIC_INPUT = "Missing/Invalid parameters!"
-            + "Only alphanumeric characters are allowed as input for %1S";
+    public static final String MESSAGE_INVALID_ALPHANUMERIC_INPUT = "Only alphanumeric characters are allowed as input";
     public static final String MESSAGE_MISSING_PREFIXES = "Missing Prefixes, please refer to example below";
 
     /**
