@@ -64,6 +64,6 @@ public class RemovePolicyCommand extends Command {
         personToEdit.removePolicy(policyToDelete);
         model.setPerson(personToEdit, personToEdit);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_DELETE_POLICY_SUCCESS, Messages.format(personToEdit)));
+        return new CommandResult(String.format(MESSAGE_DELETE_POLICY_SUCCESS, personToEdit));
     }
 }
