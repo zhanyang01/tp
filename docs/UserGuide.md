@@ -242,16 +242,16 @@ Highlight the specific contact details of the particular client from the applica
 Format 1: `preferredContact <INDEX> pc/PREFERREDCONTACT`
 
 - **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
-- **preferred contact method** either Phone number or Email currently
-- Name: Contact name of the person that is saved in the app.
+- **preferred contact method** either Phone number or Email
 - Preferred contact method:
-  - Phone number
-  - Email
+  - phone
+  - email
+- Preferred contact parameter has to be in lowercase.
 
 Examples:
 
 - `preferredContact 1 pc/phone` will highlight the phone number of the first person in the current list shown
-- - `preferredContact 1 pc/email` will highlight the email address of the first person in the current list shown
+- `preferredContact 1 pc/email` will highlight the email address of the first person in the current list shown
 
 ### Exiting the program : `exit`
 
