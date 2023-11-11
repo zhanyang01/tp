@@ -1,5 +1,5 @@
 ---
-  layout: page
+  layout: default.md
   title: "Ng Zhan Yang's Project Portfolio Page"
 ---
 
