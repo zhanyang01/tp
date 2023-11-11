@@ -52,7 +52,6 @@ public class ViewPolicyCommand extends Command {
             throw new CommandException("The policy index provided is invalid");
         }
 
-        // Convert the set to a list to get the specific policy to delete
         Policy policyToView = policyList.stream().skip(policyIndex.getZeroBased()).findFirst().orElse(null);
         if (policyToView == null) {
             throw new CommandException("The policy does not exist.");

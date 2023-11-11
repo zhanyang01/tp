@@ -380,8 +380,8 @@ The Delete Policy feature allows users to remove policies under a certain client
 
 Given below is an example usage scenario and how the Remove Policy mechanism behaves at each step
 
-1. The user launches the application and wants to remove a policy from `Alex Yeoh` who is the first person in the InsuraHub
-2. The user tries to delete remove the first (right-most) policy of `Alex Yeoh` with command `removePolicy 1 1`
+1. The user launches the application and wants to remove a policy from `Alex Yeoh` who is the first client listed in the InsuraHub UI
+2. The user wants to remove the first (right-most) policy of `Alex Yeoh` with command `removePolicy 1 1`
 3. The `execute` method of the `RemovePolicyCommand` object will be called
 4. That will then call the `removePolicy` method on the existing Person object identified by the indexes
 5. The model will then call the `setPerson` method and updates the targetted client with the policy removed from the previous step
@@ -389,13 +389,30 @@ Given below is an example usage scenario and how the Remove Policy mechanism beh
 
 The following sequence diagram shows how the RemovePolicy operation works:
 
+### View Policy Feature
+
+#### Current Implementation
+
+The View Policy feature allows users to view the details of policies under a certain client by indexing the client and the policy
+
+Given below is an example usage scenario and how the View Policy mechanism behaves at each step
+
+1. The user launches the application and wants to view the policies of `Alex Yeoh` who is the first client listed in the InsuraHub UI
+2. The user wants to view the first (right-most) policy of the client `Alex Yeoh` by entering the command `viewPolicy 1 1`
+3. The `execute` method of the `ViewPolicyCommand` will then be used to create a `CommandResult` object
+4. This converts the `policyList` from a `Set` to a `List` and uses a `stream` to index the target policy to be removed
+5. The `CommandResult` is then returned by the `execute` method with the `toString()` of the `policy` indexed from the previous step
+6. The UI will display the details of the policy specified by the index and a success message is displayed on the UI
+
+The following sequence diagram shows how the View Policy operation works:
+
 ### Filter Policy Description feature
 
 #### Current Implementation
 
 InsuraHub allow users to filter clients based on their policy details, currently only filtering policy description
 
-Sequence for filtering the policy description of clients
+Given below is an example usage scenario and how the Filter Policy mechanism behaves at each step
 
 1. The user launches the application and wants to filter clients who have Cancer Plans
 2. The user tries to filter clients using `filterpolicydescription`.
@@ -409,6 +426,24 @@ Sequence for filtering the policy description of clients
 
 The following sequence diagram shows how the Filter Policy Description operation works:
 <puml src="diagrams/FilterPolicyActivityDiagram.puml" width="450" />
+
+
+### Toggle Mode feature
+
+#### Current Implementation
+
+InsuraHub allows users to toggle between a dark(default) or light mode to their preference to maximise their productivity
+
+Given below is an example usage scenario and how the Toggle Mode mechanism behaves at each step
+
+1. The user launches the application in the default dark mode and wants to toggle it to light mode and enters the command `toggleMode`
+2. The `execute` method of the `ToggleModeCommand` is called
+3. The `uiModeManager` calls its `getUiMode` method and stores the current `uiMode` in a string
+3. The `uiMode` is detected to be the default value of `MainWindow.fxml` and is updated to `LightWindow.fxml`
+4. The `CommandResult` is returned by the `execute` method and the mode of the UI will be switched to Light Mode on the user's next start up of the application
+5. The UI will continue displaying the list of clients and a success message is displayed on the UI
+
+The following sequence diagram shows how the Toggle Mode operation works:
 
 ### \[Proposed\] Undo/redo feature
 
@@ -791,4 +826,52 @@ testers are expected to do more _exploratory_ testing.
 1. _{ more test cases …​ }_
 
 ## **Appendix: Planned Enhancements**
+### Add Feature - Email Validation
+#### Current State
+The `email` parameter for adding a new client to InsuraHub currently only allows alphanumeric characters in the local-part for email addresses in the format local-part@domain.com
+
+#### Planned Enhancement
+The local-part will allow special characters which are commonly used in email addresses with the limitation of having no consecutive special characters together
+
+### Add Feature - Phone Number Validation
+#### Current State
+The `phone number` parameter for adding a new client to InsuraHub currently does not check for if the phone number is a typical valid Singaporean phone number that begins with 6, 8, or 9
+
+#### Planned Enhancement
+The `phone number` will be checked to ensure it starts with 6, 8, or 9, with an error message thrown if it fails that check
+
+
+### Add Policy Feature - Invalid parameter and prefix name
+#### Current State
+No errors for Invalid prefixes:
+* Having 2 `pn` prefixes (policy name) does not return the user any error in the InsuraHub UI
+* No error message on the UI for empty parameters such as an empty policy name `pn`
+* The `policy description` should be of the prefix `pd` in the `addPolicy` command but using an unknown `pr` prefix that precedes the policy description does not throw any error
+Invalid dates such as `2023-02-29` do not currently return errors in the UI
+
+##### Planned Enhancement
+* The prefixes will be checked to ensure that the `addPolicy` command entered by the user is a valid command with the correct prefixes
+* The `policy start date` and `policy end date` will be checked to ensure that they are valid dates, including edge cases such as leap years
+
+### Add Policy Feature - Special characters allowed
+#### Current State
+The Add Policy command currently allows for special characters such as `;;` which is not how policies would be named
+
+#### Planned Enhancement
+Policy name and description will be checked through for special characters and corresponding error messages will be returned in the UI
+
+### Remove Policy Feature - Success message incorrectly formatted
+#### Current State
+The success message is currently not formatted properly with the details of the client wrapped in braces preceded by `seedu.address.model…​.`
+
+#### Planned Enhancement
+The success message will be formatted properly
+
+### Preferred Contact Feature - Parameters must be lowercase
+#### Current state
+The Preferred Contact command only accepts parameters in lower-case but there is no warning when the user enters a parameter in uppercase
+
+#### Planned Enhancement
+There will be error message returned in the UI when the user enters the parameters not in lowercase (either `email` or `phone`)
+
 Return to [Table Of Contents](#table-of-contents)
