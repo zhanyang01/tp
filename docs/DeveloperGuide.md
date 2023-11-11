@@ -1,5 +1,5 @@
 ---
-  layout: default.md
+  layout: page
   title: "Developer Guide"
   pageNav: 3
 ---
@@ -212,8 +212,8 @@ Sequence for adding the preferred contact details of the client
 3. Insurahub displays a error message stating `"At least one field must be provided"`.
 4. The user then tries to add a preferred contact method using `preferredContact 1 pc/phone`.
 5. `PreferredContactCommandParser` and `AddressBookParser` will check if the command format provided is valid before `PreferredContactCommand#execute()` is called.
-6. Insurahub will check if the user exists in the `UniquePersonList`.
-7. If the user exist, the preferred contact method of the client will be updated.
+6. Insurahub will check if the client exists in the `UniquePersonList`.
+7. If the client exist, the preferred contact method of the client will be updated.
 8. The result of the execution of the command will then be used to create a `CommandResult` object.
 9. This object will then be passed to `Logic`.
 10. The execution will then be over as the preferred contact method will be highlighted and the adding preferred contact command successful message will then be displayed.
@@ -254,7 +254,7 @@ Step 4. The update list of filtered `Person` objects are then displayed on the u
 
 The following sequence diagram shows how the filter tag operation works:
 
-<puml src="diagrams/Filter Tag.puml" width="250" />
+<puml src="diagrams/Filter Tag.puml" width="450" />
 
 ### DeleteTag feature
 
@@ -273,7 +273,7 @@ Given below is an example usage scenario and how the DeleteTag mechanism behaves
 7. Upon confirmation that the tag exist in the first user of the address book, in this case `Alex Yeoh`, the tag is deleted from the UI of `Alex Yeoh` contact
 8. A successful message is returned, in this case `Deleted tags successfully for person Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Tags: `
 
-### file feature
+### File feature
 
 #### Current Implementation
 
@@ -291,6 +291,59 @@ Sequence for creating/opening the folder for each client
 5. If the folder with the unique folder name does not exist then the folder will be created and placed in the ClientFiles folder.
 6. The folder in the ClientFiles folder with the unique folder name will be opened.
 7. The execution will then be over as the user can now drop files for the client into this opened folder, file command successful message will be displayed.
+
+### GroupMeeting feature
+
+#### Current Implementation
+
+Insurahub allow users to filter based on the client preferred meeting region
+
+There is only 5 preferred meeting region
+
+1. north
+2. south
+3. east
+4. west
+5. central
+
+Sequence for filtering the preferred meeting region of the clients
+
+1. The user launches the application and wants to group all clients who prefer to meet in the west as he/she is planning to meet clients who live in the west.
+2. The user tries to filter clients using `groupmeeting`.
+3. Insurahub displays a error message stating `"At least one region must be included"`.
+4. The user then tries to filter clients using `groupmeeting west`.
+5. `GroupMeetingCommandParser` and `AddressBookParser` will check if the command format provided is valid before `GroupMeetingCommand#execute()` is called.
+6. Insurahub will check if users in the list fulfills the `GroupMeetingContainsKeywordPredicate`
+7. The result of the execution of the command will then be used to create a `CommandResult` object.
+8. This object will then be passed to `Logic`.
+9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
+
+Activity diagram for filtering clients based on preferred meeting region
+<puml src="diagrams/GroupMeetingActivityDiagram.puml" width="450" />
+
+Sequence diagram for filtering clients based on preferred meeting region
+<puml src="diagrams/GroupMeetingSequenceDiagram.puml" width="450" />
+
+### Filter Policy Description feature
+
+#### Current Implementation
+
+Insurahub allow users to filter clients based on their policy details, currently only filtering policy description
+
+Sequence for filtering the policy description of clients
+
+1. The user launches the application and wants to filter clients who have Cancer Plans
+2. The user tries to filter clients using `filterpolicydescription`.
+3. Insurahub displays a error message stating `"Invalid Command format"` with examples of how to use the command.
+4. The user then tries to filter clients using `filterpolicydescription Cancer Plan`.
+5. `FilterPolicyDescriptionCommandParser` and `AddressBookParser` will check if the command format provided is valid before `FilterPolicyDescriptionCommand#execute()` is called.
+6. Insurahub will check if users in the list fulfills the `FilterPolicyDescriptionPredicate`
+7. The result of the execution of the command will then be used to create a `CommandResult` object.
+8. This object will then be passed to `Logic`.
+9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
+
+Activity diagram for filtering clients based on preferred meeting region
+<puml src="diagrams/FilterPolicyActivityDiagram.puml" width="450" />
 
 ### \[Proposed\] Undo/redo feature
 
@@ -465,7 +518,7 @@ Return to [Table Of Contents](#table-of-contents)
 
 If not explicitly mentioned, the actor will be a Financial Advisor and InsuraHub as the System.
 
-Use Case 1 - Adding more tags to client records.<br>
+**Use Case 1** - Adding more tags to client records.<br>
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
@@ -480,7 +533,7 @@ MSS:
 1a1. System displays an error message indicating that user have to key in at least one tag<br>
 Use case ends
 
-Use Case 2 - Deleting tags from client records.<br>
+**Use Case 2** - Deleting tags from client records.<br>
 Precondition: User knows the client index relative to the list and the client is added into the list of clients, clients must also have the tag/tags listed in one of their tags.
 
 MSS:
@@ -499,13 +552,13 @@ Use case ends.
 1b1. System returns an error message stating that one tag must be provided.<br>
 Use case ends
 
-Use Case 3 - Adding client preferred form of contact<br>
+**Use Case 3** - Adding client preferred form of contact<br>
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
 
 1. User adds in the clients preferred form of contact.
-2. System updates with the preferred form of contact.
+2. System updates with the preferred form of contact.<br>
    Use case ends
 
 **Extensions**
@@ -523,7 +576,7 @@ Use case ends
 1c1. System displays an error message indicating that the user have to put in at least one form of contact.<br>
 User case ends
 
-Use Case 4 - Filtering client information using tags
+**Use Case 4** - Filtering client information using tags
 
 MSS:
 
@@ -531,7 +584,7 @@ MSS:
 2. System updates with a list of clients that fulfills the tags to be filtered.<br>
    Use case ends
 
-Use Case 5 - Storing client documents neatly in a folder<br>
+**Use Case 5** - Storing client documents neatly in a folder<br>
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
@@ -546,7 +599,7 @@ MSS:
 1a1. System displays an error message indicating that the process of creating a file for the user is stopped.<br>
 Use case ends
 
-Use Case 6 - Grouping clients based on the nearest MRT station from their residence to a region
+**Use Case 6** - Grouping clients based on the nearest MRT station from their residence to a region
 
 MSS:
 
@@ -557,32 +610,36 @@ MSS:
 **Extensions:**
 
 1a. User keys in an invalid region<br>
-1a1. System returns an error message stating to put in a valid region to be filtered.
+1a1. System returns an error message stating to put in a valid region to be filtered.<br>
+Use Case Ends
 
-### Example Use Case
+**Use case 7** - Delete a person
 
-**Use case: Delete a person**
+MSS:
 
-**MSS**
-
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
-
+1.  User requests to delete a specific person in the list
+2.  Insurahub deletes the person<br>
     Use case ends.
 
 **Extensions**
 
-- 2a. The list is empty.
+- 1a. The given index is invalid.
 
-  Use case ends.
-
-- 3a. The given index is invalid.
-
-  - 3a1. AddressBook shows an error message.
-
+  - 1a1. Insurahub shows an error message.<br>
     Use case resumes at step 2.
+
+**Use case 8** - Filter Policy
+
+MSS:
+
+1.  User request to filter based on policy description
+2.  Insurahub show the list of people who have the policy<br>
+    Use case ends.
+
+**Extensions**
+
+- 2a. The list is empty.<br>
+  Use case ends.
 
 _{More to be added}_
 
