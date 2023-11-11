@@ -1,54 +1,76 @@
 ---
   layout: default.md
-  title: "aarontxz's Project Portfolio Page"
+  title: "Teng Xin Zhuan's Project Portfolio Page"
 ---
 
 ### Project: Insurahub
 
 Insurahub - Insurahub is a CLI application that targets financial advisors that type fast and prefers CLI over GUI to use the app.
+The application is mainly used by financial advisors in their day to day planning and scheduling of meetings with clients,
+assisting them by providing quick access to important information of each client stored in the database, displayed on the UI of InsuraHub.
+
+While Insurahub have limited functionalities at this stage, there are further plans to improve the application with the timeline being set in place.
 
 Given below are my contributions to the project.
 
-* **New Feature**: Added the ability to undo/redo previous commands.
-  * What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-  * Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
-  * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-  * Credits: *{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}*
-  * to be added soon
+- **New Feature**: Added the ability to allow users to easily create and open a folder for a specific client.
 
-* **New Feature**: Added a history command that allows the user to navigate to previous commands using up/down keys.
-  * to be added soon
+  - What it does: Creates or open a folder if it already exists for a client, to store any words or pdf documents etc
+  - Justification: This feature improves the product as it provides the insurance agent a convenient and organised way to be file their important documents for each clients.
+  - Highlights: I had to ensure that the creation of folders or stored properly in the correct file path and the same folder is opened for each client. 
+  - Credits: Edit command AB3.
 
-* **Code contributed**: [RepoSense link]()
+- **New Feature**: Added a compulsory initial setting of password and subsequent entering of password to enter InsuraHub.
 
-* **Project management**:
-  * Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
-  * to be added soon
+  - What it does: When InsuraHub is first opened, user will be required to set a password, subsequently the password has to be entered to enter InsuraHub.
+  - Justification: This feature improves the product as it adds a layer of authentication before displaying crucial client information that an Insurance Agent would not want any random person who opens the app to see. 
+  - Highlights This feature was challenging as I had to ensure that the passwordManager and passwordDialog come together to only allow the user to enter InsuraHub when a correct password is entered and notify the user when a wrong passwrod is given.
+  - Credits: MainWindow AB3.
 
-* **Enhancements to existing features**:
-  * Updated the GUI color scheme (Pull requests [\#33](), [\#34]())
-  * Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests [\#36](), [\#38]())
-  * to be added soon
+- **New Feature**: Added the ability to changePassword
 
-* **Documentation**:
-  * User Guide:
-    * Added documentation for the features `delete` and `find` [\#72]()
-    * Did cosmetic tweaks to existing documentation of features `clear`, `exit`: [\#74]()
-    * to be added soon
-  * Developer Guide:
-    * Added implementation details of the `delete` feature.
-    * to be added soon
+  - What it does: Change the password previously set to enter InsuraHub.
+  - Justification: This feature improves the product as it allows the Insruance agent to secure their clients information by being able to periodically change the password required to enter InsuraHub if they want to.
+  - Highlights: I had to ensure that the passwordManager only edits the file which stores the correct password when the old password given matches the current password before the change before rewriting the password saved in the encoded.txt file
 
-* **Community**:
-  * PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]()
-  * Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
-  * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
-  * Some parts of the history feature I added was adopted by several other class mates ([1](), [2]())
-  * to be added soon
+- **New Feature**: Added the ability view Policy details
+  - What it does: selects a specific policy of a specific client to display details of the policy that is not shown on the InsuraHub. 
+  - Justification: This feature improves the product as it allows the Insurance Agent to see the specific details of each policy of each client, important details such as start time and end time of the policy instead of just the name of the policy shown on InsuraHub.
+  - Highlights: This feature was hard to think of as we needed a fix to the lack of display of crucial details that our Policy class hold without occupying too much space.
+  - Credit: removePolicy Command InsuraHub.
 
-* **Tools**:
-  * Integrated a third party library (Natty) to the project ([\#42]())
-  * Integrated a new Github plugin (CircleCI) to the team repo
-  * to be added soon
+- **New Feature**: Added the Ability to Toggle UI mode
+  - What it does: Toggles between DarkMode and LightMode for the UI of InsuraHub the next time InsuraHub is opened.
+  - Justification: This feature improves the product as it allows the Insurance Agent to change to a Lighter display for InsuraHub if it better suit their personality/preference, as most Insurance agent tend to have a bright personality to engage their clients.
+  - Highlights: This feature was challenging to implement as I had to learn which part of the css code affects which part of the display in InsuraHub.
+  - Credit: DarkTheme.css, MainWindow.fxml AB3
 
-* _{you can add/remove categories in the list above}_
+
+- **Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=aarontxz&breakdown=true)
+
+- **Project management**:
+
+  - Participated in releases v1.1 - v1.4 on github with 2 releases currently, namely v1.3.trial and v1.3.final, v1.4 will be released when it is done.
+  - Fixed most of the testcases that failed due to changes in code in [\#216](https://github.com/AY2324S1-CS2103-W14-1/tp/pull/216)
+
+- **Enhancements to existing features**:
+
+  - Add file command in [\#65](https://github.com/AY2324S1-CS2103-W14-1/tp/pull/65)
+  - Add set and enter password requirement [\#98](https://github.com/AY2324S1-CS2103-W14-1/tp/pull/98)
+  - Add changePassword command [\#103](https://github.com/AY2324S1-CS2103-W14-1/tp/pull/103)
+  - Add ToggleModeCommand in [\#118](https://github.com/AY2324S1-CS2103-W14-1/tp/pull/118)
+  - Add viewPolicyCommand in [\#121](https://github.com/AY2324S1-CS2103-W14-1/tp/pull/121)
+
+- **Documentation**:
+
+  - User Guide:
+    - Add commands to user guide and refined in [\#126](https://github.com/AY2324S1-CS2103-W14-1/tp/pull/126)
+  - Developer Guide:
+    - Added initial user stories in [\#36](https://github.com/AY2324S1-CS2103-W14-1/tp/pull/36)
+
+- **Community**:
+
+  - Reviewed 24 PRs and provided feedback
+  - Reviewed 4 other IPs, 2 during the peer review in week 8 and 2 during the week 4
+  - Contributed to 2 forum posts and discussions
+  - Reported 5 bugs and suggestions for other teams in the class (examples: [1](https://github.com/AY2324S1-CS2103T-W16-4/tp/issues/124))
