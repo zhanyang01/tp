@@ -233,7 +233,7 @@ Format 1: `viewPolicy <INDEX_1> <INDEX_2>`
 
 Examples:
 
-- `viewPolicy 1 1` will display the first policy (right-most) that was added to the first person shown on the list.
+- `viewPolicy 1 1` will display the first policy (right-most) of the first client currently listed in the InsuraHub Ui.
 
 ### Adding a client preferred contact: `preferredContact`
 
@@ -251,7 +251,7 @@ Format 1: `preferredContact <INDEX> pc/PREFERREDCONTACT`
 Examples:
 
 - `preferredContact 1 pc/phone` will highlight the phone number of the first person in the current list shown
-- - `preferredContact 1 pc/email` will highlight the email address of the first person in the current list shown
+- `preferredContact 1 pc/email` will highlight the email address of the first person in the current list shown
 
 ### Exiting the program : `exit`
 
@@ -292,7 +292,7 @@ Removes any number of pre-existing tags from a client object.
 Format 1: `deleteTag <INDEX> t/TAG_1 t/TAG_2`
 
 - **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
-- - **tag**: must be a valid tag in the pre-defined list implemented in the app
+- **tag**: must be a valid tag in the pre-defined list implemented in the app
 
 Examples:
 
@@ -370,8 +370,8 @@ Examples:
 ## Command summary
 
 | Action                        | Format, Examples                                                                                                                                                                                                              |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`                                                         |
+| ----------------------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pmr/east [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pmr/east t/friend t/colleague`                                                           |
 | **Clear**                     | `clear`                                                                                                                                                                                                                       |
 | **Delete**                    | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                           |
 | **Edit**                      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                   |
