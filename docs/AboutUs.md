@@ -1,5 +1,5 @@
 ---
-  layout: default.md
+  layout: page
   title: "About Us"
 ---
 
@@ -7,20 +7,17 @@
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
-
 ## Project team
 
-### Zhan Yang
+### Ng Zhan Yang
 
 <img src="images/zhanyang01.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
 [[github](https://github.com/zhanyang01)]
 [[portfolio](team/zhanyang01.md)]
 
-* Role: Project Advisor
-
+- Role: Developer
+- Responsibilities: Deliverables and Deadlines, Scheduling and tracking
 
 ### Teng Xin Zhuan
 
@@ -29,9 +26,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/aarontxz)]
 [[portfolio](team/aarontxz.md)]
 
-* Role: Team Lead
-* Responsibilities: UI
-
+- Role: Developer
+- Responsibilities: UI
 
 ### Chang Ji-xuan
 
@@ -40,9 +36,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/johnnythesnake12)]
 [[portfolio](team/johnnythesnake12.md)]
 
-* Role: Developer
-* Responsibilities: Data
-
+- Role: Developer
+- Responsibilities: Data
 
 ### Luah Jun Yang
 
@@ -51,5 +46,5 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/luahjunyang)]
 [[portfolio](team/luahjunyang.md)]
 
-* Role: Developer
-* Responsibilities: UI
+- Role: Developer
+- Responsibilities: UI
