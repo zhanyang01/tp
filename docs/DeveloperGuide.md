@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# Insurahub Developer Guide
+# InsuraHub Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -36,6 +36,7 @@
    4. [Non-Functional Requirements](#non-functional-requirements)
    5. [Glossary](#glossary)
 6. [Appendix-Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
+7. [Appendix-Planned Enhancements](#appendix-planned-enhancements)
 
 ## **Setting up, getting started**
 
@@ -50,7 +51,6 @@ Return to [Table Of Contents](#table-of-contents)
 ### Architecture
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="280" />
-
 The **_Architecture Diagram_** given above explains the high-level design of the App.
 
 Given below is a quick overview of main components and how they interact with each other.
@@ -197,22 +197,22 @@ This section describes some noteworthy details on how certain features are imple
 
 #### Current Implementation
 
-Insurahub allow users to add/edit the preferred contact method of the client
-using their index relative to the current list shown in Insurahub
+InsuraHub allow users to add/edit the preferred contact method of the client
+using their index relative to the current list shown in InsuraHub
 
 There is only 2 preferred contact methods
 
 1. phone number
 2. email
 
-Sequence for adding the preferred contact details of the client
+Given below is an example usage scenario and how the PreferredContact mechanism behaves at each step
 
 1. The user launches the application and wants to add a preferred contact method for a client, `Alex Yeoh`, who is already stored in the application.
 2. The user tries to add a preferred contact method using `preferredContact 1`.
-3. Insurahub displays a error message stating `"At least one field must be provided"`.
+3. InsuraHub displays a error message stating `"At least one field must be provided"`.
 4. The user then tries to add a preferred contact method using `preferredContact 1 pc/phone`.
 5. `PreferredContactCommandParser` and `AddressBookParser` will check if the command format provided is valid before `PreferredContactCommand#execute()` is called.
-6. Insurahub will check if the client exists in the `UniquePersonList`.
+6. InsuraHub will check if the client exists in the `UniquePersonList`.
 7. If the client exist, the preferred contact method of the client will be updated.
 8. The result of the execution of the command will then be used to create a `CommandResult` object.
 9. This object will then be passed to `Logic`.
@@ -223,6 +223,43 @@ Activity diagram for adding preferred contact
 
 Sequence diagram for adding preferred contact
 <puml src="diagrams/PreferredContactSequenceDiagram.puml" width="450" />
+
+### AddTag feature
+
+#### Current Implementation
+
+The AddTag feature allows users to add tags under a certain client by indexing the client.
+
+Given below is an example usage scenario and how the AddTag mechanism behaves at each step
+
+1. The user launches the application and wants to delete a tag for `Alex Yeoh` who is the first client listed in InsuraHub
+2. The user wants to add the tag `friend` to the client `Alex Yeoh` by entering the command `addTag 1 t/friend`
+3. The `execute` method of the command will then be used to create a `CommandResult` object
+4. This calls the `createPersonWithAddedTag` method which creates a new client with the same details as `Alex Yeoh` but with the newly added tag
+5. The `model` calls the `setPerson` method and updates the targetted client with the newly created client from the previous step
+6. The `CommandResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added tag and a success message is displayed on the UI
+
+The following sequence diagram shows how the AddTag operation works:
+
+
+### DeleteTag feature
+
+#### Current Implementation
+
+The DeleteTag feature allows users to delete tags under a certain client by indexing the client.
+
+Given below is an example usage scenario and how the DeleteTag mechanism behaves at each step
+
+1. The user launches the application and wants to delete a tag for `Alex Yeoh` who is the first person in the InsuraHub
+2. The user tries to delete tag with command `DeleteTag 1 t/friends`
+3. InsuraHub displays an error message `Tags provided do not exist. Please provide an existing tag.`
+4. Realising that the tag he wants to delete is `friend`, the user tries to type `DeleteTag 1 t/friend` instead
+5. The result of the execution of the command will then be used to create a `CommandResult` object
+6. This will then be passed to `Logic`
+7. Upon confirmation that the tag exist in the first client of the address book, in this case `Alex Yeoh`, the tag is deleted from the UI of `Alex Yeoh` client
+8. A successful message is returned, in this case `Deleted tags successfully for person Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Tags: `
+
+The following sequence diagram shows how the DeleteTag operation works:
 
 ### Filtering by Tag feature
 
@@ -239,50 +276,32 @@ called with the `FilterContainsKeywordsPredicate` object as its parameter.
 
 Given below is an example usage scenario and how the tag filtering mechanism behaves at each step.
 
-Step 1.
-The user launches the application. The current `filteredPersonList` is simply a list of all Person objects
-in the `AddressBook`.
+1. The user launches the application. The current `filteredPersonList` is simply a list of all Person objects
+   in the `AddressBook`.
 
-Step 2. The user executes `filter t/Friend` command to filter for all Person objects in the address book
-with the tag `Friend'`. The `filter` command calls the `ParseCommand` method of the `AddressBookParser` which
-returns a `FilterCommandParser` object.
+2. The user executes `filter t/Friend` command to filter for all Person objects in the address book
+   with the tag `Friend'`. The `filter` command calls the `ParseCommand` method of the `AddressBookParser` which
+   returns a `FilterCommandParser` object.
 
-Step 3. The `FilterCommandParser` object then calls its `parse` method, returning a `FilterCommand` object
-which is executed by the `LogicManager`, calling the `updateFilteredPersonList` method of the `Model`.
+3. The `FilterCommandParser` object then calls its `parse` method, returning a `FilterCommand` object
+   which is executed by the `LogicManager`, calling the `updateFilteredPersonList` method of the `Model`.
 
-Step 4. The update list of filtered `Person` objects are then displayed on the ui.
+4. The update list of filtered `Person` objects are then displayed on the ui.
 
 The following sequence diagram shows how the filter tag operation works:
 
 <puml src="diagrams/Filter Tag.puml" width="450" />
 
-### DeleteTag feature
-
-#### Current Implementation
-
-The DeleteTag feature allows users to delete tags under a certain contact by indexing the contact
-
-Given below is an example usage scenario and how the DeleteTag mechanism behaves at each step
-
-1. The user launches the application and wants to delete a tag for `Alex Yeoh` who is the first person in the address book
-2. The user tries to delete tag with command `DeleteTag 1 t/friends`
-3. Insurahub displays an error message `Tags provided do not exist. Please provide an existing tag.`
-4. Realising that the tag he wants to delete is `friend`, the user tries to type `DeleteTag 1 t/friend` instead
-5. The result of the execution of the command will then be used to create a `CommandResult` object
-6. This will then be passed to `Logic`
-7. Upon confirmation that the tag exist in the first user of the address book, in this case `Alex Yeoh`, the tag is deleted from the UI of `Alex Yeoh` contact
-8. A successful message is returned, in this case `Deleted tags successfully for person Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Tags: `
-
 ### File feature
 
 #### Current Implementation
 
-Insurahub allow users to open a folder unique to each client to store their files
-using their index relative to the current list shown in Insurahub
+InsuraHub allow users to open a folder unique to each client to store their files
+using their index relative to the current list shown in InsuraHub
 
 these folders are stored in a main folder called ClientFiles in the main directory of InsuraHub
 
-Sequence for creating/opening the folder for each client
+Given below is an example usage scenario and how the file mechanism behaves at each step
 
 1. The user launches the application and wants to file certain documents for a client, `Alex Yeoh`, who is already stored in the application shown as the first person on InsuraHub.
 2. The user tries to open a folder for the client with command `file 1`
@@ -292,13 +311,16 @@ Sequence for creating/opening the folder for each client
 6. The folder in the ClientFiles folder with the unique folder name will be opened.
 7. The execution will then be over as the user can now drop files for the client into this opened folder, file command successful message will be displayed.
 
+The following sequence diagram shows how the file operation works:
+
+
 ### GroupMeeting feature
 
 #### Current Implementation
 
-Insurahub allow users to filter based on the client preferred meeting region
+InsuraHub allow users to filter based on the client preferred meeting region
 
-There is only 5 preferred meeting region
+There are only 5 preferred meeting regions:
 
 1. north
 2. south
@@ -306,14 +328,14 @@ There is only 5 preferred meeting region
 4. west
 5. central
 
-Sequence for filtering the preferred meeting region of the clients
+Given below is an example usage scenario and how the Group Meeting mechanism behaves at each step 
 
 1. The user launches the application and wants to group all clients who prefer to meet in the west as he/she is planning to meet clients who live in the west.
 2. The user tries to filter clients using `groupmeeting`.
-3. Insurahub displays a error message stating `"At least one region must be included"`.
+3. InsuraHub displays a error message stating `"At least one region must be included"`.
 4. The user then tries to filter clients using `groupmeeting west`.
 5. `GroupMeetingCommandParser` and `AddressBookParser` will check if the command format provided is valid before `GroupMeetingCommand#execute()` is called.
-6. Insurahub will check if users in the list fulfills the `GroupMeetingContainsKeywordPredicate`
+6. InsuraHub will check if users in the list fulfills the `GroupMeetingContainsKeywordPredicate`
 7. The result of the execution of the command will then be used to create a `CommandResult` object.
 8. This object will then be passed to `Logic`.
 9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
@@ -324,25 +346,68 @@ Activity diagram for filtering clients based on preferred meeting region
 Sequence diagram for filtering clients based on preferred meeting region
 <puml src="diagrams/GroupMeetingSequenceDiagram.puml" width="450" />
 
+### Add Policy feature
+
+#### Current implementation
+
+InsuraHub allows users to add insurance policies to keep track of new policies that clients have purchased through them
+
+There are 5 attributes for each policy:
+
+1. Policy Name (pn)
+2. Policy Description (pd)
+3. Policy Value (pv)
+4. Policy Start Date (psd)
+5. Policy End Date (ped)
+
+Given below is an example usage scenario and how the Add Policy Mechanism works:
+
+1. The user launches the application and wants to add a policy for `Alex Yeoh` who is the first client listed in InsuraHub
+2. The user wants to add a policy with `policyName: Health Insurance`, `policyDescription: Cancer Plan`, `policyValue: 2000.00`, `policyStartDate: 2023-01-01`, `policyEndDate: 2024-12-12`
+3. The user enters the command `addPolicy 1 pn/Health Insurance pd/Cancer Plan pv/2000.00 psd/2023-01-01 ped/2024-12-12`
+4. The `execute` method of the `AddPolicyCommand` will be called
+5. This calls the `createPersonWithAddedPolicy` method, creating a new Person object with the same details as `Alex Yeoh` but with the newly added policy
+6. The `model` calls the `setPerson` method and updates the targetted client with the newly created client from the previous step
+7. The `CommanResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added policy and a success message is displayed on the UI
+
+The following sequence diagram shows how the AddPolicy operation works:
+
+### Remove Policy feature
+
+#### Current Implementation
+
+The Delete Policy feature allows users to remove policies under a certain client by indexing the client and indexing the policy to be deleted
+
+Given below is an example usage scenario and how the Remove Policy mechanism behaves at each step
+
+1. The user launches the application and wants to remove a policy from `Alex Yeoh` who is the first person in the InsuraHub
+2. The user tries to delete remove the first (right-most) policy of `Alex Yeoh` with command `removePolicy 1 1`
+3. The `execute` method of the `RemovePolicyCommand` object will be called
+4. That will then call the `removePolicy` method on the existing Person object identified by the indexes
+5. The model will then call the `setPerson` method and updates the targetted client with the policy removed from the previous step
+6. The `CommandResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` not having the policy that was removed and a success message is displayed on the UI
+
+The following sequence diagram shows how the RemovePolicy operation works:
+
 ### Filter Policy Description feature
 
 #### Current Implementation
 
-Insurahub allow users to filter clients based on their policy details, currently only filtering policy description
+InsuraHub allow users to filter clients based on their policy details, currently only filtering policy description
 
 Sequence for filtering the policy description of clients
 
 1. The user launches the application and wants to filter clients who have Cancer Plans
 2. The user tries to filter clients using `filterpolicydescription`.
-3. Insurahub displays a error message stating `"Invalid Command format"` with examples of how to use the command.
+3. InsuraHub displays a error message stating `"Invalid Command format"` with examples of how to use the command.
 4. The user then tries to filter clients using `filterpolicydescription Cancer Plan`.
 5. `FilterPolicyDescriptionCommandParser` and `AddressBookParser` will check if the command format provided is valid before `FilterPolicyDescriptionCommand#execute()` is called.
-6. Insurahub will check if users in the list fulfills the `FilterPolicyDescriptionPredicate`
+6. InsuraHub will check if users in the list fulfills the `FilterPolicyDescriptionPredicate`
 7. The result of the execution of the command will then be used to create a `CommandResult` object.
 8. This object will then be passed to `Logic`.
 9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
 
-Activity diagram for filtering clients based on preferred meeting region
+The following sequence diagram shows how the Filter Policy Description operation works:
 <puml src="diagrams/FilterPolicyActivityDiagram.puml" width="450" />
 
 ### \[Proposed\] Undo/redo feature
@@ -618,14 +683,14 @@ Use Case Ends
 MSS:
 
 1.  User requests to delete a specific person in the list
-2.  Insurahub deletes the person<br>
+2.  InsuraHub deletes the person<br>
     Use case ends.
 
 **Extensions**
 
 - 1a. The given index is invalid.
 
-  - 1a1. Insurahub shows an error message.<br>
+  - 1a1. InsuraHub shows an error message.<br>
     Use case resumes at step 2.
 
 **Use case 8** - Filter Policy
@@ -633,7 +698,7 @@ MSS:
 MSS:
 
 1.  User request to filter based on policy description
-2.  Insurahub show the list of people who have the policy<br>
+2.  InsuraHub show the list of people who have the policy<br>
     Use case ends.
 
 **Extensions**
@@ -664,7 +729,7 @@ Return to [Table Of Contents](#table-of-contents)
 
 - **Mainstream OS**: Windows, Linux, Unix, OS-X
 - **Private contact detail**: A contact detail that is not meant to be shared with others
-- **Tag**: A tag object assigned to a contact that is a categorical description of the contact
+- **Tag**: A tag object assigned to a client that is a categorical description of the client
 - **Client Priorities**: Priority of the client that the insurance agent has to attend to, where each priority is its own tag
 - **Usage Instructions**: A quickstart guide with a short list of basic commands for users' reference within the App.
 
@@ -689,7 +754,7 @@ testers are expected to do more _exploratory_ testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   1. Double-click the jar file Expected: Shows the GUI with a set of sample clients. The window size may not be optimum.
 
 1. Saving window preferences
 
@@ -707,7 +772,7 @@ testers are expected to do more _exploratory_ testing.
    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
    1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+      Expected: First client is deleted from the list. Details of the deleted client shown in the status message. Timestamp in the status bar is updated.
 
    1. Test case: `delete 0`<br>
       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
@@ -725,4 +790,5 @@ testers are expected to do more _exploratory_ testing.
 
 1. _{ more test cases …​ }_
 
+## **Appendix: Planned Enhancements**
 Return to [Table Of Contents](#table-of-contents)
