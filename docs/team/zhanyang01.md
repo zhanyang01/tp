@@ -7,21 +7,21 @@
 
 Insurahub - Insurahub is a desktop app for managing clients, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Insurahub can get your contact management tasks done faster than traditional GUI apps. This app is mainly used by insurance agents who have many clients and tasks such as appointments to keep track of on a daily basis.
 
-While Insurahub have limited functionality at this stage, there are further plans to improve the application with the timeline being set in place.
+While Insurahub have limited functionalities at this stage, there are further plans to improve the application with the timeline being set in place.
 
 Given below are my contributions to the project.
 
 - **New Feature**: Added the ability to allow users to add the preferred contact method of their clients.
 
-  - What it does: It allows the users to add the client preferred contact method, it is stored as a string and there are currently 2 methods of preferred contact, email and phone, else it will be empty.
+  - What it does: It allows the users to add the client's preferred contact method, it is stored as a string and there are currently 2 methods of preferred contact, email and phone, else it will be empty.
   - Justification: This feature improves the product as it provides users a convenient way to be able to tailer to the clients preferred form of contact without having to remember the clients preferred form of contact by heart.
   - Highlights: This enhancement is challenging for me as it is my first feature after the remark tutorial and I am still not used to the AB3 codebase.
-  - Credits: AB3 remark tutorial
+  - Credits: AB3 Remark tutorial
 
 - **New Feature**: Added the ability to group clients by their preferred meeting region.
 
   - What it does: Clients now have one extra attribute, the preferredMeetingRegion attribute and this command allow clients to be filtered based on the region that they would prefer to meet.
-  - Justification: This feature improves the product significantly as it is tailered to the busy Financial Advisor schedule of having to meet many clients on a daily basis. This allow the user to plan where to meet different clients based on their preferred meeting region, this will allow the user to minimise travelling from one place to another to meet different clients, providing convenience to the user.
+  - Justification: This feature improves the product significantly as it is tailered to the busy Financial Advisor schedule of having to meet many clients on a daily basis. This allows the user to plan where to meet different clients based on their preferred meeting region, allowing the user to minimise travelling from one place to another to meet different clients, providing convenience to the user.
   - Highlights: This enhancement requires me to do edits in other commands such as add and edit, which is not needed in preferredContact command feature, hence it is not trivial as many test cases have to be edited to accommodate this new feature.
   - Credits: FindCommand AB3, AB3 Remark tutorial
 
