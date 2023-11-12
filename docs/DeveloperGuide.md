@@ -489,10 +489,10 @@ Given below is an example usage scenario and how the changePassword command beha
 5. The UI will continue displaying the list of clients and a success message is displayed on the UI.
 
 activity diagram for changePassword Command:
-<img src="diagrams/changePasswordActivityDiagram.png" width="650" />
+<img src="diagrams/ChangePasswordActivityDiagram.png" width="650" />
 
 The following sequence diagram shows how the changePassword operation works:
-<img src="diagrams/changePasswordSequenceDiagram.png" width="650" />
+<img src="diagrams/ChangePasswordSequenceDiagram.png" width="650" />
 
 ### \[Proposed\] Undo/redo feature
 
