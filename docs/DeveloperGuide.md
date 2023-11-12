@@ -241,7 +241,6 @@ Given below is an example usage scenario and how the AddTag mechanism behaves at
 
 The following sequence diagram shows how the AddTag operation works:
 
-
 ### DeleteTag feature
 
 #### Current Implementation
@@ -290,7 +289,7 @@ Given below is an example usage scenario and how the tag filtering mechanism beh
 
 The following sequence diagram shows how the filter tag operation works:
 
-<puml src="diagrams/Filter Tag.puml" width="450" />
+<puml src="diagrams/FilterTagSequenceDiagram.puml" width="450" />
 
 ### File feature
 
@@ -313,7 +312,6 @@ Given below is an example usage scenario and how the file mechanism behaves at e
 
 The following sequence diagram shows how the file operation works:
 
-
 ### GroupMeeting feature
 
 #### Current Implementation
@@ -328,7 +326,7 @@ There are only 5 preferred meeting regions:
 4. west
 5. central
 
-Given below is an example usage scenario and how the Group Meeting mechanism behaves at each step 
+Given below is an example usage scenario and how the Group Meeting mechanism behaves at each step
 
 1. The user launches the application and wants to group all clients who prefer to meet in the west as he/she is planning to meet clients who live in the west.
 2. The user tries to filter clients using `groupmeeting`.
@@ -427,7 +425,6 @@ Given below is an example usage scenario and how the Filter Policy mechanism beh
 The following sequence diagram shows how the Filter Policy Description operation works:
 <puml src="diagrams/FilterPolicyActivityDiagram.puml" width="450" />
 
-
 ### Toggle Mode feature
 
 #### Current Implementation
@@ -439,9 +436,9 @@ Given below is an example usage scenario and how the Toggle Mode mechanism behav
 1. The user launches the application in the default dark mode and wants to toggle it to light mode and enters the command `toggleMode`
 2. The `execute` method of the `ToggleModeCommand` is called
 3. The `uiModeManager` calls its `getUiMode` method and stores the current `uiMode` in a string
-3. The `uiMode` is detected to be the default value of `MainWindow.fxml` and is updated to `LightWindow.fxml`
-4. The `CommandResult` is returned by the `execute` method and the mode of the UI will be switched to Light Mode on the user's next start up of the application
-5. The UI will continue displaying the list of clients and a success message is displayed on the UI
+4. The `uiMode` is detected to be the default value of `MainWindow.fxml` and is updated to `LightWindow.fxml`
+5. The `CommandResult` is returned by the `execute` method and the mode of the UI will be switched to Light Mode on the user's next start up of the application
+6. The UI will continue displaying the list of clients and a success message is displayed on the UI
 
 The following sequence diagram shows how the Toggle Mode operation works:
 
@@ -826,52 +823,71 @@ testers are expected to do more _exploratory_ testing.
 1. _{ more test cases …​ }_
 
 ## **Appendix: Planned Enhancements**
+
 ### Add Feature - Email Validation
+
 #### Current State
+
 The `email` parameter for adding a new client to InsuraHub currently only allows alphanumeric characters in the local-part for email addresses in the format local-part@domain.com
 
 #### Planned Enhancement
+
 The local-part will allow special characters which are commonly used in email addresses with the limitation of having no consecutive special characters together
 
 ### Add Feature - Phone Number Validation
+
 #### Current State
+
 The `phone number` parameter for adding a new client to InsuraHub currently does not check for if the phone number is a typical valid Singaporean phone number that begins with 6, 8, or 9
 
 #### Planned Enhancement
+
 The `phone number` will be checked to ensure it starts with 6, 8, or 9, with an error message thrown if it fails that check
 
-
 ### Add Policy Feature - Invalid parameter and prefix name
+
 #### Current State
+
 No errors for Invalid prefixes:
-* Having 2 `pn` prefixes (policy name) does not return the user any error in the InsuraHub UI
-* No error message on the UI for empty parameters such as an empty policy name `pn`
-* The `policy description` should be of the prefix `pd` in the `addPolicy` command but using an unknown `pr` prefix that precedes the policy description does not throw any error
-Invalid dates such as `2023-02-29` do not currently return errors in the UI
+
+- Having 2 `pn` prefixes (policy name) does not return the user any error in the InsuraHub UI
+- No error message on the UI for empty parameters such as an empty policy name `pn`
+- The `policy description` should be of the prefix `pd` in the `addPolicy` command but using an unknown `pr` prefix that precedes the policy description does not throw any error
+  Invalid dates such as `2023-02-29` do not currently return errors in the UI
 
 ##### Planned Enhancement
-* The prefixes will be checked to ensure that the `addPolicy` command entered by the user is a valid command with the correct prefixes
-* The `policy start date` and `policy end date` will be checked to ensure that they are valid dates, including edge cases such as leap years
+
+- The prefixes will be checked to ensure that the `addPolicy` command entered by the user is a valid command with the correct prefixes
+- The `policy start date` and `policy end date` will be checked to ensure that they are valid dates, including edge cases such as leap years
 
 ### Add Policy Feature - Special characters allowed
+
 #### Current State
+
 The Add Policy command currently allows for special characters such as `;;` which is not how policies would be named
 
 #### Planned Enhancement
+
 Policy name and description will be checked through for special characters and corresponding error messages will be returned in the UI
 
 ### Remove Policy Feature - Success message incorrectly formatted
+
 #### Current State
+
 The success message is currently not formatted properly with the details of the client wrapped in braces preceded by `seedu.address.model…​.`
 
 #### Planned Enhancement
+
 The success message will be formatted properly
 
 ### Preferred Contact Feature - Parameters must be lowercase
+
 #### Current state
+
 The Preferred Contact command only accepts parameters in lower-case but there is no warning when the user enters a parameter in uppercase
 
 #### Planned Enhancement
+
 There will be error message returned in the UI when the user enters the parameters not in lowercase (either `email` or `phone`)
 
 Return to [Table Of Contents](#table-of-contents)
