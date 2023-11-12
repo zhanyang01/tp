@@ -218,11 +218,11 @@ Given below is an example usage scenario and how the PreferredContact mechanism 
 9. This object will then be passed to `Logic`.
 10. The execution will then be over as the preferred contact method will be highlighted and the adding preferred contact command successful message will then be displayed.
 
-Activity diagram for adding preferred contact
-<puml src="diagrams/PreferredContactActivityDiagram.puml" width="450" />
+The following activity diagram shows how the Preferred Contact operation works:
+<img src="diagrams/PreferredContactActivityDiagram.png" width="450" />
 
-Sequence diagram for adding preferred contact
-<puml src="diagrams/PreferredContactSequenceDiagram.puml" width="450" />
+The following sequence diagram shows how the Preferred Contact operation works:
+<img src="diagrams/PreferredContactSequenceDiagram.png" width="450" />
 
 ### AddTag feature
 
@@ -239,7 +239,15 @@ Given below is an example usage scenario and how the AddTag mechanism behaves at
 5. The `model` calls the `setPerson` method and updates the targetted client with the newly created client from the previous step
 6. The `CommandResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added tag and a success message is displayed on the UI
 
+The following activity diagram shows how the AddTag operation works:
+
+<img src="diagrams/AddTagActivityDiagram.png">
+
 The following sequence diagram shows how the AddTag operation works:
+<img src="diagrams/AddTagSequenceDiagram.png">
+
+The
+
 
 ### DeleteTag feature
 
@@ -258,8 +266,10 @@ Given below is an example usage scenario and how the DeleteTag mechanism behaves
 7. Upon confirmation that the tag exist in the first client of the address book, in this case `Alex Yeoh`, the tag is deleted from the UI of `Alex Yeoh` client
 8. A successful message is returned, in this case `Deleted tags successfully for person Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Tags: `
 
-The following sequence diagram shows how the DeleteTag operation works:
+The following activity diagram shows how the DeleteTag operation works:
+<img src="diagrams/DeleteTagActivityDiagram.png">
 
+The following sequence diagram shows how the DeleteTag operation works:
 ### Filtering by Tag feature
 
 #### Implementation
@@ -289,7 +299,7 @@ Given below is an example usage scenario and how the tag filtering mechanism beh
 
 The following sequence diagram shows how the filter tag operation works:
 
-<puml src="diagrams/FilterTagSequenceDiagram.puml" width="450" />
+<img src="diagrams/FilterTagSequenceDiagram.png" width="450" />
 
 ### File feature
 
@@ -339,10 +349,10 @@ Given below is an example usage scenario and how the Group Meeting mechanism beh
 9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
 
 Activity diagram for filtering clients based on preferred meeting region
-<puml src="diagrams/GroupMeetingActivityDiagram.puml" width="450" />
+<img src="diagrams/GroupMeetingActivityDiagram.png" width="450" />
 
 Sequence diagram for filtering clients based on preferred meeting region
-<puml src="diagrams/GroupMeetingSequenceDiagram.puml" width="450" />
+<img src="diagrams/GroupMeetingSequenceDiagram.png" width="450" />
 
 ### Add Policy feature
 
@@ -423,7 +433,7 @@ Given below is an example usage scenario and how the Filter Policy mechanism beh
 9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
 
 The following sequence diagram shows how the Filter Policy Description operation works:
-<puml src="diagrams/FilterPolicyActivityDiagram.puml" width="450" />
+<img src="diagrams/FilterPolicyActivityDiagram.png" width="450" />
 
 ### Toggle Mode feature
 
