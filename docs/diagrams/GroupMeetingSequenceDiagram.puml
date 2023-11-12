@@ -6,14 +6,13 @@ participant ":LogicManager" as LogicManager
 participant ":AddressBookParser" as AddressBookParser
 participant ":GroupMeetingCommandParser" as GroupMeetingCommandParser
 participant ":GroupMeetingCommand" as GroupMeetingCommand
-participant ":GroupMeetingContainsKeywordsPredicate" as GroupMeetingContainsKeywordsPredicate
 end box
 
 autonumber
-[->LogicManager : execute(filter t/Friend)
+[->LogicManager : execute(groupmeeting west)
 activate LogicManager
 
-LogicManager -> AddressBookParser : parseCommand(filter t/Friend)
+LogicManager -> AddressBookParser : parseCommand(groupmeeting west)
 activate AddressBookParser
 
 create GroupMeetingCommandParser
