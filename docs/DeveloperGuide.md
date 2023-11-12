@@ -218,10 +218,10 @@ Given below is an example usage scenario and how the PreferredContact mechanism 
 9. This object will then be passed to `Logic`.
 10. The execution will then be over as the preferred contact method will be highlighted and the adding preferred contact command successful message will then be displayed.
 
-Activity diagram for adding preferred contact
+The following activity diagram shows how the Preferred Contact operation works:
 <img src="diagrams/PreferredContactActivityDiagram.png" width="450" />
 
-Sequence diagram for adding preferred contact
+The following sequence diagram shows how the Preferred Contact operation works:
 <img src="diagrams/PreferredContactSequenceDiagram.png" width="450" />
 
 ### AddTag feature
@@ -239,7 +239,14 @@ Given below is an example usage scenario and how the AddTag mechanism behaves at
 5. The `model` calls the `setPerson` method and updates the targetted client with the newly created client from the previous step
 6. The `CommandResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added tag and a success message is displayed on the UI
 
+The following activity diagram shows how the AddTag operation works:
+
+<img src="diagrams/AddTagActivityDiagram.png">
+
 The following sequence diagram shows how the AddTag operation works:
+<img src="diagrams/AddTagSequenceDiagram.png">
+
+The
 
 
 ### DeleteTag feature
@@ -262,6 +269,7 @@ Given below is an example usage scenario and how the DeleteTag mechanism behaves
 The following activity diagram shows how the DeleteTag operation works:
 <img src="diagrams/DeleteTagActivityDiagram.png">
 
+The following sequence diagram shows how the DeleteTag operation works:
 ### Filtering by Tag feature
 
 #### Implementation
