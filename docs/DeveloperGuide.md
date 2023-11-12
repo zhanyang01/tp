@@ -50,7 +50,6 @@ Return to [Table Of Contents](#table-of-contents)
 ### Architecture
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="280" />
-
 The **_Architecture Diagram_** given above explains the high-level design of the App.
 
 Given below is a quick overview of main components and how they interact with each other.
