@@ -316,9 +316,9 @@ Given below is an example usage scenario and how the file mechanism behaves at e
 1. The user launches the application and wants to file certain documents for a client, `Alex Yeoh`, who is already stored in the application shown as the first person on InsuraHub.
 2. The user tries to open a folder for the client with command `file 1`
 3. InsuraHub will fetch the 1st client currently shown, if the index 1 is not out of bound in the list.
-4. If the index is valid, the `Name` of the client and the `hashCode` will be concatenated to get a unique folder name for the client.
-5. If the folder with the unique folder name does not exist then the folder will be created and placed in the ClientFiles folder.
-6. The folder in the ClientFiles folder with the unique folder name will be opened.
+4. If the index is valid, the `Name` of the client will be used as the folder name for the client.
+5. If the folder with the folder name does not exist then the folder will be created and placed in the ClientFiles folder.
+6. The folder in the ClientFiles folder with the folder name will be opened.
 7. The execution will then be over as the user can now drop files for the client into this opened folder, file command successful message will be displayed.
 
 Activity diagram for file Command:
