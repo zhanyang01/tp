@@ -246,8 +246,6 @@ The following activity diagram shows how the AddTag operation works:
 The following sequence diagram shows how the AddTag operation works:
 <img src="diagrams/AddTagSequenceDiagram.png">
 
-The
-
 
 ### DeleteTag feature
 
@@ -412,7 +410,11 @@ Given below is an example usage scenario and how the View Policy mechanism behav
 5. The `CommandResult` is then returned by the `execute` method with the `toString()` of the `policy` indexed from the previous step
 6. The UI will display the details of the policy specified by the index and a success message is displayed on the UI
 
+The following activity diagram for viewing policy of a particular Client:
+<img src="diagrams/ViewPolicyActivityDiagram.png" width="450" />
+
 The following sequence diagram shows how the View Policy operation works:
+<img src="diagrams/ViewPolicySequenceDiagram.png" width="450" />
 
 ### Filter Policy Description feature
 
@@ -432,7 +434,7 @@ Given below is an example usage scenario and how the Filter Policy mechanism beh
 8. This object will then be passed to `Logic`.
 9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
 
-The following sequence diagram shows how the Filter Policy Description operation works:
+The following activity diagram shows how the Filter Policy Description operation works:
 <img src="diagrams/FilterPolicyActivityDiagram.png" width="450" />
 
 ### Toggle Mode feature
