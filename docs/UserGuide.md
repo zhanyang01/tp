@@ -1,9 +1,3 @@
----
-  layout: default.md
-  title: "User Guide"
-  pageNav: 3
----
-
 # Insurahub User Guide
 
 Insurahub is a **desktop app for managing clients, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Insurahub can get your contact management tasks done faster than traditional GUI apps. This app is mainly used by insurance agents who have many clients and tasks such as appointments to keep track of on a daily basis.
@@ -233,7 +227,7 @@ Format 1: `viewPolicy <INDEX_1> <INDEX_2>`
 
 Examples:
 
-- `viewPolicy 1 1` will display the first policy (right-most) that was added to the first person shown on the list.
+- `viewPolicy 1 1` will display the first policy (right-most) of the first client currently listed in the InsuraHub Ui.
 
 ### Adding a client preferred contact: `preferredContact`
 
@@ -292,7 +286,7 @@ Removes any number of pre-existing tags from a client object.
 Format 1: `deleteTag <INDEX> t/TAG_1 t/TAG_2`
 
 - **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
-- - **tag**: must be a valid tag in the pre-defined list implemented in the app
+- **tag**: must be a valid tag in the pre-defined list implemented in the app
 
 Examples:
 
@@ -370,8 +364,8 @@ Examples:
 ## Command summary
 
 | Action                        | Format, Examples                                                                                                                                                                                                              |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`                                                         |
+| ----------------------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pmr/east [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pmr/east t/friend t/colleague`                                                           |
 | **Clear**                     | `clear`                                                                                                                                                                                                                       |
 | **Delete**                    | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                           |
 | **Edit**                      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                   |
