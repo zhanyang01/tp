@@ -41,7 +41,7 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
 
    - `exit` : Exits the app.
 
-   - `file 1`: Creates a folder for the first person in the address book with the person's information
+   - `file 1`: Creates a folder for the first person in the address book with the person's name as the name of the folder
 
    - `preferredContact 1 pc/phone` : Highlight to show that that is the main form of contact that the client in the first index prefers.
 
@@ -302,7 +302,7 @@ Format 1: `file <INDEX>`
 
 Examples:
 
-- `file 1` will open up a folder that is named after the first client currently on the list and their hashcode
+- `file 1` will open up a folder that is named after the name of the first client currently on the list
 
 ### Grouping client preferred meeting locations: `groupmeeting`
 
