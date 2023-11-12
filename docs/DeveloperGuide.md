@@ -311,8 +311,8 @@ Given below is an example usage scenario and how the file mechanism behaves at e
 6. The folder in the ClientFiles folder with the unique folder name will be opened.
 7. The execution will then be over as the user can now drop files for the client into this opened folder, file command successful message will be displayed.
 
-The following sequence diagram shows how the file operation works:
-
+Activity diagram for file Command:
+<puml src="diagrams/FileActivityDiagram.puml" width="450" />
 
 ### GroupMeeting feature
 
@@ -444,6 +444,26 @@ Given below is an example usage scenario and how the Toggle Mode mechanism behav
 5. The UI will continue displaying the list of clients and a success message is displayed on the UI
 
 The following sequence diagram shows how the Toggle Mode operation works:
+
+### Change Password feature
+
+#### Current Implementation
+
+InsuraHub allows users to change the required password to enter InsuraHub
+
+Given below is an example usage scenario and how the changePassword command behaves
+
+1. The user launches the application and sets the password as "oldPW1" before entering InsuraHub with the password.
+2. The user wants to change the password and enters the commant `changePassword op/oldPW1 np/newPW2`
+3. The `passwordManager` calls its `check` method on the old password given "oldPW1" to determine if the current password saved in encoded.txt in the data folder is indeed "oldPW1"
+3. The `passwordManager` detects that the old password is indeed correct and calls its `set` method to set the new password as "newPW2" by modifying the string saved in encoded.txt in the data folder.
+5. The UI will continue displaying the list of clients and a success message is displayed on the UI.
+
+activity diagram for changePassword Command:
+<puml src="diagrams/changePasswordActivityDiagram.puml" width="450" />
+
+The following sequence diagram shows how the changePassword operation works:
+<puml src="diagrams/changePasswordSequenceDiagram.puml" width="450" />
 
 ### \[Proposed\] Undo/redo feature
 
