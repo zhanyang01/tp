@@ -5,11 +5,11 @@
 
 ### Project: Insurahub
 
-Insurahub - Insurahub is a CLI application that targets financial advisors that type fast and prefers CLI over GUI to use the app.
-The application is mainly used by financial advisors in their day to day planning and scheduling of meetings with clients,
+Insurahub - Insurahub is a CLI application that targets financial advisors that type fast and prefers to use CLI over GUI to use the app.
+The application is mainly used by financial advisors in their day-to-day planning and scheduling of meetings with clients,
 assisting them by providing quick access to important information of each client stored in the database, displayed on the UI of InsuraHub.
 
-While Insurahub have limited functionalities at this stage, there are further plans to improve the application with the timeline being set in place.
+While Insurahub has limited functionalities at this stage, there are further plans to improve the application with the timeline being set in place.
 
 Given below are my contributions to the project.
 
@@ -17,13 +17,13 @@ Given below are my contributions to the project.
 
   - What it does: Creates or open a folder if it already exists for a client, to store any words or pdf documents etc
   - Justification: This feature improves the product as it provides the insurance agent a convenient and organised way to be file their important documents for each clients.
-  - Highlights: I had to ensure that the creation of folders or stored properly in the correct file path and the same folder is opened for each client. 
+  - Highlights: I had to ensure that the creation of folders or stored properly in the correct file path and the same folder is opened for each client.
   - Credits: Edit command AB3.
 
 - **New Feature**: Added a compulsory initial setting of password and subsequent entering of password to enter InsuraHub.
 
   - What it does: When InsuraHub is first opened, user will be required to set a password, subsequently the password has to be entered to enter InsuraHub.
-  - Justification: This feature improves the product as it adds a layer of authentication before displaying crucial client information that an Insurance Agent would not want any random person who opens the app to see. 
+  - Justification: This feature improves the product as it adds a layer of authentication before displaying crucial client information that an Insurance Agent would not want any random person who opens the app to see.
   - Highlights This feature was challenging as I had to ensure that the passwordManager and passwordDialog come together to only allow the user to enter InsuraHub when a correct password is entered and notify the user when a wrong passwrod is given.
   - Credits: MainWindow AB3.
 
@@ -34,7 +34,7 @@ Given below are my contributions to the project.
   - Highlights: I had to ensure that the passwordManager only edits the file which stores the correct password when the old password given matches the current password before the change before rewriting the password saved in the encoded.txt file
 
 - **New Feature**: Added the ability view Policy details
-  - What it does: selects a specific policy of a specific client to display details of the policy that is not shown on the InsuraHub. 
+  - What it does: selects a specific policy of a specific client to display details of the policy that is not shown on the InsuraHub.
   - Justification: This feature improves the product as it allows the Insurance Agent to see the specific details of each policy of each client, important details such as start time and end time of the policy instead of just the name of the policy shown on InsuraHub.
   - Highlights: This feature was hard to think of as we needed a fix to the lack of display of crucial details that our Policy class hold without occupying too much space.
   - Credit: removePolicy Command InsuraHub.

@@ -218,11 +218,11 @@ Given below is an example usage scenario and how the PreferredContact mechanism 
 9. This object will then be passed to `Logic`.
 10. The execution will then be over as the preferred contact method will be highlighted and the adding preferred contact command successful message will then be displayed.
 
-Activity diagram for adding preferred contact
-<puml src="diagrams/PreferredContactActivityDiagram.puml" width="450" />
+The following activity diagram shows how the Preferred Contact operation works:
+<img src="diagrams/PreferredContactActivityDiagram.png" width="450" />
 
-Sequence diagram for adding preferred contact
-<puml src="diagrams/PreferredContactSequenceDiagram.puml" width="450" />
+The following sequence diagram shows how the Preferred Contact operation works:
+<img src="diagrams/PreferredContactSequenceDiagram.png" width="450" />
 
 ### AddTag feature
 
@@ -239,7 +239,11 @@ Given below is an example usage scenario and how the AddTag mechanism behaves at
 5. The `model` calls the `setPerson` method and updates the targetted client with the newly created client from the previous step
 6. The `CommandResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added tag and a success message is displayed on the UI
 
+The following activity diagram shows how the AddTag operation works:
+<img src="diagrams/AddTagActivityDiagram.png" width="450">
+
 The following sequence diagram shows how the AddTag operation works:
+<img src="diagrams/AddTagSequenceDiagram.png" width="450">
 
 
 ### DeleteTag feature
@@ -259,7 +263,11 @@ Given below is an example usage scenario and how the DeleteTag mechanism behaves
 7. Upon confirmation that the tag exist in the first client of the address book, in this case `Alex Yeoh`, the tag is deleted from the UI of `Alex Yeoh` client
 8. A successful message is returned, in this case `Deleted tags successfully for person Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Tags: `
 
+The following activity diagram shows how the DeleteTag operation works:
+<img src="diagrams/DeleteTagActivityDiagram.png" width="450">
+
 The following sequence diagram shows how the DeleteTag operation works:
+<img src="diagrams/DeleteTagSequenceDiagram.png" width="450">
 
 ### Filtering by Tag feature
 
@@ -288,9 +296,11 @@ Given below is an example usage scenario and how the tag filtering mechanism beh
 
 4. The update list of filtered `Person` objects are then displayed on the ui.
 
-The following sequence diagram shows how the filter tag operation works:
+The following activity diagram shows how the filter tag operation works:
+<img src="diagrams/FilterTagActivityDiagram.png" width="450">
 
-<puml src="diagrams/Filter Tag.puml" width="450" />
+The following sequence diagram shows how the filter tag operation works:
+<img src="diagrams/FilterTagSequenceDiagram.png" width="450" />
 
 ### File feature
 
@@ -314,6 +324,7 @@ Given below is an example usage scenario and how the file mechanism behaves at e
 Activity diagram for file Command:
 <puml src="diagrams/FileActivityDiagram.puml" width="450" />
 
+
 ### GroupMeeting feature
 
 #### Current Implementation
@@ -328,7 +339,7 @@ There are only 5 preferred meeting regions:
 4. west
 5. central
 
-Given below is an example usage scenario and how the Group Meeting mechanism behaves at each step 
+Given below is an example usage scenario and how the Group Meeting mechanism behaves at each step
 
 1. The user launches the application and wants to group all clients who prefer to meet in the west as he/she is planning to meet clients who live in the west.
 2. The user tries to filter clients using `groupmeeting`.
@@ -341,10 +352,10 @@ Given below is an example usage scenario and how the Group Meeting mechanism beh
 9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
 
 Activity diagram for filtering clients based on preferred meeting region
-<puml src="diagrams/GroupMeetingActivityDiagram.puml" width="450" />
+<img src="diagrams/GroupMeetingActivityDiagram.png" width="450" />
 
 Sequence diagram for filtering clients based on preferred meeting region
-<puml src="diagrams/GroupMeetingSequenceDiagram.puml" width="450" />
+<img src="diagrams/GroupMeetingSequenceDiagram.png" width="450" />
 
 ### Add Policy feature
 
@@ -369,14 +380,18 @@ Given below is an example usage scenario and how the Add Policy Mechanism works:
 5. This calls the `createPersonWithAddedPolicy` method, creating a new Person object with the same details as `Alex Yeoh` but with the newly added policy
 6. The `model` calls the `setPerson` method and updates the targetted client with the newly created client from the previous step
 7. The `CommanResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added policy and a success message is displayed on the UI
+   
+The following activity diagram shows how the AddPolicy operation works:
+<img src="diagrams/AddPolicyActivityDiagram.png" width = "450">
 
 The following sequence diagram shows how the AddPolicy operation works:
+<img src="diagrams/AddPolicySequenceDiagram.png" width = "450">
 
 ### Remove Policy feature
 
 #### Current Implementation
 
-The Delete Policy feature allows users to remove policies under a certain client by indexing the client and indexing the policy to be deleted
+The Remove Policy feature allows users to remove policies under a certain client by indexing the client and indexing the policy to be deleted
 
 Given below is an example usage scenario and how the Remove Policy mechanism behaves at each step
 
@@ -387,8 +402,11 @@ Given below is an example usage scenario and how the Remove Policy mechanism beh
 5. The model will then call the `setPerson` method and updates the targetted client with the policy removed from the previous step
 6. The `CommandResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` not having the policy that was removed and a success message is displayed on the UI
 
-The following sequence diagram shows how the RemovePolicy operation works:
+The following activity diagram shows how the RemovePolicy operation works:
+<img src="diagrams/RemovePolicyActivityDiagram.png" width = "450">
 
+The following sequence diagram shows how the RemovePolicy operation works:
+<img src="diagrams/RemovePolicySequenceDiagram.png" width = "450">
 ### View Policy Feature
 
 #### Current Implementation
@@ -404,7 +422,11 @@ Given below is an example usage scenario and how the View Policy mechanism behav
 5. The `CommandResult` is then returned by the `execute` method with the `toString()` of the `policy` indexed from the previous step
 6. The UI will display the details of the policy specified by the index and a success message is displayed on the UI
 
+The following activity diagram for viewing policy of a particular Client:
+<img src="diagrams/ViewPolicyActivityDiagram.png" width="450" />
+
 The following sequence diagram shows how the View Policy operation works:
+<img src="diagrams/ViewPolicySequenceDiagram.png" width="450" />
 
 ### Filter Policy Description feature
 
@@ -424,9 +446,8 @@ Given below is an example usage scenario and how the Filter Policy mechanism beh
 8. This object will then be passed to `Logic`.
 9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
 
-The following sequence diagram shows how the Filter Policy Description operation works:
-<puml src="diagrams/FilterPolicyActivityDiagram.puml" width="450" />
-
+The following activity diagram shows how the Filter Policy Description operation works:
+<img src="diagrams/FilterPolicyActivityDiagram.png" width="450" />
 
 ### Toggle Mode feature
 
@@ -439,9 +460,9 @@ Given below is an example usage scenario and how the Toggle Mode mechanism behav
 1. The user launches the application in the default dark mode and wants to toggle it to light mode and enters the command `toggleMode`
 2. The `execute` method of the `ToggleModeCommand` is called
 3. The `uiModeManager` calls its `getUiMode` method and stores the current `uiMode` in a string
-3. The `uiMode` is detected to be the default value of `MainWindow.fxml` and is updated to `LightWindow.fxml`
-4. The `CommandResult` is returned by the `execute` method and the mode of the UI will be switched to Light Mode on the user's next start up of the application
-5. The UI will continue displaying the list of clients and a success message is displayed on the UI
+4. The `uiMode` is detected to be the default value of `MainWindow.fxml` and is updated to `LightWindow.fxml`
+5. The `CommandResult` is returned by the `execute` method and the mode of the UI will be switched to Light Mode on the user's next start up of the application
+6. The UI will continue displaying the list of clients and a success message is displayed on the UI
 
 The following sequence diagram shows how the Toggle Mode operation works:
 
@@ -846,52 +867,71 @@ testers are expected to do more _exploratory_ testing.
 1. _{ more test cases …​ }_
 
 ## **Appendix: Planned Enhancements**
+
 ### Add Feature - Email Validation
+
 #### Current State
+
 The `email` parameter for adding a new client to InsuraHub currently only allows alphanumeric characters in the local-part for email addresses in the format local-part@domain.com
 
 #### Planned Enhancement
+
 The local-part will allow special characters which are commonly used in email addresses with the limitation of having no consecutive special characters together
 
 ### Add Feature - Phone Number Validation
+
 #### Current State
+
 The `phone number` parameter for adding a new client to InsuraHub currently does not check for if the phone number is a typical valid Singaporean phone number that begins with 6, 8, or 9
 
 #### Planned Enhancement
+
 The `phone number` will be checked to ensure it starts with 6, 8, or 9, with an error message thrown if it fails that check
 
-
 ### Add Policy Feature - Invalid parameter and prefix name
+
 #### Current State
+
 No errors for Invalid prefixes:
-* Having 2 `pn` prefixes (policy name) does not return the user any error in the InsuraHub UI
-* No error message on the UI for empty parameters such as an empty policy name `pn`
-* The `policy description` should be of the prefix `pd` in the `addPolicy` command but using an unknown `pr` prefix that precedes the policy description does not throw any error
-Invalid dates such as `2023-02-29` do not currently return errors in the UI
+
+- Having 2 `pn` prefixes (policy name) does not return the user any error in the InsuraHub UI
+- No error message on the UI for empty parameters such as an empty policy name `pn`
+- The `policy description` should be of the prefix `pd` in the `addPolicy` command but using an unknown `pr` prefix that precedes the policy description does not throw any error
+  Invalid dates such as `2023-02-29` do not currently return errors in the UI
 
 ##### Planned Enhancement
-* The prefixes will be checked to ensure that the `addPolicy` command entered by the user is a valid command with the correct prefixes
-* The `policy start date` and `policy end date` will be checked to ensure that they are valid dates, including edge cases such as leap years
+
+- The prefixes will be checked to ensure that the `addPolicy` command entered by the user is a valid command with the correct prefixes
+- The `policy start date` and `policy end date` will be checked to ensure that they are valid dates, including edge cases such as leap years
 
 ### Add Policy Feature - Special characters allowed
+
 #### Current State
+
 The Add Policy command currently allows for special characters such as `;;` which is not how policies would be named
 
 #### Planned Enhancement
+
 Policy name and description will be checked through for special characters and corresponding error messages will be returned in the UI
 
 ### Remove Policy Feature - Success message incorrectly formatted
+
 #### Current State
+
 The success message is currently not formatted properly with the details of the client wrapped in braces preceded by `seedu.address.model…​.`
 
 #### Planned Enhancement
+
 The success message will be formatted properly
 
 ### Preferred Contact Feature - Parameters must be lowercase
+
 #### Current state
+
 The Preferred Contact command only accepts parameters in lower-case but there is no warning when the user enters a parameter in uppercase
 
 #### Planned Enhancement
+
 There will be error message returned in the UI when the user enters the parameters not in lowercase (either `email` or `phone`)
 
 Return to [Table Of Contents](#table-of-contents)

@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+box Logic
+participant ":LogicManager" as LogicManager
+participant ":AddressBookParser" as AddressBookParser
+participant ":AddPolicyCommandParser" as AddPolicyCommandParser
+participant ":AddPolicyCommand" as AddPolicyCommand
+participant ":person" as Person
+end box
+
+autonumber
+[->LogicManager : execute(addPolicy 1 pn/Health Insurance pd/Cancer...)
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand(addPolicy 1 pn/Health Insurance pd/Cancer...)
+activate AddressBookParser
+
+create AddPolicyCommandParser
+AddressBookParser -> AddPolicyCommandParser:
+activate AddPolicyCommandParser
+
+AddPolicyCommandParser -> AddPolicyCommandParser : Parse
+
+create AddPolicyCommand
+AddPolicyCommandParser -> AddPolicyCommand
+activate AddPolicyCommand
+LogicManager -> AddPolicyCommand : execute()
+deactivate AddPolicyCommandParser
+
+create Person
+AddPolicyCommand -> Person : createPersonWithAddedPolicy()
+activate Person
+Person -> Person : addPolicies()
+
+AddPolicyCommand -> Model : setPerson()
+activate Model
+deactivate Person
+AddPolicyCommand -> Model : updateFilteredPersonList()
+
+box Model
+participant ":Model" as Model
+end box
+@enduml

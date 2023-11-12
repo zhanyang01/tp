@@ -5,7 +5,11 @@
 
 ### Project: Insurahub
 
-Insurahub - Insurahub is a CLI application that targets financial advisors that type fast and prefers CLI over GUI to use the app.
+Insurahub - Insurahub is a CLI application that targets financial advisors that type fast and prefers to use CLI over GUI to use the app.
+The application is mainly used by financial advisors in their day-to-day planning and scheduling of meetings with clients,
+assisting them by providing quick access to important information of each client stored in the database, displayed on the UI of InsuraHub.
+
+While Insurahub has limited functionalities at this stage, there are further plans to improve the application with the timeline being set in place.
 
 Given below are my contributions to the project.
 
@@ -13,18 +17,18 @@ Given below are my contributions to the project.
     * What it does: Tags clients with a short description of their relationship to the user. E.g. "friend".
     * Justification: This allows for the user to categorise the clients into similar/ different groups of tags.
     * Highlights: Adding this command was challenging as it required the ability to parse in several commands at a time.
-    * Credits: Edit command AB3 .
-  
-  
+    * Credits: Edit command AB3.
+
+
 * **New Feature**: Added the ability to delete tags from clients
     * What it does: Delete tags input by the user from a particular client if that tag currently exists in the client's tag list
-    * Justification: This allows for the user to delete tags that are no longer relevant to a given client. 
+    * Justification: This allows for the user to delete tags that are no longer relevant to a given client.
     * Highlights: Consideration had to be put into the fact that a user might provide tags that does not belong to a client.
     * Credits: Edit command AB3.
 
 
-* **New Feature**: Added the ability to add Policy to clients 
-    * What it does: add policies to clients 
+* **New Feature**: Added the ability to add Policy to clients
+    * What it does: add policies to clients
     * Justification: This allows for the user to add a policy's details to a client whom just purchased a policy.
     * Highlights: As policies take in many arguments, there was no previous feature to reference from.
     Adding the policy also meant that I had to change many current implementations of the person object
