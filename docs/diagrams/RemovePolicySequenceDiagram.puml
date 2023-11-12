@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+box Logic
+participant ":LogicManager" as LogicManager
+participant ":AddressBookParser" as AddressBookParser
+participant ":RemovePolicyCommandParser" as RemovePolicyCommandParser
+participant ":RemovePolicyCommand" as RemovePolicyCommand
+participant ":person" as Person
+end box
+
+autonumber
+[->LogicManager : execute(removePolicy 1 1)
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand(removePolicy 1 1)
+activate AddressBookParser
+
+create RemovePolicyCommandParser
+AddressBookParser -> RemovePolicyCommandParser:
+activate RemovePolicyCommandParser
+
+RemovePolicyCommandParser -> RemovePolicyCommandParser : Parse
+
+create RemovePolicyCommand
+RemovePolicyCommandParser -> RemovePolicyCommand
+activate RemovePolicyCommand
+LogicManager -> RemovePolicyCommand : execute()
+deactivate RemovePolicyCommandParser
+
+create Person
+RemovePolicyCommand -> Person :
+activate Person
+Person -> Person : removePolicy()
+
+RemovePolicyCommand -> Model : setPerson()
+deactivate Person
+activate Model
+RemovePolicyCommand -> Model : updateFilteredPersonList()
+
+box Model
+participant ":Model" as Model
+end box
+@enduml
