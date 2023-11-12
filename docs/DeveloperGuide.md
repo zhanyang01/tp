@@ -240,11 +240,10 @@ Given below is an example usage scenario and how the AddTag mechanism behaves at
 6. The `CommandResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added tag and a success message is displayed on the UI
 
 The following activity diagram shows how the AddTag operation works:
-
-<img src="diagrams/AddTagActivityDiagram.png">
+<img src="diagrams/AddTagActivityDiagram.png" width="450">
 
 The following sequence diagram shows how the AddTag operation works:
-<img src="diagrams/AddTagSequenceDiagram.png">
+<img src="diagrams/AddTagSequenceDiagram.png" width="450">
 
 The
 
@@ -267,9 +266,11 @@ Given below is an example usage scenario and how the DeleteTag mechanism behaves
 8. A successful message is returned, in this case `Deleted tags successfully for person Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Tags: `
 
 The following activity diagram shows how the DeleteTag operation works:
-<img src="diagrams/DeleteTagActivityDiagram.png">
+<img src="diagrams/DeleteTagActivityDiagram.png" width="450">
 
 The following sequence diagram shows how the DeleteTag operation works:
+<img src="diagrams/DeleteTagSequenceDiagram.png" width="450">
+
 ### Filtering by Tag feature
 
 #### Implementation
@@ -297,8 +298,10 @@ Given below is an example usage scenario and how the tag filtering mechanism beh
 
 4. The update list of filtered `Person` objects are then displayed on the ui.
 
-The following sequence diagram shows how the filter tag operation works:
+The following activity diagram shows how the filter tag operation works:
+<img src="diagrams/FilterTagActivityDiagram.png" width="450">
 
+The following sequence diagram shows how the filter tag operation works:
 <img src="diagrams/FilterTagSequenceDiagram.png" width="450" />
 
 ### File feature

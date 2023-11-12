@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+box Logic
+participant ":LogicManager" as LogicManager
+participant ":AddressBookParser" as AddressBookParser
+participant ":DeleteTagCommandParser" as DeleteTagCommandParser
+participant ":DeleteTagCommand" as DeleteTagCommand
+participant ":person" as Person
+end box
+
+autonumber
+[->LogicManager : execute(deleteTag 1 t/Friend)
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand(deleteTag 1 t/Friend)
+activate AddressBookParser
+
+create DeleteTagCommandParser
+AddressBookParser -> DeleteTagCommandParser:
+activate DeleteTagCommandParser
+
+DeleteTagCommandParser -> DeleteTagCommandParser : Parse
+
+create DeleteTagCommand
+DeleteTagCommandParser -> DeleteTagCommand
+activate DeleteTagCommand
+LogicManager -> DeleteTagCommand : execute()
+deactivate DeleteTagCommandParser
+
+create Person
+DeleteTagCommand -> Person : createPersonWithDeletedTag()
+activate Person
+Person -> Person : deleteTags()
+
+DeleteTagCommand -> Model : setPerson()
+activate Model
+deactivate Person
+DeleteTagCommand -> Model : updateFilteredPersonList()
+
+box Model
+participant ":Model" as Model
+end box
+@enduml
