@@ -407,6 +407,7 @@ The following activity diagram shows how the RemovePolicy operation works:
 
 The following sequence diagram shows how the RemovePolicy operation works:
 <img src="diagrams/RemovePolicySequenceDiagram.png" width = "450">
+
 ### View Policy Feature
 
 #### Current Implementation
@@ -446,6 +447,9 @@ Given below is an example usage scenario and how the Filter Policy mechanism beh
 8. This object will then be passed to `Logic`.
 9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
 
+The following sequence diagram shows how the Filter Policy Description operation works:
+<img src="diagrams/FilterPolicySequenceDiagram.png" width ="450">
+
 The following activity diagram shows how the Filter Policy Description operation works:
 <img src="diagrams/FilterPolicyActivityDiagram.png" width="450" />
 
@@ -464,7 +468,12 @@ Given below is an example usage scenario and how the Toggle Mode mechanism behav
 5. The `CommandResult` is returned by the `execute` method and the mode of the UI will be switched to Light Mode on the user's next start up of the application
 6. The UI will continue displaying the list of clients and a success message is displayed on the UI
 
+The following activity diagram shows how the Toggle Mode operation works:
+<img src="diagrams/ToggleModeActivityDiagram.png">
+
+
 The following sequence diagram shows how the Toggle Mode operation works:
+<img src="diagrams/ToggleModeSequenceDiagram.png" width = "450">
 
 ### Change Password feature
 

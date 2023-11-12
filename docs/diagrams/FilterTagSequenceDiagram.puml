@@ -1,12 +1,18 @@
 @@author LuahJunYang
 @startuml
 'https://plantuml.com/sequence-diagram
+!include style.puml
+skinparam ArrowFontStyle plain
 
-box Logic
-participant ":LogicManager" as LogicManager
-participant ":AddressBookParser" as AddressBookParser
-participant ":FilterCommandParser" as FilterCommandParser
-participant ":FilterCommand" as FilterCommand
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":FilterCommandParser" as FilterCommandParser LOGIC_COLOR
+participant ":FilterCommand" as FilterCommand LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
 end box
 
 autonumber
@@ -37,7 +43,5 @@ deactivate Model
 LogicManager <- FilterCommand: result
 deactivate FilterCommand
 
-box Model
-participant ":Model" as Model
-end box
+
 @enduml
