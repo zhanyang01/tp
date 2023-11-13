@@ -1,5 +1,10 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_POLICY;
+import static seedu.address.testutil.TypicalPersons.getOtherTypicalAddressBook;
+
 import org.junit.jupiter.api.Test;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
@@ -8,17 +13,11 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_POLICY;
-
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalPersons.getOtherTypicalAddressBook;
-
 public class RemovePolicyCommandTest {
     private Model model = new ModelManager(getOtherTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_remove_health_insurance_policy_successful() throws Exception {
+    public void execute_removeHealthInsurancePolicy_successful() throws Exception {
         Person person = model.getFilteredPersonList().get(0);
         RemovePolicyCommand removePolicyCommand = new RemovePolicyCommand(INDEX_FIRST_PERSON, INDEX_FIRST_POLICY);
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());

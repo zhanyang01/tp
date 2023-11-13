@@ -112,13 +112,6 @@ public class EditPersonDescriptorBuilder {
         return this;
     }
 
-    public EditPersonDescriptorBuilder withPolicy(String policyString) {
-        Set<Policy> policies = new HashSet<Policy>();
-        policies.add(Policy.fromString(policyString));
-        descriptor.setPolicies(policies);
-        return this;
-    }
-
     public EditPersonDescriptor build() {
         return descriptor;
     }

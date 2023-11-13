@@ -17,7 +17,7 @@ public class PolicyTest {
     public void valid_health_insurance_policy() {
         Policy policy = Policy.fromString(VALID_HEALTH_INSURANCE_POLICY);
         assert(policy.policyName.equals("Health Insurance"));
-        assert(policy.policyValue==100000);
+        assert(policy.policyValue == 100000);
     }
 
 

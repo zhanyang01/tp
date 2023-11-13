@@ -109,6 +109,6 @@ public class TypicalPersons {
     }
 
     public static List<Person> getOtherTypicalPersons() {
-        return new ArrayList<>(Arrays.asList(HEATHER,IMANE));
+        return new ArrayList<>(Arrays.asList(HEATHER, IMANE));
     }
 }

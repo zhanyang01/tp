@@ -121,6 +121,10 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Parses the {@code policyString} into a {@code Policy} and add it to the policies in the
+     * {@code Person} that we are building.
+     */
     public PersonBuilder withPolicy(String policyString) {
         Policy policy = Policy.fromString(policyString);
         this.policies.add(policy);
