@@ -66,7 +66,8 @@ Return to [Table Of Contents](#table-of-contents)
 ### Architecture
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="280" />
-The **_Architecture Diagram_** given above explains the high-level design of the App.
+<br>
+The Architecture Diagram given above explains the high-level design of the App.
 
 Given below is a quick overview of main components and how they interact with each other.
 
@@ -316,10 +317,10 @@ Given below is an example usage scenario and how the tag filtering mechanism beh
 
 4. The update list of filtered `Person` objects are then displayed on the ui.
 
-The following activity diagram shows how the filter tag operation works:
+The following activity diagram shows how the Filter tag operation works:
 <img src="diagrams/FilterTagActivityDiagram.png" width="450">
 
-The following sequence diagram shows how the filter tag operation works:
+The following sequence diagram shows how the Filter tag operation works:
 <img src="diagrams/FilterTagSequenceDiagram.png" width="900" />
 
 Return to [Table Of Contents](#table-of-contents)
@@ -343,7 +344,7 @@ Given below is an example usage scenario and how the file mechanism behaves at e
 6. The folder in the ClientFiles folder with the folder name will be opened.
 7. The execution will then be over as the user can now drop files for the client into this opened folder, file command successful message will be displayed.
 
-Activity diagram for file Command:<br>
+Activity diagram for File Command:<br>
 <img src="diagrams/FileActivityDiagram.png" width="900" />
 
 Return to [Table Of Contents](#table-of-contents)
@@ -374,10 +375,10 @@ Given below is an example usage scenario and how the Group Meeting mechanism beh
 8. This object will then be passed to `Logic`.
 9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
 
-Activity diagram for filtering clients based on preferred meeting region
+Activity diagram for filtering clients based on preferred meeting region:
 <img src="diagrams/GroupMeetingActivityDiagram.png" width="500" />
 
-Sequence diagram for filtering clients based on preferred meeting region
+Sequence diagram for filtering clients based on preferred meeting region:
 <img src="diagrams/GroupMeetingSequenceDiagram.png" width="1080" />
 
 Return to [Table Of Contents](#table-of-contents)
