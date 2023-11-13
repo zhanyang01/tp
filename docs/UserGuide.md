@@ -2,8 +2,35 @@
 
 Insurahub is a **desktop app for managing clients, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Insurahub can get your contact management tasks done faster than traditional GUI apps. This app is mainly used by insurance agents who have many clients and tasks such as appointments to keep track of on a daily basis.
 
-<!-- * Table of Contents -->
-<page-nav-print />
+## Table of Contents
+
+1. [Quick Start](#quick-start)
+2. [Features](#features)
+   1. [Viewing help](#viewing-help--help)
+   2. [Adding a new client](#adding-a-new-client-add)
+   3. [Listing all clients](#listing-all-clients--list)
+   4. [Edit a client](#editing-a-person--edit)
+   5. [Locating clients by name](#locating-clients-by-name-find)
+   6. [Deleting a client](#deleting-a-client--delete)
+   7. [Clearing all entries](#clearing-all-entries--clear)
+   8. [Filtering a person via tags](#filtering-for-clients-via-tag--filter)
+   9. [Adding a policy to a client](#adding-a-policy-to-a-client--addpolicy)
+   10. [Removing a policy from a client](#removing-a-policy-from-a-client--removepolicy)
+   11. [Viewing policy from a client](#viewing-policy-of-a-client-viewpolicy)
+   12. [Adding a client preferred contact](#adding-a-client-preferred-contact-preferredcontact)
+   13. [Exiting the program](#exiting-the-program--exit)
+   14. [Adding tags to clients](#adding-tags-to-a-client-object-addtag)
+   15. [Deleting tags from clients](#deleting-tags-from-a-client-object-deletetag)
+   16. [Storing client documents](#storing-documents-of-a-client-file)
+   17. [Grouping client preferred meeting location](#grouping-client-preferred-meeting-locations-groupmeeting)
+   18. [Change password](#change-password-changepassword)
+   19. [Toggling Ui appearence](#toggling-the-ui-appearance-togglemode)
+   20. [Filtering policy using policy description](#filter-policy-using-policy-description-filterpolicydescription)
+3. [FAQ](#faq)
+4. [Known Issues](#known-issues)
+5. [Command Summary](#command-summary)
+
+   <page-nav-print />
 
 ---
 
@@ -31,17 +58,17 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
    - `list` : Lists everyone in InsuraHub.
 
    - `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends pmr/west` : Adds a Person named `John Doe` to the application.
-   - `addTag 1 t/classmate` : Adds a "classmate" tag to the first user in the address book.
+   - `addTag 1 t/classmate` : Adds a "classmate" tag to the first user in the application.
 
    - `delete 3` : Deletes the 3rd person shown in the current list.
 
-   - `deleteTag 1 t/classmate` : Deletes the "classmate" tag from the first user in the address book if the "classmate" tag currently exists
+   - `deleteTag 1 t/classmate` : Deletes the "classmate" tag from the first user in the application if the "classmate" tag currently exists
    - `clear` : Deletes everyone from InsuraHub.
-   - `filter t/friend`: Filters for all clients in the address book that contains the `friend' tag.
+   - `filter t/friend`: Filters for all clients in the application that contains the `friend' tag.
 
    - `exit` : Exits the app.
 
-   - `file 1`: Creates a folder for the first person in the address book with the person's name as the name of the folder
+   - `file 1`: Creates a folder for the first person in the application with the person's name as the name of the folder
 
    - `preferredContact 1 pc/phone` : Highlight to show that that is the main form of contact that the client in the first index prefers.
 
@@ -116,22 +143,22 @@ Examples:
 
 ### Listing all clients : `list`
 
-Shows a list of all clients in the address book.
+Shows a list of all clients in the application.
 
 Format: `list`
 
-### Editing a person : `edit`
+### Editing a client : `edit`
 
-Edits an existing person in the address book.
+Edits an existing client in the application.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]… [pmr/_MEETING_REGION]`
 
-- Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+- Edits the client at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 - At least one of the optional fields must be provided.
 - Existing values will be updated to the input values.
-- When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative
+- When editing tags, the existing tags of the client will be removed i.e adding of tags is not cumulative
 - Recommended to use addTag to add tags, deleteTag to delete tags
-- You can remove all the person’s tags by typing `t/` without
+- You can remove all the client’s tags by typing `t/` without
   specifying any tags after it.
 
 Examples:
@@ -158,20 +185,20 @@ Examples:
 - `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-### Deleting a person : `delete`
+### Deleting a client : `delete`
 
-Deletes the specified person from the address book.
+Deletes the specified client from the application.
 
 Format: `delete INDEX`
 
-- Deletes the person at the specified `INDEX`.
-- The index refers to the index number shown in the displayed person list.
+- Deletes the client at the specified `INDEX`.
+- The index refers to the index number shown in the displayed client list.
 - The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
 
-- `list` followed by `delete 2` deletes the 2nd person in the address book.
-- `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+- `list` followed by `delete 2` deletes the 2nd client in the application.
+- `find Betsy` followed by `delete 1` deletes the 1st client in the results of the `find` command.
 
 ### Clearing all entries : `clear`
 
@@ -261,20 +288,6 @@ Examples:
 Exits the program.
 
 Format: `exit`
-
-### Saving the data
-
-Insurahub data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Editing the data file
-
-Insurahub data are saved automatically as a JSON file `[JAR file location]/data/Insurahub.json`. Advanced users are welcome to update data directly by editing that data file.
-
-<box type="warning" seamless>
-
-**Caution:**
-If your changes to the data file makes its format invalid, Insurahub will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
-</box>
 
 ### Adding tags to a client object: `addTag`
 
@@ -369,6 +382,20 @@ Examples:
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Insurahub home folder.
 
 ---
+
+### Saving the data
+
+Insurahub data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+
+### Editing the data file
+
+Insurahub data are saved automatically as a JSON file `[JAR file location]/data/Insurahub.json`. Advanced users are welcome to update data directly by editing that data file.
+
+<box type="warning" seamless>
+
+**Caution:**
+If your changes to the data file makes its format invalid, Insurahub will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
+</box>
 
 ## Known issues
 
