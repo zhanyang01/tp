@@ -7,11 +7,8 @@
 # InsuraHub Developer Guide
 
 <!-- * Table of Contents -->
-<page-nav-print />
 
----
-
-# **Table of contents**
+## **Table of contents**
 
 1. [Setting up, getting started](#setting-up-getting-started)
 2. [Design](#design)
@@ -27,16 +24,13 @@
    1. [Product Scope](#product-scope)
    2. [User Stories](#user-stories)
    3. [Use Cases](#use-cases)
-      1. Adding more tags to client records
-      2. Quick access of contact detail of clients
-      3. Adding new clients information
-      4. Filtering client information using tags
-      5. Storing client documents neatly in a folder
-      6. Grouping clients based on nearest MRT
    4. [Non-Functional Requirements](#non-functional-requirements)
    5. [Glossary](#glossary)
 6. [Appendix-Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
 7. [Appendix-Planned Enhancements](#appendix-planned-enhancements)
+   <page-nav-print />
+
+---
 
 ## **Setting up, getting started**
 
@@ -245,7 +239,6 @@ The following activity diagram shows how the AddTag operation works:
 The following sequence diagram shows how the AddTag operation works:
 <img src="diagrams/AddTagSequenceDiagram.png" width="650">
 
-
 ### DeleteTag feature
 
 #### Current Implementation
@@ -324,7 +317,6 @@ Given below is an example usage scenario and how the file mechanism behaves at e
 Activity diagram for file Command:
 <img src="diagrams/FileActivityDiagram.png" width="650" />
 
-
 ### GroupMeeting feature
 
 #### Current Implementation
@@ -380,7 +372,7 @@ Given below is an example usage scenario and how the Add Policy Mechanism works:
 5. This calls the `createPersonWithAddedPolicy` method, creating a new Person object with the same details as `Alex Yeoh` but with the newly added policy
 6. The `model` calls the `setPerson` method and updates the targetted client with the newly created client from the previous step
 7. The `CommanResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added policy and a success message is displayed on the UI
-   
+
 The following activity diagram shows how the AddPolicy operation works:
 <img src="diagrams/AddPolicyActivityDiagram.png" width = "650">
 
@@ -485,7 +477,7 @@ Given below is an example usage scenario and how the changePassword command beha
 1. The user launches the application and sets the password as "oldPW1" before entering InsuraHub with the password.
 2. The user wants to change the password and enters the commant `changePassword op/oldPW1 np/newPW2`
 3. The `passwordManager` calls its `check` method on the old password given "oldPW1" to determine if the current password saved in encoded.txt in the data folder is indeed "oldPW1"
-3. The `passwordManager` detects that the old password is indeed correct and calls its `set` method to set the new password as "newPW2" by modifying the string saved in encoded.txt in the data folder.
+4. The `passwordManager` detects that the old password is indeed correct and calls its `set` method to set the new password as "newPW2" by modifying the string saved in encoded.txt in the data folder.
 5. The UI will continue displaying the list of clients and a success message is displayed on the UI.
 
 activity diagram for changePassword Command:
@@ -659,8 +651,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | insurance agent working with others        | Send and receive client details with other users                   | take over/hand over clients from other agents                            |
 | `*`      | data-driven insurance agent                | Access a variety of reports and analytics                          | make informed decisions to improve my business                           |
 
-_{More to be added}_
-
 Return to [Table Of Contents](#table-of-contents)
 
 ### Use cases
@@ -790,8 +780,6 @@ MSS:
 - 2a. The list is empty.<br>
   Use case ends.
 
-_{More to be added}_
-
 Return to [Table Of Contents](#table-of-contents)
 
 ### Non-Functional Requirements
@@ -802,10 +790,6 @@ Return to [Table Of Contents](#table-of-contents)
 4.  The application should ensure the integrity and consistency of data stored in the address book. Data should not be lost or corrupted during normal usage or unexpected errors.
 5.  Any commands should be executed within 1s.
 6.  The address book should be able to store 2000 clients' information.
-
-_{More to be added}_
-
-_{More to be added}_
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -876,7 +860,7 @@ testers are expected to do more _exploratory_ testing.
 
 ## **Appendix: Planned Enhancements**
 
-### Add Feature - Email Validation
+### 1. Add Feature - Email Validation
 
 #### Current State
 
@@ -886,7 +870,7 @@ The `email` parameter for adding a new client to InsuraHub currently only allows
 
 The local-part will allow special characters which are commonly used in email addresses with the limitation of having no consecutive special characters together
 
-### Add Feature - Phone Number Validation
+### 2. Add Feature - Phone Number Validation
 
 #### Current State
 
@@ -896,7 +880,7 @@ The `phone number` parameter for adding a new client to InsuraHub currently does
 
 The `phone number` will be checked to ensure it starts with 6, 8, or 9, with an error message thrown if it fails that check
 
-### Add Policy Feature - Invalid parameter and prefix name
+### 3. Add Policy Feature - Invalid parameter and prefix name
 
 #### Current State
 
@@ -912,7 +896,7 @@ No errors for Invalid prefixes:
 - The prefixes will be checked to ensure that the `addPolicy` command entered by the user is a valid command with the correct prefixes
 - The `policy start date` and `policy end date` will be checked to ensure that they are valid dates, including edge cases such as leap years
 
-### Add Policy Feature - Special characters allowed
+### 4. Add Policy Feature - Special characters allowed
 
 #### Current State
 
@@ -922,7 +906,7 @@ The Add Policy command currently allows for special characters such as `;;` whic
 
 Policy name and description will be checked through for special characters and corresponding error messages will be returned in the UI
 
-### Remove Policy Feature - Success message incorrectly formatted
+### 5. Remove Policy Feature - Success message incorrectly formatted
 
 #### Current State
 
@@ -932,7 +916,7 @@ The success message is currently not formatted properly with the details of the 
 
 The success message will be formatted properly
 
-### Preferred Contact Feature - Parameters must be lowercase
+### 6. Preferred Contact Feature - Parameters must be lowercase
 
 #### Current state
 
@@ -941,5 +925,25 @@ The Preferred Contact command only accepts parameters in lower-case but there is
 #### Planned Enhancement
 
 There will be error message returned in the UI when the user enters the parameters not in lowercase (either `email` or `phone`)
+
+### 7. Add Policy Feature - End date can be earlier than start date
+
+#### Current state
+
+The end date of the policy can be earlier than the start date of the policy.
+
+#### Planned Enhancement
+
+There will be error message returned when the end date is earlier than the start date of the policy.
+
+### 8. Client files is retained when clients are deleted or edited
+
+#### Current state
+
+Clients files in the client files folder is retained when clients are deleted or edited
+
+#### Planned Enhancement
+
+They will be edited or users will be reminded to edit or delete the files according when the client names are edited or deleted accordingly.
 
 Return to [Table Of Contents](#table-of-contents)

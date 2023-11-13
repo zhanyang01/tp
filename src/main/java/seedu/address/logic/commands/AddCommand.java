@@ -27,7 +27,7 @@ public class AddCommand extends Command {
             + PREFIX_PHONE + "PHONE "
             + PREFIX_EMAIL + "EMAIL "
             + PREFIX_ADDRESS + "ADDRESS "
-            + PREFIX_TAG + "TAGS \n"
+            + "[" + PREFIX_TAG + "TAG]... \n"
             + PREFIX_PREFERRED_MEETING_REGION + "PREFERRED MEETING REGION \n"
 
             + "Example: " + COMMAND_WORD + " "
