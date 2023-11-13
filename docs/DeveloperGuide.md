@@ -213,10 +213,10 @@ Given below is an example usage scenario and how the PreferredContact mechanism 
 10. The execution will then be over as the preferred contact method will be highlighted and the adding preferred contact command successful message will then be displayed.
 
 The following activity diagram shows how the Preferred Contact operation works:
-<img src="diagrams/PreferredContactActivityDiagram.png" width="650" />
+<img src="diagrams/PreferredContactActivityDiagram.png" width="750" />
 
 The following sequence diagram shows how the Preferred Contact operation works:
-<img src="diagrams/PreferredContactSequenceDiagram.png" width="650" />
+<img src="diagrams/PreferredContactSequenceDiagram.png" width="900" />
 
 ### AddTag feature
 
@@ -234,10 +234,10 @@ Given below is an example usage scenario and how the AddTag mechanism behaves at
 6. The `CommandResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added tag and a success message is displayed on the UI
 
 The following activity diagram shows how the AddTag operation works:
-<img src="diagrams/AddTagActivityDiagram.png" width="650">
+<img src="diagrams/AddTagActivityDiagram.png" width="750">
 
 The following sequence diagram shows how the AddTag operation works:
-<img src="diagrams/AddTagSequenceDiagram.png" width="650">
+<img src="diagrams/AddTagSequenceDiagram.png" width="900">
 
 ### DeleteTag feature
 
@@ -257,10 +257,10 @@ Given below is an example usage scenario and how the DeleteTag mechanism behaves
 8. A successful message is returned, in this case `Deleted tags successfully for person Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Tags: `
 
 The following activity diagram shows how the DeleteTag operation works:
-<img src="diagrams/DeleteTagActivityDiagram.png" width="650">
+<img src="diagrams/DeleteTagActivityDiagram.png" width="750">
 
 The following sequence diagram shows how the DeleteTag operation works:
-<img src="diagrams/DeleteTagSequenceDiagram.png" width="650">
+<img src="diagrams/DeleteTagSequenceDiagram.png" width="900">
 
 ### Filtering by Tag feature
 
@@ -293,7 +293,7 @@ The following activity diagram shows how the filter tag operation works:
 <img src="diagrams/FilterTagActivityDiagram.png" width="650">
 
 The following sequence diagram shows how the filter tag operation works:
-<img src="diagrams/FilterTagSequenceDiagram.png" width="650" />
+<img src="diagrams/FilterTagSequenceDiagram.png" width="750" />
 
 ### File feature
 
@@ -314,7 +314,7 @@ Given below is an example usage scenario and how the file mechanism behaves at e
 6. The folder in the ClientFiles folder with the folder name will be opened.
 7. The execution will then be over as the user can now drop files for the client into this opened folder, file command successful message will be displayed.
 
-Activity diagram for file Command:
+Activity diagram for file Command:<br>
 <img src="diagrams/FileActivityDiagram.png" width="650" />
 
 ### GroupMeeting feature
@@ -347,7 +347,7 @@ Activity diagram for filtering clients based on preferred meeting region
 <img src="diagrams/GroupMeetingActivityDiagram.png" width="650" />
 
 Sequence diagram for filtering clients based on preferred meeting region
-<img src="diagrams/GroupMeetingSequenceDiagram.png" width="650" />
+<img src="diagrams/GroupMeetingSequenceDiagram.png" width="900" />
 
 ### Add Policy feature
 
@@ -374,10 +374,10 @@ Given below is an example usage scenario and how the Add Policy Mechanism works:
 7. The `CommanResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added policy and a success message is displayed on the UI
 
 The following activity diagram shows how the AddPolicy operation works:
-<img src="diagrams/AddPolicyActivityDiagram.png" width = "650">
+<img src="diagrams/AddPolicyActivityDiagram.png" width = "750">
 
 The following sequence diagram shows how the AddPolicy operation works:
-<img src="diagrams/AddPolicySequenceDiagram.png" width = "650">
+<img src="diagrams/AddPolicySequenceDiagram.png" width = "900">
 
 ### Remove Policy feature
 
@@ -395,10 +395,10 @@ Given below is an example usage scenario and how the Remove Policy mechanism beh
 6. The `CommandResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` not having the policy that was removed and a success message is displayed on the UI
 
 The following activity diagram shows how the RemovePolicy operation works:
-<img src="diagrams/RemovePolicyActivityDiagram.png" width = "650">
+<img src="diagrams/RemovePolicyActivityDiagram.png" width = "800">
 
 The following sequence diagram shows how the RemovePolicy operation works:
-<img src="diagrams/RemovePolicySequenceDiagram.png" width = "650">
+<img src="diagrams/RemovePolicySequenceDiagram.png" width = "900">
 
 ### View Policy Feature
 
@@ -416,10 +416,10 @@ Given below is an example usage scenario and how the View Policy mechanism behav
 6. The UI will display the details of the policy specified by the index and a success message is displayed on the UI
 
 The following activity diagram for viewing policy of a particular Client:
-<img src="diagrams/ViewPolicyActivityDiagram.png" width="650" />
+<img src="diagrams/ViewPolicyActivityDiagram.png"/>
 
 The following sequence diagram shows how the View Policy operation works:
-<img src="diagrams/ViewPolicySequenceDiagram.png" width="650" />
+<img src="diagrams/ViewPolicySequenceDiagram.png" width="900" />
 
 ### Filter Policy Description feature
 
@@ -439,11 +439,11 @@ Given below is an example usage scenario and how the Filter Policy mechanism beh
 8. This object will then be passed to `Logic`.
 9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
 
-The following sequence diagram shows how the Filter Policy Description operation works:
-<img src="diagrams/FilterPolicySequenceDiagram.png" width ="650">
-
 The following activity diagram shows how the Filter Policy Description operation works:
-<img src="diagrams/FilterPolicyActivityDiagram.png" width="650" />
+<img src="diagrams/FilterPolicyActivityDiagram.png"/>
+
+The following sequence diagram shows how the Filter Policy Description operation works:
+<img src="diagrams/FilterPolicySequenceDiagram.png" width ="900">
 
 ### Toggle Mode feature
 
@@ -480,11 +480,11 @@ Given below is an example usage scenario and how the changePassword command beha
 4. The `passwordManager` detects that the old password is indeed correct and calls its `set` method to set the new password as "newPW2" by modifying the string saved in encoded.txt in the data folder.
 5. The UI will continue displaying the list of clients and a success message is displayed on the UI.
 
-activity diagram for changePassword Command:
+Activity Diagram for changePassword Command:
 <img src="diagrams/ChangePasswordActivityDiagram.png" width="650" />
 
 The following sequence diagram shows how the changePassword operation works:
-<img src="diagrams/ChangePasswordSequenceDiagram.png" width="650" />
+<img src="diagrams/ChangePasswordSequenceDiagram.png" width="900" />
 
 ### \[Proposed\] Undo/redo feature
 
