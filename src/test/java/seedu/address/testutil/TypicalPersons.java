@@ -4,6 +4,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_HEALTH_INSURANCE_POLICY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
@@ -12,6 +13,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_PREFERRED_MEETI
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PREFERRED_MEETING_REGION_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,9 +50,19 @@ public class TypicalPersons {
             .withEmail("lydia@example.com").withAddress("little tokyo")
             .withPreferredMeetingRegion("central").build();
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("94824420")
-            .withEmail("anna@example.com").withAddress("4th street").withPreferredMeetingRegion("central")
-            .build();
+            .withEmail("anna@example.com").withAddress("4th street").withPreferredMeetingRegion("central").build();
 
+    public static final Person HEATHER = new PersonBuilder().withName("Heather Paula")
+            .withAddress("123, bukit timah Ave 2, #08-222").withEmail("heather@example.com")
+            .withPhone("91234567").withPreferredContact("")
+            .withPreferredMeetingRegion("east")
+            .withPolicy(VALID_HEALTH_INSURANCE_POLICY).build();
+
+    public static final Person IMANE = new PersonBuilder().withName("IMANE ANYS")
+            .withAddress("123, yishun Ave 1, #08-333").withEmail("imane@example.com")
+            .withPhone("91243567").withPreferredContact("")
+            .withPreferredMeetingRegion("east")
+            .withPolicy(VALID_HEALTH_INSURANCE_POLICY).build();
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("84824240")
             .withEmail("stefan@example.com").withAddress("little india").build();
@@ -86,5 +98,17 @@ public class TypicalPersons {
 
     public static List<Person> getTypicalPersons() {
         return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
+    }
+
+    public static AddressBook getOtherTypicalAddressBook() {
+        AddressBook ab = new AddressBook();
+        for (Person person : getOtherTypicalPersons()) {
+            ab.addPerson(person);
+        }
+        return ab;
+    }
+
+    public static List<Person> getOtherTypicalPersons() {
+        return new ArrayList<>(Arrays.asList(HEATHER,IMANE));
     }
 }

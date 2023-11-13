@@ -10,6 +10,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.PreferredContact;
 import seedu.address.model.person.PreferredMeetingRegion;
+import seedu.address.model.policy.Policy;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -32,6 +33,7 @@ public class PersonBuilder {
     private Set<Tag> tags;
     private PreferredContact preferredContact;
     private PreferredMeetingRegion preferredMeetingRegion;
+    private Set<Policy> policies;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -44,6 +46,7 @@ public class PersonBuilder {
         tags = new HashSet<>();
         preferredContact = new PreferredContact(DEFAULT_PREFERRED_CONTACT);
         preferredMeetingRegion = new PreferredMeetingRegion(DEFAULT_PREFERRED_MEETING_REGION);
+        policies = new HashSet<>();
     }
 
     /**
@@ -57,6 +60,7 @@ public class PersonBuilder {
         tags = new HashSet<>(personToCopy.getTags());
         preferredContact = personToCopy.getPreferredContact();
         preferredMeetingRegion = personToCopy.getPreferredMeetingRegion();
+        policies = new HashSet<>(personToCopy.getPolicies());
     }
 
     /**
@@ -117,8 +121,14 @@ public class PersonBuilder {
         return this;
     }
 
+    public PersonBuilder withPolicy(String policyString) {
+        Policy policy = Policy.fromString(policyString);
+        this.policies.add(policy);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, address, tags, preferredMeetingRegion, preferredContact);
+        return new Person(name, phone, email, address, tags, preferredMeetingRegion, preferredContact, policies);
     }
 
 }

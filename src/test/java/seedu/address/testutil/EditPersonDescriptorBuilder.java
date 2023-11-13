@@ -1,5 +1,6 @@
 package seedu.address.testutil;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -12,6 +13,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.PreferredContact;
 import seedu.address.model.person.PreferredMeetingRegion;
+import seedu.address.model.policy.Policy;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -42,6 +44,7 @@ public class EditPersonDescriptorBuilder {
         descriptor.setTags(person.getTags());
         descriptor.setPreferredContact(person.getPreferredContact());
         descriptor.setPreferredMeetingRegion(person.getPreferredMeetingRegion());
+        descriptor.setPolicies(person.getPolicies());
     }
 
     /**
@@ -106,6 +109,13 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder withPreferredMeetingRegion(String preferredMeetingRegion) {
         descriptor.setPreferredMeetingRegion(new PreferredMeetingRegion(preferredMeetingRegion));
+        return this;
+    }
+
+    public EditPersonDescriptorBuilder withPolicy(String policyString) {
+        Set<Policy> policies = new HashSet<Policy>();
+        policies.add(Policy.fromString(policyString));
+        descriptor.setPolicies(policies);
         return this;
     }
 
