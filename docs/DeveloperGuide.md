@@ -7,11 +7,8 @@
 # InsuraHub Developer Guide
 
 <!-- * Table of Contents -->
-<page-nav-print />
 
----
-
-# **Table of contents**
+## **Table of contents**
 
 1. [Setting up, getting started](#setting-up-getting-started)
 2. [Design](#design)
@@ -27,16 +24,13 @@
    1. [Product Scope](#product-scope)
    2. [User Stories](#user-stories)
    3. [Use Cases](#use-cases)
-      1. Adding more tags to client records
-      2. Quick access of contact detail of clients
-      3. Adding new clients information
-      4. Filtering client information using tags
-      5. Storing client documents neatly in a folder
-      6. Grouping clients based on nearest MRT
    4. [Non-Functional Requirements](#non-functional-requirements)
    5. [Glossary](#glossary)
 6. [Appendix-Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
 7. [Appendix-Planned Enhancements](#appendix-planned-enhancements)
+   <page-nav-print />
+
+---
 
 ## **Setting up, getting started**
 
@@ -657,8 +651,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | insurance agent working with others        | Send and receive client details with other users                   | take over/hand over clients from other agents                            |
 | `*`      | data-driven insurance agent                | Access a variety of reports and analytics                          | make informed decisions to improve my business                           |
 
-_{More to be added}_
-
 Return to [Table Of Contents](#table-of-contents)
 
 ### Use cases
@@ -788,8 +780,6 @@ MSS:
 - 2a. The list is empty.<br>
   Use case ends.
 
-_{More to be added}_
-
 Return to [Table Of Contents](#table-of-contents)
 
 ### Non-Functional Requirements
@@ -800,10 +790,6 @@ Return to [Table Of Contents](#table-of-contents)
 4.  The application should ensure the integrity and consistency of data stored in the address book. Data should not be lost or corrupted during normal usage or unexpected errors.
 5.  Any commands should be executed within 1s.
 6.  The address book should be able to store 2000 clients' information.
-
-_{More to be added}_
-
-_{More to be added}_
 
 Return to [Table Of Contents](#table-of-contents)
 
