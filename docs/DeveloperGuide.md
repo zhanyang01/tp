@@ -380,7 +380,7 @@ Given below is an example usage scenario and how the Add Policy Mechanism works:
 5. This calls the `createPersonWithAddedPolicy` method, creating a new Person object with the same details as `Alex Yeoh` but with the newly added policy
 6. The `model` calls the `setPerson` method and updates the targetted client with the newly created client from the previous step
 7. The `CommanResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added policy and a success message is displayed on the UI
-   
+
 The following activity diagram shows how the AddPolicy operation works:
 <img src="diagrams/AddPolicyActivityDiagram.png" width = "650">
 
