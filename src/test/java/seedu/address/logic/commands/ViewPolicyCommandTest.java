@@ -7,13 +7,14 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getOtherTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
+
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
 
-public class  ViewPolicyCommandTest {
+public class ViewPolicyCommandTest {
     private Model model = new ModelManager(getOtherTypicalAddressBook(), new UserPrefs());
 
     @Test

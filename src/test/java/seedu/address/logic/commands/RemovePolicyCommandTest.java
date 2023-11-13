@@ -29,7 +29,7 @@ public class RemovePolicyCommandTest {
                 .withPreferredContact(person.getPreferredContact().toString())
                 .withPreferredMeetingRegion(person.getPreferredMeetingRegion().toString())
                 .build();
-        String expectedMessage = String.format(RemovePolicyCommand.MESSAGE_DELETE_POLICY_SUCCESS,otherperson);
+        String expectedMessage = String.format(RemovePolicyCommand.MESSAGE_DELETE_POLICY_SUCCESS, otherperson);
         assertCommandSuccess(removePolicyCommand, model, expectedMessage, expectedModel);
     }
 }
