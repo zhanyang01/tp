@@ -6,8 +6,6 @@
 
 # InsuraHub Developer Guide
 
-<!-- * Table of Contents -->
-
 ## **Table of contents**
 
 1. [Setting up, getting started](#setting-up-getting-started)
