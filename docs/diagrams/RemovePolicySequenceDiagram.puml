@@ -6,7 +6,7 @@ box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
 participant ":RemovePolicyCommandParser" as RemovePolicyCommandParser LOGIC_COLOR
-participant ":RemovePolicyCommand" as RemovePolicyCommand LOGIC_COLOR
+participant "r :RemovePolicyCommand" as RemovePolicyCommand LOGIC_COLOR
 participant ":person" as Person LOGIC_COLOR
 end box
 
@@ -14,7 +14,6 @@ box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-autonumber
 [->LogicManager : execute(removePolicy 1 1)
 activate LogicManager
 
@@ -25,13 +24,30 @@ create RemovePolicyCommandParser
 AddressBookParser -> RemovePolicyCommandParser:
 activate RemovePolicyCommandParser
 
-RemovePolicyCommandParser -> RemovePolicyCommandParser : Parse
+RemovePolicyCommandParser --> AddressBookParser
+deactivate RemovePolicyCommandParser
+
+AddressBookParser -> RemovePolicyCommandParser : parse(1 1)
+activate RemovePolicyCommandParser
 
 create RemovePolicyCommand
 RemovePolicyCommandParser -> RemovePolicyCommand
 activate RemovePolicyCommand
-LogicManager -> RemovePolicyCommand : execute()
+
+RemovePolicyCommand --> RemovePolicyCommandParser: r
+deactivate RemovePolicyCommand
+
+RemovePolicyCommandParser --> AddressBookParser: r
 deactivate RemovePolicyCommandParser
+'Hidden arrow to position the destroy marker'
+RemovePolicyCommandParser -[hidden]-> AddressBookParser
+destroy RemovePolicyCommandParser
+
+AddressBookParser -> LogicManager : r
+deactivate AddressBookParser
+
+LogicManager -> RemovePolicyCommand : execute()
+activate RemovePolicyCommand
 
 create Person
 RemovePolicyCommand -> Person :
