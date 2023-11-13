@@ -935,33 +935,22 @@ The `email` parameter for adding a new client to InsuraHub currently only allows
 
 The local-part will allow special characters which are commonly used in email addresses with the limitation of having no consecutive special characters together
 
-### 2. Add Feature - Phone Number Validation
-
-#### Current State
-
-The `phone number` parameter for adding a new client to InsuraHub currently does not check for if the phone number is a typical valid Singaporean phone number that begins with 6, 8, or 9
-
-#### Planned Enhancement
-
-The `phone number` will be checked to ensure it starts with 6, 8, or 9, with an error message thrown if it fails that check
-
-### 3. Add Policy Feature - Invalid parameter and prefix name
+### 2. Add Policy Feature - Invalid parameter and prefix name
 
 #### Current State
 
 No errors for Invalid prefixes:
 
-- Having 2 `pn` prefixes (policy name) does not return the user any error in the InsuraHub UI
+- Having 2 `pn` prefixes (policy name) returns missing prefixes error
 - No error message on the UI for empty parameters such as an empty policy name `pn`
 - The `policy description` should be of the prefix `pd` in the `addPolicy` command but using an unknown `pr` prefix that precedes the policy description does not throw any error
-  Invalid dates such as `2023-02-29` do not currently return errors in the UI
+- If `psd` and `ped` are missing, it does not return an error on the UI and silently fails as a runtime error
 
 ##### Planned Enhancement
 
 - The prefixes will be checked to ensure that the `addPolicy` command entered by the user is a valid command with the correct prefixes
-- The `policy start date` and `policy end date` will be checked to ensure that they are valid dates, including edge cases such as leap years
 
-### 4. Add Policy Feature - Special characters allowed
+### 3. Add Policy Feature - Special characters allowed
 
 #### Current State
 
@@ -971,7 +960,7 @@ The Add Policy command currently allows for special characters such as `;;` whic
 
 Policy name and description will be checked through for special characters and corresponding error messages will be returned in the UI
 
-### 5. Remove Policy Feature - Success message incorrectly formatted
+### 4. Remove Policy Feature - Success message incorrectly formatted
 
 #### Current State
 
@@ -981,7 +970,7 @@ The success message is currently not formatted properly with the details of the 
 
 The success message will be formatted properly
 
-### 6. Preferred Contact Feature - Parameters must be lowercase
+### 5. Preferred Contact Feature - Parameters must be lowercase
 
 #### Current state
 
@@ -991,7 +980,7 @@ The Preferred Contact command only accepts parameters in lower-case but there is
 
 There will be error message returned in the UI when the user enters the parameters not in lowercase (either `email` or `phone`)
 
-### 7. Add Policy Feature - End date can be earlier than start date
+### 6. Add Policy Feature - End date can be earlier than start date
 
 #### Current state
 
@@ -1001,7 +990,7 @@ The end date of the policy can be earlier than the start date of the policy.
 
 There will be error message returned when the end date is earlier than the start date of the policy.
 
-### 8. Client files is retained when clients are deleted or edited
+### 7. Client files is retained when clients are deleted or edited
 
 #### Current state
 
