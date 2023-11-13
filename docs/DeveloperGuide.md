@@ -148,7 +148,7 @@ Return to [Table Of Contents](#table-of-contents)
 
 **API** : [`Model.java`](https://github.com/AY2324S1-CS2103-W14-1/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-<puml src="diagrams/ModelClassDiagram.puml" width="450" />
+<puml src="diagrams/ModelClassDiagram.puml" width="650" />
 
 The `Model` component,
 
@@ -161,7 +161,7 @@ The `Model` component,
 
 **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
 
-<puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
+<puml src="diagrams/BetterModelClassDiagram.puml" width="650" />
 
 </box>
 
@@ -218,11 +218,11 @@ Given below is an example usage scenario and how the PreferredContact mechanism 
 9. This object will then be passed to `Logic`.
 10. The execution will then be over as the preferred contact method will be highlighted and the adding preferred contact command successful message will then be displayed.
 
-Activity diagram for adding preferred contact
-<puml src="diagrams/PreferredContactActivityDiagram.puml" width="450" />
+The following activity diagram shows how the Preferred Contact operation works:
+<img src="diagrams/PreferredContactActivityDiagram.png" width="650" />
 
-Sequence diagram for adding preferred contact
-<puml src="diagrams/PreferredContactSequenceDiagram.puml" width="450" />
+The following sequence diagram shows how the Preferred Contact operation works:
+<img src="diagrams/PreferredContactSequenceDiagram.png" width="650" />
 
 ### AddTag feature
 
@@ -239,7 +239,12 @@ Given below is an example usage scenario and how the AddTag mechanism behaves at
 5. The `model` calls the `setPerson` method and updates the targetted client with the newly created client from the previous step
 6. The `CommandResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added tag and a success message is displayed on the UI
 
+The following activity diagram shows how the AddTag operation works:
+<img src="diagrams/AddTagActivityDiagram.png" width="650">
+
 The following sequence diagram shows how the AddTag operation works:
+<img src="diagrams/AddTagSequenceDiagram.png" width="650">
+
 
 ### DeleteTag feature
 
@@ -258,7 +263,11 @@ Given below is an example usage scenario and how the DeleteTag mechanism behaves
 7. Upon confirmation that the tag exist in the first client of the address book, in this case `Alex Yeoh`, the tag is deleted from the UI of `Alex Yeoh` client
 8. A successful message is returned, in this case `Deleted tags successfully for person Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Tags: `
 
+The following activity diagram shows how the DeleteTag operation works:
+<img src="diagrams/DeleteTagActivityDiagram.png" width="650">
+
 The following sequence diagram shows how the DeleteTag operation works:
+<img src="diagrams/DeleteTagSequenceDiagram.png" width="650">
 
 ### Filtering by Tag feature
 
@@ -287,9 +296,11 @@ Given below is an example usage scenario and how the tag filtering mechanism beh
 
 4. The update list of filtered `Person` objects are then displayed on the ui.
 
-The following sequence diagram shows how the filter tag operation works:
+The following activity diagram shows how the filter tag operation works:
+<img src="diagrams/FilterTagActivityDiagram.png" width="650">
 
-<puml src="diagrams/FilterTagSequenceDiagram.puml" width="450" />
+The following sequence diagram shows how the filter tag operation works:
+<img src="diagrams/FilterTagSequenceDiagram.png" width="650" />
 
 ### File feature
 
@@ -305,12 +316,14 @@ Given below is an example usage scenario and how the file mechanism behaves at e
 1. The user launches the application and wants to file certain documents for a client, `Alex Yeoh`, who is already stored in the application shown as the first person on InsuraHub.
 2. The user tries to open a folder for the client with command `file 1`
 3. InsuraHub will fetch the 1st client currently shown, if the index 1 is not out of bound in the list.
-4. If the index is valid, the `Name` of the client and the `hashCode` will be concatenated to get a unique folder name for the client.
-5. If the folder with the unique folder name does not exist then the folder will be created and placed in the ClientFiles folder.
-6. The folder in the ClientFiles folder with the unique folder name will be opened.
+4. If the index is valid, the `Name` of the client will be used as the folder name for the client.
+5. If the folder with the folder name does not exist then the folder will be created and placed in the ClientFiles folder.
+6. The folder in the ClientFiles folder with the folder name will be opened.
 7. The execution will then be over as the user can now drop files for the client into this opened folder, file command successful message will be displayed.
 
-The following sequence diagram shows how the file operation works:
+Activity diagram for file Command:
+<img src="diagrams/FileActivityDiagram.png" width="650" />
+
 
 ### GroupMeeting feature
 
@@ -339,10 +352,10 @@ Given below is an example usage scenario and how the Group Meeting mechanism beh
 9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
 
 Activity diagram for filtering clients based on preferred meeting region
-<puml src="diagrams/GroupMeetingActivityDiagram.puml" width="450" />
+<img src="diagrams/GroupMeetingActivityDiagram.png" width="650" />
 
 Sequence diagram for filtering clients based on preferred meeting region
-<puml src="diagrams/GroupMeetingSequenceDiagram.puml" width="450" />
+<img src="diagrams/GroupMeetingSequenceDiagram.png" width="650" />
 
 ### Add Policy feature
 
@@ -367,14 +380,18 @@ Given below is an example usage scenario and how the Add Policy Mechanism works:
 5. This calls the `createPersonWithAddedPolicy` method, creating a new Person object with the same details as `Alex Yeoh` but with the newly added policy
 6. The `model` calls the `setPerson` method and updates the targetted client with the newly created client from the previous step
 7. The `CommanResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added policy and a success message is displayed on the UI
+   
+The following activity diagram shows how the AddPolicy operation works:
+<img src="diagrams/AddPolicyActivityDiagram.png" width = "650">
 
 The following sequence diagram shows how the AddPolicy operation works:
+<img src="diagrams/AddPolicySequenceDiagram.png" width = "650">
 
 ### Remove Policy feature
 
 #### Current Implementation
 
-The Delete Policy feature allows users to remove policies under a certain client by indexing the client and indexing the policy to be deleted
+The Remove Policy feature allows users to remove policies under a certain client by indexing the client and indexing the policy to be deleted
 
 Given below is an example usage scenario and how the Remove Policy mechanism behaves at each step
 
@@ -385,7 +402,11 @@ Given below is an example usage scenario and how the Remove Policy mechanism beh
 5. The model will then call the `setPerson` method and updates the targetted client with the policy removed from the previous step
 6. The `CommandResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` not having the policy that was removed and a success message is displayed on the UI
 
+The following activity diagram shows how the RemovePolicy operation works:
+<img src="diagrams/RemovePolicyActivityDiagram.png" width = "650">
+
 The following sequence diagram shows how the RemovePolicy operation works:
+<img src="diagrams/RemovePolicySequenceDiagram.png" width = "650">
 
 ### View Policy Feature
 
@@ -402,7 +423,11 @@ Given below is an example usage scenario and how the View Policy mechanism behav
 5. The `CommandResult` is then returned by the `execute` method with the `toString()` of the `policy` indexed from the previous step
 6. The UI will display the details of the policy specified by the index and a success message is displayed on the UI
 
+The following activity diagram for viewing policy of a particular Client:
+<img src="diagrams/ViewPolicyActivityDiagram.png" width="650" />
+
 The following sequence diagram shows how the View Policy operation works:
+<img src="diagrams/ViewPolicySequenceDiagram.png" width="650" />
 
 ### Filter Policy Description feature
 
@@ -423,7 +448,10 @@ Given below is an example usage scenario and how the Filter Policy mechanism beh
 9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
 
 The following sequence diagram shows how the Filter Policy Description operation works:
-<puml src="diagrams/FilterPolicyActivityDiagram.puml" width="450" />
+<img src="diagrams/FilterPolicySequenceDiagram.png" width ="650">
+
+The following activity diagram shows how the Filter Policy Description operation works:
+<img src="diagrams/FilterPolicyActivityDiagram.png" width="650" />
 
 ### Toggle Mode feature
 
@@ -440,7 +468,31 @@ Given below is an example usage scenario and how the Toggle Mode mechanism behav
 5. The `CommandResult` is returned by the `execute` method and the mode of the UI will be switched to Light Mode on the user's next start up of the application
 6. The UI will continue displaying the list of clients and a success message is displayed on the UI
 
+The following activity diagram shows how the Toggle Mode operation works:
+<img src="diagrams/ToggleModeActivityDiagram.png">
+
 The following sequence diagram shows how the Toggle Mode operation works:
+<img src="diagrams/ToggleModeSequenceDiagram.png" width = "650">
+
+### Change Password feature
+
+#### Current Implementation
+
+InsuraHub allows users to change the required password to enter InsuraHub
+
+Given below is an example usage scenario and how the changePassword command behaves
+
+1. The user launches the application and sets the password as "oldPW1" before entering InsuraHub with the password.
+2. The user wants to change the password and enters the commant `changePassword op/oldPW1 np/newPW2`
+3. The `passwordManager` calls its `check` method on the old password given "oldPW1" to determine if the current password saved in encoded.txt in the data folder is indeed "oldPW1"
+3. The `passwordManager` detects that the old password is indeed correct and calls its `set` method to set the new password as "newPW2" by modifying the string saved in encoded.txt in the data folder.
+5. The UI will continue displaying the list of clients and a success message is displayed on the UI.
+
+activity diagram for changePassword Command:
+<img src="diagrams/ChangePasswordActivityDiagram.png" width="650" />
+
+The following sequence diagram shows how the changePassword operation works:
+<img src="diagrams/ChangePasswordSequenceDiagram.png" width="650" />
 
 ### \[Proposed\] Undo/redo feature
 

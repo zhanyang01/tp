@@ -1,0 +1,46 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":RemovePolicyCommandParser" as RemovePolicyCommandParser LOGIC_COLOR
+participant ":RemovePolicyCommand" as RemovePolicyCommand LOGIC_COLOR
+participant ":person" as Person LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+end box
+
+autonumber
+[->LogicManager : execute(removePolicy 1 1)
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand(removePolicy 1 1)
+activate AddressBookParser
+
+create RemovePolicyCommandParser
+AddressBookParser -> RemovePolicyCommandParser:
+activate RemovePolicyCommandParser
+
+RemovePolicyCommandParser -> RemovePolicyCommandParser : Parse
+
+create RemovePolicyCommand
+RemovePolicyCommandParser -> RemovePolicyCommand
+activate RemovePolicyCommand
+LogicManager -> RemovePolicyCommand : execute()
+deactivate RemovePolicyCommandParser
+
+create Person
+RemovePolicyCommand -> Person :
+activate Person
+Person -> Person : removePolicy()
+
+RemovePolicyCommand -> Model : setPerson()
+deactivate Person
+activate Model
+RemovePolicyCommand -> Model : updateFilteredPersonList()
+
+@enduml
