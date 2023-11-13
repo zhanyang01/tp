@@ -75,6 +75,12 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
+    public static final String VALID_HEALTH_INSURANCE_POLICY = "Policy name: Health Insurance" + "\n"
+            + "Policy description: basic plan" + "\n"
+            + "Value: 100000.0" + "\n"
+            + "Start date: 2023-01-01" + "\n"
+            + "End date: 2033-01-01" + "\n";
+
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
 

@@ -52,6 +52,7 @@ Given below are my contributions to the project.
 
   - Participated in releases v1.1 - v1.4 on github with 2 releases currently, namely v1.3.trial and v1.3.final, v1.4 will be released when it is done.
   - Fixed most of the testcases that failed due to changes in code done by the team throughout the project development in [\#216](https://github.com/AY2324S1-CS2103-W14-1/tp/pull/216)
+  - increase test coverage by adding testcases in [\#241](https://github.com/AY2324S1-CS2103-W14-1/tp/pull/241)
 
 - **Enhancements to existing features**:
 

@@ -42,6 +42,7 @@ public class EditPersonDescriptorBuilder {
         descriptor.setTags(person.getTags());
         descriptor.setPreferredContact(person.getPreferredContact());
         descriptor.setPreferredMeetingRegion(person.getPreferredMeetingRegion());
+        descriptor.setPolicies(person.getPolicies());
     }
 
     /**

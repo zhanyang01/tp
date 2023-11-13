@@ -44,7 +44,6 @@ public class AddTagCommandParser implements Parser<AddTagCommand> {
 
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(addTagDescriptor::setTags);
 
-
         return new AddTagCommand(index, addTagDescriptor);
     }
 
