@@ -27,7 +27,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/aarontxz.md)]
 
 - Role: Developer
-- Responsibilities: UI
+- Responsibilities: UI, Testing and fixing bugs
 
 ### Chang Ji-xuan
 
@@ -37,7 +37,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/johnnythesnake12.md)]
 
 - Role: Developer
-- Responsibilities: Data
+- Responsibilities: Manual Testing of features, Deliverables and Deadlines
 
 ### Luah Jun Yang
 
@@ -47,4 +47,4 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/luahjunyang.md)]
 
 - Role: Developer
-- Responsibilities: UI
+- Responsibilities: Documentation
