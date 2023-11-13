@@ -142,7 +142,7 @@ Return to [Table Of Contents](#table-of-contents)
 
 **API** : [`Model.java`](https://github.com/AY2324S1-CS2103-W14-1/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-<puml src="diagrams/ModelClassDiagram.puml" width="650" />
+<puml src="diagrams/ModelClassDiagram.puml" width="750" />
 
 The `Model` component,
 
@@ -155,7 +155,7 @@ The `Model` component,
 
 **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
 
-<puml src="diagrams/BetterModelClassDiagram.puml" width="650" />
+<puml src="diagrams/BetterModelClassDiagram.puml" width="750" />
 
 </box>
 
