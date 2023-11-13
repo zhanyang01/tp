@@ -19,11 +19,32 @@
    5. [Storage Component](#storage-component)
    6. [Common Classes](#common-classes)
 3. [Implementation](#implementation)
+   1. [Preferred Contact Feature](#preferredcontact-feature)
+   2. [AddTag Feature](#addtag-feature)
+   3. [DeleteTag Feature](#deletetag-feature)
+   4. [Filter by Tags Feature](#filtering-by-tag-feature)
+   5. [File Feature](#file-feature)
+   6. [GroupMeeting Feature](#groupmeeting-feature)
+   7. [Add Policy Feature](#add-policy-feature)
+   8. [Remove Policy Feature](#remove-policy-feature)
+   9. [View Policy Feature](#view-policy-feature)
+   10. [Filter Policy Description Feature](#filter-policy-description-feature)
+   11. [Toggle Mode Feature](#toggle-mode-feature)
+   12. [Change Password Feature](#change-password-feature)
+   13. [Proposed Undo/Redo feature](#proposed-undoredo-feature)
 4. [Acknowledgements](#acknowledgements)
 5. [Appendix: Requirements](#appendix-requirements)
    1. [Product Scope](#product-scope)
    2. [User Stories](#user-stories)
    3. [Use Cases](#use-cases)
+      1. [Use Case 1: Adding more tags to client records](#use-case-1---adding-more-tags-to-client-records)
+      2. [Use Case 2: Deleting tags from client records](#use-case-2---deleting-tags-from-client-records)
+      3. [Use Case 3: Adding client preferred form of contact](#use-case-3---adding-client-preferred-form-of-contact)
+      4. [Use Case 4: Filtering client information through tags](#use-case-4---filtering-client-information-using-tags)
+      5. [Use Case 5: Storing client documents nearly in a folder](#use-case-5---storing-client-documents-neatly-in-a-folder)
+      6. [Use Case 6: Grouping clients based on the nearest MRT station fromm their residence to a region](#use-case-6---grouping-clients-based-on-the-nearest-mrt-station-from-their-residence-to-a-region)
+      7. [Use Case 7: Delete a person](#use-case-7---delete-a-person)
+      8. [Use Case 8: Filter Policy](#use-case-8---filter-policy)
    4. [Non-Functional Requirements](#non-functional-requirements)
    5. [Glossary](#glossary)
 6. [Appendix: Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
@@ -74,7 +95,7 @@ The _Sequence Diagram_ below shows how the components interact with each other f
 Each of the four main components (also shown in the diagram above),
 
 - defines its _API_ in an `interface` with the same name as the Component.
-- implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+- implements its functionality using a concrete `{Component Name}Manager` class which follows the corresponding API `interface` mentioned in the previous point.
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
@@ -218,6 +239,8 @@ The following activity diagram shows how the Preferred Contact operation works:
 The following sequence diagram shows how the Preferred Contact operation works:
 <img src="diagrams/PreferredContactSequenceDiagram.png" width="900" />
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### AddTag feature
 
 #### Current Implementation
@@ -238,6 +261,8 @@ The following activity diagram shows how the AddTag operation works:
 
 The following sequence diagram shows how the AddTag operation works:
 <img src="diagrams/AddTagSequenceDiagram.png" width="900">
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### DeleteTag feature
 
@@ -261,6 +286,8 @@ The following activity diagram shows how the DeleteTag operation works:
 
 The following sequence diagram shows how the DeleteTag operation works:
 <img src="diagrams/DeleteTagSequenceDiagram.png" width="900">
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Filtering by Tag feature
 
@@ -295,6 +322,8 @@ The following activity diagram shows how the filter tag operation works:
 The following sequence diagram shows how the filter tag operation works:
 <img src="diagrams/FilterTagSequenceDiagram.png" width="750" />
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### File feature
 
 #### Current Implementation
@@ -316,6 +345,8 @@ Given below is an example usage scenario and how the file mechanism behaves at e
 
 Activity diagram for file Command:<br>
 <img src="diagrams/FileActivityDiagram.png" width="650" />
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### GroupMeeting feature
 
@@ -349,6 +380,8 @@ Activity diagram for filtering clients based on preferred meeting region
 Sequence diagram for filtering clients based on preferred meeting region
 <img src="diagrams/GroupMeetingSequenceDiagram.png" width="900" />
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### Add Policy feature
 
 #### Current implementation
@@ -379,6 +412,8 @@ The following activity diagram shows how the AddPolicy operation works:
 The following sequence diagram shows how the AddPolicy operation works:
 <img src="diagrams/AddPolicySequenceDiagram.png" width = "900">
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### Remove Policy feature
 
 #### Current Implementation
@@ -400,6 +435,8 @@ The following activity diagram shows how the RemovePolicy operation works:
 The following sequence diagram shows how the RemovePolicy operation works:
 <img src="diagrams/RemovePolicySequenceDiagram.png" width = "900">
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### View Policy Feature
 
 #### Current Implementation
@@ -420,6 +457,8 @@ The following activity diagram for viewing policy of a particular Client:
 
 The following sequence diagram shows how the View Policy operation works:
 <img src="diagrams/ViewPolicySequenceDiagram.png" width="900" />
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Filter Policy Description feature
 
@@ -445,6 +484,8 @@ The following activity diagram shows how the Filter Policy Description operation
 The following sequence diagram shows how the Filter Policy Description operation works:
 <img src="diagrams/FilterPolicySequenceDiagram.png" width ="900">
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### Toggle Mode feature
 
 #### Current Implementation
@@ -466,6 +507,8 @@ The following activity diagram shows how the Toggle Mode operation works:
 The following sequence diagram shows how the Toggle Mode operation works:
 <img src="diagrams/ToggleModeSequenceDiagram.png" width = "650">
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### Change Password feature
 
 #### Current Implementation
@@ -485,6 +528,8 @@ Activity Diagram for changePassword Command:
 
 The following sequence diagram shows how the changePassword operation works:
 <img src="diagrams/ChangePasswordSequenceDiagram.png" width="900" />
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### \[Proposed\] Undo/redo feature
 
@@ -558,6 +603,8 @@ Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Sinc
 The following activity diagram summarizes what happens when a user executes a new command:
 
 <puml src="diagrams/CommitActivityDiagram.puml" width="250" />
+
+Return to [Table Of Contents](#table-of-contents)
 
 #### Design considerations:
 
@@ -657,7 +704,8 @@ Return to [Table Of Contents](#table-of-contents)
 
 If not explicitly mentioned, the actor will be a Financial Advisor and InsuraHub as the System.
 
-**Use Case 1** - Adding more tags to client records.<br>
+#### **Use Case 1** - Adding more tags to client records
+
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
@@ -672,7 +720,10 @@ MSS:
 1a1. System displays an error message indicating that user have to key in at least one tag<br>
 Use case ends
 
-**Use Case 2** - Deleting tags from client records.<br>
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use Case 2** - Deleting tags from client records
+
 Precondition: User knows the client index relative to the list and the client is added into the list of clients, clients must also have the tag/tags listed in one of their tags.
 
 MSS:
@@ -691,7 +742,10 @@ Use case ends.
 1b1. System returns an error message stating that one tag must be provided.<br>
 Use case ends
 
-**Use Case 3** - Adding client preferred form of contact<br>
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use Case 3** - Adding client preferred form of contact
+
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
@@ -715,7 +769,9 @@ Use case ends
 1c1. System displays an error message indicating that the user have to put in at least one form of contact.<br>
 User case ends
 
-**Use Case 4** - Filtering client information using tags
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use Case 4** - Filtering client information using tags
 
 MSS:
 
@@ -723,7 +779,10 @@ MSS:
 2. System updates with a list of clients that fulfills the tags to be filtered.<br>
    Use case ends
 
-**Use Case 5** - Storing client documents neatly in a folder<br>
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use Case 5** - Storing client documents neatly in a folder
+
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
@@ -738,7 +797,9 @@ MSS:
 1a1. System displays an error message indicating that the process of creating a file for the user is stopped.<br>
 Use case ends
 
-**Use Case 6** - Grouping clients based on the nearest MRT station from their residence to a region
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use Case 6** - Grouping clients based on the nearest MRT station from their residence to a region
 
 MSS:
 
@@ -752,7 +813,9 @@ MSS:
 1a1. System returns an error message stating to put in a valid region to be filtered.<br>
 Use Case Ends
 
-**Use case 7** - Delete a person
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use case 7** - Delete a person
 
 MSS:
 
@@ -762,12 +825,14 @@ MSS:
 
 **Extensions**
 
-- 1a. The given index is invalid.
+1a. The given index is invalid.
 
-  - 1a1. InsuraHub shows an error message.<br>
-    Use case resumes at step 2.
+1a1. InsuraHub shows an error message.<br>
+Use case resumes at step 2.
 
-**Use case 8** - Filter Policy
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use case 8** - Filter Policy
 
 MSS:
 
@@ -777,8 +842,8 @@ MSS:
 
 **Extensions**
 
-- 2a. The list is empty.<br>
-  Use case ends.
+2a. The list is empty.<br>
+Use case ends.
 
 Return to [Table Of Contents](#table-of-contents)
 
