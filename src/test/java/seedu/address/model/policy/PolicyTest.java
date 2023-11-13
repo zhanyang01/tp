@@ -10,11 +10,11 @@ public class PolicyTest {
 
     @Test
     public void constructor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new Policy(null,null,10000,null,null));
+        assertThrows(NullPointerException.class, () -> new Policy(null, null, 10000, null, null));
     }
 
     @Test
-    public void Valid_Health_Insurance_Policy() {
+    public void valid_health_insurance_policy() {
         Policy policy = Policy.fromString(VALID_HEALTH_INSURANCE_POLICY);
         assert(policy.policyName.equals("Health Insurance"));
         assert(policy.policyValue==100000);
