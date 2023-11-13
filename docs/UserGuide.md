@@ -67,7 +67,7 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 
 - Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+  e.g. if the command specifies `n/NAME p/PHONE`, `p/PHONE n/NAME` is also acceptable.
 
 - Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
@@ -89,10 +89,10 @@ Format: `help`
 
 Adds a new person to the Insurahub App, the name of the Person must be unique
 
-Format: `add n/NAME p/PHONENUMBER e/EMAIL a/ADDRESS [t/TAG] pmr/PREFERREDMEETINGREGION`
+Format: `add n/NAME p/PHONE e/EMAIL a/ADDRESS [t/TAG]... pmr/PREFERRED_MEETING_REGION`
 
 - `NAME` must be Unique in InsuraHub.
-- `PHONENUMBER` must be 8 numbers long and start with either 6,8 or 9.
+- `PHONE` must be 8 numbers long and start with either 6,8 or 9.
 - `TAG` should be alphanumeric
 - `EMAIL` Emails should be of the format local-part@domain and adhere to the following constraints:
   - The local-part should only contain alphanumeric characters and these special characters, excluding the parentheses
@@ -101,7 +101,7 @@ Format: `add n/NAME p/PHONENUMBER e/EMAIL a/ADDRESS [t/TAG] pmr/PREFERREDMEETING
   - have each domain label start and end with alphanumeric characters
   - have each domain label consist of alphanumeric characters, separated only by hyphens, if any.
 - `ADDRESS` Addresses can take any values, and it should not be blank"
-- `PREFERREDMEETINGREGION` have to be one of these strings west/north/south/east/central.
+- `PREFERRED_MEETING_REGION` have to be one of these strings west/north/south/east/central.
 
 Examples:
 
@@ -118,7 +118,7 @@ Format: `list`
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]... [pmr/PREFERREDMEETINGREGION]`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]... [pmr/_MEETING_REGION]`
 
 - Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 - At least one of the optional fields must be provided.
@@ -207,7 +207,7 @@ Examples:
 
 Removes an existing insurance policy from a client currently listed on the Ui of InsuraHub.
 
-Format: `removePolicy <INDEX_1> <INDEX_2>`
+Format: `removePolicy INDEX_1 INDEX_2`
 
 - `INDEX_1` must be a positive integer less than or equals to the number of clients currently shown on InsuraHub.
 - `INDEX_2` must be a positive integer less than or equals to the number of policies the client specified by `INDEX_1` has.
@@ -220,7 +220,7 @@ Examples:
 
 Creates/opens up a folder specific to a client for storing of their documents
 
-Format 1: `viewPolicy <INDEX_1> <INDEX_2>`
+Format 1: `viewPolicy INDEX_1 INDEX_2`
 
 - `INDEX_1` must be a positive integer less than or equals to the number of clients currently shown on InsuraHub.
 - `INDEX_2` must be a positive integer less than or equals to the number of policies the client specified by `INDEX_1` has.
@@ -233,7 +233,7 @@ Examples:
 
 Highlight the specific contact details of the particular client from the application.
 
-Format 1: `preferredContact <INDEX> pc/PREFERREDCONTACT`
+Format 1: `preferredContact INDEX pc/PREFERRED_CONTACT`
 
 - **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
 - **preferred contact method** either Phone number or Email
@@ -241,11 +241,13 @@ Format 1: `preferredContact <INDEX> pc/PREFERREDCONTACT`
   - phone
   - email
 - Preferred contact parameter has to be in lowercase.
+- To remove the preferred contact of the client is `preferredContact INDEX pc/`
 
 Examples:
 
 - `preferredContact 1 pc/phone` will highlight the phone number of the first person in the current list shown
 - `preferredContact 1 pc/email` will highlight the email address of the first person in the current list shown
+- `preferredContact 1 pc/` will either unhighlight the phone number or email address of the first person in the current list shown if it is highlighted or return the first person in the current list with no changes made.
 
 ### Exiting the program : `exit`
 
@@ -306,7 +308,7 @@ Examples:
 
 ### Grouping client preferred meeting locations: `groupmeeting`
 
-Groups clients based on their preferred meeting locations
+Groups clients based on their preferred meeting locations, only list one of west, north, south, east or central per command.
 
 Format: `groupmeeting west/north/south/east/central`
 
@@ -340,13 +342,14 @@ Examples:
 
 ### filter policy using policy description `filterpolicydescription`
 
-Filter policies using policy description, it is case sensative, hence if client have `Cancer Plan` typing `CANCER PLAN` will not work.
+Filter policies using policy description, it is case sensative, hence if client have `Cancer Plan` typing `CANCER PLAN` will not work.<br> Typing non string characters will not return an error, however it might be an issue as it is unlikely that policy description contains non string characters. <br>
+If policy description is 123 and you filter 123, it will return the policy.
 
 Format: `filterpolicydescription POLICYDESCRIPTION`
 
 Examples:
 
-- `filterpolicydescription Cancer Plans` will filter all the clients who have cancer plans and show the list of clients with them.
+- `filterpolicydescription Cancer Plan` will filter all the clients who have cancer plan and show the list of clients with them.
 
 ## FAQ
 
@@ -364,11 +367,11 @@ Examples:
 ## Command summary
 
 | Action                        | Format, Examples                                                                                                                                                                                                              |
-| ----------------------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pmr/east [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pmr/east t/friend t/colleague`                                                           |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Add**                       | `add n/NAME p/PHONE e/EMAIL a/ADDRESS pmr/east [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pmr/east t/friend t/colleague`                                              |
 | **Clear**                     | `clear`                                                                                                                                                                                                                       |
 | **Delete**                    | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                           |
-| **Edit**                      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                   |
+| **Edit**                      | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                          |
 | **Exit**                      | `exit`                                                                                                                                                                                                                        |
 | **File**                      | `file INDEX`<br> e.g. `file 1`                                                                                                                                                                                                |
 | **Find**                      | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                    |
@@ -381,7 +384,7 @@ Examples:
 | **View Policy**               | `viewPolicy <INDEX_1> <INDEX_2>`<br/> e.g. `viewPolicy 1 1`                                                                                                                                                                   |
 | **Filter Policy Description** | `filterpolicydescription <POLICY DESCRIPTION>`                                                                                                                                                                                |
 | **Help**                      | `help`                                                                                                                                                                                                                        |
-| **Preferred Contact**         | `preferredContact INDEX pc/PREFERREDCONTACT`<br/> e.g. `preferredContact 1 pc/phone`                                                                                                                                          |
+| **Preferred Contact**         | `preferredContact INDEX pc/PREFERRED_CONTACT`<br/> e.g. `preferredContact 1 pc/phone`                                                                                                                                         |
 | **Change Password**           | `changePassword op/OLD PASSWORD np/NEW PASSWORD`<br/>e.g. `changePassword op/123456 np/foo123`                                                                                                                                |
 | **Toggle UI Mode**            | `toggleMode`                                                                                                                                                                                                                  |
-| **Group Meeting**             | `groupmeeting PREFERRED MEETING REGION` <br> e.g. `groupmeeting west`                                                                                                                                                         |
+| **Group Meeting**             | `groupmeeting PREFERRED_MEETING_REGION` <br> e.g. `groupmeeting west`                                                                                                                                                         |

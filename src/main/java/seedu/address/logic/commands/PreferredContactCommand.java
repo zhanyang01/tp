@@ -25,7 +25,7 @@ public class PreferredContactCommand extends Command {
             + ": Show the preferred contact details of the person identified "
             + "by the index number used in the displayed person list. "
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_PREFERRED_CONTACT + "PREFERRED_CONTACT]...\n"
+            + PREFIX_PREFERRED_CONTACT + "PREFERRED_CONTACT\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PREFERRED_CONTACT + "phone";
 
@@ -41,6 +41,7 @@ public class PreferredContactCommand extends Command {
 
     /**
      * Represents a constructor of PreferredContactCommand.
+     * 
      * @param index            of the person in the filtered person list to edit
      * @param preferredContact details to edit the person with
      */
