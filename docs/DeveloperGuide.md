@@ -20,14 +20,14 @@
    6. [Common Classes](#common-classes)
 3. [Implementation](#implementation)
 4. [Acknowledgements](#acknowledgements)
-5. [Appendix Requirements](#appendix-requirements)
+5. [Appendix: Requirements](#appendix-requirements)
    1. [Product Scope](#product-scope)
    2. [User Stories](#user-stories)
    3. [Use Cases](#use-cases)
    4. [Non-Functional Requirements](#non-functional-requirements)
    5. [Glossary](#glossary)
-6. [Appendix-Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
-7. [Appendix-Planned Enhancements](#appendix-planned-enhancements)
+6. [Appendix: Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
+7. [Appendix: Planned Enhancements](#appendix-planned-enhancements)
    <page-nav-print />
 
 ---
