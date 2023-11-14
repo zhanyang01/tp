@@ -8,14 +8,15 @@ import seedu.address.model.Model;
 import seedu.address.model.person.GroupMeetingContainsKeywordPredicate;
 
 /**
- * Finds and lists all persons in address book whose name contains the region to be filtered.
+ * Finds and lists all persons in address book whose name contains the region to
+ * be filtered.
  */
 public class GroupMeetingCommand extends Command {
 
     public static final String COMMAND_WORD = "groupmeeting";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
-            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
+            + "the specified keywords and displays them as a list with index numbers.\n"
+            + "Parameters: KEYWORD\n"
             + "Example: " + COMMAND_WORD + " north/south/east/west/central";
 
     public static final String MESSAGE_REGION_INVALID = "Region must be either north, south, east, west or central.";

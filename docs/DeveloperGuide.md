@@ -6,8 +6,6 @@
 
 # InsuraHub Developer Guide
 
-<!-- * Table of Contents -->
-
 ## **Table of contents**
 
 1. [Setting up, getting started](#setting-up-getting-started)
@@ -19,15 +17,36 @@
    5. [Storage Component](#storage-component)
    6. [Common Classes](#common-classes)
 3. [Implementation](#implementation)
+   1. [Preferred Contact Feature](#preferredcontact-feature)
+   2. [AddTag Feature](#addtag-feature)
+   3. [DeleteTag Feature](#deletetag-feature)
+   4. [Filter by Tags Feature](#filtering-by-tag-feature)
+   5. [File Feature](#file-feature)
+   6. [GroupMeeting Feature](#groupmeeting-feature)
+   7. [Add Policy Feature](#add-policy-feature)
+   8. [Remove Policy Feature](#remove-policy-feature)
+   9. [View Policy Feature](#view-policy-feature)
+   10. [Filter Policy Description Feature](#filter-policy-description-feature)
+   11. [Toggle Mode Feature](#toggle-mode-feature)
+   12. [Change Password Feature](#change-password-feature)
+   13. [Proposed Undo/Redo feature](#proposed-undoredo-feature)
 4. [Acknowledgements](#acknowledgements)
-5. [Appendix Requirements](#appendix-requirements)
+5. [Appendix: Requirements](#appendix-requirements)
    1. [Product Scope](#product-scope)
    2. [User Stories](#user-stories)
    3. [Use Cases](#use-cases)
+      1. [Use Case 1: Adding more tags to client records](#use-case-1---adding-more-tags-to-client-records)
+      2. [Use Case 2: Deleting tags from client records](#use-case-2---deleting-tags-from-client-records)
+      3. [Use Case 3: Adding client preferred form of contact](#use-case-3---adding-client-preferred-form-of-contact)
+      4. [Use Case 4: Filtering client information through tags](#use-case-4---filtering-client-information-using-tags)
+      5. [Use Case 5: Storing client documents nearly in a folder](#use-case-5---storing-client-documents-neatly-in-a-folder)
+      6. [Use Case 6: Grouping clients based on the nearest MRT station fromm their residence to a region](#use-case-6---grouping-clients-based-on-the-nearest-mrt-station-from-their-residence-to-a-region)
+      7. [Use Case 7: Delete a person](#use-case-7---delete-a-person)
+      8. [Use Case 8: Filter Policy](#use-case-8---filter-policy)
    4. [Non-Functional Requirements](#non-functional-requirements)
    5. [Glossary](#glossary)
-6. [Appendix-Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
-7. [Appendix-Planned Enhancements](#appendix-planned-enhancements)
+6. [Appendix: Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
+7. [Appendix: Planned Enhancements](#appendix-planned-enhancements)
    <page-nav-print />
 
 ---
@@ -45,7 +64,8 @@ Return to [Table Of Contents](#table-of-contents)
 ### Architecture
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="280" />
-The **_Architecture Diagram_** given above explains the high-level design of the App.
+<br>
+The Architecture Diagram given above explains the high-level design of the App.
 
 Given below is a quick overview of main components and how they interact with each other.
 
@@ -74,7 +94,7 @@ The _Sequence Diagram_ below shows how the components interact with each other f
 Each of the four main components (also shown in the diagram above),
 
 - defines its _API_ in an `interface` with the same name as the Component.
-- implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+- implements its functionality using a concrete `{Component Name}Manager` class which follows the corresponding API `interface` mentioned in the previous point.
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
@@ -155,7 +175,7 @@ The `Model` component,
 
 **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
 
-<puml src="diagrams/BetterModelClassDiagram.puml" width="750" />
+<puml src="diagrams/BetterModelClassDiagram.puml" width="850" />
 
 </box>
 
@@ -165,7 +185,7 @@ Return to [Table Of Contents](#table-of-contents)
 
 **API** : [`Storage.java`](https://github.com/AY2324S1-CS2103-W14-1/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
-<puml src="diagrams/StorageClassDiagram.puml" width="550" />
+<puml src="diagrams/StorageClassDiagram.puml" width="625" />
 
 The `Storage` component,
 
@@ -216,7 +236,9 @@ The following activity diagram shows how the Preferred Contact operation works:
 <img src="diagrams/PreferredContactActivityDiagram.png" width="750" />
 
 The following sequence diagram shows how the Preferred Contact operation works:
-<img src="diagrams/PreferredContactSequenceDiagram.png" width="900" />
+<img src="diagrams/PreferredContactSequenceDiagram.png" width="1200" />
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### AddTag feature
 
@@ -234,10 +256,12 @@ Given below is an example usage scenario and how the AddTag mechanism behaves at
 6. The `CommandResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added tag and a success message is displayed on the UI
 
 The following activity diagram shows how the AddTag operation works:
-<img src="diagrams/AddTagActivityDiagram.png" width="750">
+<img src="diagrams/AddTagActivityDiagram.png" width="850">
 
 The following sequence diagram shows how the AddTag operation works:
-<img src="diagrams/AddTagSequenceDiagram.png" width="900">
+<img src="diagrams/AddTagSequenceDiagram.png" width="1080">
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### DeleteTag feature
 
@@ -257,10 +281,12 @@ Given below is an example usage scenario and how the DeleteTag mechanism behaves
 8. A successful message is returned, in this case `Deleted tags successfully for person Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Tags: `
 
 The following activity diagram shows how the DeleteTag operation works:
-<img src="diagrams/DeleteTagActivityDiagram.png" width="750">
+<img src="diagrams/DeleteTagActivityDiagram.png" width="825">
 
 The following sequence diagram shows how the DeleteTag operation works:
-<img src="diagrams/DeleteTagSequenceDiagram.png" width="900">
+<img src="diagrams/DeleteTagSequenceDiagram.png" width="1080">
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Filtering by Tag feature
 
@@ -289,11 +315,13 @@ Given below is an example usage scenario and how the tag filtering mechanism beh
 
 4. The update list of filtered `Person` objects are then displayed on the ui.
 
-The following activity diagram shows how the filter tag operation works:
-<img src="diagrams/FilterTagActivityDiagram.png" width="650">
+The following activity diagram shows how the Filter tag operation works:
+<img src="diagrams/FilterTagActivityDiagram.png" width="450">
 
-The following sequence diagram shows how the filter tag operation works:
-<img src="diagrams/FilterTagSequenceDiagram.png" width="750" />
+The following sequence diagram shows how the Filter tag operation works:
+<img src="diagrams/FilterTagSequenceDiagram.png" width="900" />
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### File feature
 
@@ -314,8 +342,10 @@ Given below is an example usage scenario and how the file mechanism behaves at e
 6. The folder in the ClientFiles folder with the folder name will be opened.
 7. The execution will then be over as the user can now drop files for the client into this opened folder, file command successful message will be displayed.
 
-Activity diagram for file Command:<br>
-<img src="diagrams/FileActivityDiagram.png" width="650" />
+Activity diagram for File Command:<br>
+<img src="diagrams/FileActivityDiagram.png" width="900" />
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### GroupMeeting feature
 
@@ -343,11 +373,13 @@ Given below is an example usage scenario and how the Group Meeting mechanism beh
 8. This object will then be passed to `Logic`.
 9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
 
-Activity diagram for filtering clients based on preferred meeting region
-<img src="diagrams/GroupMeetingActivityDiagram.png" width="650" />
+Activity diagram for filtering clients based on preferred meeting region:
+<img src="diagrams/GroupMeetingActivityDiagram.png" width="500" />
 
-Sequence diagram for filtering clients based on preferred meeting region
-<img src="diagrams/GroupMeetingSequenceDiagram.png" width="900" />
+Sequence diagram for filtering clients based on preferred meeting region:
+<img src="diagrams/GroupMeetingSequenceDiagram.png" width="1080" />
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Add Policy feature
 
@@ -374,10 +406,12 @@ Given below is an example usage scenario and how the Add Policy Mechanism works:
 7. The `CommanResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added policy and a success message is displayed on the UI
 
 The following activity diagram shows how the AddPolicy operation works:
-<img src="diagrams/AddPolicyActivityDiagram.png" width = "750">
+<img src="diagrams/AddPolicyActivityDiagram.png" width = "900">
 
 The following sequence diagram shows how the AddPolicy operation works:
-<img src="diagrams/AddPolicySequenceDiagram.png" width = "900">
+<img src="diagrams/AddPolicySequenceDiagram.png" width = "1200">
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Remove Policy feature
 
@@ -395,10 +429,12 @@ Given below is an example usage scenario and how the Remove Policy mechanism beh
 6. The `CommandResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` not having the policy that was removed and a success message is displayed on the UI
 
 The following activity diagram shows how the RemovePolicy operation works:
-<img src="diagrams/RemovePolicyActivityDiagram.png" width = "800">
+<img src="diagrams/RemovePolicyActivityDiagram.png" width = "900">
 
 The following sequence diagram shows how the RemovePolicy operation works:
-<img src="diagrams/RemovePolicySequenceDiagram.png" width = "900">
+<img src="diagrams/RemovePolicySequenceDiagram.png" width = "1000">
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### View Policy Feature
 
@@ -419,7 +455,9 @@ The following activity diagram for viewing policy of a particular Client:
 <img src="diagrams/ViewPolicyActivityDiagram.png"/>
 
 The following sequence diagram shows how the View Policy operation works:
-<img src="diagrams/ViewPolicySequenceDiagram.png" width="900" />
+<img src="diagrams/ViewPolicySequenceDiagram.png" width="1000" />
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Filter Policy Description feature
 
@@ -443,7 +481,9 @@ The following activity diagram shows how the Filter Policy Description operation
 <img src="diagrams/FilterPolicyActivityDiagram.png"/>
 
 The following sequence diagram shows how the Filter Policy Description operation works:
-<img src="diagrams/FilterPolicySequenceDiagram.png" width ="900">
+<img src="diagrams/FilterPolicySequenceDiagram.png" width ="1200">
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Toggle Mode feature
 
@@ -466,6 +506,8 @@ The following activity diagram shows how the Toggle Mode operation works:
 The following sequence diagram shows how the Toggle Mode operation works:
 <img src="diagrams/ToggleModeSequenceDiagram.png" width = "650">
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### Change Password feature
 
 #### Current Implementation
@@ -481,10 +523,12 @@ Given below is an example usage scenario and how the changePassword command beha
 5. The UI will continue displaying the list of clients and a success message is displayed on the UI.
 
 Activity Diagram for changePassword Command:
-<img src="diagrams/ChangePasswordActivityDiagram.png" width="650" />
+<img src="diagrams/ChangePasswordActivityDiagram.png" width="825" />
 
 The following sequence diagram shows how the changePassword operation works:
-<img src="diagrams/ChangePasswordSequenceDiagram.png" width="900" />
+<img src="diagrams/ChangePasswordSequenceDiagram.png" width="1200" />
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### \[Proposed\] Undo/redo feature
 
@@ -558,6 +602,8 @@ Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Sinc
 The following activity diagram summarizes what happens when a user executes a new command:
 
 <puml src="diagrams/CommitActivityDiagram.puml" width="250" />
+
+Return to [Table Of Contents](#table-of-contents)
 
 #### Design considerations:
 
@@ -657,7 +703,8 @@ Return to [Table Of Contents](#table-of-contents)
 
 If not explicitly mentioned, the actor will be a Financial Advisor and InsuraHub as the System.
 
-**Use Case 1** - Adding more tags to client records.<br>
+#### **Use Case 1** - Adding more tags to client records
+
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
@@ -672,7 +719,10 @@ MSS:
 1a1. System displays an error message indicating that user have to key in at least one tag<br>
 Use case ends
 
-**Use Case 2** - Deleting tags from client records.<br>
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use Case 2** - Deleting tags from client records
+
 Precondition: User knows the client index relative to the list and the client is added into the list of clients, clients must also have the tag/tags listed in one of their tags.
 
 MSS:
@@ -691,7 +741,10 @@ Use case ends.
 1b1. System returns an error message stating that one tag must be provided.<br>
 Use case ends
 
-**Use Case 3** - Adding client preferred form of contact<br>
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use Case 3** - Adding client preferred form of contact
+
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
@@ -715,7 +768,9 @@ Use case ends
 1c1. System displays an error message indicating that the user have to put in at least one form of contact.<br>
 User case ends
 
-**Use Case 4** - Filtering client information using tags
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use Case 4** - Filtering client information using tags
 
 MSS:
 
@@ -723,7 +778,10 @@ MSS:
 2. System updates with a list of clients that fulfills the tags to be filtered.<br>
    Use case ends
 
-**Use Case 5** - Storing client documents neatly in a folder<br>
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use Case 5** - Storing client documents neatly in a folder
+
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
@@ -738,7 +796,9 @@ MSS:
 1a1. System displays an error message indicating that the process of creating a file for the user is stopped.<br>
 Use case ends
 
-**Use Case 6** - Grouping clients based on the nearest MRT station from their residence to a region
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use Case 6** - Grouping clients based on the nearest MRT station from their residence to a region
 
 MSS:
 
@@ -752,7 +812,9 @@ MSS:
 1a1. System returns an error message stating to put in a valid region to be filtered.<br>
 Use Case Ends
 
-**Use case 7** - Delete a person
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use case 7** - Delete a person
 
 MSS:
 
@@ -762,12 +824,14 @@ MSS:
 
 **Extensions**
 
-- 1a. The given index is invalid.
+1a. The given index is invalid.
 
-  - 1a1. InsuraHub shows an error message.<br>
-    Use case resumes at step 2.
+1a1. InsuraHub shows an error message.<br>
+Use case resumes at step 2.
 
-**Use case 8** - Filter Policy
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use case 8** - Filter Policy
 
 MSS:
 
@@ -777,8 +841,8 @@ MSS:
 
 **Extensions**
 
-- 2a. The list is empty.<br>
-  Use case ends.
+2a. The list is empty.<br>
+Use case ends.
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -870,33 +934,22 @@ The `email` parameter for adding a new client to InsuraHub currently only allows
 
 The local-part will allow special characters which are commonly used in email addresses with the limitation of having no consecutive special characters together
 
-### 2. Add Feature - Phone Number Validation
-
-#### Current State
-
-The `phone number` parameter for adding a new client to InsuraHub currently does not check for if the phone number is a typical valid Singaporean phone number that begins with 6, 8, or 9
-
-#### Planned Enhancement
-
-The `phone number` will be checked to ensure it starts with 6, 8, or 9, with an error message thrown if it fails that check
-
-### 3. Add Policy Feature - Invalid parameter and prefix name
+### 2. Add Policy Feature - Invalid parameter and prefix name
 
 #### Current State
 
 No errors for Invalid prefixes:
 
-- Having 2 `pn` prefixes (policy name) does not return the user any error in the InsuraHub UI
+- Having 2 `pn` prefixes (policy name) returns missing prefixes error
 - No error message on the UI for empty parameters such as an empty policy name `pn`
 - The `policy description` should be of the prefix `pd` in the `addPolicy` command but using an unknown `pr` prefix that precedes the policy description does not throw any error
-  Invalid dates such as `2023-02-29` do not currently return errors in the UI
+- If `psd` and `ped` are missing, it does not return an error on the UI and silently fails as a runtime error
 
 ##### Planned Enhancement
 
 - The prefixes will be checked to ensure that the `addPolicy` command entered by the user is a valid command with the correct prefixes
-- The `policy start date` and `policy end date` will be checked to ensure that they are valid dates, including edge cases such as leap years
 
-### 4. Add Policy Feature - Special characters allowed
+### 3. Add Policy Feature - Special characters allowed
 
 #### Current State
 
@@ -906,7 +959,7 @@ The Add Policy command currently allows for special characters such as `;;` whic
 
 Policy name and description will be checked through for special characters and corresponding error messages will be returned in the UI
 
-### 5. Remove Policy Feature - Success message incorrectly formatted
+### 4. Remove Policy Feature - Success message incorrectly formatted
 
 #### Current State
 
@@ -916,7 +969,7 @@ The success message is currently not formatted properly with the details of the 
 
 The success message will be formatted properly
 
-### 6. Preferred Contact Feature - Parameters must be lowercase
+### 5. Preferred Contact Feature - Parameters must be lowercase
 
 #### Current state
 
@@ -926,7 +979,7 @@ The Preferred Contact command only accepts parameters in lower-case but there is
 
 There will be error message returned in the UI when the user enters the parameters not in lowercase (either `email` or `phone`)
 
-### 7. Add Policy Feature - End date can be earlier than start date
+### 6. Add Policy Feature - End date can be earlier than start date
 
 #### Current state
 
@@ -936,7 +989,7 @@ The end date of the policy can be earlier than the start date of the policy.
 
 There will be error message returned when the end date is earlier than the start date of the policy.
 
-### 8. Client files is retained when clients are deleted or edited
+### 7. Client files is retained when clients are deleted or edited
 
 #### Current state
 
