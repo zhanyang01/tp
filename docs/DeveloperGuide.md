@@ -886,7 +886,13 @@ testers are expected to do more _exploratory_ testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample clients. The window size may not be optimum.
+   1. Double-click the jar file <br>
+      **OR**
+      Open the command terminal, `cd` into the folder you put the jar in and use `java -jar Insurahub.jar` command to run the application.<br>Expected: Shows the GUI shown below to ask you to set a password for first timers, first timers will then be asked to key in the password to enter the application.<br> Users who are not first timers will only be asked to enter the password that is previously saved.
+      ![SetPassword](images/setPassword.png)
+
+   1. After the password is entered A GUI similar to the below should appear in a few seconds.
+      ![Ui](images/Ui.png)
 
 1. Saving window preferences
 
@@ -895,13 +901,53 @@ testers are expected to do more _exploratory_ testing.
    1. Re-launch the app by double-clicking the jar file.<br>
       Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+### Adding a client
+
+1. Adding a person while all persons are being shown
+   1. Prerequistics: There should be no clients with the same name as the client you are adding. <br>
+   2. List all persons using the `list` command.
+   3. Test case: `add n/John p/61234567 e/john@email.com a/Blk 312 Choa Chu Kang St 32 pmr/west`<br>
+      Expected: A new client is added and displayed in the client list.
+   4. Test case: `add n/John p/61234567 e/john@email.com a/Blk 312 Choa Chu Kang St 32 t/Friends t/Colleagues pmr/west`<br>
+      Expected: A new client with optional details is added and displayed in the client list.
+
+### Adding a policy
+
+1. Adding a policy into an existing client
+   1. Prerequistic: The client that is going to have the new policy is in the client list.<br>
+   2. List all clients using the `list` command.
+   3. Test case: `addPolicy 1 pn/Health Insurance pd/Cancer Plan pv/2000.00 psd/2023-01-01 ped/2024-12-12`<br>
+      Expected: A new policy is added into the first client, the client details are shown, do note that you have to use viewPolicy to verify the policy you are adding is correct.
+
+### Adding Tags to a client
+
+1. Adding tags to an existing client
+   1. Prerequistic: The client that is going to have the new tag is in the client list.<br>
+   2. List all clients using the `list` command.
+   3. Test case: `addTag 1 t/Friends`<br>
+      Expected: The first client in the list will have the friends tag added, if it is already there, the new tag will replace the old tag.
+
+### Change Password
+
+1. The user will change the password that is required to enter the application. User still remember the old password, users who have forgotten the old password will need to retrieve it by going to `data/encoded.txt`.
+   1. Test case: `changePassword op/OLD PASSWORD np/NEW PASSWORD`
+      <br>Do put in your current password into `OLD PASSWORD` and the password you wish to have as `NEW PASSWORD`.
+      Expected: After leaving the application, you will need to use the new password to enter into the application.
+
+### Delete Tags from a client
+
+1. Deleting tags from an existing client
+
+   1. Prerequistic: The client that the user wants to remove the tag from is in the list, the client currently has the tag that have to be removed.
+   2. List all clients using the `list` command.
+   3. Test case: `deleteTag 1 t/friend`<br>
+      Expected: The first client in the list will have his friend tag removed from the client list.
 
 ### Deleting a person
 
-1. Deleting a person while all persons are being shown
+1. Deleting a person while all clients are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   1. Prerequisites: List all clients using the `list` command.
 
    1. Test case: `delete 1`<br>
       Expected: First client is deleted from the list. Details of the deleted client shown in the status message. Timestamp in the status bar is updated.
@@ -912,15 +958,33 @@ testers are expected to do more _exploratory_ testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+### Adding a file for a client
 
-### Saving data
+1. Adding a file for an existing client
+   1. Prerequistic: The client that the user wants to add the file is in the list.
+   2. List all clients using the `list` command.
+   3. Test case: `file 1`<br>
+      Expected: There will be a file that contains the first client's name added into the `Client Files` folder, if the file is already there, it will be opened.
+   4. Test case: `file 0`<br>
+      Expected: No file is opened. Error details shown in the status message. Status bar remains the same.
 
-1. Dealing with missing/corrupted data files
+### Filter by tags
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+1. Filter clients by tags.
+   1. List all clients using the `list` command.
+   2. Test case: `filter t/friend`<br>
+      Expected: Clients with the tag `friend` will be filtered and shown in the filtered list, status message will return the number of people with the tag.
+   3. Test case: `filter`<br>
+      Expected: There will be an error message stating incorrect command format, the example test case will be in the status message.
 
-1. _{ more test cases …​ }_
+### Filter clients by policy description
+
+1. Filter clients by policy description.
+   1. List all clients using the `list` command.
+   2. Test case: `filterpolicydescription Cancer Plan`<br>
+      Expected: Clients with policies containing policy description `Cancer Plan` will be filtered and shown in the filtered list, status message will return the number of people with the policy, do note that it is case sensative.
+   3. Test case: `filterpolicydescription`<br>
+      Expected: There will be an error message stating incorrect command format, the example test case will be in the status message.
 
 ## **Appendix: Planned Enhancements**
 
