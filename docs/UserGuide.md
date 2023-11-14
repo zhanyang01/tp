@@ -9,11 +9,11 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
    1. [Viewing help](#viewing-help--help)
    2. [Adding a new client](#adding-a-new-client-add)
    3. [Listing all clients](#listing-all-clients--list)
-   4. [Edit a client](#editing-a-person--edit)
+   4. [Edit a client](#editing-a-client--edit)
    5. [Locating clients by name](#locating-clients-by-name-find)
    6. [Deleting a client](#deleting-a-client--delete)
    7. [Clearing all entries](#clearing-all-entries--clear)
-   8. [Filtering a person via tags](#filtering-for-clients-via-tag--filter)
+   8. [Filtering a client via tags](#filtering-for-clients-via-tag--filter)
    9. [Adding a policy to a client](#adding-a-policy-to-a-client--addpolicy)
    10. [Removing a policy from a client](#removing-a-policy-from-a-client--removepolicy)
    11. [Viewing policy from a client](#viewing-policy-of-a-client-viewpolicy)
@@ -212,8 +212,8 @@ Filters for all clients in InsuraHub that have the tag being filtered.
 
 Format: `filter t/TAG1 t/TAG2`
 
-- Filters for person objects that contain all the specified tags `TAG1`, `TAG2`.
-- Only person objects that contain all the specified tags will be listed in the Ui.
+- Filters for clients that contain all the specified tags `TAG1`, `TAG2`.
+- Only clients that contain all the specified tags will be listed in the Ui.
 
 Examples:
 
@@ -403,22 +403,22 @@ If your changes to the data file makes its format invalid, Insurahub will discar
    If you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 
 2. **When opening multiple application using multiple terminals**<br>
-   If you do any actions on the first application, the updates will not be shown on the second application as currently we do not allow application to work simultaneously.
+   If you perform any actions on the first application, the updates will not be shown on the second application as currently we do not allow application to work simultaneously.
 
-3. **Clients/Persons/Contacts** will generally be regarded as the same in insurahub even though it can be confusing
+3. **Clients/Persons/Contacts** will generally be regarded as the same in insurahub even though it can be confusing.
 
 4. **Policy date issue**<br>
    Putting the end date earlier than the start date for policies is currently accepted, we have acknowledge the error and will work to improve the application to remove those errors.
 
 5. **Client Files of deleted/edited clients are retained**<br>
-   At this point the application is unable to delete the files of deleted clients or edit the files of edited clients, we can only delete, edit it manually.
+   At this point, the application is unable to delete the files of deleted clients or edit the files of edited clients, we can only delete, edit it manually.
 
 ---
 
 ## Command summary
 
 | Action                        | Format, Examples                                                                                                                                                                                                            |
-| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-------------------------------| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pmr/east [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pmr/east t/friend t/colleague`                                     |
 | **Clear**                     | `clear`                                                                                                                                                                                                                     |
 | **Delete**                    | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                         |
@@ -427,7 +427,7 @@ If your changes to the data file makes its format invalid, Insurahub will discar
 | **File**                      | `file INDEX`<br> e.g. `file 1`                                                                                                                                                                                              |
 | **Find**                      | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                  |
 | **Add Tag**                   | `addTag <INDEX> t/TAG1 t/TAG2`<br/> e.g. `addTag 1 t/friend`                                                                                                                                                                |
-| **DeleteTag**                 | `deleteTag <INDEX> t/TAG1 t/TAG2`<br/> e.g. `deleteTag 1 t/friend`                                                                                                                                                          |
+| **Delete Tag**                | `deleteTag <INDEX> t/TAG1 t/TAG2`<br/> e.g. `deleteTag 1 t/friend`                                                                                                                                                          |
 | **Filter Tag**                | `filter t/TAG1 t/TAG2`<br/> e.g., `filter t/friend t/colleague`                                                                                                                                                             |
 | **List**                      | `list`                                                                                                                                                                                                                      |
 | **Add Policy**                | `addPolicy INDEX [pn/POLICY NAME  pd/POLICY DESCRIPTION  pv/POLICY VALUE  psd/POLICY START DATE  ped/POLICY END DATE]`<br/> e.g. `addPolicy 1 pn/Health Insurance pd/Cancer Plan pv/2000.00 psd/2023-01-01 ped/2024-12-12 ` |
