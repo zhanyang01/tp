@@ -664,6 +664,8 @@ Return to [Table Of Contents](#table-of-contents)
 
 **Value proposition**: manage client's contacts faster than a typical mouse/GUI driven app while providing ways to efficiently find/store specific client and their documents
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
