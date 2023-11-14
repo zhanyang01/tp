@@ -236,7 +236,7 @@ The following activity diagram shows how the Preferred Contact operation works:
 <img src="diagrams/PreferredContactActivityDiagram.png" width="550" />
 
 The following sequence diagram shows how the Preferred Contact operation works:
-<img src="diagrams/PreferredContactSequenceDiagram.png" width="550" />
+<img src="diagrams/PreferredContactSequenceDiagram.png" width="600" />
 
 Return to [Table Of Contents](#table-of-contents)
 
