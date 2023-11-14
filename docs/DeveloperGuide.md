@@ -603,8 +603,6 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 <img src="diagrams/CommitActivityDiagram.png" width="450" />
 
-Return to [Table Of Contents](#table-of-contents)
-
 #### Design considerations:
 
 **Aspect: How undo & redo executes:**
