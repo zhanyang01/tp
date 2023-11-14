@@ -6,12 +6,7 @@
 
 # InsuraHub Developer Guide
 
-<!-- * Table of Contents -->
-<page-nav-print />
-
----
-
-# **Table of contents**
+## **Table of contents**
 
 1. [Setting up, getting started](#setting-up-getting-started)
 2. [Design](#design)
@@ -22,21 +17,39 @@
    5. [Storage Component](#storage-component)
    6. [Common Classes](#common-classes)
 3. [Implementation](#implementation)
+   1. [Preferred Contact Feature](#preferredcontact-feature)
+   2. [AddTag Feature](#addtag-feature)
+   3. [DeleteTag Feature](#deletetag-feature)
+   4. [Filter by Tags Feature](#filtering-by-tag-feature)
+   5. [File Feature](#file-feature)
+   6. [GroupMeeting Feature](#groupmeeting-feature)
+   7. [Add Policy Feature](#add-policy-feature)
+   8. [Remove Policy Feature](#remove-policy-feature)
+   9. [View Policy Feature](#view-policy-feature)
+   10. [Filter Policy Description Feature](#filter-policy-description-feature)
+   11. [Toggle Mode Feature](#toggle-mode-feature)
+   12. [Change Password Feature](#change-password-feature)
+   13. [Proposed Undo/Redo feature](#proposed-undoredo-feature)
 4. [Acknowledgements](#acknowledgements)
-5. [Appendix Requirements](#appendix-requirements)
+5. [Appendix: Requirements](#appendix-requirements)
    1. [Product Scope](#product-scope)
    2. [User Stories](#user-stories)
    3. [Use Cases](#use-cases)
-      1. Adding more tags to client records
-      2. Quick access of contact detail of clients
-      3. Adding new clients information
-      4. Filtering client information using tags
-      5. Storing client documents neatly in a folder
-      6. Grouping clients based on nearest MRT
+      1. [Use Case 1: Adding more tags to client records](#use-case-1---adding-more-tags-to-client-records)
+      2. [Use Case 2: Deleting tags from client records](#use-case-2---deleting-tags-from-client-records)
+      3. [Use Case 3: Adding client preferred form of contact](#use-case-3---adding-client-preferred-form-of-contact)
+      4. [Use Case 4: Filtering client information through tags](#use-case-4---filtering-client-information-using-tags)
+      5. [Use Case 5: Storing client documents nearly in a folder](#use-case-5---storing-client-documents-neatly-in-a-folder)
+      6. [Use Case 6: Grouping clients based on the nearest MRT station fromm their residence to a region](#use-case-6---grouping-clients-based-on-the-nearest-mrt-station-from-their-residence-to-a-region)
+      7. [Use Case 7: Delete a person](#use-case-7---delete-a-person)
+      8. [Use Case 8: Filter Policy](#use-case-8---filter-policy)
    4. [Non-Functional Requirements](#non-functional-requirements)
    5. [Glossary](#glossary)
-6. [Appendix-Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
-7. [Appendix-Planned Enhancements](#appendix-planned-enhancements)
+6. [Appendix: Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
+7. [Appendix: Planned Enhancements](#appendix-planned-enhancements)
+   <page-nav-print />
+
+---
 
 ## **Setting up, getting started**
 
@@ -50,8 +63,9 @@ Return to [Table Of Contents](#table-of-contents)
 
 ### Architecture
 
-<puml src="diagrams/ArchitectureDiagram.puml" width="280" />
-The **_Architecture Diagram_** given above explains the high-level design of the App.
+<img src="diagrams/ArchitectureDiagram.png" width="280" />
+<br>
+The Architecture Diagram given above explains the high-level design of the App.
 
 Given below is a quick overview of main components and how they interact with each other.
 
@@ -75,16 +89,16 @@ The bulk of the app's work is done by the following four components:
 
 The _Sequence Diagram_ below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
 
-<puml src="diagrams/ArchitectureSequenceDiagram.puml" width="574" />
+<img src="diagrams/ArchitectureSequenceDiagram.png" width="574" />
 
 Each of the four main components (also shown in the diagram above),
 
 - defines its _API_ in an `interface` with the same name as the Component.
-- implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+- implements its functionality using a concrete `{Component Name}Manager` class which follows the corresponding API `interface` mentioned in the previous point.
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
-<puml src="diagrams/ComponentManagers.puml" width="300" />
+<img src="diagrams/ComponentManagers.png" width="300" />
 
 The sections below give more details of each component.
 
@@ -94,7 +108,7 @@ Return to [Table Of Contents](#table-of-contents)
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/AY2324S1-CS2103-W14-1/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
-<puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
+<img src="diagrams/UiClassDiagram.png" alt="Structure of the UI Component"/>
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
@@ -115,11 +129,11 @@ Return to [Table Of Contents](#table-of-contents)
 
 Here's a (partial) class diagram of the `Logic` component:
 
-<puml src="diagrams/LogicClassDiagram.puml" width="550"/>
+<img src="diagrams/LogicClassDiagram.png" width="550"/>
 
 The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete 1")` API call as an example.
 
-<puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
+<img src="diagrams/DeleteSequenceDiagram.png" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
 
 <box type="info" seamless>
 
@@ -135,7 +149,7 @@ How the `Logic` component works:
 
 Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
 
-<puml src="diagrams/ParserClasses.puml" width="600"/>
+<img src="diagrams/ParserClasses.png" width="600"/>
 
 How the parsing works:
 
@@ -148,7 +162,7 @@ Return to [Table Of Contents](#table-of-contents)
 
 **API** : [`Model.java`](https://github.com/AY2324S1-CS2103-W14-1/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-<puml src="diagrams/ModelClassDiagram.puml" width="650" />
+<img src="diagrams/ModelClassDiagram.png" width="750" />
 
 The `Model` component,
 
@@ -161,7 +175,7 @@ The `Model` component,
 
 **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
 
-<puml src="diagrams/BetterModelClassDiagram.puml" width="650" />
+<img src="diagrams/BetterModelClassDiagram.png" width="850" />
 
 </box>
 
@@ -171,7 +185,7 @@ Return to [Table Of Contents](#table-of-contents)
 
 **API** : [`Storage.java`](https://github.com/AY2324S1-CS2103-W14-1/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
-<puml src="diagrams/StorageClassDiagram.puml" width="550" />
+<img src="diagrams/StorageClassDiagram.png" width="625" />
 
 The `Storage` component,
 
@@ -219,10 +233,12 @@ Given below is an example usage scenario and how the PreferredContact mechanism 
 10. The execution will then be over as the preferred contact method will be highlighted and the adding preferred contact command successful message will then be displayed.
 
 The following activity diagram shows how the Preferred Contact operation works:
-<img src="diagrams/PreferredContactActivityDiagram.png" width="650" />
+<img src="diagrams/PreferredContactActivityDiagram.png" width="750" />
 
 The following sequence diagram shows how the Preferred Contact operation works:
-<img src="diagrams/PreferredContactSequenceDiagram.png" width="650" />
+<img src="diagrams/PreferredContactSequenceDiagram.png" width="1200" />
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### AddTag feature
 
@@ -240,11 +256,12 @@ Given below is an example usage scenario and how the AddTag mechanism behaves at
 6. The `CommandResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added tag and a success message is displayed on the UI
 
 The following activity diagram shows how the AddTag operation works:
-<img src="diagrams/AddTagActivityDiagram.png" width="650">
+<img src="diagrams/AddTagActivityDiagram.png" width="850">
 
 The following sequence diagram shows how the AddTag operation works:
-<img src="diagrams/AddTagSequenceDiagram.png" width="650">
+<img src="diagrams/AddTagSequenceDiagram.png" width="1080">
 
+Return to [Table Of Contents](#table-of-contents)
 
 ### DeleteTag feature
 
@@ -264,10 +281,12 @@ Given below is an example usage scenario and how the DeleteTag mechanism behaves
 8. A successful message is returned, in this case `Deleted tags successfully for person Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Tags: `
 
 The following activity diagram shows how the DeleteTag operation works:
-<img src="diagrams/DeleteTagActivityDiagram.png" width="650">
+<img src="diagrams/DeleteTagActivityDiagram.png" width="825">
 
 The following sequence diagram shows how the DeleteTag operation works:
-<img src="diagrams/DeleteTagSequenceDiagram.png" width="650">
+<img src="diagrams/DeleteTagSequenceDiagram.png" width="1080">
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Filtering by Tag feature
 
@@ -296,11 +315,13 @@ Given below is an example usage scenario and how the tag filtering mechanism beh
 
 4. The update list of filtered `Person` objects are then displayed on the ui.
 
-The following activity diagram shows how the filter tag operation works:
-<img src="diagrams/FilterTagActivityDiagram.png" width="650">
+The following activity diagram shows how the Filter tag operation works:
+<img src="diagrams/FilterTagActivityDiagram.png" width="450">
 
-The following sequence diagram shows how the filter tag operation works:
-<img src="diagrams/FilterTagSequenceDiagram.png" width="650" />
+The following sequence diagram shows how the Filter tag operation works:
+<img src="diagrams/FilterTagSequenceDiagram.png" width="900" />
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### File feature
 
@@ -321,9 +342,10 @@ Given below is an example usage scenario and how the file mechanism behaves at e
 6. The folder in the ClientFiles folder with the folder name will be opened.
 7. The execution will then be over as the user can now drop files for the client into this opened folder, file command successful message will be displayed.
 
-Activity diagram for file Command:
-<img src="diagrams/FileActivityDiagram.png" width="650" />
+Activity diagram for File Command:<br>
+<img src="diagrams/FileActivityDiagram.png" width="900" />
 
+Return to [Table Of Contents](#table-of-contents)
 
 ### GroupMeeting feature
 
@@ -351,11 +373,13 @@ Given below is an example usage scenario and how the Group Meeting mechanism beh
 8. This object will then be passed to `Logic`.
 9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
 
-Activity diagram for filtering clients based on preferred meeting region
-<img src="diagrams/GroupMeetingActivityDiagram.png" width="650" />
+Activity diagram for filtering clients based on preferred meeting region:
+<img src="diagrams/GroupMeetingActivityDiagram.png" width="550" />
 
-Sequence diagram for filtering clients based on preferred meeting region
-<img src="diagrams/GroupMeetingSequenceDiagram.png" width="650" />
+Sequence diagram for filtering clients based on preferred meeting region:
+<img src="diagrams/GroupMeetingSequenceDiagram.png" width="1080" />
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Add Policy feature
 
@@ -380,12 +404,14 @@ Given below is an example usage scenario and how the Add Policy Mechanism works:
 5. This calls the `createPersonWithAddedPolicy` method, creating a new Person object with the same details as `Alex Yeoh` but with the newly added policy
 6. The `model` calls the `setPerson` method and updates the targetted client with the newly created client from the previous step
 7. The `CommanResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added policy and a success message is displayed on the UI
-   
+
 The following activity diagram shows how the AddPolicy operation works:
-<img src="diagrams/AddPolicyActivityDiagram.png" width = "650">
+<img src="diagrams/AddPolicyActivityDiagram.png" width = "900">
 
 The following sequence diagram shows how the AddPolicy operation works:
-<img src="diagrams/AddPolicySequenceDiagram.png" width = "650">
+<img src="diagrams/AddPolicySequenceDiagram.png" width = "1200">
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Remove Policy feature
 
@@ -403,10 +429,12 @@ Given below is an example usage scenario and how the Remove Policy mechanism beh
 6. The `CommandResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` not having the policy that was removed and a success message is displayed on the UI
 
 The following activity diagram shows how the RemovePolicy operation works:
-<img src="diagrams/RemovePolicyActivityDiagram.png" width = "650">
+<img src="diagrams/RemovePolicyActivityDiagram.png" width = "900">
 
 The following sequence diagram shows how the RemovePolicy operation works:
-<img src="diagrams/RemovePolicySequenceDiagram.png" width = "650">
+<img src="diagrams/RemovePolicySequenceDiagram.png" width = "1000">
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### View Policy Feature
 
@@ -424,10 +452,12 @@ Given below is an example usage scenario and how the View Policy mechanism behav
 6. The UI will display the details of the policy specified by the index and a success message is displayed on the UI
 
 The following activity diagram for viewing policy of a particular Client:
-<img src="diagrams/ViewPolicyActivityDiagram.png" width="650" />
+<img src="diagrams/ViewPolicyActivityDiagram.png"/>
 
 The following sequence diagram shows how the View Policy operation works:
-<img src="diagrams/ViewPolicySequenceDiagram.png" width="650" />
+<img src="diagrams/ViewPolicySequenceDiagram.png" width="1000" />
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Filter Policy Description feature
 
@@ -447,11 +477,13 @@ Given below is an example usage scenario and how the Filter Policy mechanism beh
 8. This object will then be passed to `Logic`.
 9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
 
-The following sequence diagram shows how the Filter Policy Description operation works:
-<img src="diagrams/FilterPolicySequenceDiagram.png" width ="650">
-
 The following activity diagram shows how the Filter Policy Description operation works:
-<img src="diagrams/FilterPolicyActivityDiagram.png" width="650" />
+<img src="diagrams/FilterPolicyActivityDiagram.png"/>
+
+The following sequence diagram shows how the Filter Policy Description operation works:
+<img src="diagrams/FilterPolicySequenceDiagram.png" width ="1200">
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### Toggle Mode feature
 
@@ -474,6 +506,8 @@ The following activity diagram shows how the Toggle Mode operation works:
 The following sequence diagram shows how the Toggle Mode operation works:
 <img src="diagrams/ToggleModeSequenceDiagram.png" width = "650">
 
+Return to [Table Of Contents](#table-of-contents)
+
 ### Change Password feature
 
 #### Current Implementation
@@ -485,14 +519,16 @@ Given below is an example usage scenario and how the changePassword command beha
 1. The user launches the application and sets the password as "oldPW1" before entering InsuraHub with the password.
 2. The user wants to change the password and enters the commant `changePassword op/oldPW1 np/newPW2`
 3. The `passwordManager` calls its `check` method on the old password given "oldPW1" to determine if the current password saved in encoded.txt in the data folder is indeed "oldPW1"
-3. The `passwordManager` detects that the old password is indeed correct and calls its `set` method to set the new password as "newPW2" by modifying the string saved in encoded.txt in the data folder.
+4. The `passwordManager` detects that the old password is indeed correct and calls its `set` method to set the new password as "newPW2" by modifying the string saved in encoded.txt in the data folder.
 5. The UI will continue displaying the list of clients and a success message is displayed on the UI.
 
-activity diagram for changePassword Command:
-<img src="diagrams/ChangePasswordActivityDiagram.png" width="650" />
+Activity Diagram for changePassword Command:
+<img src="diagrams/ChangePasswordActivityDiagram.png" width="825" />
 
 The following sequence diagram shows how the changePassword operation works:
-<img src="diagrams/ChangePasswordSequenceDiagram.png" width="650" />
+<img src="diagrams/ChangePasswordSequenceDiagram.png" width="1200" />
+
+Return to [Table Of Contents](#table-of-contents)
 
 ### \[Proposed\] Undo/redo feature
 
@@ -510,15 +546,15 @@ Given below is an example usage scenario and how the undo/redo mechanism behaves
 
 Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
 
-<puml src="diagrams/UndoRedoState0.puml" alt="UndoRedoState0" />
+<img src="diagrams/UndoRedoState0-Initial_state.png" alt="UndoRedoState0" />
 
 Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
 
-<puml src="diagrams/UndoRedoState1.puml" alt="UndoRedoState1" />
+<img src="diagrams/UndoRedoState1-After_command__delete_5_.png" alt="UndoRedoState1" />
 
 Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
 
-<puml src="diagrams/UndoRedoState2.puml" alt="UndoRedoState2" />
+<img src="diagrams/UndoRedoState2-After_command__add_n_David_.png" alt="UndoRedoState2" />
 
 <box type="info" seamless>
 
@@ -528,7 +564,7 @@ Step 3. The user executes `add n/David …​` to add a new person. The `add` co
 
 Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
 
-<puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
+<img src="diagrams/UndoRedoState3-After_command__undo_.png" alt="UndoRedoState3" />
 
 <box type="info" seamless>
 
@@ -539,7 +575,7 @@ than attempting to perform the undo.
 
 The following sequence diagram shows how the undo operation works:
 
-<puml src="diagrams/UndoSequenceDiagram.puml" alt="UndoSequenceDiagram" />
+<img src="diagrams/UndoSequenceDiagram.png" alt="UndoSequenceDiagram" />
 
 <box type="info" seamless>
 
@@ -557,15 +593,17 @@ The `redo` command does the opposite — it calls `Model#redoAddressBook()`,
 
 Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
 
-<puml src="diagrams/UndoRedoState4.puml" alt="UndoRedoState4" />
+<img src="diagrams/UndoRedoState4-After_command__list_.png" alt="UndoRedoState4" />
 
 Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
 
-<puml src="diagrams/UndoRedoState5.puml" alt="UndoRedoState5" />
+<img src="diagrams/UndoRedoState5-After_command__clear_.png" alt="UndoRedoState5" />
 
 The following activity diagram summarizes what happens when a user executes a new command:
 
-<puml src="diagrams/CommitActivityDiagram.puml" width="250" />
+<img src="diagrams/CommitActivityDiagram.png" width="250" />
+
+Return to [Table Of Contents](#table-of-contents)
 
 #### Design considerations:
 
@@ -659,15 +697,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | insurance agent working with others        | Send and receive client details with other users                   | take over/hand over clients from other agents                            |
 | `*`      | data-driven insurance agent                | Access a variety of reports and analytics                          | make informed decisions to improve my business                           |
 
-_{More to be added}_
-
 Return to [Table Of Contents](#table-of-contents)
 
 ### Use cases
 
 If not explicitly mentioned, the actor will be a Financial Advisor and InsuraHub as the System.
 
-**Use Case 1** - Adding more tags to client records.<br>
+#### **Use Case 1** - Adding more tags to client records
+
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
@@ -682,7 +719,10 @@ MSS:
 1a1. System displays an error message indicating that user have to key in at least one tag<br>
 Use case ends
 
-**Use Case 2** - Deleting tags from client records.<br>
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use Case 2** - Deleting tags from client records
+
 Precondition: User knows the client index relative to the list and the client is added into the list of clients, clients must also have the tag/tags listed in one of their tags.
 
 MSS:
@@ -701,7 +741,10 @@ Use case ends.
 1b1. System returns an error message stating that one tag must be provided.<br>
 Use case ends
 
-**Use Case 3** - Adding client preferred form of contact<br>
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use Case 3** - Adding client preferred form of contact
+
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
@@ -725,7 +768,9 @@ Use case ends
 1c1. System displays an error message indicating that the user have to put in at least one form of contact.<br>
 User case ends
 
-**Use Case 4** - Filtering client information using tags
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use Case 4** - Filtering client information using tags
 
 MSS:
 
@@ -733,7 +778,10 @@ MSS:
 2. System updates with a list of clients that fulfills the tags to be filtered.<br>
    Use case ends
 
-**Use Case 5** - Storing client documents neatly in a folder<br>
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use Case 5** - Storing client documents neatly in a folder
+
 Precondition: User knows the client index relative to the list and the client is added into the list of clients
 
 MSS:
@@ -748,7 +796,9 @@ MSS:
 1a1. System displays an error message indicating that the process of creating a file for the user is stopped.<br>
 Use case ends
 
-**Use Case 6** - Grouping clients based on the nearest MRT station from their residence to a region
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use Case 6** - Grouping clients based on the nearest MRT station from their residence to a region
 
 MSS:
 
@@ -762,7 +812,9 @@ MSS:
 1a1. System returns an error message stating to put in a valid region to be filtered.<br>
 Use Case Ends
 
-**Use case 7** - Delete a person
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use case 7** - Delete a person
 
 MSS:
 
@@ -772,12 +824,14 @@ MSS:
 
 **Extensions**
 
-- 1a. The given index is invalid.
+1a. The given index is invalid.
 
-  - 1a1. InsuraHub shows an error message.<br>
-    Use case resumes at step 2.
+1a1. InsuraHub shows an error message.<br>
+Use case resumes at step 2.
 
-**Use case 8** - Filter Policy
+Return to [Table Of Contents](#table-of-contents)
+
+#### **Use case 8** - Filter Policy
 
 MSS:
 
@@ -787,10 +841,8 @@ MSS:
 
 **Extensions**
 
-- 2a. The list is empty.<br>
-  Use case ends.
-
-_{More to be added}_
+2a. The list is empty.<br>
+Use case ends.
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -802,10 +854,6 @@ Return to [Table Of Contents](#table-of-contents)
 4.  The application should ensure the integrity and consistency of data stored in the address book. Data should not be lost or corrupted during normal usage or unexpected errors.
 5.  Any commands should be executed within 1s.
 6.  The address book should be able to store 2000 clients' information.
-
-_{More to be added}_
-
-_{More to be added}_
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -838,7 +886,13 @@ testers are expected to do more _exploratory_ testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample clients. The window size may not be optimum.
+   1. Double-click the jar file <br>
+      **OR**
+      Open the command terminal, `cd` into the folder you put the jar in and use `java -jar Insurahub.jar` command to run the application.<br>Expected: Shows the GUI shown below to ask you to set a password for first timers, first timers will then be asked to key in the password to enter the application.<br> Users who are not first timers will only be asked to enter the password that is previously saved.
+      ![SetPassword](images/setPassword.png)
+
+   1. After the password is entered A GUI similar to the below should appear in a few seconds.
+      ![Ui](images/Ui.png)
 
 1. Saving window preferences
 
@@ -847,36 +901,137 @@ testers are expected to do more _exploratory_ testing.
    1. Re-launch the app by double-clicking the jar file.<br>
       Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+### Adding a client
 
-### Deleting a person
+1. Adding a person while all persons are being shown
+   1. Prerequisites: There should be no clients with the same name as the client you are adding. <br>
+   2. List all persons using the `list` command.
+   3. Test case: `add n/John p/61234567 e/john@email.com a/Blk 312 Choa Chu Kang St 32 pmr/west`<br>
+      Expected: A new client is added and displayed in the client list.
+   4. Test case: `add n/John p/61234567 e/john@email.com a/Blk 312 Choa Chu Kang St 32 t/Friends t/Colleagues pmr/west`<br>
+      Expected: A new client with optional details is added and displayed in the client list.
 
-1. Deleting a person while all persons are being shown
+### Deleting a client
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+1. Deleting a client while all clients are being shown
 
-   1. Test case: `delete 1`<br>
+   1. Prerequisites: List all clients using the `list` command.
+
+   2. Test case: `delete 1`<br>
       Expected: First client is deleted from the list. Details of the deleted client shown in the status message. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+   3. Test case: `delete 0`<br>
+      Expected: No client is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+### Adding Tags to a client
 
-### Saving data
+1. Adding tags to an existing client
+   1. Prerequisites: The client that is going to have the new tag is in the client list.<br>
+   2. List all clients using the `list` command.
+   3. Test case: `addTag 1 t/Friends`<br>
+      Expected: The first client in the list will have the friends tag added, if it is already there, the new tag will replace the old tag.
 
-1. Dealing with missing/corrupted data files
+### Delete Tags from a client
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+1. Deleting tags from an existing client
 
-1. _{ more test cases …​ }_
+   1. Prerequisites: The client that the user wants to remove the tag from is in the list, the client currently has the tag that have to be removed.
+   2. List all clients using the `list` command.
+   3. Test case: `deleteTag 1 t/friend`<br>
+      Expected: The first client in the list will have his friend tag removed from the client list.
+
+### Change Password
+
+1. The user will change the password that is required to enter the application. User still remember the old password, users who have forgotten the old password will need to retrieve it by going to `data/encoded.txt`.
+   1. Test case: `changePassword op/OLD PASSWORD np/NEW PASSWORD`
+      <br>Do put in your current password into `OLD PASSWORD` and the password you wish to have as `NEW PASSWORD`.
+      Expected: After leaving the application, you will need to use the new password to enter into the application.
+
+### Adding a policy
+
+1. Adding a policy into an existing client
+   1. Prerequisites: The client that is going to have the new policy is in the client list.<br>
+   2. List all clients using the `list` command.
+   3. Test case: `addPolicy 1 pn/Health Insurance pd/Cancer Plan pv/2000.00 psd/2023-01-01 ped/2024-12-12`<br>
+      Expected: A new policy is added into the first client, the client details are shown, do note that you have to use viewPolicy to verify the policy you are adding is correct.
+
+### Removing Policy from a client
+1. Removing a policy from an existing client
+   1. Prerequisites: The client that the user wants to remove the policy from is in the list, the client currently has policies to remove.
+   2. List all clients using the `list` command.
+   3. Test case: `removePolicy 1 1`<br>
+      Expected: The first client in the list will have his first (right-most) policy removed from his policy list.
+   4. Test case: `removePolicy 1 0`<br>
+      Expected: No policy is deleted. Error details shown in the status message. Status bar remains the same.
+   
+### Adding a file for a client
+
+1. Adding a file for an existing client
+   1. Prerequisites: The client that the user wants to add the file is in the list.
+   2. List all clients using the `list` command.
+   3. Test case: `file 1`<br>
+      Expected: There will be a file that contains the first client's name added into the `Client Files` folder, if the file is already there, it will be opened.
+   4. Test case: `file 0`<br>
+      Expected: No file is opened. Error details shown in the status message. Status bar remains the same.
+
+### Filter by tags
+
+1. Filter clients by tags.
+   1. List all clients using the `list` command.
+   2. Test case: `filter t/friend`<br>
+      Expected: Clients with the tag `friend` will be filtered and shown in the filtered list, status message will return the number of people with the tag.
+   3. Test case: `filter`<br>
+      Expected: There will be an error message stating incorrect command format, the example test case will be in the status message.
+
+### Filter clients by policy description
+
+1. Filter clients by policy description.
+   1. List all clients using the `list` command.
+   2. Test case: `filterpolicydescription Cancer Plan`<br>
+      Expected: Clients with policies containing policy description `Cancer Plan` will be filtered and shown in the filtered list, status message will return the number of people with the policy, do note that it is case sensative.
+   3. Test case: `filterpolicydescription`<br>
+      Expected: There will be an error message stating incorrect command format, the example test case will be in the status message.
+
+### Group Meeting
+
+1. Filter clients by preferred meeting region.
+   1. Prerequisites: There are clients that have the region as their preferred meeting region.
+   2. Test case: `groupmeeting north`
+      Expected: Clients with the preferred meeting location `west` will be filtered and shown in the filtered list, status message will return the number of people listed with that preferred meeting location.
+   3. Test case: `groupmeeting`<br>
+      Expected: There will be an error message stating incorrect command format, the example test case will be in the status message.
+
+### Viewing details of client's policy
+
+1. Viewing the details of a client's policy.
+   1. Prerequisites: The client that the user wants to view the policy of is in the list, the client currently has policies to remove.
+   2. Test case: `viewPolicy 1 1`
+      Expected: The policy details (policy name, policy description, policy value, start date and end date) will be displayed in the status message.
+   3. Test case: `viewPolicy`
+      Expected: There will be an error message stating incorrect command format and that both indexes are required.
+
+### Preferred Contact
+
+1. Setting the preferred contact method for a client.
+   1. Prerequisites: The client that the user wants to set the preferred contact method for is in the list.
+   2. List all clients using the `list` command.
+   3. Test case: `preferredContact 1 pc/phone`
+      Expected: The preferred contact method of the first client in the list will be highlighted in yellow.
+   4. Test case: `preferredContact`
+      Expected: There will be an error message stating incorrect command format and an example command will be shown in the status message.
+
+### Toggle UI Mode
+
+1. Toggling the UI Mode between light mode or dark mode.
+   1. Test case: `toggleMode`
+      Expected: Success message stating the mode has been changed and InsuraHub will be switched to the other mode upon the next launch.
 
 ## **Appendix: Planned Enhancements**
 
-### Add Feature - Email Validation
+### 1. Add Feature - Email Validation
 
 #### Current State
 
@@ -886,33 +1041,22 @@ The `email` parameter for adding a new client to InsuraHub currently only allows
 
 The local-part will allow special characters which are commonly used in email addresses with the limitation of having no consecutive special characters together
 
-### Add Feature - Phone Number Validation
-
-#### Current State
-
-The `phone number` parameter for adding a new client to InsuraHub currently does not check for if the phone number is a typical valid Singaporean phone number that begins with 6, 8, or 9
-
-#### Planned Enhancement
-
-The `phone number` will be checked to ensure it starts with 6, 8, or 9, with an error message thrown if it fails that check
-
-### Add Policy Feature - Invalid parameter and prefix name
+### 2. Add Policy Feature - Invalid parameter and prefix name
 
 #### Current State
 
 No errors for Invalid prefixes:
 
-- Having 2 `pn` prefixes (policy name) does not return the user any error in the InsuraHub UI
+- Having 2 `pn` prefixes (policy name) returns missing prefixes error
 - No error message on the UI for empty parameters such as an empty policy name `pn`
 - The `policy description` should be of the prefix `pd` in the `addPolicy` command but using an unknown `pr` prefix that precedes the policy description does not throw any error
-  Invalid dates such as `2023-02-29` do not currently return errors in the UI
+- If `psd` and `ped` are missing, it does not return an error on the UI and silently fails as a runtime error
 
 ##### Planned Enhancement
 
 - The prefixes will be checked to ensure that the `addPolicy` command entered by the user is a valid command with the correct prefixes
-- The `policy start date` and `policy end date` will be checked to ensure that they are valid dates, including edge cases such as leap years
 
-### Add Policy Feature - Special characters allowed
+### 3. Add Policy Feature - Special characters allowed
 
 #### Current State
 
@@ -922,7 +1066,7 @@ The Add Policy command currently allows for special characters such as `;;` whic
 
 Policy name and description will be checked through for special characters and corresponding error messages will be returned in the UI
 
-### Remove Policy Feature - Success message incorrectly formatted
+### 4. Remove Policy Feature - Success message incorrectly formatted
 
 #### Current State
 
@@ -932,7 +1076,7 @@ The success message is currently not formatted properly with the details of the 
 
 The success message will be formatted properly
 
-### Preferred Contact Feature - Parameters must be lowercase
+### 5. Preferred Contact Feature - Parameters must be lowercase
 
 #### Current state
 
@@ -941,5 +1085,25 @@ The Preferred Contact command only accepts parameters in lower-case but there is
 #### Planned Enhancement
 
 There will be error message returned in the UI when the user enters the parameters not in lowercase (either `email` or `phone`)
+
+### 6. Add Policy Feature - End date can be earlier than start date
+
+#### Current state
+
+The end date of the policy can be earlier than the start date of the policy.
+
+#### Planned Enhancement
+
+There will be error message returned when the end date is earlier than the start date of the policy.
+
+### 7. Client files is retained when clients are deleted or edited
+
+#### Current state
+
+Clients files in the client files folder is retained when clients are deleted or edited
+
+#### Planned Enhancement
+
+They will be edited or users will be reminded to edit or delete the files according when the client names are edited or deleted accordingly.
 
 Return to [Table Of Contents](#table-of-contents)

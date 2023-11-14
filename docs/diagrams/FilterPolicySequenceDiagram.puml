@@ -8,14 +8,13 @@ box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
 participant ":FilterPolicyDescriptionCommandParser" as FilterPolicyDescriptionCommandParser LOGIC_COLOR
-participant ":FilterPolicyDescriptionCommand" as FilterPolicyDescriptionCommand LOGIC_COLOR
+participant "f :FilterPolicyDescriptionCommand" as FilterPolicyDescriptionCommand LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-autonumber
 [->LogicManager : execute(filterpolicydescription cancer plans)
 activate LogicManager
 
@@ -27,13 +26,29 @@ AddressBookParser -> FilterPolicyDescriptionCommandParser:
 activate FilterPolicyDescriptionCommandParser
 
 FilterPolicyDescriptionCommandParser --> AddressBookParser
-FilterPolicyDescriptionCommandParser -> FilterPolicyDescriptionCommandParser : Parse
+deactivate FilterPolicyDescriptionCommandParser
+
+AddressBookParser -> FilterPolicyDescriptionCommandParser : parse(cancer plans)
+activate FilterPolicyDescriptionCommandParser
 
 create FilterPolicyDescriptionCommand
 FilterPolicyDescriptionCommandParser -> FilterPolicyDescriptionCommand
 activate FilterPolicyDescriptionCommand
-LogicManager -> FilterPolicyDescriptionCommand : execute()
+
+FilterPolicyDescriptionCommand --> FilterPolicyDescriptionCommandParser: f
+deactivate FilterPolicyDescriptionCommand
+
+FilterPolicyDescriptionCommandParser --> AddressBookParser: f
 deactivate FilterPolicyDescriptionCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar'
+FilterPolicyDescriptionCommandParser -[hidden]-> AddressBookParser
+destroy FilterPolicyDescriptionCommandParser
+
+AddressBookParser --> LogicManager: f
+deactivate AddressBookParser
+
+LogicManager -> FilterPolicyDescriptionCommand : execute()
+activate FilterPolicyDescriptionCommand
 
 FilterPolicyDescriptionCommand -> Model : updateFilteredPerson(Predicate)
 activate Model
@@ -42,6 +57,4 @@ Model --> FilterPolicyDescriptionCommand
 deactivate Model
 LogicManager <- FilterPolicyDescriptionCommand: result
 deactivate FilterPolicyDescriptionCommand
-
-
 @enduml

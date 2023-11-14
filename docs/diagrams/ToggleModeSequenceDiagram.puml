@@ -10,7 +10,6 @@ participant ":uiModeManager" as uiModeManager LOGIC_COLOR
 participant ":uiMode" as uiMode LOGIC_COLOR
 end box
 
-autonumber
 activate ToggleModeCommand
 create uiModeManager
 ToggleModeCommand -> uiModeManager
@@ -28,6 +27,4 @@ alt [uiMode equals 'MainWindow.fxml']
 else
 deactivate uiMode
 deactivate ToggleModeCommand
-
-
 @enduml

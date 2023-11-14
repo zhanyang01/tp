@@ -3,13 +3,13 @@
   title: "Luah Jun Yang's Project Portfolio Page"
 ---
 
-### Project: Insurahub
+### Project: InsuraHub
 
-Insurahub - Insurahub is a CLI application that targets financial advisors that type fast and prefers to use CLI over GUI to use the app.
+InsuraHub - InsuraHub is a CLI application that targets financial advisors that type fast and prefers to use CLI over GUI to use the app.
 The application is mainly used by financial advisors in their day-to-day planning and scheduling of meetings with clients,
 assisting them by providing quick access to important information of each client stored in the database, displayed on the UI of InsuraHub.
 
-While Insurahub has limited functionalities at this stage, there are further plans to improve the application with the timeline being set in place.
+While InsuraHub has limited functionalities at this stage, there are further plans to improve the application with the timeline being set in place.
 
 Given below are my contributions to the project.
 
