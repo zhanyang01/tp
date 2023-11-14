@@ -108,7 +108,7 @@ Return to [Table Of Contents](#table-of-contents)
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/AY2324S1-CS2103-W14-1/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
-<img src="diagrams/UiClassDiagram.png" alt="Structure of the UI Component"/>
+<img src="diagrams/UiClassDiagram.png" alt="Structure of the UI Component" width="600"/>
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
@@ -129,11 +129,11 @@ Return to [Table Of Contents](#table-of-contents)
 
 Here's a (partial) class diagram of the `Logic` component:
 
-<img src="diagrams/LogicClassDiagram.png" width="550"/>
+<img src="diagrams/LogicClassDiagram.png" width="600"/>
 
 The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete 1")` API call as an example.
 
-<img src="diagrams/DeleteSequenceDiagram.png" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
+<img src="diagrams/DeleteSequenceDiagram.png" alt="Interactions Inside the Logic Component for the `delete 1` Command" width = "600"/>
 
 <box type="info" seamless>
 
@@ -162,7 +162,7 @@ Return to [Table Of Contents](#table-of-contents)
 
 **API** : [`Model.java`](https://github.com/AY2324S1-CS2103-W14-1/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-<img src="diagrams/ModelClassDiagram.png" width="750" />
+<img src="diagrams/ModelClassDiagram.png" width="650" />
 
 The `Model` component,
 
@@ -175,7 +175,7 @@ The `Model` component,
 
 **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
 
-<img src="diagrams/BetterModelClassDiagram.png" width="850" />
+<img src="diagrams/BetterModelClassDiagram.png" width="650" />
 
 </box>
 
@@ -233,10 +233,10 @@ Given below is an example usage scenario and how the PreferredContact mechanism 
 10. The execution will then be over as the preferred contact method will be highlighted and the adding preferred contact command successful message will then be displayed.
 
 The following activity diagram shows how the Preferred Contact operation works:
-<img src="diagrams/PreferredContactActivityDiagram.png" width="750" />
+<img src="diagrams/PreferredContactActivityDiagram.png" width="650" />
 
 The following sequence diagram shows how the Preferred Contact operation works:
-<img src="diagrams/PreferredContactSequenceDiagram.png" width="1200" />
+<img src="diagrams/PreferredContactSequenceDiagram.png" width="650" />
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -256,10 +256,10 @@ Given below is an example usage scenario and how the AddTag mechanism behaves at
 6. The `CommandResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added tag and a success message is displayed on the UI
 
 The following activity diagram shows how the AddTag operation works:
-<img src="diagrams/AddTagActivityDiagram.png" width="850">
+<img src="diagrams/AddTagActivityDiagram.png" width="650">
 
 The following sequence diagram shows how the AddTag operation works:
-<img src="diagrams/AddTagSequenceDiagram.png" width="1080">
+<img src="diagrams/AddTagSequenceDiagram.png" width="650">
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -281,10 +281,10 @@ Given below is an example usage scenario and how the DeleteTag mechanism behaves
 8. A successful message is returned, in this case `Deleted tags successfully for person Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Tags: `
 
 The following activity diagram shows how the DeleteTag operation works:
-<img src="diagrams/DeleteTagActivityDiagram.png" width="825">
+<img src="diagrams/DeleteTagActivityDiagram.png" width="650">
 
 The following sequence diagram shows how the DeleteTag operation works:
-<img src="diagrams/DeleteTagSequenceDiagram.png" width="1080">
+<img src="diagrams/DeleteTagSequenceDiagram.png" width="650">
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -319,7 +319,7 @@ The following activity diagram shows how the Filter tag operation works:
 <img src="diagrams/FilterTagActivityDiagram.png" width="450">
 
 The following sequence diagram shows how the Filter tag operation works:
-<img src="diagrams/FilterTagSequenceDiagram.png" width="900" />
+<img src="diagrams/FilterTagSequenceDiagram.png" width="650" />
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -343,7 +343,7 @@ Given below is an example usage scenario and how the file mechanism behaves at e
 7. The execution will then be over as the user can now drop files for the client into this opened folder, file command successful message will be displayed.
 
 Activity diagram for File Command:<br>
-<img src="diagrams/FileActivityDiagram.png" width="900" />
+<img src="diagrams/FileActivityDiagram.png" width="650" />
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -377,7 +377,7 @@ Activity diagram for filtering clients based on preferred meeting region:
 <img src="diagrams/GroupMeetingActivityDiagram.png" width="550" />
 
 Sequence diagram for filtering clients based on preferred meeting region:
-<img src="diagrams/GroupMeetingSequenceDiagram.png" width="1080" />
+<img src="diagrams/GroupMeetingSequenceDiagram.png" width="650" />
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -406,10 +406,10 @@ Given below is an example usage scenario and how the Add Policy Mechanism works:
 7. The `CommanResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` having the newly added policy and a success message is displayed on the UI
 
 The following activity diagram shows how the AddPolicy operation works:
-<img src="diagrams/AddPolicyActivityDiagram.png" width = "900">
+<img src="diagrams/AddPolicyActivityDiagram.png" width = "650">
 
 The following sequence diagram shows how the AddPolicy operation works:
-<img src="diagrams/AddPolicySequenceDiagram.png" width = "1200">
+<img src="diagrams/AddPolicySequenceDiagram.png" width = "650">
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -429,10 +429,10 @@ Given below is an example usage scenario and how the Remove Policy mechanism beh
 6. The `CommandResult` is then returned by the `execute` method and the UI will display the updated list of clients with `Alex Yeoh` not having the policy that was removed and a success message is displayed on the UI
 
 The following activity diagram shows how the RemovePolicy operation works:
-<img src="diagrams/RemovePolicyActivityDiagram.png" width = "900">
+<img src="diagrams/RemovePolicyActivityDiagram.png" width = "650">
 
 The following sequence diagram shows how the RemovePolicy operation works:
-<img src="diagrams/RemovePolicySequenceDiagram.png" width = "1000">
+<img src="diagrams/RemovePolicySequenceDiagram.png" width = "650">
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -455,7 +455,7 @@ The following activity diagram for viewing policy of a particular Client:
 <img src="diagrams/ViewPolicyActivityDiagram.png"/>
 
 The following sequence diagram shows how the View Policy operation works:
-<img src="diagrams/ViewPolicySequenceDiagram.png" width="1000" />
+<img src="diagrams/ViewPolicySequenceDiagram.png" width="650" />
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -481,7 +481,7 @@ The following activity diagram shows how the Filter Policy Description operation
 <img src="diagrams/FilterPolicyActivityDiagram.png"/>
 
 The following sequence diagram shows how the Filter Policy Description operation works:
-<img src="diagrams/FilterPolicySequenceDiagram.png" width ="1200">
+<img src="diagrams/FilterPolicySequenceDiagram.png" width ="650">
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -523,10 +523,10 @@ Given below is an example usage scenario and how the changePassword command beha
 5. The UI will continue displaying the list of clients and a success message is displayed on the UI.
 
 Activity Diagram for changePassword Command:
-<img src="diagrams/ChangePasswordActivityDiagram.png" width="825" />
+<img src="diagrams/ChangePasswordActivityDiagram.png" width="650" />
 
 The following sequence diagram shows how the changePassword operation works:
-<img src="diagrams/ChangePasswordSequenceDiagram.png" width="1200" />
+<img src="diagrams/ChangePasswordSequenceDiagram.png" width="650" />
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -575,7 +575,7 @@ than attempting to perform the undo.
 
 The following sequence diagram shows how the undo operation works:
 
-<img src="diagrams/UndoSequenceDiagram.png" alt="UndoSequenceDiagram" />
+<img src="diagrams/UndoSequenceDiagram.png" alt="UndoSequenceDiagram" width="650"/>
 
 <box type="info" seamless>
 
@@ -601,7 +601,7 @@ Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Sinc
 
 The following activity diagram summarizes what happens when a user executes a new command:
 
-<img src="diagrams/CommitActivityDiagram.png" width="250" />
+<img src="diagrams/CommitActivityDiagram.png" width="450" />
 
 Return to [Table Of Contents](#table-of-contents)
 
