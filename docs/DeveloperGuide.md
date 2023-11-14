@@ -233,10 +233,10 @@ Given below is an example usage scenario and how the PreferredContact mechanism 
 10. The execution will then be over as the preferred contact method will be highlighted and the adding preferred contact command successful message will then be displayed.
 
 The following activity diagram shows how the Preferred Contact operation works:
-<img src="diagrams/PreferredContactActivityDiagram.png" width="650" />
+<img src="diagrams/PreferredContactActivityDiagram.png" width="550" />
 
 The following sequence diagram shows how the Preferred Contact operation works:
-<img src="diagrams/PreferredContactSequenceDiagram.png" width="650" />
+<img src="diagrams/PreferredContactSequenceDiagram.png" width="550" />
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -259,7 +259,7 @@ The following activity diagram shows how the AddTag operation works:
 <img src="diagrams/AddTagActivityDiagram.png" width="650">
 
 The following sequence diagram shows how the AddTag operation works:
-<img src="diagrams/AddTagSequenceDiagram.png" width="650">
+<img src="diagrams/AddTagSequenceDiagram.png" width="550">
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -284,7 +284,7 @@ The following activity diagram shows how the DeleteTag operation works:
 <img src="diagrams/DeleteTagActivityDiagram.png" width="650">
 
 The following sequence diagram shows how the DeleteTag operation works:
-<img src="diagrams/DeleteTagSequenceDiagram.png" width="650">
+<img src="diagrams/DeleteTagSequenceDiagram.png" width="550">
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -377,7 +377,7 @@ Activity diagram for filtering clients based on preferred meeting region:
 <img src="diagrams/GroupMeetingActivityDiagram.png" width="550" />
 
 Sequence diagram for filtering clients based on preferred meeting region:
-<img src="diagrams/GroupMeetingSequenceDiagram.png" width="650" />
+<img src="diagrams/GroupMeetingSequenceDiagram.png" width="550" />
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -432,7 +432,7 @@ The following activity diagram shows how the RemovePolicy operation works:
 <img src="diagrams/RemovePolicyActivityDiagram.png" width = "650">
 
 The following sequence diagram shows how the RemovePolicy operation works:
-<img src="diagrams/RemovePolicySequenceDiagram.png" width = "650">
+<img src="diagrams/RemovePolicySequenceDiagram.png" width = "500">
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -481,7 +481,7 @@ The following activity diagram shows how the Filter Policy Description operation
 <img src="diagrams/FilterPolicyActivityDiagram.png"/>
 
 The following sequence diagram shows how the Filter Policy Description operation works:
-<img src="diagrams/FilterPolicySequenceDiagram.png" width ="650">
+<img src="diagrams/FilterPolicySequenceDiagram.png" width ="500">
 
 Return to [Table Of Contents](#table-of-contents)
 
@@ -526,7 +526,7 @@ Activity Diagram for changePassword Command:
 <img src="diagrams/ChangePasswordActivityDiagram.png" width="650" />
 
 The following sequence diagram shows how the changePassword operation works:
-<img src="diagrams/ChangePasswordSequenceDiagram.png" width="650" />
+<img src="diagrams/ChangePasswordSequenceDiagram.png" width="500" />
 
 Return to [Table Of Contents](#table-of-contents)
 
