@@ -40,7 +40,6 @@ deactivate AddPolicyCommand
 AddPolicyCommandParser --> AddressBookParser : a
 deactivate AddPolicyCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar'
-ViewPolicyCommandParser -[hidden]-> AddressBookParser
 destroy AddPolicyCommandParser
 
 AddressBookParser --> LogicManager : a

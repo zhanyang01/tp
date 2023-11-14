@@ -504,7 +504,7 @@ The following activity diagram shows how the Toggle Mode operation works:
 <img src="diagrams/ToggleModeActivityDiagram.png">
 
 The following sequence diagram shows how the Toggle Mode operation works:
-<img src="diagrams/ToggleModeSequenceDiagram.png" width = "650">
+<img src="diagrams/ToggleModeSequenceDiagram.png" width = "500">
 
 Return to [Table Of Contents](#table-of-contents)
 

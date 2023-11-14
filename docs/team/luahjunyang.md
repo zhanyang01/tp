@@ -51,6 +51,10 @@ Given below are my contributions to the project.
   - Developer Guide:
     - Added terms Tag, Client Priority, Usage Instructions to the Glossary [\#39](https://github.com/AY2324S1-CS2103-W14-1/tp/pull/39)
     - Added documentation for the `filter` tag command, including a sequence diagram [\#92](https://github.com/AY2324S1-CS2103-W14-1/tp/pull/92)
+    - Added documentation for the `addTag`, `addPolicy`, `removePolicy` commands, including sequence and activity diagrams [\#228](https://github.com/AY2324S1-CS2103-W14-1/tp/pull/228)
+    - Added planned enhancements appendix [\#228](https://github.com/AY2324S1-CS2103-W14-1/tp/pull/228)
+    - Added sequence and activity diagrams for `deleteTag`, `filterTag`, `addPolicy`, `removePolicy` commands [\#233](https://github.com/AY2324S1-CS2103-W14-1/tp/pull/233)
+    - Added documentation and diagrams for `filterPolicy` and `ToggleMode` commands [\#235](https://github.com/AY2324S1-CS2103-W14-1/tp/pull/235)
 
 - **Community**:
   - Reviewed 14 Pull Requests and provided relevant feedback
