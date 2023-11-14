@@ -501,7 +501,7 @@ Given below is an example usage scenario and how the Toggle Mode mechanism behav
 6. The UI will continue displaying the list of clients and a success message is displayed on the UI
 
 The following activity diagram shows how the Toggle Mode operation works:
-<img src="diagrams/ToggleModeActivityDiagram.png">
+<img src="diagrams/ToggleModeActivityDiagram.png" width="650" />
 
 The following sequence diagram shows how the Toggle Mode operation works:
 <img src="diagrams/ToggleModeSequenceDiagram.png" width = "500">
