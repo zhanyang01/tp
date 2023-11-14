@@ -1,6 +1,6 @@
-# Insurahub User Guide
+# InsuraHub User Guide
 
-Insurahub is a **desktop app for managing clients, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Insurahub can get your contact management tasks done faster than traditional GUI apps. This app is mainly used by insurance agents who have many clients and tasks such as appointments to keep track of on a daily basis.
+InsuraHub is a **desktop app for managing clients, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Insurahub can get your contact management tasks done faster than traditional GUI apps. This app is mainly used by insurance agents who have many clients and tasks such as appointments to keep track of on a daily basis.
 
 ## Table of Contents
 
@@ -38,11 +38,11 @@ Insurahub is a **desktop app for managing clients, optimized for use via a Comma
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-2. Download the latest `insurahub.jar` from [here](https://github.com//AY2324S1-CS2103-W14-1/tp).
+2. Download the latest `InsuraHub.jar` from [here](https://github.com//AY2324S1-CS2103-W14-1/tp).
 
 3. Copy the file to the folder you want to use as the _home folder_ for your App.
 
-4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar insurahub.jar` command to run the application.<br>
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar InsuraHub.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note that if a password had been previously set, then this step would be skipped. If you are setting the password, do record the password as if you forget the password before entering the app to change the password, you have to retrieve it by going to data/encoded.txt.
 
    ![SetPassword](images/setPassword.png)
@@ -119,7 +119,7 @@ Format: `help`
 
 ### Adding a new client: `add`
 
-Adds a new person to the Insurahub App, the name of the Person must be unique, other parameters can be duplicated.
+Adds a new person to the InsuraHub App, the name of the Person must be unique, other parameters can be duplicated.
 
 Format: `add n/NAME p/PHONE e/EMAIL a/ADDRESS [t/TAG]… pmr/PREFERRED_MEETING_REGION`
 
@@ -269,7 +269,7 @@ Highlight the specific contact details of the particular client from the applica
 
 Format 1: `preferredContact INDEX pc/PREFERRED_CONTACT`
 
-- **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
+- **INDEX** must be a positive integer less than or equals to the number of clients currently shown on InsuraHub.
 - **preferred contact method** either phone number or email
 - Preferred contact method:
   - phone number
@@ -297,7 +297,7 @@ Format: `addTag INDEX t/TAG_1 [t/TAG_2]`
 
 - Number of tags in the format is just an example.
 
-- **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
+- **INDEX** must be a positive integer less than or equals to the number of clients currently shown on InsuraHub.
 
 Examples:
 
@@ -311,7 +311,7 @@ Format: `deleteTag INDEX t/TAG_1 [t/TAG_2]`<br>
 
 - Number of tags in the format is just an example.
 
-- **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
+- **INDEX** must be a positive integer less than or equals to the number of clients currently shown on InsuraHub.
 - **tag**: must be a valid tag in the pre-defined list implemented in the app
 
 Examples:
@@ -324,7 +324,7 @@ Creates/opens up a folder specific to a client's name for storing of their docum
 
 Format: `file INDEX`
 
-- **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
+- **INDEX** must be a positive integer less than or equals to the number of clients currently shown on InsuraHub.
 
 Examples:
 
@@ -346,7 +346,7 @@ Examples:
 
 ### Change password: `changePassword`
 
-Changes the required password to enter Insurahub.
+Changes the required password to enter InsuraHub.
 
 Format: `changePassword op/OLD_PASSWORD np/NEW_PASSWORD`
 
@@ -366,11 +366,11 @@ Format: `toggleMode`
 
 Examples:
 
-- `toggleMode` will display the mode that Insurahub will be in when it is next opened. If it is lightmode, it will be changed to dark mode and vice versa
+- `toggleMode` will display the mode that InsuraHub will be in when it is next opened. If it is lightmode, it will be changed to dark mode and vice versa
 
 ### Filter policy using policy description `filterpolicydescription`
 
-- Filter policies using policy description, it is case sensative, hence if client have `Cancer Plan` typing `CANCER PLAN` will not work.
+- Filter policies using policy description, it is case-sensitive, hence if client have `Cancer Plan` typing `CANCER PLAN` will not work.
 - Typing non string characters will not return an error, however it might be an issue as it is unlikely that policy description contains non string characters.
 - If policy description is 123 and you filter 123, it will return the policy.
 
@@ -383,22 +383,22 @@ Examples:
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Insurahub home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous InsuraHub home folder.
 
 ---
 
 ### Saving the data
 
-Insurahub data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+InsuraHub data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### Editing the data file
 
-Insurahub data are saved automatically as a JSON file `[JAR file location]/data/Insurahub.json`. Advanced users are welcome to update data directly by editing that data file.
+InsuraHub data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
 
 **Caution:**
-If your changes to the data file makes its format invalid, Insurahub will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
+If your changes to the data file makes its format invalid, InsuraHub will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
 </box>
 
 ## Known issues
@@ -409,10 +409,10 @@ If your changes to the data file makes its format invalid, Insurahub will discar
 2. **When opening multiple application using multiple terminals**<br>
    If you perform any actions on the first application, the updates will not be shown on the second application as currently we do not allow application to work simultaneously.
 
-3. **Clients/Persons/Contacts** will generally be regarded as the same in insurahub even though it can be confusing.
+3. **Clients/Persons/Contacts** will generally be regarded as the same in InsuraHub even though it can be confusing.
 
 4. **Policy date issue**<br>
-   Putting the end date earlier than the start date for policies is currently accepted, we have acknowledge the error and will work to improve the application to remove those errors.
+   Putting the end date earlier than the start date for policies is currently accepted, we have acknowledged the error and will work to improve the application to remove those errors.
 
 5. **Client Files of deleted/edited clients are retained**<br>
    At this point, the application is unable to delete the files of deleted clients or edit the files of edited clients, we can only delete, edit it manually.
