@@ -151,7 +151,7 @@ Format: `list`
 
 Edits an existing client in the application.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]… [pmr/_MEETING_REGION]`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]… [pmr/PREFERRED_MEETING_REGION]`
 
 - Edits the client at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 - At least one of the optional fields must be provided.
@@ -210,7 +210,7 @@ Format: `clear`
 
 Filters for all clients in InsuraHub that have the tag being filtered.
 
-Format: `filter t/TAG1 t/TAG2`
+Format: `filter t/TAG_1 [t/TAG_2]`
 
 - Filters for clients that contain all the specified tags `TAG1`, `TAG2`.
 - Only clients that contain all the specified tags will be listed in the Ui.
@@ -225,7 +225,7 @@ Examples:
 
 Adds an insurance policy to a client in InsuraHub.
 
-Format: `addPolicy INDEX [pn/POLICY NAME]  [pd/POLICY DESCRIPTION]  [pv/POLICY VALUE]  [psd/POLICY START DATE]  [ped/POLICY END DATE]`
+Format: `addPolicy INDEX pn/POLICY NAME pd/POLICY DESCRIPTION pv/POLICY VALUE psd/POLICY START DATE ped/POLICY END DATE`
 
 - `INDEX` must be a positive integer less than or equals to the number of clients currently shown on InsuraHub.
 
@@ -254,7 +254,7 @@ Examples:
 
 Creates/opens up a folder specific to a client for storing of their documents
 
-Format 1: `viewPolicy INDEX_1 INDEX_2`
+Format: `viewPolicy INDEX_1 INDEX_2`
 
 - `INDEX_1` must be a positive integer less than or equals to the number of clients currently shown on InsuraHub.
 - `INDEX_2` must be a positive integer less than or equals to the number of policies the client specified by `INDEX_1` has.
@@ -293,7 +293,7 @@ Format: `exit`
 
 Adds at least one new tags to a client object without deleting the pre-exisiting tags.
 
-Format 1: `addTag INDEX t/TAG_1 t/TAG_2`
+Format: `addTag INDEX t/TAG_1 [t/TAG_2]`
 
 - Number of tags in the format is just an example.
 
@@ -307,7 +307,7 @@ Examples:
 
 Removes at least one pre-existing tags from a client object.
 
-Format 1: `deleteTag INDEX t/TAG_1 t/TAG_2`<br>
+Format: `deleteTag INDEX t/TAG_1 [t/TAG_2]`<br>
 
 - Number of tags in the format is just an example.
 
@@ -322,7 +322,7 @@ Examples:
 
 Creates/opens up a folder specific to a client's name for storing of their documents. When it is first created, it will be empty. We can add client's documents into the file and it will be saved in the file after closing the window.
 
-Format 1: `file INDEX`
+Format: `file INDEX`
 
 - **INDEX** must be a positive integer less than or equals to the number of clients currently shown on Insurahub.
 
@@ -334,7 +334,11 @@ Examples:
 
 Groups clients based on their preferred meeting locations, only list one of west, north, south, east or central per command.
 
-Format: `groupmeeting west/north/south/east/central`
+Format: `groupmeeting PREFERRED_MEETING_LOCATION`
+
+- **PREFERRED_MEETING_LOCATION** must be either north,south,east,west or central
+
+
 
 Examples:
 
@@ -344,10 +348,10 @@ Examples:
 
 Changes the required password to enter Insurahub.
 
-Format: `changePassword op/OLDPASSWORD np/NEWPASSWORD`
+Format: `changePassword op/OLD_PASSWORD np/NEW_PASSWORD`
 
-- `OLDPASSWORD` must be the password string that was previously set
-- `NEWPASSWORD` can be any string of length >= 1
+- `OLD_PASSWORD` must be the password string that was previously set
+- `NEW_PASSWORD` can be any string of length >= 1
 
 Examples:
 
@@ -370,7 +374,7 @@ Examples:
 - Typing non string characters will not return an error, however it might be an issue as it is unlikely that policy description contains non string characters.
 - If policy description is 123 and you filter 123, it will return the policy.
 
-Format: `filterpolicydescription POLICYDESCRIPTION`
+Format: `filterpolicydescription POLICY_DESCRIPTION`
 
 Examples:
 
@@ -418,24 +422,24 @@ If your changes to the data file makes its format invalid, Insurahub will discar
 ## Command summary
 
 | Action                        | Format, Examples                                                                                                                                                                                                            |
-|-------------------------------| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pmr/east [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pmr/east t/friend t/colleague`                                     |
+|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pmr/PREFERRED_MEETING_REGION [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pmr/east t/friend t/colleague`                 |
 | **Clear**                     | `clear`                                                                                                                                                                                                                     |
 | **Delete**                    | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                         |
 | **Edit**                      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                                 |
 | **Exit**                      | `exit`                                                                                                                                                                                                                      |
 | **File**                      | `file INDEX`<br> e.g. `file 1`                                                                                                                                                                                              |
 | **Find**                      | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                                  |
-| **Add Tag**                   | `addTag <INDEX> t/TAG1 t/TAG2`<br/> e.g. `addTag 1 t/friend`                                                                                                                                                                |
-| **Delete Tag**                | `deleteTag <INDEX> t/TAG1 t/TAG2`<br/> e.g. `deleteTag 1 t/friend`                                                                                                                                                          |
-| **Filter Tag**                | `filter t/TAG1 t/TAG2`<br/> e.g., `filter t/friend t/colleague`                                                                                                                                                             |
+| **Add Tag**                   | `addTag <INDEX> t/TAG_1 t/TAG_2`<br/> e.g. `addTag 1 t/friend`                                                                                                                                                              |
+| **Delete Tag**                | `deleteTag <INDEX> t/TAG_1 t/TAG_2`<br/> e.g. `deleteTag 1 t/friend`                                                                                                                                                        |
+| **Filter Tag**                | `filter t/TAG_1 t/TAG_2`<br/> e.g., `filter t/friend t/colleague`                                                                                                                                                           |
 | **List**                      | `list`                                                                                                                                                                                                                      |
-| **Add Policy**                | `addPolicy INDEX [pn/POLICY NAME  pd/POLICY DESCRIPTION  pv/POLICY VALUE  psd/POLICY START DATE  ped/POLICY END DATE]`<br/> e.g. `addPolicy 1 pn/Health Insurance pd/Cancer Plan pv/2000.00 psd/2023-01-01 ped/2024-12-12 ` |
+| **Add Policy**                | `addPolicy INDEX [pn/POLICY_NAME  pd/POLICY_DESCRIPTION  pv/POLICY_VALUE  psd/POLICY_START_DATE  ped/POLICY_END_DATE]`<br/> e.g. `addPolicy 1 pn/Health Insurance pd/Cancer Plan pv/2000.00 psd/2023-01-01 ped/2024-12-12 ` |
 | **Remove Policy**             | `removePolicy INDEX_1 INDEX_2`<br/> e.g. `removePolicy 1 1`                                                                                                                                                                 |
 | **View Policy**               | `viewPolicy INDEX_1 INDEX_2`<br/> e.g. `viewPolicy 1 1`                                                                                                                                                                     |
-| **Filter Policy Description** | `filterpolicydescription POLICY DESCRIPTION`                                                                                                                                                                                |
+| **Filter Policy Description** | `filterpolicydescription POLICY_DESCRIPTION`                                                                                                                                                                                |
 | **Help**                      | `help`                                                                                                                                                                                                                      |
-| **Preferred Contact**         | `preferredContact INDEX pc/PREFERREDCONTACT`<br/> e.g. `preferredContact 1 pc/phone`                                                                                                                                        |
-| **Change Password**           | `changePassword op/OLD PASSWORD np/NEW PASSWORD`<br/>e.g. `changePassword op/123456 np/foo123`                                                                                                                              |
+| **Preferred Contact**         | `preferredContact INDEX pc/PREFERRED_CONTACT`<br/> e.g. `preferredContact 1 pc/phone`                                                                                                                                       |
+| **Change Password**           | `changePassword op/OLD_PASSWORD np/NEW_PASSWORD`<br/>e.g. `changePassword op/123456 np/foo123`                                                                                                                              |
 | **Toggle UI Mode**            | `toggleMode`                                                                                                                                                                                                                |
-| **Group Meeting**             | `groupmeeting PREFERRED MEETING REGION` <br> e.g. `groupmeeting west`                                                                                                                                                       |
+| **Group Meeting**             | `groupmeeting PREFERRED_MEETING_REGION` <br> e.g. `groupmeeting west`                                                                                                                                                       |
