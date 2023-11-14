@@ -888,7 +888,7 @@ testers are expected to do more _exploratory_ testing.
 
    1. Double-click the jar file <br>
       **OR**
-      Open the command terminal, `cd` into the folder you put the jar in and use `java -jar Insurahub.jar` command to run the application.<br>Expected: Shows the GUI shown below to ask you to set a password for first timers, first timers will then be asked to key in the password to enter the application.<br> Users who are not first timers will only be asked to enter the password that is previously saved.
+      Open the command terminal, `cd` into the folder you put the jar in and use `java -jar InsuraHub.jar` command to run the application.<br>Expected: Shows the GUI shown below to ask you to set a password for first timers, first timers will then be asked to key in the password to enter the application.<br> Users who are not first timers will only be asked to enter the password that is previously saved.
       ![SetPassword](images/setPassword.png)
 
    1. After the password is entered A GUI similar to the below should appear in a few seconds.
@@ -959,6 +959,7 @@ testers are expected to do more _exploratory_ testing.
       Expected: A new policy is added into the first client, the client details are shown, do note that you have to use viewPolicy to verify the policy you are adding is correct.
 
 ### Removing Policy from a client
+
 1. Removing a policy from an existing client
    1. Prerequisites: The client that the user wants to remove the policy from is in the list, the client currently has policies to remove.
    2. List all clients using the `list` command.
@@ -966,7 +967,7 @@ testers are expected to do more _exploratory_ testing.
       Expected: The first client in the list will have his first (right-most) policy removed from his policy list.
    4. Test case: `removePolicy 1 0`<br>
       Expected: No policy is deleted. Error details shown in the status message. Status bar remains the same.
-   
+
 ### Adding a file for a client
 
 1. Adding a file for an existing client
