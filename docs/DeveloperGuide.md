@@ -374,7 +374,7 @@ Given below is an example usage scenario and how the Group Meeting mechanism beh
 9. The execution will then be over as the updated list of filtered `Person` objects are displayed on the Ui
 
 Activity diagram for filtering clients based on preferred meeting region:
-<img src="diagrams/GroupMeetingActivityDiagram.png" width="500" />
+<img src="diagrams/GroupMeetingActivityDiagram.png" width="550" />
 
 Sequence diagram for filtering clients based on preferred meeting region:
 <img src="diagrams/GroupMeetingSequenceDiagram.png" width="1080" />
@@ -904,28 +904,44 @@ testers are expected to do more _exploratory_ testing.
 ### Adding a client
 
 1. Adding a person while all persons are being shown
-   1. Prerequistics: There should be no clients with the same name as the client you are adding. <br>
+   1. Prerequisites: There should be no clients with the same name as the client you are adding. <br>
    2. List all persons using the `list` command.
    3. Test case: `add n/John p/61234567 e/john@email.com a/Blk 312 Choa Chu Kang St 32 pmr/west`<br>
       Expected: A new client is added and displayed in the client list.
    4. Test case: `add n/John p/61234567 e/john@email.com a/Blk 312 Choa Chu Kang St 32 t/Friends t/Colleagues pmr/west`<br>
       Expected: A new client with optional details is added and displayed in the client list.
 
-### Adding a policy
+### Deleting a client
 
-1. Adding a policy into an existing client
-   1. Prerequistic: The client that is going to have the new policy is in the client list.<br>
-   2. List all clients using the `list` command.
-   3. Test case: `addPolicy 1 pn/Health Insurance pd/Cancer Plan pv/2000.00 psd/2023-01-01 ped/2024-12-12`<br>
-      Expected: A new policy is added into the first client, the client details are shown, do note that you have to use viewPolicy to verify the policy you are adding is correct.
+1. Deleting a client while all clients are being shown
+
+   1. Prerequisites: List all clients using the `list` command.
+
+   2. Test case: `delete 1`<br>
+      Expected: First client is deleted from the list. Details of the deleted client shown in the status message. Timestamp in the status bar is updated.
+
+   3. Test case: `delete 0`<br>
+      Expected: No client is deleted. Error details shown in the status message. Status bar remains the same.
+
+   4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+      Expected: Similar to previous.
 
 ### Adding Tags to a client
 
 1. Adding tags to an existing client
-   1. Prerequistic: The client that is going to have the new tag is in the client list.<br>
+   1. Prerequisites: The client that is going to have the new tag is in the client list.<br>
    2. List all clients using the `list` command.
    3. Test case: `addTag 1 t/Friends`<br>
       Expected: The first client in the list will have the friends tag added, if it is already there, the new tag will replace the old tag.
+
+### Delete Tags from a client
+
+1. Deleting tags from an existing client
+
+   1. Prerequisites: The client that the user wants to remove the tag from is in the list, the client currently has the tag that have to be removed.
+   2. List all clients using the `list` command.
+   3. Test case: `deleteTag 1 t/friend`<br>
+      Expected: The first client in the list will have his friend tag removed from the client list.
 
 ### Change Password
 
@@ -934,34 +950,27 @@ testers are expected to do more _exploratory_ testing.
       <br>Do put in your current password into `OLD PASSWORD` and the password you wish to have as `NEW PASSWORD`.
       Expected: After leaving the application, you will need to use the new password to enter into the application.
 
-### Delete Tags from a client
+### Adding a policy
 
-1. Deleting tags from an existing client
-
-   1. Prerequistic: The client that the user wants to remove the tag from is in the list, the client currently has the tag that have to be removed.
+1. Adding a policy into an existing client
+   1. Prerequisites: The client that is going to have the new policy is in the client list.<br>
    2. List all clients using the `list` command.
-   3. Test case: `deleteTag 1 t/friend`<br>
-      Expected: The first client in the list will have his friend tag removed from the client list.
+   3. Test case: `addPolicy 1 pn/Health Insurance pd/Cancer Plan pv/2000.00 psd/2023-01-01 ped/2024-12-12`<br>
+      Expected: A new policy is added into the first client, the client details are shown, do note that you have to use viewPolicy to verify the policy you are adding is correct.
 
-### Deleting a person
-
-1. Deleting a person while all clients are being shown
-
-   1. Prerequisites: List all clients using the `list` command.
-
-   1. Test case: `delete 1`<br>
-      Expected: First client is deleted from the list. Details of the deleted client shown in the status message. Timestamp in the status bar is updated.
-
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
-
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
-
+### Removing Policy from a client
+1. Removing a policy from an existing client
+   1. Prerequisites: The client that the user wants to remove the policy from is in the list, the client currently has policies to remove.
+   2. List all clients using the `list` command.
+   3. Test case: `removePolicy 1 1`<br>
+      Expected: The first client in the list will have his first (right-most) policy removed from his policy list.
+   4. Test case: `removePolicy 1 0`<br>
+      Expected: No policy is deleted. Error details shown in the status message. Status bar remains the same.
+   
 ### Adding a file for a client
 
 1. Adding a file for an existing client
-   1. Prerequistic: The client that the user wants to add the file is in the list.
+   1. Prerequisites: The client that the user wants to add the file is in the list.
    2. List all clients using the `list` command.
    3. Test case: `file 1`<br>
       Expected: There will be a file that contains the first client's name added into the `Client Files` folder, if the file is already there, it will be opened.
@@ -985,6 +994,40 @@ testers are expected to do more _exploratory_ testing.
       Expected: Clients with policies containing policy description `Cancer Plan` will be filtered and shown in the filtered list, status message will return the number of people with the policy, do note that it is case sensative.
    3. Test case: `filterpolicydescription`<br>
       Expected: There will be an error message stating incorrect command format, the example test case will be in the status message.
+
+### Group Meeting
+
+1. Filter clients by preferred meeting region.
+   1. Prerequisites: There are clients that have the region as their preferred meeting region.
+   2. Test case: `groupmeeting north`
+      Expected: Clients with the preferred meeting location `west` will be filtered and shown in the filtered list, status message will return the number of people listed with that preferred meeting location.
+   3. Test case: `groupmeeting`<br>
+      Expected: There will be an error message stating incorrect command format, the example test case will be in the status message.
+
+### Viewing details of client's policy
+
+1. Viewing the details of a client's policy.
+   1. Prerequisites: The client that the user wants to view the policy of is in the list, the client currently has policies to remove.
+   2. Test case: `viewPolicy 1 1`
+      Expected: The policy details (policy name, policy description, policy value, start date and end date) will be displayed in the status message.
+   3. Test case: `viewPolicy`
+      Expected: There will be an error message stating incorrect command format and that both indexes are required.
+
+### Preferred Contact
+
+1. Setting the preferred contact method for a client.
+   1. Prerequisites: The client that the user wants to set the preferred contact method for is in the list.
+   2. List all clients using the `list` command.
+   3. Test case: `preferredContact 1 pc/phone`
+      Expected: The preferred contact method of the first client in the list will be highlighted in yellow.
+   4. Test case: `preferredContact`
+      Expected: There will be an error message stating incorrect command format and an example command will be shown in the status message.
+
+### Toggle UI Mode
+
+1. Toggling the UI Mode between light mode or dark mode.
+   1. Test case: `toggleMode`
+      Expected: Success message stating the mode has been changed and InsuraHub will be switched to the other mode upon the next launch.
 
 ## **Appendix: Planned Enhancements**
 
