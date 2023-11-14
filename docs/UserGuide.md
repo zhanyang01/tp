@@ -1,6 +1,6 @@
 # InsuraHub User Guide
 
-InsuraHub is a **desktop app for managing clients, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Insurahub can get your contact management tasks done faster than traditional GUI apps. This app is mainly used by insurance agents who have many clients and tasks such as appointments to keep track of on a daily basis.
+InsuraHub is a **desktop app for managing clients, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, InsuraHub can get your contact management tasks done faster than traditional GUI apps. This app is mainly used by insurance agents who have many clients and tasks such as appointments to keep track of on a daily basis.
 
 ## Table of Contents
 
@@ -202,7 +202,7 @@ Examples:
 
 ### Clearing all entries : `clear`
 
-Clears all entries from Insurahub. Do note that so long as `clear` is contained in your commands, details in Insurahub will be deleted
+Clears all entries from InsuraHub. Do note that so long as `clear` is contained in your commands, details in InsuraHub will be deleted
 
 Format: `clear`
 
@@ -338,8 +338,6 @@ Format: `groupmeeting PREFERRED_MEETING_LOCATION`
 
 - **PREFERRED_MEETING_LOCATION** must be either north,south,east,west or central
 
-
-
 Examples:
 
 - `groupmeeting west` will group all clients that prefer to meet in the west region and returns a list of clients that prefer to meet in the west region
@@ -422,7 +420,7 @@ If your changes to the data file makes its format invalid, InsuraHub will discar
 ## Command summary
 
 | Action                        | Format, Examples                                                                                                                                                                                                            |
-|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pmr/PREFERRED_MEETING_REGION [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pmr/east t/friend t/colleague`                 |
 | **Clear**                     | `clear`                                                                                                                                                                                                                     |
 | **Delete**                    | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                         |

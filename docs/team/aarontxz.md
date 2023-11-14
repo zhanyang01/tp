@@ -34,17 +34,18 @@ Given below are my contributions to the project.
   - Highlights: I had to ensure that the passwordManager only edits the file which stores the correct password when the old password given matches the current password before the change before rewriting the password saved in the encoded.txt file
 
 - **New Feature**: Added the ability view Policy details
+
   - What it does: selects a specific policy of a specific client to display details of the policy that is not shown on the InsuraHub.
   - Justification: This feature improves the product as it allows the Insurance Agent to see the specific details of each policy of each client, important details such as start time and end time of the policy instead of just the name of the policy shown on InsuraHub.
   - Highlights: I came up with the idea of implementing this feature as the group needed a fix to the lack of display of crucial details that our Policy class hold that could not be shown on the screen. This helped give the Policy class a purpose instead of just having the name of the policy displayed on the screen.
   - Credit: removePolicy Command done by my teammate in InsuraHub.
 
 - **New Feature**: Added the Ability to Toggle UI mode
+
   - What it does: Toggles between DarkMode and LightMode for the UI of InsuraHub the next time InsuraHub is opened.
-  - Justification: This feature improves the product as it allows the Insurance Agent to change to a Lighter display for InsuraHub if it better suit their personality/preference, as most Insurance agent tend to have a bright personality to engage their clients. Being able to toggle between their preferred mode would also help enhance the productivity of the Insurance Agent, as some people read better in light mode.  
+  - Justification: This feature improves the product as it allows the Insurance Agent to change to a Lighter display for InsuraHub if it better suit their personality/preference, as most Insurance agent tend to have a bright personality to engage their clients. Being able to toggle between their preferred mode would also help enhance the productivity of the Insurance Agent, as some people read better in light mode.
   - Highlights: This feature was challenging to implement as I had to learn which part of the css code affects which part of the display in InsuraHub.
   - Credit: DarkTheme.css, MainWindow.fxml AB3
-
 
 - **Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=aarontxz&breakdown=true)
 
@@ -74,5 +75,5 @@ Given below are my contributions to the project.
 
   - Reviewed 24 PRs and provided feedback
   - Reviewed 4 other IPs, 2 during the peer review in week 8 and 2 during the week 4
-  - Contributed to 2 forum posts and discussions  (examples: [link](https://github.com/nus-cs2103-AY2324S1/forum/issues/218#issuecomment-1736617241))
+  - Contributed to 2 forum posts and discussions (examples: [link](https://github.com/nus-cs2103-AY2324S1/forum/issues/218#issuecomment-1736617241))
   - Reported 5 bugs and suggestions for other teams in the class (examples: [link](https://github.com/AY2324S1-CS2103T-W16-4/tp/issues/124))
